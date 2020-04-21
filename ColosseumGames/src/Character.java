@@ -7,37 +7,37 @@ import processing.core.PImage;
 
 public abstract class Character extends Rectangle2D.Double{
 	
-	private String spriteFile, heroName;
+	private String spriteFile;
 	private double speed, atkSpeed, HP;
 	private double range;
-	private double weaponDmg;
+	private double damage;
 	private int x, y, w, h;
 	private double vx, vy;
 	
 	private Line2D.Double leftHit, rightHit, topHit, bottomHit;
 	
 
-	public Character(String spriteFile, String heroName, double speed, 
-			double atkSpeed, double HP, double range, double weaponDmg,
+	public Character(String spriteFile, double speed, 
+			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(x, y, w, h);
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
-		
+		//velocities
 		vx = 0;
 		vy = 0;
-		
+		//sprite
 		this.spriteFile = spriteFile;
-		this.heroName = heroName;
-		
+		//stats
 		this.speed = speed;
 		this.atkSpeed = atkSpeed;
 		this.HP = HP;
-		
+		//weapon stats
 		this.range = range;
-		this.weaponDmg = weaponDmg;
+		this.damage = damage;
+		
 	}
 	
 	public void moveToLocation(double x, double y) {
@@ -89,10 +89,10 @@ public abstract class Character extends Rectangle2D.Double{
 		return range;
 	}
 	
-	public double changeWeaponDmg(double increment) {
-		weaponDmg += increment;
+	public double changeDamage(double increment) {
+		damage += increment;
 		
-		return weaponDmg;
+		return damage;
 	}
 	
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
