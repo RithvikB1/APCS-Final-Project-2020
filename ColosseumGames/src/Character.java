@@ -89,6 +89,8 @@ public abstract class Character extends Rectangle2D.Double{
 		
 		return false;
 	}
+	public void shoot() {
+	}
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
