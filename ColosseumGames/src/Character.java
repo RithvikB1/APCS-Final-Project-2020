@@ -6,14 +6,15 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public abstract class Character extends Rectangle2D.Double{
-	String spriteFile, heroName;
-	double speed, atkSpeed, HP;
-	double range;
-	double weaponDmg;
-	int x, y, w, h;
+	
+	private String spriteFile, heroName;
+	private double speed, atkSpeed, HP;
+	private double range;
+	private double weaponDmg;
+	private int x, y, w, h;
 	private double vx, vy;
 	
-	Line2D.Double leftHit, rightHit, topHit, bottomHit;
+	private Line2D.Double leftHit, rightHit, topHit, bottomHit;
 	
 
 	public Character(String spriteFile, String heroName, double speed, 
@@ -38,6 +39,7 @@ public abstract class Character extends Rectangle2D.Double{
 		this.range = range;
 		this.weaponDmg = weaponDmg;
 	}
+	
 	public void moveToLocation(double x, double y) {
 		super.x = x;
 		super.y = y;
@@ -65,31 +67,41 @@ public abstract class Character extends Rectangle2D.Double{
 	
 	public double changeSpeed(double increment) {
 		speed += increment;
+		
 		return speed;
 	}
+	
 	public double changeAtkSpeed(double increment) {
 		atkSpeed += increment;
+		
 		return atkSpeed;
 	}
+	
 	public double changeHP(double increment) {
 		HP += increment;
+		
 		return HP;
 	}
+	
 	public double changeRange(double increment) {
 		range += increment;
+		
 		return range;
 	}
+	
 	public double changeWeaponDmg(double increment) {
 		weaponDmg += increment;
+		
 		return weaponDmg;
 	}
 	
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
 		
-		
 		return false;
 	}
+	
 	public void shoot() {
+		
 	}
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
