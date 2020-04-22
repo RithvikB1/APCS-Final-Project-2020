@@ -134,8 +134,13 @@ public class Character extends Rectangle2D.Double {
 		
 		Rectangle2D.Double shot = new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight);
 	}
-	public void die() {
-		
+	public boolean die() {
+		if(HP <= 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
