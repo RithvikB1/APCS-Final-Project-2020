@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public abstract class Character extends Rectangle2D.Double{
+public class Character extends Rectangle2D.Double {
 	
 	private String spriteFile;
 	private double speed, atkSpeed, HP;
@@ -16,7 +16,6 @@ public abstract class Character extends Rectangle2D.Double{
 	
 	private Line2D.Double leftHit, rightHit, topHit, bottomHit;
 	
-
 	public Character(String spriteFile, double speed, 
 			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -97,12 +96,13 @@ public abstract class Character extends Rectangle2D.Double{
 	
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
 		
-		return false;
+		return this.intersects(new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight));
 	}
 	
 	public void shoot() {
 		
 	}
+	
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
