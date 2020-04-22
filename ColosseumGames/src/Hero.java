@@ -1,4 +1,4 @@
 
-public class Hero extends Enemy {
+public class Hero {
 
 }
