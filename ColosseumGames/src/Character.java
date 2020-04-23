@@ -13,9 +13,7 @@ public class Character extends Rectangle2D.Double {
 	private double damage;
 	private int x, y, w, h;
 	private double vx, vy;
-	
-	private Line2D.Double leftHit, rightHit, topHit, bottomHit;
-	
+		
 	public Character(String spriteFile, double speed, 
 			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -24,20 +22,25 @@ public class Character extends Rectangle2D.Double {
 		this.y = y;
 		this.w = w;
 		this.h = h;
+		
 		//velocities
 		vx = 0;
 		vy = 0;
+		
 		//sprite
 		this.spriteFile = spriteFile;
+		
 		//stats
 		this.speed = speed;
 		this.atkSpeed = atkSpeed;
 		this.HP = HP;
+		
 		//weapon stats
 		this.range = range;
 		this.damage = damage;
 		
 	}
+
 	
 	public void moveToLocation(double x, double y) {
 		super.x = x;
@@ -64,45 +67,81 @@ public class Character extends Rectangle2D.Double {
 		vy += ay;
 	}
 	
-	public double changeSpeed(double increment) {
-		speed += increment;
-		
+	
+	
+	public double getSpeed() {
 		return speed;
 	}
-	
-	public double changeAtkSpeed(double increment) {
-		atkSpeed += increment;
-		
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public double getAtkSpeed() {
 		return atkSpeed;
 	}
-	
-	public double changeHP(double increment) {
-		HP += increment;
-		
+
+	public void setAtkSpeed(double atkSpeed) {
+		this.atkSpeed = atkSpeed;
+	}
+
+	public double getHP() {
 		return HP;
 	}
-	
-	public double changeRange(double increment) {
-		range += increment;
-		
+
+	public void setHP(double hP) {
+		HP = hP;
+	}
+
+	public double getRange() {
 		return range;
 	}
-	
-	public double changeDamage(double increment) {
-		damage += increment;
-		
+
+	public void setRange(double range) {
+		this.range = range;
+	}
+
+	public double getDamage() {
 		return damage;
 	}
-	
+
+	public void setDamage(double damage) {
+		this.damage = damage;
+	}
+
+	public double getVx() {
+		return vx;
+	}
+
+	public void setVx(double vx) {
+		this.vx = vx;
+	}
+
+	public double getVy() {
+		return vy;
+	}
+
+	public void setVy(double vy) {
+		this.vy = vy;
+	}
+
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
 		
 		return this.intersects(new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight));
 	}
-	
-	public void shoot() {
-		
+	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1
+	public void walk(double dirX, double dirY) {
+		vx *= dirX * speed;
+		vy *= dirY * speed;
 	}
-	
+	public boolean die() {
+		if(HP <= 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
