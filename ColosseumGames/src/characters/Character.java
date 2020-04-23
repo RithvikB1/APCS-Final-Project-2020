@@ -1,3 +1,5 @@
+package characters;
+
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -129,6 +131,7 @@ public class Character extends Rectangle2D.Double {
 		
 		return this.intersects(new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight));
 	}
+	
 	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1
 	public void walk(double dirX, double dirY) {
 		vx *= dirX * speed;
