@@ -130,10 +130,6 @@ public class Character extends Rectangle2D.Double {
 		vx *= dirX * speed;
 		vy *= dirY * speed;
 	}
-	public void shoot(String spriteFile, double shotX, double shotY, double shotWidth, double shotHeight) {
-		
-		Rectangle2D.Double shot = new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight);
-	}
 	public boolean die() {
 		if(HP <= 0) {
 			return true;
