@@ -93,7 +93,33 @@ public class Menu {
 		
 	}
 	
-	public void drawRulesScreen(PApplet marker) {
+	public int drawRulesScreen(PApplet marker, int mouseX, int mouseY, int cMouseX, int cMouseY) 
+	{
+		PImage g = marker.loadImage("images/menuBackground.jpg");
+		marker.image(g, 0, 0, 800, 600);
+		
+		Rectangle backButton = new Rectangle(60, 450, 130, 100);
+		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100);
+		
+		shape.setFill(255);
+		
+		if (detectMouseRect(backButton, mouseX, mouseY)) {
+			shape.setFill(180);
+		}
+		
+		if (detectMouseRect(backButton, cMouseX, cMouseY)) {
+			return 0;
+		}
+		
+		
+		marker.textSize(32);
+		
+		marker.shape(shape);
+		marker.fill(0);
+		marker.text("Back", 90, 510);
+		
+		return -1;
+		
 		
 	}
 	

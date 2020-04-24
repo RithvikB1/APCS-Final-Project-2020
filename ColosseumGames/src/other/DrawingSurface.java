@@ -7,6 +7,7 @@ public class DrawingSurface extends PApplet {
 	private PImage g;
 	
 	private int cMouseX, cMouseY;
+	private int x = 0;
 	
 	public DrawingSurface() {
 		
@@ -38,7 +39,12 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		else if (x == 4) {
-			
+			x = menu.drawRulesScreen(this,  mouseX, mouseY, cMouseX, cMouseY);
+		}
+		
+		else if (x == 0)
+		{
+			x = menu.drawStartMenu(this, mouseX, mouseY, cMouseX, cMouseY);
 		}
 	}
 	
