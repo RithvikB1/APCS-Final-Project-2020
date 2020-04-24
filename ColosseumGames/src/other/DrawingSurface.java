@@ -48,11 +48,11 @@ public class DrawingSurface extends PApplet {
 		 
 			
 			int x;
-			boolean second = false;
+			
 			
 			if (menuToggle == 3 || menuToggle == 4) {
 				x = menuToggle;
-				second = true;
+				
 			}
 			else {
 				x = menu.drawStartMenu(this, i, mouseX, mouseY, cMouseX, cMouseY);
@@ -83,10 +83,6 @@ public class DrawingSurface extends PApplet {
 				
 				if (x == 1) {
 					menuToggle = 1;
-				}
-				else if (x == 5 && second)
-				{
-					menuToggle = -1;
 				}
 					
 				
