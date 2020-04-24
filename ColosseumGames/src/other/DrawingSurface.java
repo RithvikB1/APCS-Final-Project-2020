@@ -7,8 +7,6 @@ public class DrawingSurface extends PApplet {
 	private PImage g;
 	
 	private int cMouseX, cMouseY;
-	
-	private boolean isStartComplete;
 	private int menuToggle;
 	
 	private Menu menu;
@@ -32,39 +30,42 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void startMenuDirects() {
-		if (!(menuToggle == -1)) {
-			int x = 0;
+		if (!(menuToggle == -1)) { //stops when game is started
 			
-			if (menuToggle == 1) {
-				x = 4;
+			int x;
+			
+			if (menuToggle == 3 || menuToggle == 4) {
+				x = menuToggle;
 			}
 			else {
 				x = menu.drawStartMenu(this, mouseX, mouseY, cMouseX, cMouseY);
 			}
 			
-			if (x == -1) {
+			if (x == 0) {
 				return;
 			}
-			
-			if (x == 1) {
+			else if (x == 1) {
 				menuToggle = -1;
 				cMouseX = -1;
 				cMouseY = -1;
 			}
 			else if (x == 2) {
+				menuToggle = 2;
+				
 				System.exit(0);
 			}
 			else if (x == 3) {
+				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY);
 				
+				menuToggle = 3;
 			}
 			else if (x == 4) {
 				x = menu.drawRulesScreen(this, mouseX, mouseY, cMouseX, cMouseY);
 				
-				menuToggle = 1;
+				menuToggle = 4;
 				
-				if (x == 1) {
-					menuToggle = 0;
-				}
+				if (x == 1) 
+					menuToggle = 1;
 				
 				cMouseX = -1;
 				cMouseY = -1;

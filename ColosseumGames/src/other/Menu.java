@@ -89,8 +89,8 @@ public class Menu {
 		
 	}
 	
-	public void drawSettingsMenu(PApplet marker, int cMouseX, int xMouseY, int pMouseX, int pMouseY) {
-		
+	public int drawSettingsMenu(PApplet marker, int cMouseX, int xMouseY, int pMouseX, int pMouseY) {
+		return 0;
 	}
 	
 	public int drawRulesScreen(PApplet marker, int mouseX, int mouseY, int cMouseX, int cMouseY) 
