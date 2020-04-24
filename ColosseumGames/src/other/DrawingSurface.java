@@ -4,7 +4,7 @@ import processing.core.PImage;
 
 public class DrawingSurface extends PApplet {
 	
-	private PImage g;
+	private PImage g, i;
 	
 	private int cMouseX, cMouseY;
 	private int menuToggle;
@@ -49,7 +49,7 @@ public class DrawingSurface extends PApplet {
 				second = true;
 			}
 			else {
-				x = menu.drawStartMenu(this, mouseX, mouseY, cMouseX, cMouseY);
+				x = menu.drawStartMenu(this, i, mouseX, mouseY, cMouseX, cMouseY);
 			}
 			
 			if (x == 0) {
@@ -66,7 +66,7 @@ public class DrawingSurface extends PApplet {
 				System.exit(0);
 			}
 			else if (x == 3) {
-				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY);
+				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY, pmouseX, pmouseY);
 				
 				menuToggle = 3;
 			}
