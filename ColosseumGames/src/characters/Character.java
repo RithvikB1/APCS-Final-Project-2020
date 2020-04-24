@@ -126,13 +126,13 @@ public class Character extends Rectangle2D.Double {
 	public void setVy(double vy) {
 		this.vy = vy;
 	}
-
+	//detects if user gets hit based on shot location
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
 		
 		return this.intersects(new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight));
 	}
 	
-	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1
+	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1, then it changes the velocities
 	public void walk(double dirX, double dirY) {
 		vx *= dirX * speed;
 		vy *= dirY * speed;
@@ -145,6 +145,7 @@ public class Character extends Rectangle2D.Double {
 			return false;
 		}
 	}
+	
 	public void draw(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
