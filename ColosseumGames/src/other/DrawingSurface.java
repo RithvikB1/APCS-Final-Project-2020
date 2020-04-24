@@ -50,14 +50,14 @@ public class DrawingSurface extends PApplet {
 				cMouseY = -1;
 			}
 			else if (x == 2) {
-				menuToggle = 2;
+
 				
 				System.exit(0);
 			}
 			else if (x == 3) {
 				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY);
 				
-				menuToggle = 3;
+//				menuToggle = 3;
 			}
 			else if (x == 4) {
 				x = menu.drawRulesScreen(this, mouseX, mouseY, cMouseX, cMouseY);
@@ -73,6 +73,11 @@ public class DrawingSurface extends PApplet {
 				
 			} 
 		}
+		
+	}
+	
+	public void chooseCharacter()
+	{
 		
 	}
 	
