@@ -20,7 +20,7 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		background(255);
 		
-		if (!(menuToggle == -1)) {
+		if (!(menuToggle == -1))/*stops when game is started*/ {
 			startMenuDirects();
 			return;
 		}
@@ -30,12 +30,14 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void startMenuDirects() {
-		if (!(menuToggle == -1)) { //stops when game is started
+		 
 			
 			int x;
+			boolean second = false;
 			
 			if (menuToggle == 3 || menuToggle == 4) {
 				x = menuToggle;
+				second = true;
 			}
 			else {
 				x = menu.drawStartMenu(this, mouseX, mouseY, cMouseX, cMouseY);
@@ -57,27 +59,34 @@ public class DrawingSurface extends PApplet {
 			else if (x == 3) {
 				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY);
 				
-//				menuToggle = 3;
+				menuToggle = 3;
 			}
 			else if (x == 4) {
 				x = menu.drawRulesScreen(this, mouseX, mouseY, cMouseX, cMouseY);
 				
 				menuToggle = 4;
 				
-				if (x == 1) 
+				if (x == 1) {
 					menuToggle = 1;
+				}
+				else if (x == 5 && second)
+				{
+					menuToggle = -1;
+				}
+					
 				
 				cMouseX = -1;
 				cMouseY = -1;
 				
 				
 			} 
-		}
+		
 		
 	}
 	
 	public void chooseCharacter()
 	{
+		int x;
 		
 	}
 	

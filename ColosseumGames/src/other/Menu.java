@@ -68,7 +68,7 @@ public class Menu {
 		marker.shape(shape4);
 		
 		marker.fill(0);
-		marker.text("Start", 90, 510);
+		marker.text("Play", 90, 510);
 		marker.text("Quit", 270, 510);
 		marker.text("Settings", 425, 510);
 		marker.text("Lost?", 630, 510);
@@ -100,24 +100,43 @@ public class Menu {
 		marker.image(g, 0, 0, 800, 600);
 		
 		Rectangle backButton = new Rectangle(60, 450, 130, 100);
+		Rectangle playButton = new Rectangle(600, 450, 130, 100);
 		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100);
+		PShape shape4 = marker.createShape(PConstants.RECT, 600, 450, 130, 100);
 		
 		shape.setFill(255);
+		shape4.setFill(255);
+		
+		marker.textSize(32);
+		
+		
+		
 		
 		if (detectMouseRect(backButton, mouseX, mouseY)) {
 			shape.setFill(180);
+		}
+		
+		else if (detectMouseRect(playButton, mouseX, mouseY)) {
+			shape4.setFill(180);
 		}
 		
 		if (detectMouseRect(backButton, cMouseX, cMouseY)) {
 			return 1;
 		}
 		
-		
-		marker.textSize(32);
+		else if (detectMouseRect(playButton, cMouseX, cMouseY)) {
+			return 5;
+		}
 		
 		marker.shape(shape);
+		marker.shape(shape4);
 		marker.fill(0);
 		marker.text("Back", 90, 510);
+		marker.text("Play", 630, 510);
+
+		
+		
+		
 		
 		return 0;
 		
