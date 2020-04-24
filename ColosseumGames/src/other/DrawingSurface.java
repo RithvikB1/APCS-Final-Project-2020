@@ -19,6 +19,12 @@ public class DrawingSurface extends PApplet {
 	//called after object finished constructing
 	//initialization 
 	public void setup() {
+		
+		g = loadImage("images/arenaBackground.jpg");
+		image(g, 0, 0, 800, 600);
+		
+		i = loadImage("images/menuBackground.jpg");
+		image(i, 0, 0, 800, 600);
 		//load all images in here
 		/*
 		 * 1. Load images then call methods
@@ -34,8 +40,7 @@ public class DrawingSurface extends PApplet {
 			return;
 		}
 		
-		g = loadImage("images/arenaBackground.jpg");
-		image(g, 0, 0, 800, 600);
+		
 	}
 	
 	public void startMenuDirects() {
