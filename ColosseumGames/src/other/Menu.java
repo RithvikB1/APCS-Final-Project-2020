@@ -73,7 +73,7 @@ public class Menu {
 		marker.text("Settings", 425, 510);
 		marker.text("Lost?", 630, 510);
 		
-		return -1;
+		return 0;
 		
 	}
 
@@ -95,6 +95,7 @@ public class Menu {
 	
 	public int drawRulesScreen(PApplet marker, int mouseX, int mouseY, int cMouseX, int cMouseY) 
 	{
+		marker.clear();
 		PImage g = marker.loadImage("images/menuBackground.jpg");
 		marker.image(g, 0, 0, 800, 600);
 		
@@ -108,7 +109,7 @@ public class Menu {
 		}
 		
 		if (detectMouseRect(backButton, cMouseX, cMouseY)) {
-			return 0;
+			return 1;
 		}
 		
 		
@@ -118,7 +119,7 @@ public class Menu {
 		marker.fill(0);
 		marker.text("Back", 90, 510);
 		
-		return -1;
+		return 0;
 		
 		
 	}
