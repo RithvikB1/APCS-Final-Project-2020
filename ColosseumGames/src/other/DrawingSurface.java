@@ -22,7 +22,7 @@ public class DrawingSurface extends PApplet {
 		//load all images in here
 		/*
 		 * 1. Load images then call methods
-		 * 2. Each screen give 
+		 * 2. Each screen give setup method then call here
 		 */
 	}
 	
