@@ -4,29 +4,42 @@ import processing.core.PImage;
 
 public class DrawingSurface extends PApplet {
 	
-	PImage g;
+	private PImage g;
 	
 	private int cMouseX, cMouseY;
 	
 	public DrawingSurface() {
-		Menu menu1 = new Menu();
-		menu1.drawStartMenu(this, mouseX, mouseY);
+		
 	}
 	
 	public void draw() {
-		background(0);
-		Menu menu1 = new Menu();
+		background(255);
 		
-		while (cMouseX == 0 && cMouseY == 0)
-		{
-			if (cMouseX != 0 & cMouseY != 0)
-			{
-				break;
-			}
+		startMenuDirects();
+	}
+	
+	public void startMenuDirects() {
+		Menu menu = new Menu();
+		
+		int x = menu.drawStartMenu(this, mouseX, mouseY, cMouseX, cMouseY);
+		
+		if (x == -1) {
+			return;
 		}
 		
-		menu1.drawStartMenu(this, cMouseX, cMouseY);
-		
+		if (x == 1) {
+			g = loadImage("images/arenaBackground.jpg");
+			image(g, 0, 0, 800, 600);
+		}
+		else if (x == 2) {
+			System.exit(0);
+		}
+		else if (x == 3) {
+			
+		}
+		else if (x == 4) {
+			
+		}
 	}
 	
 	public void mouseClicked()
