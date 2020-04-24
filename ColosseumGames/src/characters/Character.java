@@ -15,6 +15,9 @@ public class Character extends Rectangle2D.Double {
 	private double damage;
 	private int x, y, w, h;
 	private double vx, vy;
+	
+	//have an arrayList of Pimages, which would have all the images ready to go and 
+	//call methods to switch images
 		
 	public Character(String spriteFile, double speed, 
 			double atkSpeed, double HP, double range, double damage,

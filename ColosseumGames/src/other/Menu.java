@@ -11,12 +11,20 @@ public class Menu {
 	public Menu() {
 		difficultyLevel = 2; 
 	}
+	//call this in ddrawingsurface and load images in here 
+	public void setup(PApplet marker) {
+		
+	}
 	
 	public int drawStartMenu(PApplet marker, int mouseX, int mouseY, int cMouseX, int cMouseY) { // returns 1 (start), 2 (quit), 3 (settings), and 4 (how to play). Returns
 																								 // -1 if nothing is clicked
 		marker.clear();
-		
+		//don't load images in draw methods since they are called 60 times a second
+		//load image once is better
+		//Load images in "setup"
 		PImage g = marker.loadImage("images/menuBackground.jpg");
+		
+	
 		marker.image(g, 0, 0, 800, 600);
 		
 		Rectangle startButton = new Rectangle(60, 450, 130, 100);

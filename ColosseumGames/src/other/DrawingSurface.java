@@ -15,6 +15,15 @@ public class DrawingSurface extends PApplet {
 		menu = new Menu();
 		
 		menuToggle = 0;
+	}//
+	//called after object finished constructing
+	//initialization 
+	public void setup() {
+		//load all images in here
+		/*
+		 * 1. Load images then call methods
+		 * 2. Each screen give setup method then call here
+		 */
 	}
 	
 	public void draw() {
