@@ -75,6 +75,14 @@ public class DrawingSurface extends PApplet {
 				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY, pmouseX, pmouseY);
 				
 				menuToggle = 3;
+				if (x == 1) {
+					menuToggle = 1;
+				}
+					
+				
+				cMouseX = -1;
+				cMouseY = -1;
+				
 			}
 			else if (x == 4) {
 				x = menu.drawRulesScreen(this, mouseX, mouseY, cMouseX, cMouseY);
