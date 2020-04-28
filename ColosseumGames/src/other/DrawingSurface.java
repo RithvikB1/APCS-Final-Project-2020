@@ -64,6 +64,8 @@ public class DrawingSurface extends PApplet {
 		}
 		else if (menuToggle == 2) {
 			menu.drawHeroMenu(this, mouseX, mouseY, cmouseX, cmouseY);
+			cmouseX = -1;
+			cmouseY = -1;
 		}
 		else if (menuToggle == 4) {
 			menu.drawSettingsMenu(this, i, mouseX, mouseY, cmouseX, cmouseY, pmouseX, pmouseY);
