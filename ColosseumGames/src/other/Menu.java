@@ -94,7 +94,7 @@ public class Menu {
 		
 	}
 	
-	public void drawHeroMenu(PApplet marker, int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed, int mouseX, int mouseY, int cmouseX, int cmouseY) {
+	public void drawHeroMenu(PApplet marker, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY, int cmouseX, int cmouseY) {
 		marker.fill(255);
 		
 		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
