@@ -1,25 +1,29 @@
 package other;
 
+import java.awt.Color;
 import java.awt.Rectangle;
-
 import processing.core.*;
 
 public class Menu {
 	
-	private int difficultyLevel; // 1 is easy, 2 is medium, while 3 is hard. Default is medium.
+	private int difficultyLevel; // 1 is easy, 2 is medium, while 3 is hard
 	private int soundVolume;
+	private int waveNumber;
+	private int menuToggle;
 	
 	private boolean isSoundOn;
 
 	public Menu() {
-		difficultyLevel = 2; 
-		soundVolume = 20;
+		difficultyLevel = 2; // medium 
+		soundVolume = 30;
+		waveNumber = 20;
+		menuToggle = 1; // start menu default
 		
 		isSoundOn = true;
 		
 	}
 	
-	public int drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY, int cmouseX, int cmouseY) { // returns 1 (start), 2 (quit), 3 (settings), and 4 (how to play). Returns	
+	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY, int cmouseX, int cmouseY) { // returns 1 (start), 2 (quit), 3 (settings), and 4 (how to play). Returns	
 																						 // 0 if nothing is clicked
 		marker.clear();
 		
@@ -30,40 +34,47 @@ public class Menu {
 		Rectangle settings = new Rectangle(420, 450, 130, 100);
 		Rectangle howToPlay = new Rectangle(600, 450, 130, 100);
 		
-		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100);
-		PShape shape2 = marker.createShape(PConstants.RECT, 240, 450, 130, 100);
-		PShape shape3 = marker.createShape(PConstants.RECT, 420, 450, 130, 100);
-		PShape shape4 = marker.createShape(PConstants.RECT, 600, 450, 130, 100);
+		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100, 20);
+		PShape shape2 = marker.createShape(PConstants.RECT, 240, 450, 130, 100, 20);
+		PShape shape3 = marker.createShape(PConstants.RECT, 420, 450, 130, 100, 20);
+		PShape shape4 = marker.createShape(PConstants.RECT, 600, 450, 130, 100, 20); 
 		
-		shape.setFill(255);
-		shape2.setFill(255);
-		shape3.setFill(255);
-		shape4.setFill(255);
+		int c1 = marker.color(204, 153, 0);
+		int c2 = marker.color(140, 153, 0);
+		
+		shape.setFill(c1);
+		shape2.setFill(c1);
+		shape3.setFill(c1);
+		shape4.setFill(c1);
 		
 		if (detectMouseRect(startButton, mouseX, mouseY)) {
-			shape.setFill(180);
+			shape.setFill(c2);
 		}
 		else if (detectMouseRect(quitButton, mouseX, mouseY)) {
-			shape2.setFill(180);
+			shape2.setFill(c2);
 		}
 		else if (detectMouseRect(settings, mouseX, mouseY)) {
-			shape3.setFill(180);
+			shape3.setFill(c2);
 		}
 		else if (detectMouseRect(howToPlay, mouseX, mouseY)) {
-			shape4.setFill(180);
+			shape4.setFill(c2);
 		}
 		
 		if (detectMouseRect(startButton, cmouseX, cmouseY)) {
-			return 1;
+			menuToggle = 0;
+			return;
 		}
 		else if (detectMouseRect(quitButton, cmouseX, cmouseY)) {
-			return 2;
+			menuToggle = 2;
+			return;
 		}
 		else if (detectMouseRect(settings, cmouseX, cmouseY)) {
-			return 3;
+			menuToggle = 3;
+			return;
 		}
 		else if (detectMouseRect(howToPlay, cmouseX, cmouseY)) {
-			return 4;
+			menuToggle = 4;
+			return;
 		}
 	
 		marker.textSize(32);
@@ -78,8 +89,6 @@ public class Menu {
 		marker.text("Quit", 270, 510);
 		marker.text("Settings", 425, 510);
 		marker.text("Lost?", 630, 510);
-		
-		return 0;
 		
 	}
 
@@ -124,65 +133,68 @@ public class Menu {
 		
 	}
 	
-	public int drawSettingsMenu(PApplet marker, int mouseX, int mouseY, int cmouseX, int cmouseY, int pMouseX, int pMouseY) {
+	public void drawSettingsMenu(PApplet marker, PImage g, int mouseX, int mouseY, int cmouseX, int cmouseY, int pMouseX, int pMouseY) {
 		marker.clear();
-		marker.fill(200);
+		marker.image(g, 0, 0, 800, 600);
 		
-		marker.rect(200, 150, 400, 300, 7);
+		marker.fill(200, 150, 20);
+		
+		marker.rect(200, 10, 400, 500, 7);
 		marker.stroke(0);
-		marker.line(200, 200, 600, 200);
+		marker.line(200, 70, 600, 70);
 		
-		Rectangle backButton = new Rectangle(60, 450, 130, 100);
-		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100);
+		Rectangle backButton = new Rectangle(20, 450, 130, 100);
+		PShape shape = marker.createShape(PConstants.RECT, 20, 450, 130, 100, 20);
 		
-		shape.setFill(255);
+		int c1 = marker.color(204, 153, 0);
+		int c2 = marker.color(140, 153, 0);
+		
+		shape.setFill(c1);
 		
 		if (detectMouseRect(backButton, mouseX, mouseY)) {
-			shape.setFill(180);
+			shape.setFill(c2);
 		}
 		
 		if (detectMouseRect(backButton, cmouseX, cmouseY)) {
-			return 1;
+			menuToggle = 1;
+			return;
 		}
-		
 		
 		marker.textSize(32);
 		
 		marker.shape(shape);
 		marker.fill(0);
-		marker.text("Back", 90, 510);
+		marker.text("Back", 50, 510);
 		
-		
-		return 0;
 	}
 	
-	public int drawRulesScreen(PApplet marker, int mouseX, int mouseY, int cmouseX, int cmouseY) {
+	public void drawRulesScreen(PApplet marker, PImage g, int mouseX, int mouseY, int cmouseX, int cmouseY) {
 		marker.clear();
-		PImage g = marker.loadImage("images/menuBackground.jpg");
+		
 		marker.image(g, 0, 0, 800, 600);
 		
 		Rectangle backButton = new Rectangle(60, 450, 130, 100);
-		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100);
+		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100, 20);
 		
-		shape.setFill(255);
+		int c1 = marker.color(204, 153, 0);
+		int c2 = marker.color(140, 153, 0);
+		
+		shape.setFill(c1);
 		
 		if (detectMouseRect(backButton, mouseX, mouseY)) {
-			shape.setFill(180);
+			shape.setFill(c2);
 		}
 		
 		if (detectMouseRect(backButton, cmouseX, cmouseY)) {
-			return 1;
+			menuToggle = 1;
+			return;
 		}
-		
 		
 		marker.textSize(32);
 		
 		marker.shape(shape);
 		marker.fill(0);
 		marker.text("Back", 90, 510);
-		
-		return 0;
-		
 		
 	}
 	
@@ -201,6 +213,14 @@ public class Menu {
 	
 	public int getVolume() {
 		return soundVolume;
+	}
+	
+	public int getWaveNumber() {
+		return waveNumber;
+	}
+	
+	public int getMenuToggle() {
+		return menuToggle;
 	}
 	
 	public boolean getIsSoundOn() {

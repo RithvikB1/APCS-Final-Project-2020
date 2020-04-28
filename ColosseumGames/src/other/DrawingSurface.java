@@ -1,4 +1,5 @@
 package other;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -6,22 +7,22 @@ public class DrawingSurface extends PApplet {
 	
 	private PImage g, i;
 	
-	private int cMouseX, cMouseY;
+	private int cmouseX, cmouseY;
 	private int menuToggle;
 	
 	private Menu menu;
 	
 	public DrawingSurface() {
+		menuToggle = 1;
+		
 		menu = new Menu();
 		
-		menuToggle = 0;
 	}//
 	//called after object finished constructing
 	//initialization 
 	public void setup() {
 		
 		g = loadImage("images/arenaBackground.jpg");
-		
 		
 		i = loadImage("images/menuBackground.jpg");
 		
@@ -35,70 +36,12 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		background(255);
 		
-		if (!(menuToggle == -1))/*stops when game is started*/ {
-			startMenuDirects();
+		if (menuToggle != 0) {
+			menuMaker();
 			return;
 		}
+		
 		image(g, 0, 0, 800, 600);
-		
-		
-	}
-	
-	public void startMenuDirects() {
-		 
-			
-			int x;
-			
-			
-			if (menuToggle == 3 || menuToggle == 4) {
-				x = menuToggle;
-				
-			}
-			else {
-				x = menu.drawStartMenu(this, i, mouseX, mouseY, cMouseX, cMouseY);
-			}
-			
-			if (x == 0) {
-				return;
-			}
-			else if (x == 1) {
-				menuToggle = -1;
-				cMouseX = -1;
-				cMouseY = -1;
-			}
-			else if (x == 2) {
-
-				
-				System.exit(0);
-			}
-			else if (x == 3) {
-				x = menu.drawSettingsMenu(this, mouseX, mouseY, cMouseX, cMouseY, pmouseX, pmouseY);
-				
-				menuToggle = 3;
-				if (x == 1) {
-					menuToggle = 1;
-				}
-					
-				
-				cMouseX = -1;
-				cMouseY = -1;
-				
-			}
-			else if (x == 4) {
-				x = menu.drawRulesScreen(this, mouseX, mouseY, cMouseX, cMouseY);
-				
-				menuToggle = 4;
-				
-				if (x == 1) {
-					menuToggle = 1;
-				}
-					
-				
-				cMouseX = -1;
-				cMouseY = -1;
-				
-				
-			} 
 		
 		
 	}
@@ -111,8 +54,31 @@ public class DrawingSurface extends PApplet {
 	
 	public void mouseClicked()
 	{
-		cMouseX = mouseX;
-		cMouseY = mouseY;
+		cmouseX = mouseX;
+		cmouseY = mouseY;
 		
+	}
+	
+	public void menuMaker() {
+		menuToggle = menu.getMenuToggle();
+		
+		if (menuToggle == 1) {
+			menu.drawStartMenu(this, i, mouseX, mouseY, cmouseX, cmouseY);
+			cmouseX = -1;
+			cmouseY = -1;
+		}
+		else if (menuToggle == 2) {
+			System.exit(0);
+		}
+		else if (menuToggle == 3) {
+			menu.drawSettingsMenu(this, i, mouseX, mouseY, cmouseX, cmouseY, pmouseX, pmouseY);
+			cmouseX = -1;
+			cmouseY = -1;
+		}
+		else if (menuToggle == 4) {
+			menu.drawRulesScreen(this, i, mouseX, mouseY, cmouseX, cmouseY);
+			cmouseX = -1;
+			cmouseY = -1;
+		}
 	}
 }
