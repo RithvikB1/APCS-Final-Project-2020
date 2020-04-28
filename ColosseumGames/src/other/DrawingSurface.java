@@ -46,11 +46,6 @@ public class DrawingSurface extends PApplet {
 		
 	}
 	
-	public void chooseCharacter()
-	{
-		int x;
-		
-	}
 	
 	public void mouseClicked()
 	{
@@ -68,17 +63,22 @@ public class DrawingSurface extends PApplet {
 			cmouseY = -1;
 		}
 		else if (menuToggle == 2) {
-			System.exit(0);
+			menu.drawHeroMenu(this, cmouseX, cmouseY, cmouseX, cmouseY);
 		}
-		else if (menuToggle == 3) {
+		else if (menuToggle == 4) {
 			menu.drawSettingsMenu(this, i, mouseX, mouseY, cmouseX, cmouseY, pmouseX, pmouseY);
 			cmouseX = -1;
 			cmouseY = -1;
 		}
-		else if (menuToggle == 4) {
+		else if (menuToggle == 5) {
 			menu.drawRulesScreen(this, i, mouseX, mouseY, cmouseX, cmouseY);
 			cmouseX = -1;
 			cmouseY = -1;
+		}
+		
+		else if (menuToggle == 3)
+		{
+			System.exit(0);
 		}
 	}
 }
