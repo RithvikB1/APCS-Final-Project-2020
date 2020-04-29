@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import characters.Enemy;
 import enemies.*;
+import processing.core.PApplet;
 
 public class Wave {
 	private int wave;
@@ -11,7 +12,7 @@ public class Wave {
 		
 	}
 	
-	public void startWave() {
+	public void startWave(PApplet marker) {
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		BigBoi bigBoi;
 		MediumBoi mediumBoi;
@@ -20,6 +21,9 @@ public class Wave {
 		if(wave == 1) {
 			enemies.add(new SmallBoi("small.png", 20, 20, 20, 20, 20, 20, 20, 20, 20));
 			//and so on
+			for(Enemy e: enemies) {
+				e.spawn(marker);
+			}
 		}
 		else if(wave == 2) {
 

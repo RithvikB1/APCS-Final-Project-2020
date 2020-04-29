@@ -149,7 +149,7 @@ public class Character extends Rectangle2D.Double {
 		}
 	}
 	
-	public void draw(PApplet marker) {
+	public void spawn(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
 	

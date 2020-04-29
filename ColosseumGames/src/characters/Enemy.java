@@ -9,5 +9,5 @@ public abstract class Enemy extends Character {
 		super(spriteFile, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }
