@@ -28,7 +28,7 @@ public class Menu {
 		specificHero = 1; 
 		
 		isHeroPicked = false;
-		isSoundOn = true;
+		isSoundOn = false;
 		
 		keyUp = 'W';
 		keyDown = 'S';
@@ -122,7 +122,7 @@ public class Menu {
 		
 	}
 	
-	public void drawHeroMenu(PApplet marker, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
+	public void drawHeroMenu(PApplet marker, PImage hercules, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
 		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
@@ -213,6 +213,8 @@ public class Menu {
 		if (specificHero == 1) {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
 			shape6.setFill(0);
+			shape6.setVisible(false);
+			marker.image(hercules, 215, 100, 350, 350);
 		}
 		else if (specificHero == 2) {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
@@ -602,13 +604,13 @@ public class Menu {
 		
 	}
 	
-	public void menuMaker(PApplet marker, PImage i, int mouseX, int mouseY) {
+	public void menuMaker(PApplet marker, PImage i, PImage hercules, int mouseX, int mouseY) {
 		
 		if (menuToggle == 1) {
 			drawStartMenu(marker, i, mouseX, mouseY);
 		}
 		else if (menuToggle == 2) {
-			drawHeroMenu(marker, mouseX, mouseY);
+			drawHeroMenu(marker, hercules, mouseX, mouseY);
 		}
 		else if (menuToggle == 3) {
 			System.exit(0);
