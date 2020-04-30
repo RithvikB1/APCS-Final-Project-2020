@@ -148,7 +148,15 @@ public class Character extends Rectangle2D.Double {
 			return false;
 		}
 	}
-	
+	public void shoot(int mouseX, int mouseY, PApplet marker) {
+		int shootX = x;
+		int shootY = y;
+		while(Math.abs(shootX - x) < 20) {
+			
+			marker.rect(shootX++, shootY, shootX + 10, shootY + 5);
+		}
+			
+	}
 	public void spawn(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
