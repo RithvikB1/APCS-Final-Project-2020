@@ -10,10 +10,6 @@ import processing.core.PApplet;
 public class Main {
 
 	public static void main(String args[]) {
-		
-		Sound sound = new Sound();
-		sound.PlaySound(new File("/ColosseumGames/images/Super.wav"));
-		
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();

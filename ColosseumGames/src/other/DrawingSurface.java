@@ -1,12 +1,17 @@
 package other;
 
 import processing.core.*;
+import processing.sound.*;
 
 public class DrawingSurface extends PApplet {
 	
 	private PImage g, i;
 	
 	private Menu menu;
+	
+	private String audioPath = "images/smash.wav";
+	
+	private SoundFile file;
 	
 	public DrawingSurface() {
 		menu = new Menu();
@@ -17,11 +22,15 @@ public class DrawingSurface extends PApplet {
 		
 		g = loadImage("images/arenaBackground.jpg");
 		i = loadImage("images/menuBackground.jpg");
+		
+		file = new SoundFile(this, audioPath);
+		file.play();
 	}
 	
 	public void draw() {
+		
 		if (menu.getMenuToggle() != 0) {
-			menuMaker();
+			menu.menuMaker(this, i, mouseX, mouseY);
 			
 			return;
 		}
@@ -35,7 +44,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void mouseDragged() {
-		menu.mouseDragged(mouseX, mouseY);
+		menu.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
 	}
 	
 	public void mousePressed() {
@@ -46,29 +55,11 @@ public class DrawingSurface extends PApplet {
 		menu.mouseReleased(mouseX, mouseY);
 	}
 	
-	public void menuMaker() {
-		int menuToggle = menu.getMenuToggle();
-		
-		if (menuToggle == 1) {
-			menu.drawStartMenu(this, i, mouseX, mouseY);
-		}
-		else if (menuToggle == 2) {
-			menu.drawHeroMenu(this, mouseX, mouseY);
-		}
-		else if (menuToggle == 3) {
-			System.exit(0);
-		}
-		else if (menuToggle == 4) {
-			menu.drawSettingsMenu(this, i, mouseX, mouseY);
-		}
-		else if (menuToggle == 5) {
-			menu.drawRulesScreen(this, i, mouseX, mouseY);
-		}
-		else if (menuToggle == 6) {
-			menu.drawCredits(this, i, mouseX, mouseY);
-		}
-		else if (menuToggle == 7) {
-			menu.drawPauseMenu(this, mouseX, mouseY);
-		}
+	public void keyPressed() {
+		menu.keyPressed(keyCode);
+	}
+	
+	public void keyReleased() {
+		menu.keyReleased(keyCode);
 	}
 }
