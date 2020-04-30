@@ -22,7 +22,7 @@ public class DrawingSurface extends PApplet {
 		background(255);
 		
 		g = loadImage("images/arenaBackground.jpg");
-		i = loadImage("images/menuBackground.jpg");
+		i = loadImage("images/TitleScreen.png");
 		hercules = loadImage("sprites/Hercules/FacingRight.png");
 		
 		file = new SoundFile(this, audioPath);
