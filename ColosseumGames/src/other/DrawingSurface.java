@@ -28,6 +28,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void draw() {
+		file.amp((float)(menu.getVolume() / 100.0));
 		
 		if (menu.getMenuToggle() != 0) {
 			menu.menuMaker(this, i, mouseX, mouseY);
