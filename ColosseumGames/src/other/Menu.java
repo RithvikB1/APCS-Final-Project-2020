@@ -612,10 +612,10 @@ public class Menu {
 		
 	}
 	
-	public void menuMaker(PApplet marker, PImage i, ArrayList<PImage> images, int mouseX, int mouseY) {
+	public void menuMaker(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
 		
 		if (menuToggle == 1) {
-			drawStartMenu(marker, i, mouseX, mouseY);
+			drawStartMenu(marker, images.get(1), mouseX, mouseY);
 		}
 		else if (menuToggle == 2) {
 			drawHeroMenu(marker, images, mouseX, mouseY);
@@ -624,13 +624,13 @@ public class Menu {
 			System.exit(0);
 		}
 		else if (menuToggle == 4) {
-			drawSettingsMenu(marker, i, mouseX, mouseY);
+			drawSettingsMenu(marker, images.get(1), mouseX, mouseY);
 		}
 		else if (menuToggle == 5) {
-			drawRulesScreen(marker, i, mouseX, mouseY);
+			drawRulesScreen(marker, images.get(1), mouseX, mouseY);
 		}
 		else if (menuToggle == 6) {
-			drawCredits(marker, i, mouseX, mouseY);
+			drawCredits(marker, images.get(1), mouseX, mouseY);
 		}
 		else if (menuToggle == 7) {
 			drawPauseMenu(marker, mouseX, mouseY);
