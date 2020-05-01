@@ -54,7 +54,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if (menu.getMenuToggle() != 0) {
-			menu.menuMaker(this, i, images, mouseX, mouseY);
+			menu.menuMaker(this,  images, mouseX, mouseY);
 			
 			if (menu.getMenuToggle() == 0)
 			{
@@ -95,7 +95,7 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == 'W')
 		{
 			hero.walk(0, -10);
-			System.out.println(true);
+//			System.out.println(true);
 		}
 		
 		if (keyCode == 'A')
