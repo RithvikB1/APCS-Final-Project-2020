@@ -26,7 +26,7 @@ public abstract class Enemy extends Character {
 			if(c.getY() - this.getY() < 0) {
 				vy = -1;
 			}
-			this.walk(vx, vy);
+			//this.walk(vx, vy);
 		}
 	}
 }

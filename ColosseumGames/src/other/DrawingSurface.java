@@ -66,7 +66,7 @@ public class DrawingSurface extends PApplet {
 		
 		image(g, 0, 0, 800, 600);
 		
-		
+		hero.moveByVelocities();
 		hero.draw(this);
 				
 		
@@ -90,36 +90,38 @@ public class DrawingSurface extends PApplet {
 	
 	public void keyPressed() {
 		menu.keyPressed(keyCode);
-		
 		if (hero == null) {
 			return;
 		}
-		
+	
 		if (keyCode == menu.getKeys()[0])
 		{
-			hero.walk(0, -10);
+			hero.walk(4);
 		}
 		
 		if (keyCode == menu.getKeys()[2])
 		{
-			hero.walk(-10, 0);
+			hero.walk(3);
 		}
 		
 		if (keyCode == menu.getKeys()[1])
 		{
-			hero.walk(0, 10);
+			hero.walk(2);
 		}
 		
 		if (keyCode == menu.getKeys()[3])
 		{
-			hero.walk(10, 0);
+			hero.walk(1);
+
+
 		}
-		
 		
 		
 	}
 	
 	public void keyReleased() {
+		
 		menu.keyReleased(keyCode);
+		hero.walk(5);
 	}
 }

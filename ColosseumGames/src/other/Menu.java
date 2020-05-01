@@ -643,7 +643,7 @@ public class Menu {
 		if (specificHero == 1)
 		{
 //			System.out.println(true);
-			h = new Hero("sprites/Hercules/FacingBack.png", 10, 10, 10 ,10, 10, 400, 300, 100, 100);
+			h = new Hero("sprites/Hercules/FacingBack.png", 20, 10, 10 ,10, 10, 400, 300, 100, 100);
 			
 		}
 		else if (specificHero == 2) 

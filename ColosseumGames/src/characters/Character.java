@@ -138,9 +138,28 @@ public class Character extends Rectangle2D.Double {
 	}
 	
 	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1, then it changes the velocities
-	public void walk(double dirX, double dirY) {
-		vx *= dirX * speed;
-		vy *= dirY * speed;
+	public void walk(double dir) {
+		if(dir == 1) {
+			vx = speed;
+			vy = 0;
+		}
+		if(dir == 2) {
+			vy = speed;
+			vx = 0;
+		}
+		if(dir == 3) {
+			vx = -speed;
+			vy = 0;
+		}
+		if(dir == 4) {
+			vy = -speed;
+			vx = 0;
+		}
+		if(dir == 5) {
+			vy = 0;
+			vx = 0;
+		}
+
 	}
 	public boolean die() {
 		if(HP <= 0) {

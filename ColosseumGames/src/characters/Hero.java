@@ -20,11 +20,11 @@ public class Hero extends Character {
 		
 	}
 	
-	public void walk(double dirX, double dirY)
-	{
-		
-		super.moveByAmount(dirX, dirY);
-	}
+//	public void walk(double dirX, double dirY)
+//	{
+//		
+//		super.moveByAmount(dirX, dirY);
+//	}
 
 
 }
