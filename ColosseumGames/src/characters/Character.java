@@ -15,6 +15,7 @@ public class Character extends Rectangle2D.Double {
 	private double damage;
 	private int x, y, w, h;
 	private double vx, vy;
+	private Character placeHolder;
 	
 	//have an arrayList of Pimages, which would have all the images ready to go and 
 	//call methods to switch images
@@ -45,7 +46,8 @@ public class Character extends Rectangle2D.Double {
 		this.damage = damage;
 		
 	}
-
+	
+	
 	
 	public void moveToLocation(double x, double y) {
 		super.x = x;
@@ -111,7 +113,7 @@ public class Character extends Rectangle2D.Double {
 	}
 
 	public void setDamage(double damage) {
-		this.damage = damage;
+		
 	}
 
 	public double getVx() {
@@ -160,6 +162,8 @@ public class Character extends Rectangle2D.Double {
 	public void spawn(PApplet marker) {
 		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
 	}
+	
+	
 	
 	
 }

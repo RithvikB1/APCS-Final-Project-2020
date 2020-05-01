@@ -1,6 +1,10 @@
 package other;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
+
+import characters.Hero;
+import characters.Character;
 import processing.core.*;
 
 public class Menu {
@@ -28,7 +32,7 @@ public class Menu {
 		specificHero = 1; 
 		
 		isHeroPicked = false;
-		isSoundOn = false;
+		isSoundOn = true;
 		
 		keyUp = 'W';
 		keyDown = 'S';
@@ -122,7 +126,7 @@ public class Menu {
 		
 	}
 	
-	public void drawHeroMenu(PApplet marker, PImage hercules, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
+	public void drawHeroMenu(PApplet marker, ArrayList<PImage> images, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
 		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
@@ -193,6 +197,7 @@ public class Menu {
 		
 		if (hero.contains(cmouseX, cmouseY)) { 
 			isHeroPicked = true;
+			
 		}
 		else if (isScrollPicked) {
 			isHeroPicked = false;
@@ -205,7 +210,7 @@ public class Menu {
 			
 			if (start.contains(cmouseX, cmouseY)) { 
 				menuToggle = 0;
-				return;
+				
 			}
 		}
 		
@@ -214,11 +219,14 @@ public class Menu {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
 			shape6.setFill(0);
 			shape6.setVisible(false);
-			marker.image(hercules, 215, 100, 350, 350);
+			marker.image(images.get(2), 215, 100, 350, 350);
 		}
 		else if (specificHero == 2) {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
 			shape6.setFill(200);
+			shape6.setVisible(false);
+			marker.image(images.get(3), 215, 100, 350, 350);
+			
 		}
 		else if (specificHero == 3) {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
@@ -604,13 +612,13 @@ public class Menu {
 		
 	}
 	
-	public void menuMaker(PApplet marker, PImage i, PImage hercules, int mouseX, int mouseY) {
+	public void menuMaker(PApplet marker, PImage i, ArrayList<PImage> images, int mouseX, int mouseY) {
 		
 		if (menuToggle == 1) {
 			drawStartMenu(marker, i, mouseX, mouseY);
 		}
 		else if (menuToggle == 2) {
-			drawHeroMenu(marker, hercules, mouseX, mouseY);
+			drawHeroMenu(marker, images, mouseX, mouseY);
 		}
 		else if (menuToggle == 3) {
 			System.exit(0);
@@ -627,6 +635,36 @@ public class Menu {
 		else if (menuToggle == 7) {
 			drawPauseMenu(marker, mouseX, mouseY);
 		}
+	}
+	
+	public Hero choiceOfHero()
+	{
+		Hero h = null;
+		if (specificHero == 1)
+		{
+//			System.out.println(true);
+			h = new Hero("sprites/Hercules/FacingBack.png", 10, 10, 10 ,10, 10, 400, 300, 100, 100);
+			
+		}
+		else if (specificHero == 2) 
+		{
+			h = new Hero("sprites/Achilles/PRESelectedAchilles.png", 10, 10, 10 ,10, 10, 400, 300, 100, 100);
+		}
+		
+		else if (specificHero == 3)
+		{
+			
+		}
+		else if (specificHero == 4)
+		{
+			
+		}
+		else if (specificHero == 5)
+		{
+			
+		}
+		
+		return h;
 	}
 	
 }
