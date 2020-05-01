@@ -24,7 +24,6 @@ public class Hero extends Character {
 	{
 		
 		super.moveByAmount(dirX, dirY);
-		System.out.println(true);
 	}
 
 

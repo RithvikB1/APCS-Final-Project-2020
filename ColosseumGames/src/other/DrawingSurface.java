@@ -59,7 +59,6 @@ public class DrawingSurface extends PApplet {
 			if (menu.getMenuToggle() == 0)
 			{
 				hero = menu.choiceOfHero();
-				System.out.println("I ran");
 			}
 			
 			return;
@@ -92,23 +91,26 @@ public class DrawingSurface extends PApplet {
 	public void keyPressed() {
 		menu.keyPressed(keyCode);
 		
-		if (keyCode == 'W')
-		{
-			hero.walk(0, -10);
-//			System.out.println(true);
+		if (hero == null) {
+			return;
 		}
 		
-		if (keyCode == 'A')
+		if (keyCode == menu.getKeys()[0])
+		{
+			hero.walk(0, -10);
+		}
+		
+		if (keyCode == menu.getKeys()[2])
 		{
 			hero.walk(-10, 0);
 		}
 		
-		if (keyCode == 'S')
+		if (keyCode == menu.getKeys()[1])
 		{
 			hero.walk(0, 10);
 		}
 		
-		if (keyCode == 'D')
+		if (keyCode == menu.getKeys()[3])
 		{
 			hero.walk(10, 0);
 		}

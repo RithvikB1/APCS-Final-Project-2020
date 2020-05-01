@@ -13,7 +13,7 @@ public class Character extends Rectangle2D.Double {
 	private double speed, atkSpeed, HP;
 	private double range;
 	private double damage;
-	private int x, y, w, h;
+	private int w, h;
 	private double vx, vy;
 	private Character placeHolder;
 	
@@ -151,8 +151,8 @@ public class Character extends Rectangle2D.Double {
 		}
 	}
 	public void shoot(int mouseX, int mouseY, PApplet marker) {
-		int shootX = x;
-		int shootY = y;
+		int shootX = (int)x;
+		int shootY = (int)y;
 		while(Math.abs(shootX - x) < 20) {
 			
 			marker.rect(shootX++, shootY, shootX + 10, shootY + 5);
@@ -160,7 +160,7 @@ public class Character extends Rectangle2D.Double {
 			
 	}
 	public void spawn(PApplet marker) {
-		marker.image(marker.loadImage(spriteFile), x, y, w ,h);
+		marker.image(marker.loadImage(spriteFile), (float)x, (float)y, w ,h);
 	}
 	
 	
