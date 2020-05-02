@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import characters.Hero;
-import characters.Character;
 import processing.core.*;
 
 public class Menu {
@@ -23,17 +22,18 @@ public class Menu {
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
 
+	
 	public Menu() {
 		difficultyLevel = 2; // medium 
-		adjuster = 270; // actually used for slider, real volume given by getSoundVolume()
+		adjuster = 240; // used for slider
 		waveNumber = 20; 
 		
 		menuToggle = 1; // start menu, default
-		specificHero = 1; 
+		specificHero = 1; // hercules, default
 		
-		isHeroPicked = false;
-		isSoundOn = true;
-		
+		isHeroPicked = false;                                         
+		isSoundOn = false;
+		                                                                                     
 		keyUp = 'W';
 		keyDown = 'S';
 		keyLeft = 'A';
@@ -69,38 +69,38 @@ public class Menu {
 		shape3.setFill(c1);
 		shape4.setFill(c1);
 		
-		if (detectMouseRect(chooseHeroButton, mouseX, mouseY)) {
+		if (chooseHeroButton.contains(mouseX, mouseY)) {
 			shape.setFill(c2);
 		}
-		else if (detectMouseRect(quitButton, mouseX, mouseY)) {
+		else if (quitButton.contains(mouseX, mouseY)) {
 			shape2.setFill(c2);
 		}
-		else if (detectMouseRect(credits, mouseX, mouseY)) {
+		else if (credits.contains(mouseX, mouseY)) {
 			shape3.setFill(c2);
 		}
-		else if (detectMouseRect(howToPlay, mouseX, mouseY)) {
+		else if (howToPlay.contains(mouseX, mouseY)) {
 			shape4.setFill(c2);
 		}
 		
-		if (detectMouseRect(chooseHeroButton, cmouseX, cmouseY)) { // chooseHero screen
+		if (chooseHeroButton.contains(cmouseX, cmouseY)) { // chooseHero screen
 			menuToggle = 2;
 			resetClick();
 			
 			return;
 		}
-		else if (detectMouseRect(quitButton, cmouseX, cmouseY)) {
+		else if (quitButton.contains(cmouseX, cmouseY)) {
 			menuToggle = 3;
 			resetClick();
 			
 			return;
 		}
-		else if (detectMouseRect(howToPlay, cmouseX, cmouseY)) {
+		else if (howToPlay.contains(cmouseX, cmouseY)) {
 			menuToggle = 5;
 			resetClick();
 			
 			return;
 		}
-		else if (detectMouseRect(credits, cmouseX, cmouseY)) {
+		else if (credits.contains(cmouseX, cmouseY)) {
 			menuToggle = 6;
 			resetClick();
 			
@@ -119,10 +119,6 @@ public class Menu {
 		marker.text("Quit", 165, 510);
 		marker.text("Credits", 345, 510);
 		marker.text("Lost?", 560, 510);
-		
-	}
-	
-	public void drawCredits(PApplet marker, PImage i, int mouseX, int mouseY) {
 		
 	}
 	
@@ -209,7 +205,10 @@ public class Menu {
 			}
 			
 			if (start.contains(cmouseX, cmouseY)) { 
-				menuToggle = 0;
+				menuToggle = 7;
+				resetClick();
+				
+				return;
 				
 			}
 		}
@@ -268,51 +267,10 @@ public class Menu {
 		marker.text("Settings", 620, 510);
 		
 		if (isHeroPicked)
-			marker.text("Start", 350, 525);
+			marker.text("Next", 350, 525);
 		
 		if (!isHeroPicked) 
 			resetClick();
-		
-	}
-
-	public boolean drawDeathMenu(PApplet marker, int mouseX, int mouseY) { // returns false if user would like to quit game, true if user would like to play game again
-		return true;
-	}
-	
-	public int drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
-		marker.rect(200, 150, 400, 300, 7);
-		
-		Rectangle resumeButton = new Rectangle(230, 400, 90, 40);
-		Rectangle quitButton = new Rectangle(480, 400, 90, 100);
-		
-		PShape shape = marker.createShape(PConstants.RECT, 230, 400, 90, 40);
-		PShape shape2 = marker.createShape(PConstants.RECT, 480, 400, 90, 40);
-		
-		shape.setFill(255);
-		shape2.setFill(255);
-		
-		if (detectMouseRect(resumeButton, mouseX, mouseY)) {
-			shape.setFill(180);
-		}
-		else if (detectMouseRect(quitButton, mouseX, mouseY)) {
-			shape2.setFill(180);
-		}
-		
-		if (detectMouseRect(resumeButton, cmouseX, cmouseY)) {
-			return 1;
-		}
-		else if (detectMouseRect(quitButton, cmouseX, cmouseY)) {
-			return 2;
-		}
-		
-		marker.shape(shape);
-		marker.shape(shape2);
-		
-		return 0;
-		
-	}
-
-	public void drawMerchantMenu(PApplet marker) {
 		
 	}
 	
@@ -352,6 +310,7 @@ public class Menu {
 		Rectangle downKey = new Rectangle(370, 430, 60, 60);
 		Rectangle leftKey = new Rectangle(300, 430, 60, 60);
 		Rectangle rightKey = new Rectangle(440, 430, 60, 60);
+		Rectangle resetSettings = new Rectangle(540, 520, 60, 40);
 		
 		PShape shape = marker.createShape(PConstants.RECT, 450, 80, 60, 60); // on
 		PShape shape2 = marker.createShape(PConstants.RECT, 510, 80, 60, 60); // off
@@ -361,9 +320,11 @@ public class Menu {
 		PShape shape6 = marker.createShape(PConstants.RECT, 370, 430, 60, 60); // down key
 		PShape shape7 = marker.createShape(PConstants.RECT, 300, 430, 60, 60); // left key
 		PShape shape8 = marker.createShape(PConstants.RECT, 440, 430, 60, 60); // right key
+		PShape shape9 = marker.createShape(PConstants.RECT, 540, 520, 60, 40, 20); // reset 
 	
 		int c1 = marker.color(204, 153, 0);
 		int c2 = marker.color(140, 153, 0);
+		int c3 = marker.color(255, 0, 0);
 		
 		shape3.setFill(c1);
 		shape4.setFill(100);
@@ -371,6 +332,7 @@ public class Menu {
 		shape6.setFill(255);
 		shape7.setFill(255);
 		shape8.setFill(255);
+		shape9.setFill(c1);
 		
 		if (isSoundOn) {
 			shape.setFill(230);
@@ -390,21 +352,40 @@ public class Menu {
 		else if (backButton.contains(mouseX, mouseY)) {
 			shape3.setFill(c2);
 		}
+		else if (resetSettings.contains(mouseX, mouseY)) {
+			shape9.setFill(c2);
+		}
 		
-		if (upKey.contains(mouseX, mouseY) || isUp) {
+		if (upKey.contains(mouseX, mouseY)) {
 			shape5.setFill(130);
 		}
-		else if (downKey.contains(mouseX, mouseY) || isDown) {
+		else if (downKey.contains(mouseX, mouseY)) {
 			shape6.setFill(130);
 		}
-		else if (leftKey.contains(mouseX, mouseY) || isLeft) {
+		else if (leftKey.contains(mouseX, mouseY)) {
 			shape7.setFill(130);
 		}
-		else if (rightKey.contains(mouseX, mouseY) || isRight) {
+		else if (rightKey.contains(mouseX, mouseY)) {
 			shape8.setFill(130);
 		}
 		
+		if (isUp) {
+			shape5.setFill(c3);
+		}
+		else if (isDown) {
+			shape6.setFill(c3);
+		}
+		else if (isLeft) {
+			shape7.setFill(c3);
+		}
+		else if (isRight) {
+			shape8.setFill(c3);
+		}
+		
 		if (soundOn.contains(cmouseX, cmouseY)) {
+			if (!isSoundOn && getVolume() == 0) 
+				adjuster = 270;
+			
 			isSoundOn = true;
 			resetClick();
 		}
@@ -435,6 +416,10 @@ public class Menu {
 		else if (rightKey.contains(cmouseX, cmouseY)) {
 			isRight = true;
 		}
+		else if (resetSettings.contains(cmouseX, cmouseY)) {
+			resetSettings();
+			resetClick();
+		}
 		else {
 			isUp = false;
 			isDown = false;
@@ -452,6 +437,7 @@ public class Menu {
 		marker.shape(shape6);
 		marker.shape(shape7);
 		marker.shape(shape8);
+		marker.shape(shape9);
 		
 		marker.fill(0);
 		
@@ -463,10 +449,33 @@ public class Menu {
 		marker.text("<", 229, 250);
 		marker.text(">", 548, 250);
 		marker.text("Change Keys", 300, 340);
-		marker.text(keyUp, 387, 400);
-		marker.text(keyDown, 392, 470);
-		marker.text(keyLeft, 323, 470);
-		marker.text(keyRight, 460, 470);
+		
+		String keys[] = {keyUp + "", keyDown + "", keyLeft + "", keyRight + ""};
+		int[] arrowNums = {38, 40, 37, 39};
+		char arrows[] = {'\u2191', '\u2193', '\u2190', '\u2192'};
+		
+		int count = 0;
+		
+		for (String s : keys) {
+			int count2 = 0;
+			
+			for (int x : arrowNums) {
+				if (s.equals((char)x + "")) {
+					keys[count] = arrows[count2] + "";
+				}
+				count2++;
+			}
+			
+			count++;
+		}
+		
+		marker.text(keys[0], 387, 400);
+		marker.text(keys[1], 392, 470);
+		marker.text(keys[2], 323, 470);
+		marker.text(keys[3], 460, 470);
+		
+		marker.textSize(15);
+		marker.text("Reset", 550, 545);
 		
 		marker.textSize(55);
 		
@@ -487,11 +496,11 @@ public class Menu {
 		
 		shape.setFill(c1);
 		
-		if (detectMouseRect(backButton, mouseX, mouseY)) {
+		if (backButton.contains(mouseX, mouseY)) {
 			shape.setFill(c2);
 		}
 		
-		if (detectMouseRect(backButton, cmouseX, cmouseY)) {
+		if (backButton.contains(cmouseX, cmouseY)) {
 			menuToggle = 1;
 			resetClick();
 			return;
@@ -505,110 +514,82 @@ public class Menu {
 		
 	}
 	
-	public void mousePressed(int mouseX, int mouseY) {
+	public void drawCredits(PApplet marker, PImage i, int mouseX, int mouseY) {
 		
 	}
 	
-	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
-		if (menuToggle == 4) {
-			Rectangle slider = new Rectangle(adjuster, 223, 30, 35);
+	
+	
+	public void drawChooseGameScreen(PApplet marker, int mouseX, int mouseY) {
+		marker.background(0);
+		
+		marker.fill(255);
+		marker.rect(100, 100, 550, 150);
+		
+		Rectangle start = new Rectangle(215, 480, 350, 70);
+		PShape shape = marker.createShape(PConstants.RECT, 215, 480, 350, 70, 20);
+		
+		shape.setFill(200);
+		
+		if (start.contains(mouseX, mouseY)) {
+			shape.setFill(100);
+		}
+		
+		if (start.contains(cmouseX, cmouseY)) {
+			menuToggle = 0;
+			resetClick();
 			
-			if (slider.contains(mouseX, mouseY)) {
-				if (mouseX > pmouseX) {
-					adjuster += 4;
-				}
-				else if (mouseX < pmouseX) {
-					adjuster -= 4;
-				}
-			}
+			return;
 		}
-	}
-	
-	public void mouseReleased(int mouseX, int mouseY) {
+		
+		marker.shape(shape);
+		
+		marker.textSize(32);
+		
+		marker.stroke(255);
+		marker.text("Start", 350, 525);
+	//	marker.line(x1, y1, x2, y2);
 		
 	}
 	
-	public void mouseClicked(int mouseX, int mouseY) {
-		cmouseX = mouseX;
-		cmouseY = mouseY;
-	}
-	
-	private boolean detectMouseRect(Rectangle rect, int detectX, int detectY) {
-		if (detectX >= rect.getX() && detectX <= rect.getX() + rect.getWidth() && detectY >= rect.getY() && detectY <= rect.getY() + rect.getHeight()) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public int getDiffLevel() {
-		return difficultyLevel;
-	}
-	
-	public int getVolume() {
-		return (int)((adjuster - 240) / 290.0 * 100);
-	}
-	
-	public int getWaveNumber() {
-		return waveNumber;
-	}
-	
-	public int getMenuToggle() {
-		return menuToggle;
-	}
-	
-	public int getSpecificHero() { 
-		if (menuToggle == 0 && isHeroPicked) // if user starts game with hero selected
-			return specificHero;
-		else
-			return 0;
-	}
-	
-	public char[] getKeys() {
-		char[] directionalKeys = {keyUp, keyDown, keyLeft, keyRight};
+	public int drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
+		marker.rect(200, 150, 400, 300, 7);
 		
-		return directionalKeys;
-	}
-	
-	public boolean getIsSoundOn() {
-		return isSoundOn;
-	}
-	
-	public void setMenuToggle(int menuToggle) {
-		this.menuToggle = menuToggle;
-	}
-	
-	public void resetClick() {
-		cmouseX = -1;
-		cmouseY = -1;
+		Rectangle resumeButton = new Rectangle(230, 400, 90, 40);
+		Rectangle quitButton = new Rectangle(480, 400, 90, 100);
+		
+		PShape shape = marker.createShape(PConstants.RECT, 230, 400, 90, 40);
+		PShape shape2 = marker.createShape(PConstants.RECT, 480, 400, 90, 40);
+		
+		shape.setFill(255);
+		shape2.setFill(255);
+		
+		if (resumeButton.contains(mouseX, mouseY)) {
+			shape.setFill(180);
+		}
+		else if (quitButton.contains(mouseX, mouseY)) {
+			shape2.setFill(180);
+		}
+		
+		if (resumeButton.contains(cmouseX, cmouseY)) {
+			return 1;
+		}
+		else if (quitButton.contains(cmouseX, cmouseY)) {
+			return 2;
+		}
+		
+		marker.shape(shape);
+		marker.shape(shape2);
+		
+		return 0;
+		
 	}
 
-	public void keyReleased(int keyCode) {
-		char keyPressed = (char) keyCode;
-		
-		if (isUp) { 
-			if (keyPressed != keyDown && keyPressed != keyLeft && keyPressed != keyRight)
-				keyUp = keyPressed;
-		}
-		else if (isDown) {
-			if (keyPressed != keyUp && keyPressed != keyLeft && keyPressed != keyRight)
-				keyDown = keyPressed;
-		}
-		else if (isLeft) {
-			if (keyPressed != keyDown && keyPressed != keyUp && keyPressed != keyRight)
-				keyLeft = keyPressed;
-		}
-		else if (isRight) {
-			if (keyPressed != keyDown && keyPressed != keyLeft && keyPressed != keyUp)
-				keyRight = keyPressed;
-		}
-		
-		resetClick();
+	public boolean drawDeathMenu(PApplet marker, int mouseX, int mouseY) { // returns false if user would like to quit game, true if user would like to play game again
+		return true;
 	}
 
-	public void keyPressed(int keyCode) {
-		// TODO Auto-generated method stub
+	public void drawMerchantMenu(PApplet marker) {
 		
 	}
 	
@@ -633,6 +614,9 @@ public class Menu {
 			drawCredits(marker, images.get(1), mouseX, mouseY);
 		}
 		else if (menuToggle == 7) {
+			drawChooseGameScreen(marker, mouseX, mouseY);
+		}
+		else if (menuToggle == 8) {
 			drawPauseMenu(marker, mouseX, mouseY);
 		}
 	}
@@ -665,6 +649,116 @@ public class Menu {
 		}
 		
 		return h;
+	}
+	
+	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
+		if (menuToggle == 4) {
+			
+			Rectangle slider = new Rectangle(adjuster, 223, 30, 35);
+			
+			if (slider.contains(mouseX, mouseY)) {
+				if (mouseX > pmouseX) {
+					adjuster += 4;
+				}
+				else if (mouseX < pmouseX) {
+					adjuster -= 4;
+				}
+			}
+		}
+	}
+	
+	public void mouseClicked(int mouseX, int mouseY) {
+		cmouseX = mouseX;
+		cmouseY = mouseY;
+	}
+	
+	public void mousePressed(int mouseX, int mouseY) {
+		
+	}
+	
+	public void mouseReleased(int mouseX, int mouseY) {
+		
+	}
+	
+	public void keyReleased(int keyCode) {
+		char keyPressed = (char) keyCode;
+		
+		if (isUp) { 
+			if (keyPressed != keyDown && keyPressed != keyLeft && keyPressed != keyRight)
+				keyUp = keyPressed;
+			else
+				keyUp = '\u22A0';
+		}
+		else if (isDown) {
+			if (keyPressed != keyUp && keyPressed != keyLeft && keyPressed != keyRight)
+				keyDown = keyPressed;
+			else
+				keyDown = '\u22A0';
+		}
+		else if (isLeft) {
+			if (keyPressed != keyDown && keyPressed != keyUp && keyPressed != keyRight)
+				keyLeft = keyPressed;
+			else
+				keyLeft = '\u22A0';
+		}
+		else if (isRight) {
+			if (keyPressed != keyDown && keyPressed != keyLeft && keyPressed != keyUp)
+				keyRight = keyPressed;
+			else
+				keyRight = '\u22A0';
+		}
+		
+		resetClick();
+	}
+	
+	public void resetSettings() {
+		adjuster = 240;
+		isSoundOn = false;
+		keyUp = 'W';
+		keyDown = 'S';
+		keyLeft = 'A';
+		keyRight = 'D';
+	}
+	
+	public void resetClick() {
+		cmouseX = -1;
+		cmouseY = -1;
+	}
+	
+	public void setMenuToggle(int menuToggle) {
+		this.menuToggle = menuToggle;
+	}
+	
+	public int getVolume() {
+		int volume = (int)((adjuster - 240) / 290.0 * 100);
+		
+		if (volume > 100) { // will not likely happen due to calculation, but to prevent sound library error
+			volume = 100;
+		}
+		
+		return volume;
+	}
+	
+	public char[] getKeys() {
+		char[] directionalKeys = {keyUp, keyDown, keyLeft, keyRight};
+		
+		return directionalKeys;
+	}
+	
+	public int getDiffLevel() {
+		return difficultyLevel;
+	}
+	
+	public boolean getIsSoundOn() {
+		return isSoundOn;
+	}
+	
+	public int getMenuToggle() {
+		return menuToggle;
+	}
+	
+	public int getWaveNumber() {
+		return waveNumber;
 	}
 	
 }

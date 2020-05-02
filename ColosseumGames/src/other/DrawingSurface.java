@@ -16,7 +16,6 @@ public class DrawingSurface extends PApplet {
 	private String audioPath = "images/smash.wav";
 	
 	private SoundFile file;
-	private int count;
 	private Hero hero;
 	
 	public DrawingSurface() {
@@ -25,6 +24,7 @@ public class DrawingSurface extends PApplet {
 	
 	public void setup() {
 		background(255);
+		setSize(800, 600);
 		
 		g = loadImage("images/arenaBackground.jpg");
 		i = loadImage("images/TitleScreen.png");
@@ -42,16 +42,7 @@ public class DrawingSurface extends PApplet {
 	
 	public void draw() {
 		
-		if (menu.getIsSoundOn()) {
-			file.amp((float)(menu.getVolume() / 100.0));
-			if (count == 0)
-				file.play();
-			count++;
-		}
-		else {
-			count = 0;
-			file.pause();
-		}
+		playSound();
 		
 		if (menu.getMenuToggle() != 0) {
 			menu.menuMaker(this,  images, mouseX, mouseY);
@@ -69,7 +60,20 @@ public class DrawingSurface extends PApplet {
 		hero.moveByVelocities();
 		hero.draw(this);
 				
-		
+	}
+	
+	public void playSound() {
+		if (menu.getIsSoundOn()) {
+			file.amp((float)(menu.getVolume() / 100.0));
+			if (!file.isPlaying())
+				file.play();
+		}
+		else if (file.isPlaying()) {
+			file.pause();
+		}
+		else {
+			file.stop();
+		}
 	}
 	
 	public void mouseClicked() {
@@ -89,7 +93,6 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void keyPressed() {
-		menu.keyPressed(keyCode);
 		if (hero == null) {
 			return;
 		}
@@ -122,6 +125,10 @@ public class DrawingSurface extends PApplet {
 	public void keyReleased() {
 		
 		menu.keyReleased(keyCode);
+		
+		if (hero == null)
+			return;
+		
 		hero.walk(5);
 	}
 }
