@@ -46,8 +46,9 @@ public class Character extends Rectangle2D.Double {
 		this.damage = damage;
 		
 	}
-	
-	
+	public void setup() {
+		
+	}
 	
 	public void moveToLocation(double x, double y) {
 		super.x = x;
@@ -178,8 +179,8 @@ public class Character extends Rectangle2D.Double {
 		}
 			
 	}
-	public void spawn(PApplet marker) {
-		marker.image(marker.loadImage(spriteFile), (float)x, (float)y, w ,h);
+	public void spawn(PApplet marker, PImage image) {
+		marker.image(image, (float)x, (float)y, w ,h);
 	}
 	
 	

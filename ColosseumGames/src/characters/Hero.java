@@ -13,18 +13,8 @@ public class Hero extends Character {
 		
 	}
 	
-	public void draw(PApplet marker)
-	{
-		spawn(marker);
-		
-		
-	}
 	
-//	public void walk(double dirX, double dirY)
-//	{
-//		
-//		super.moveByAmount(dirX, dirY);
-//	}
+	
 
 
 }

@@ -22,7 +22,7 @@ public class Wave {
 			enemies.add(new SmallBoi("small.png", 20, 20, 20, 20, 20, 20, 20, 20, 20));
 			//and so on
 			for(Enemy e: enemies) {
-				e.spawn(marker);
+				//e.spawn(marker);
 			}
 		}
 		else if(wave == 2) {

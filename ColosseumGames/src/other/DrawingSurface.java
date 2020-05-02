@@ -58,7 +58,7 @@ public class DrawingSurface extends PApplet {
 		image(g, 0, 0, 800, 600);
 		
 		hero.moveByVelocities();
-		hero.draw(this);
+		hero.spawn(this, hercules);
 				
 	}
 	
