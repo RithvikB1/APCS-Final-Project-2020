@@ -5,6 +5,11 @@ import characters.Enemy;
 import enemies.*;
 import processing.core.PApplet;
 
+/**
+ * Used to show the multiple and varied waves presented in the game
+ * @author Richard, Aditya
+ *
+ */
 public class Wave {
 	private int wave;
 	public Wave() {
@@ -12,6 +17,10 @@ public class Wave {
 		
 	}
 	
+	/**
+	 * Used to draw the waves as dependent on the current wave the user is on
+	 * @param marker allows PApplet access
+	 */
 	public void startWave(PApplet marker) {
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		BigBoi bigBoi;
@@ -45,9 +54,19 @@ public class Wave {
 		}
 
 	}
+	
+	/**
+	 * Changes to specified wave
+	 * @param newWave the specified wave
+	 */
 	public void setWave(int newWave){
 		this.wave = newWave;
 	}
+	
+	/**
+	 * Gets the current wave the user is on
+	 * @return the current wave
+	 */
 	public int getWave() {
 		return wave;
 	}

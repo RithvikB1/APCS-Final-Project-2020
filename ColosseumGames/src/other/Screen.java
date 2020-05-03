@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import characters.Hero;
 import processing.core.*;
 
+/**
+ * Represents the screen that shows up primarily, as dependent on how user progresses through game
+ * 
+ * @author Rithvik
+ *
+ */
 public class Screen {
 	
 	private int difficultyLevel; // 1 is easy, 2 is medium, 3 is hard
@@ -22,6 +28,9 @@ public class Screen {
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
 	
+	/**
+	 * Creates a new screen object
+	 */
 	public Screen() {
 		difficultyLevel = 2; // medium by default
 		adjuster = 240; // used for slider, volume 0 by default
@@ -45,7 +54,13 @@ public class Screen {
 		
 	} 
 	
-	// when screenToggle = 1
+	/**
+	 * Creates the start menu, the menu that first appears to the user. Allows progressing to next menus.
+	 * @param marker allows PApplet access
+	 * @param g the image that will be used as the background for the start screen
+	 * @param mouseX the current x position of user mouse
+	 * @param mouseY the current y position of user mouse
+	 */
 	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY) { 
 		marker.clear();
 		
@@ -110,7 +125,14 @@ public class Screen {
 		
 	}
 	
-	// when screenToggle = 2
+	/**
+	 * Creates a menu that allows the user to choose a hero. Allows going back to the start screen, going to settings menu,
+	 * and going to the chooseGamePlay Screen if hero is picked
+	 * @param marker allows PApplet access
+	 * @param images the array of images that will be used for the hero sprites
+	 * @param mouseX the current x position of user mouse
+	 * @param mouseY the current y position of user mouse
+	 */
 	public void drawHeroMenu(PApplet marker, ArrayList<PImage> images, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
@@ -242,14 +264,26 @@ public class Screen {
 		
 	}
 	
-	// when screenToggle = 3
+	/**
+	 * Creates a screen which allows user to confirm whether or not they want to quit the program.
+	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void drawConfirmQuit(PApplet marker, int mouseX, int mouseY) {
 		
 		marker.fill(255);
 		marker.rect(250, 150, 300, 300);
 	}
 	
-	// when screenToggle = 4
+	/**
+	 * Creates a menu that allows user to decide whether they want sound, to change the volume of the sound, and
+	 * to change the keys that determine hero movement
+	 * @param marker allows PApplet access
+	 * @param g the image used as a background for the menu
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void drawSettingsMenu(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
@@ -447,7 +481,13 @@ public class Screen {
 		
 	}
 	
-	// when screenToggle = 5
+	/**
+	 * Creates a screen that describes to the user how the game works
+	 * @param marker allows PApplet access
+	 * @param g the background for the screen
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void drawRulesScreen(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
@@ -475,12 +515,23 @@ public class Screen {
 		
 	}
 	
-	// when screenToggle = 6
+	/**
+	 * Creates a screen that credits the wonderful people that made this program.
+	 * @param marker allows PApplet access
+	 * @param i the background for the screen
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void drawCreditsScreen(PApplet marker, PImage i, int mouseX, int mouseY) {
 		
 	}
 	
-	// when screenToggle = 7
+	/**
+	 * Creates a screen where user can choose difficulty level and wave number
+	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void drawChooseGameScreen(PApplet marker, int mouseX, int mouseY) {
 		marker.background(0);
 		
@@ -508,8 +559,13 @@ public class Screen {
 		
 	}
 	
-	// when screenToggle = 8
-	public int drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
+	/**
+	 * Creates a menu that shows up when user has paused the game, with an option to resume the game
+	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
+	public void drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
 		marker.rect(200, 150, 400, 300, 7);
 		
 		Rectangle resumeButton = new Rectangle(230, 400, 90, 40);
@@ -522,27 +578,42 @@ public class Screen {
 		hover(quitButton, shape2, mouseX, mouseY, 255, 180);
 		
 		if (resumeButton.contains(cmouseX, cmouseY)) {
-			return 1;
+			return;
 		}
 		else if (quitButton.contains(cmouseX, cmouseY)) {
-			return 2;
+			return;
 		}
 		
 		marker.shape(shape);
 		marker.shape(shape2);
 		
-		return 0;
+	}
+
+	/**
+	 * Creates a menu that shows up when player dies, with options to restart or quit game
+	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
+	public void drawDeathMenu(PApplet marker, int mouseX, int mouseY) { // returns false if user would like to quit game, true if user would like to play game again
 		
 	}
 
-	public boolean drawDeathMenu(PApplet marker, int mouseX, int mouseY) { // returns false if user would like to quit game, true if user would like to play game again
-		return true;
-	}
-
+	/**
+	 * Creates a menu that shows up when user wants to upgrade stats or weapons with a merchant
+	 * @param marker allows PApplet access
+	 */
 	public void drawMerchantMenu(PApplet marker) {
 		
 	}
 	
+	/**
+	 * Toggles between screens to decide when to appropriately display which screen
+	 * @param marker allows PApplet access
+	 * @param images the images used as backgrounds or hero sprites in the game screens
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void screenSifter(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
 		if (screenToggle == 1) {
 			drawStartMenu(marker, images.get(1), mouseX, mouseY);
@@ -580,6 +651,10 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Creates and returns a hero based on what the user chose
+	 * @return the hero that the player chose
+	 */
 	public Hero choiceOfHero()
 	{
 		Hero h = null;
@@ -609,8 +684,17 @@ public class Screen {
 		return h;
 	}
 	
-	public void hover(Rectangle rect, PShape shape, int x, int y, int color1, int color2) {
-		if (rect.contains(x, y)) {
+	/**
+	 * Creates a hover effect when user's mouse is over a button
+	 * @param rect represents the button in question
+	 * @param shape represents the button itself
+	 * @param color1 the color of the button when the user's mouse is not over the button
+	 * @param color2 the color of the button when the user's mouse is over the button
+	 * @param mouseX the current x position of the user's mouse
+	 * @param mouseY the current x position of the user's mouse
+	 */
+	public void hover(Rectangle rect, PShape shape, int mouseX, int mouseY, int color1, int color2) {
+		if (rect.contains(mouseX, mouseY)) {
 			shape.setFill(color2);
 		}
 		else {
@@ -618,6 +702,9 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Makes the settings reset back to default values 
+	 */
 	public void resetSettings() {
 		adjuster = 240;
 		isSoundOn = false;
@@ -627,11 +714,21 @@ public class Screen {
 		keyRight = 'D';
 	}
 	
+	/**
+	 * Redirects the clicked position of the user mouse to undefined values 
+	 */
 	public void resetClick() {
 		cmouseX = -1;
 		cmouseY = -1;
 	}
 	
+	/**
+	 * Dictates what happens if a user drags the mouse
+	 * @param mouseX the current x position of the user's mouse
+	 * @param mouseY the current y position of the user's mouse
+	 * @param pmouseX the previous x position of the user's mouse
+	 * @param pmouseY the previouse y position of the user's mouse
+	 */
 	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
 		if (screenToggle == 4) {
 			
@@ -648,19 +745,38 @@ public class Screen {
 		}
 	}
 	
+	/**
+	 * Dictates what happens if a user clicks with the mouse
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void mouseClicked(int mouseX, int mouseY) {
 		cmouseX = mouseX;
 		cmouseY = mouseY;
 	}
 	
+	/**
+	 * Dictates what happens if a user presses the mouse
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void mousePressed(int mouseX, int mouseY) {
 		
 	}
 	
+	/**
+	 * Dictates what happens if a user releases the mouse
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
 	public void mouseReleased(int mouseX, int mouseY) {
 		
 	}
 	
+	/**
+	 * Dictates what happens if a user releases keys. Used to change keys.
+	 * @param keyCode the ASCII value of the pressed key
+	 */
 	public void keyReleased(int keyCode) {
 		char keyPressed = (char) keyCode;
 		
@@ -692,10 +808,18 @@ public class Screen {
 		resetClick();
 	}
 	
+	/**
+	 * Allows switching to a specified screen
+	 * @param screenToggle the user desired screen 
+	 */
 	public void setScreenToggle(int screenToggle) {
 		this.screenToggle = screenToggle;
 	}
 	
+	/**
+	 * Calculates the volume of the sound
+	 * @return the volume as an int out of 100
+	 */
 	public int getVolume() {
 		int volume = (int)((adjuster - 240) / 290.0 * 100);
 		
@@ -706,24 +830,44 @@ public class Screen {
 		return volume;
 	}
 	
+	/**
+	 * Gets the specified, or default if not changed, keys used for directional movement
+	 * @return the character array of keys used for movement
+	 */
 	public char[] getKeys() {
 		char[] directionalKeys = {keyUp, keyDown, keyLeft, keyRight};
 		
 		return directionalKeys;
 	}
 	
+	/**
+	 * Gets the current screen position
+	 * @return the current screen as an int
+	 */
 	public int getScreenToggle() {
 		return screenToggle;
 	}
 	
+	/**
+	 * Gets whether or not the sound is on
+	 * @return true if sound is on, false if not
+	 */
 	public boolean getIsSoundOn() {
 		return isSoundOn;
 	}
 	
+	/**
+	 * Gets the difficulty level as user specifies
+	 * @return the difficulty level as 1, 2, or 3 
+	 */
 	public int getDiffLevel() {
 		return difficultyLevel;
 	}
 	
+	/**
+	 * Gets the number of waves the user wants to play through
+	 * @return the specified number of waves
+	 */
 	public int getWaveNumber() {
 		return waveNumber;
 	}
