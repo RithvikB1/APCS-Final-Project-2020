@@ -13,7 +13,7 @@ public class DrawingSurface extends PApplet {
 	private Screen screen;
 	private ArrayList<PImage> images;
 	
-	private String audioPath = "images/Music.wav";
+	private String audioPath = "files/audio/smash.wav";
 	
 	private SoundFile file;
 	private Hero hero;
@@ -26,8 +26,8 @@ public class DrawingSurface extends PApplet {
 		background(255);
 		setSize(800, 600);
 		
-		g = loadImage("images/arenaBackground.jpg");
-		i = loadImage("images/TitleScreen.png");
+		g = loadImage("files/images/arenaBackground.jpg");
+		i = loadImage("files/images/TitleScreen.png");
 		hercules = loadImage("sprites/Hercules/FacingRight.png");
 		achilles = loadImage("sprites/Achilles/PRESelectedAchilles.png");
 		

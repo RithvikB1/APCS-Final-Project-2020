@@ -23,9 +23,9 @@ public class Screen {
 	private boolean isUp, isDown, isLeft, isRight;
 	
 	public Screen() {
-		difficultyLevel = 2; // medium 
-		adjuster = 240; // used for slider
-		waveNumber = 20; 
+		difficultyLevel = 2; // medium by default
+		adjuster = 240; // used for slider, volume 0 by default
+		waveNumber = 20;  // 20 waves by default
 		
 		screenToggle = 1; // start menu, default
 		specificHero = 1; // hercules, default
@@ -76,25 +76,21 @@ public class Screen {
 		
 		if (chooseHeroButton.contains(cmouseX, cmouseY)) { // chooseHero screen
 			screenToggle = 2;
-			resetClick();
 			
 			return;
 		}
 		else if (quitButton.contains(cmouseX, cmouseY)) {
 			screenToggle = 3;
-			resetClick();
 			
 			return;
 		}
 		else if (howToPlay.contains(cmouseX, cmouseY)) {
 			screenToggle = 5;
-			resetClick();
 			
 			return;
 		}
 		else if (credits.contains(cmouseX, cmouseY)) {
 			screenToggle = 6;
-			resetClick();
 			
 			return;
 		}
@@ -159,13 +155,11 @@ public class Screen {
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
 			screenToggle = 1;
-			resetClick();
 			
 			return;
 		}
 		else if (settings.contains(cmouseX, cmouseY)) {
 			screenToggle = 4;
-			resetClick();
 			
 			return;
 		}
@@ -184,7 +178,6 @@ public class Screen {
 			
 			if (next.contains(cmouseX, cmouseY)) { 
 				screenToggle = 7;
-				resetClick();
 				
 				return;
 				
@@ -246,9 +239,6 @@ public class Screen {
 		
 		if (isHeroPicked)
 			marker.text("Next", 350, 525);
-		
-		if (!isHeroPicked) 
-			resetClick();
 		
 	}
 	
@@ -473,7 +463,7 @@ public class Screen {
 		
 		if (backButton.contains(cmouseX, cmouseY)) {
 			screenToggle = 1;
-			resetClick();
+			
 			return;
 		}
 		
@@ -486,7 +476,7 @@ public class Screen {
 	}
 	
 	// when screenToggle = 6
-	public void drawCredits(PApplet marker, PImage i, int mouseX, int mouseY) {
+	public void drawCreditsScreen(PApplet marker, PImage i, int mouseX, int mouseY) {
 		
 	}
 	
@@ -504,7 +494,6 @@ public class Screen {
 		
 		if (start.contains(cmouseX, cmouseY)) {
 			screenToggle = 0;
-			resetClick();
 			
 			return;
 		}
@@ -555,33 +544,39 @@ public class Screen {
 	}
 	
 	public void screenSifter(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
-		
-		if (screenToggle == -1) { // special value for quitting
-			System.exit(0);
-		}
-		else if (screenToggle == 1) {
+		if (screenToggle == 1) {
 			drawStartMenu(marker, images.get(1), mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 2) {
 			drawHeroMenu(marker, images, mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 3) {
 			drawConfirmQuit(marker, mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 4) {
-			drawSettingsMenu(marker, images.get(1), mouseX, mouseY);
+			drawSettingsMenu(marker, images.get(1), mouseX, mouseY); // no resetting click due to key manipulation involved
 		}
 		else if (screenToggle == 5) {
 			drawRulesScreen(marker, images.get(1), mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 6) {
-			drawCredits(marker, images.get(1), mouseX, mouseY);
+			drawCreditsScreen(marker, images.get(1), mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 7) {
 			drawChooseGameScreen(marker, mouseX, mouseY);
+			resetClick();
 		}
 		else if (screenToggle == 8) {
 			drawPauseMenu(marker, mouseX, mouseY);
+			resetClick();
+		}
+		else if (screenToggle == -1) { // special value for quitting the program
+			System.exit(0);
 		}
 	}
 	
