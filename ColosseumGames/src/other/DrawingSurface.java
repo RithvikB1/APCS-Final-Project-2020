@@ -10,16 +10,16 @@ public class DrawingSurface extends PApplet {
 	
 	private PImage g, i, hercules, achilles;
 	
-	private Menu menu;
+	private Screen screen;
 	private ArrayList<PImage> images;
 	
-	private String audioPath = "images/smash.wav";
+	private String audioPath = "images/Music.wav";
 	
 	private SoundFile file;
 	private Hero hero;
 	
 	public DrawingSurface() {
-		menu = new Menu();
+		screen = new Screen();
 	}
 	
 	public void setup() {
@@ -44,12 +44,12 @@ public class DrawingSurface extends PApplet {
 		
 		playSound();
 		
-		if (menu.getMenuToggle() != 0) {
-			menu.menuMaker(this,  images, mouseX, mouseY);
+		if (screen.getScreenToggle() != 0) {
+			screen.screenSifter(this,  images, mouseX, mouseY);
 			
-			if (menu.getMenuToggle() == 0)
+			if (screen.getScreenToggle() == 0)
 			{
-				hero = menu.choiceOfHero();
+				hero = screen.choiceOfHero();
 			}
 			
 			return;
@@ -63,33 +63,31 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void playSound() {
-		if (menu.getIsSoundOn()) {
-			file.amp((float)(menu.getVolume() / 100.0));
+		if (screen.getIsSoundOn()) {
+			file.amp((float)(screen.getVolume() / 100.0));
+			
 			if (!file.isPlaying())
 				file.play();
 		}
 		else if (file.isPlaying()) {
 			file.pause();
 		}
-		else {
-			file.stop();
-		}
 	}
 	
 	public void mouseClicked() {
-		menu.mouseClicked(mouseX, mouseY);
+		screen.mouseClicked(mouseX, mouseY);
 	}
 	
 	public void mouseDragged() {
-		menu.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
+		screen.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
 	}
 	
 	public void mousePressed() {
-		menu.mousePressed(mouseX, mouseY);
+		screen.mousePressed(mouseX, mouseY);
 	}
 	
 	public void mouseReleased() {
-		menu.mouseReleased(mouseX, mouseY);
+		screen.mouseReleased(mouseX, mouseY);
 	}
 	
 	public void keyPressed() {
@@ -97,22 +95,22 @@ public class DrawingSurface extends PApplet {
 			return;
 		}
 	
-		if (keyCode == menu.getKeys()[0])
+		if (keyCode == screen.getKeys()[0])
 		{
 			hero.walk(4);
 		}
 		
-		if (keyCode == menu.getKeys()[2])
+		if (keyCode == screen.getKeys()[2])
 		{
 			hero.walk(3);
 		}
 		
-		if (keyCode == menu.getKeys()[1])
+		if (keyCode == screen.getKeys()[1])
 		{
 			hero.walk(2);
 		}
 		
-		if (keyCode == menu.getKeys()[3])
+		if (keyCode == screen.getKeys()[3])
 		{
 			hero.walk(1);
 
@@ -124,7 +122,7 @@ public class DrawingSurface extends PApplet {
 	
 	public void keyReleased() {
 		
-		menu.keyReleased(keyCode);
+		screen.keyReleased(keyCode);
 		
 		if (hero == null)
 			return;

@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import characters.Hero;
 import processing.core.*;
 
-public class Menu {
+public class Screen {
 	
 	private int difficultyLevel; // 1 is easy, 2 is medium, 3 is hard
 	private int waveNumber;
-	
+
 	private int adjuster;
-	private int menuToggle;
+	private int screenToggle;
 	private int specificHero;
 	
 	private boolean isHeroPicked; // does not have a getter, only for this class
@@ -21,14 +21,13 @@ public class Menu {
 	private int cmouseX, cmouseY;
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
-
 	
-	public Menu() {
+	public Screen() {
 		difficultyLevel = 2; // medium 
 		adjuster = 240; // used for slider
 		waveNumber = 20; 
 		
-		menuToggle = 1; // start menu, default
+		screenToggle = 1; // start menu, default
 		specificHero = 1; // hercules, default
 		
 		isHeroPicked = false;                                         
@@ -46,6 +45,7 @@ public class Menu {
 		
 	} 
 	
+	// when screenToggle = 1
 	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY) { 
 		marker.clear();
 		
@@ -69,39 +69,31 @@ public class Menu {
 		shape3.setFill(c1);
 		shape4.setFill(c1);
 		
-		if (chooseHeroButton.contains(mouseX, mouseY)) {
-			shape.setFill(c2);
-		}
-		else if (quitButton.contains(mouseX, mouseY)) {
-			shape2.setFill(c2);
-		}
-		else if (credits.contains(mouseX, mouseY)) {
-			shape3.setFill(c2);
-		}
-		else if (howToPlay.contains(mouseX, mouseY)) {
-			shape4.setFill(c2);
-		}
+		hover(chooseHeroButton, shape, mouseX, mouseY, c1, c2);
+		hover(quitButton, shape2, mouseX, mouseY, c1, c2);
+		hover(credits, shape3, mouseX, mouseY, c1, c2);
+		hover(howToPlay, shape4, mouseX, mouseY, c1, c2);
 		
 		if (chooseHeroButton.contains(cmouseX, cmouseY)) { // chooseHero screen
-			menuToggle = 2;
+			screenToggle = 2;
 			resetClick();
 			
 			return;
 		}
 		else if (quitButton.contains(cmouseX, cmouseY)) {
-			menuToggle = 3;
+			screenToggle = 3;
 			resetClick();
 			
 			return;
 		}
 		else if (howToPlay.contains(cmouseX, cmouseY)) {
-			menuToggle = 5;
+			screenToggle = 5;
 			resetClick();
 			
 			return;
 		}
 		else if (credits.contains(cmouseX, cmouseY)) {
-			menuToggle = 6;
+			screenToggle = 6;
 			resetClick();
 			
 			return;
@@ -122,12 +114,13 @@ public class Menu {
 		
 	}
 	
+	// when screenToggle = 2
 	public void drawHeroMenu(PApplet marker, ArrayList<PImage> images, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
 		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
 		Rectangle nextArrow = new Rectangle(650, 225, 70, 140);
-		Rectangle start = new Rectangle(215, 480, 350, 70);
+		Rectangle next = new Rectangle(215, 480, 350, 70);
 		Rectangle backButton = new Rectangle(35, 450, 130, 100);
 		Rectangle settings = new Rectangle(600, 450, 130, 100);
 		Rectangle hero = new Rectangle(215, 100, 350, 350);
@@ -147,24 +140,10 @@ public class Menu {
 		int c5 = marker.color(230, 132, 21);
 		int c6 = marker.color(153, 87, 12);
 		
-		shape.setFill(c3);
-		shape2.setFill(c3);
-		shape3.setFill(c5);
-		shape4.setFill(c1);
-		shape5.setFill(c1);
-		
-		if (previousArrow.contains(mouseX, mouseY)) {
-			shape.setFill(c4);
-		}
-		else if (nextArrow.contains(mouseX, mouseY)) {
-			shape2.setFill(c4);
-		}
-		else if (backButton.contains(mouseX, mouseY)) {
-			shape4.setFill(c2);
-		}
-		else if (settings.contains(mouseX, mouseY)) {
-			shape5.setFill(c2);
-		}
+		hover(previousArrow, shape, mouseX, mouseY, c3, c4);
+		hover(nextArrow, shape2, mouseX, mouseY, c3, c4);
+		hover(backButton, shape4, mouseX, mouseY, c1, c2);
+		hover(settings, shape5, mouseX, mouseY, c1, c2);
 		
 		if (previousArrow.contains(cmouseX, cmouseY)) {
 			if (specificHero != 1)
@@ -179,13 +158,13 @@ public class Menu {
 				specificHero = 1;
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
-			menuToggle = 1;
+			screenToggle = 1;
 			resetClick();
 			
 			return;
 		}
 		else if (settings.contains(cmouseX, cmouseY)) {
-			menuToggle = 4;
+			screenToggle = 4;
 			resetClick();
 			
 			return;
@@ -200,12 +179,11 @@ public class Menu {
 		}
 		
 		if (isHeroPicked) {
-			if (start.contains(mouseX, mouseY)) { 
-				shape3.setFill(c6);
-			}
 			
-			if (start.contains(cmouseX, cmouseY)) { 
-				menuToggle = 7;
+			hover(next, shape3, mouseX, mouseY, c5, c6);
+			
+			if (next.contains(cmouseX, cmouseY)) { 
+				screenToggle = 7;
 				resetClick();
 				
 				return;
@@ -274,6 +252,14 @@ public class Menu {
 		
 	}
 	
+	// when screenToggle = 3
+	public void drawConfirmQuit(PApplet marker, int mouseX, int mouseY) {
+		
+		marker.fill(255);
+		marker.rect(250, 150, 300, 300);
+	}
+	
+	// when screenToggle = 4
 	public void drawSettingsMenu(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
@@ -349,25 +335,13 @@ public class Menu {
 		else if (soundOff.contains(mouseX, mouseY) && isSoundOn) {
 			shape2.setFill(130);
 		}
-		else if (backButton.contains(mouseX, mouseY)) {
-			shape3.setFill(c2);
-		}
-		else if (resetSettings.contains(mouseX, mouseY)) {
-			shape9.setFill(c2);
-		}
 		
-		if (upKey.contains(mouseX, mouseY)) {
-			shape5.setFill(130);
-		}
-		else if (downKey.contains(mouseX, mouseY)) {
-			shape6.setFill(130);
-		}
-		else if (leftKey.contains(mouseX, mouseY)) {
-			shape7.setFill(130);
-		}
-		else if (rightKey.contains(mouseX, mouseY)) {
-			shape8.setFill(130);
-		}
+		hover(backButton, shape3, mouseX, mouseY, c1, c2);
+		hover(upKey, shape5, mouseX, mouseY, 255, 130);
+		hover(downKey, shape6, mouseX, mouseY, 255, 130);
+		hover(leftKey, shape7, mouseX, mouseY, 255, 130);
+		hover(rightKey, shape8, mouseX, mouseY, 255, 130);
+		hover(resetSettings, shape9, mouseX, mouseY, c1, c2);
 		
 		if (isUp) {
 			shape5.setFill(c3);
@@ -395,7 +369,7 @@ public class Menu {
 			resetClick();
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
-			menuToggle = 2;
+			screenToggle = 2;
 			resetClick();
 			
 			return;
@@ -483,6 +457,7 @@ public class Menu {
 		
 	}
 	
+	// when screenToggle = 5
 	public void drawRulesScreen(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
@@ -494,14 +469,10 @@ public class Menu {
 		int c1 = marker.color(204, 153, 0);
 		int c2 = marker.color(140, 153, 0);
 		
-		shape.setFill(c1);
-		
-		if (backButton.contains(mouseX, mouseY)) {
-			shape.setFill(c2);
-		}
+		hover(backButton, shape, mouseX, mouseY, c1, c2);
 		
 		if (backButton.contains(cmouseX, cmouseY)) {
-			menuToggle = 1;
+			screenToggle = 1;
 			resetClick();
 			return;
 		}
@@ -514,12 +485,12 @@ public class Menu {
 		
 	}
 	
+	// when screenToggle = 6
 	public void drawCredits(PApplet marker, PImage i, int mouseX, int mouseY) {
 		
 	}
 	
-	
-	
+	// when screenToggle = 7
 	public void drawChooseGameScreen(PApplet marker, int mouseX, int mouseY) {
 		marker.background(0);
 		
@@ -529,14 +500,10 @@ public class Menu {
 		Rectangle start = new Rectangle(215, 480, 350, 70);
 		PShape shape = marker.createShape(PConstants.RECT, 215, 480, 350, 70, 20);
 		
-		shape.setFill(200);
-		
-		if (start.contains(mouseX, mouseY)) {
-			shape.setFill(100);
-		}
+		hover(start, shape, mouseX, mouseY, 200, 100);
 		
 		if (start.contains(cmouseX, cmouseY)) {
-			menuToggle = 0;
+			screenToggle = 0;
 			resetClick();
 			
 			return;
@@ -546,12 +513,13 @@ public class Menu {
 		
 		marker.textSize(32);
 		
-		marker.stroke(255);
+		marker.fill(0);
 		marker.text("Start", 350, 525);
 	//	marker.line(x1, y1, x2, y2);
 		
 	}
 	
+	// when screenToggle = 8
 	public int drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
 		marker.rect(200, 150, 400, 300, 7);
 		
@@ -561,15 +529,8 @@ public class Menu {
 		PShape shape = marker.createShape(PConstants.RECT, 230, 400, 90, 40);
 		PShape shape2 = marker.createShape(PConstants.RECT, 480, 400, 90, 40);
 		
-		shape.setFill(255);
-		shape2.setFill(255);
-		
-		if (resumeButton.contains(mouseX, mouseY)) {
-			shape.setFill(180);
-		}
-		else if (quitButton.contains(mouseX, mouseY)) {
-			shape2.setFill(180);
-		}
+		hover(resumeButton, shape, mouseX, mouseY, 255, 180);
+		hover(quitButton, shape2, mouseX, mouseY, 255, 180);
 		
 		if (resumeButton.contains(cmouseX, cmouseY)) {
 			return 1;
@@ -593,30 +554,33 @@ public class Menu {
 		
 	}
 	
-	public void menuMaker(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
+	public void screenSifter(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
 		
-		if (menuToggle == 1) {
-			drawStartMenu(marker, images.get(1), mouseX, mouseY);
-		}
-		else if (menuToggle == 2) {
-			drawHeroMenu(marker, images, mouseX, mouseY);
-		}
-		else if (menuToggle == 3) {
+		if (screenToggle == -1) { // special value for quitting
 			System.exit(0);
 		}
-		else if (menuToggle == 4) {
+		else if (screenToggle == 1) {
+			drawStartMenu(marker, images.get(1), mouseX, mouseY);
+		}
+		else if (screenToggle == 2) {
+			drawHeroMenu(marker, images, mouseX, mouseY);
+		}
+		else if (screenToggle == 3) {
+			drawConfirmQuit(marker, mouseX, mouseY);
+		}
+		else if (screenToggle == 4) {
 			drawSettingsMenu(marker, images.get(1), mouseX, mouseY);
 		}
-		else if (menuToggle == 5) {
+		else if (screenToggle == 5) {
 			drawRulesScreen(marker, images.get(1), mouseX, mouseY);
 		}
-		else if (menuToggle == 6) {
+		else if (screenToggle == 6) {
 			drawCredits(marker, images.get(1), mouseX, mouseY);
 		}
-		else if (menuToggle == 7) {
+		else if (screenToggle == 7) {
 			drawChooseGameScreen(marker, mouseX, mouseY);
 		}
-		else if (menuToggle == 8) {
+		else if (screenToggle == 8) {
 			drawPauseMenu(marker, mouseX, mouseY);
 		}
 	}
@@ -626,7 +590,6 @@ public class Menu {
 		Hero h = null;
 		if (specificHero == 1)
 		{
-//			System.out.println(true);
 			h = new Hero("sprites/Hercules/FacingBack.png", 20, 10, 10 ,10, 10, 400, 300, 100, 100);
 			
 		}
@@ -651,8 +614,31 @@ public class Menu {
 		return h;
 	}
 	
+	public void hover(Rectangle rect, PShape shape, int x, int y, int color1, int color2) {
+		if (rect.contains(x, y)) {
+			shape.setFill(color2);
+		}
+		else {
+			shape.setFill(color1);
+		}
+	}
+	
+	public void resetSettings() {
+		adjuster = 240;
+		isSoundOn = false;
+		keyUp = 'W';
+		keyDown = 'S';
+		keyLeft = 'A';
+		keyRight = 'D';
+	}
+	
+	public void resetClick() {
+		cmouseX = -1;
+		cmouseY = -1;
+	}
+	
 	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
-		if (menuToggle == 4) {
+		if (screenToggle == 4) {
 			
 			Rectangle slider = new Rectangle(adjuster, 223, 30, 35);
 			
@@ -711,22 +697,8 @@ public class Menu {
 		resetClick();
 	}
 	
-	public void resetSettings() {
-		adjuster = 240;
-		isSoundOn = false;
-		keyUp = 'W';
-		keyDown = 'S';
-		keyLeft = 'A';
-		keyRight = 'D';
-	}
-	
-	public void resetClick() {
-		cmouseX = -1;
-		cmouseY = -1;
-	}
-	
-	public void setMenuToggle(int menuToggle) {
-		this.menuToggle = menuToggle;
+	public void setScreenToggle(int screenToggle) {
+		this.screenToggle = screenToggle;
 	}
 	
 	public int getVolume() {
@@ -745,16 +717,16 @@ public class Menu {
 		return directionalKeys;
 	}
 	
-	public int getDiffLevel() {
-		return difficultyLevel;
+	public int getScreenToggle() {
+		return screenToggle;
 	}
 	
 	public boolean getIsSoundOn() {
 		return isSoundOn;
 	}
 	
-	public int getMenuToggle() {
-		return menuToggle;
+	public int getDiffLevel() {
+		return difficultyLevel;
 	}
 	
 	public int getWaveNumber() {
