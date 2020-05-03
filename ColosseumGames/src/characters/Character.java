@@ -6,7 +6,12 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-
+/**
+ * Creates characters
+ * 
+ * @author Richard
+ *
+ */
 public class Character extends Rectangle2D.Double {
 	
 	private String spriteFile;
@@ -17,9 +22,20 @@ public class Character extends Rectangle2D.Double {
 	private double vx, vy;
 	private Character placeHolder;
 	
-	//have an arrayList of Pimages, which would have all the images ready to go and 
-	//call methods to switch images
-		
+	
+	/**
+	 * Creates a character either a playable hero or an enemy
+	 * @param spriteFile the file location for the sprite images
+	 * @param speed the character's speed
+	 * @param atkSpeed the character's attack speed
+	 * @param HP the character's HP
+	 * @param range how far the character will shoot
+	 * @param damage the amount of damage a character does
+	 * @param x the top left x-coordinate of the character's hit box
+	 * @param y the top left y-coordinate of the character's hit box
+	 * @param w	the width of the character's hit box
+	 * @param h the height of the character's hitbox
+	 */
 	public Character(String spriteFile, double speed, 
 			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -46,30 +62,45 @@ public class Character extends Rectangle2D.Double {
 		this.damage = damage;
 		
 	}
-	public void setup() {
-		
-	}
-	
+	/**
+	 * Moves the character to a specified x and y
+	 * @param x the x to move the character to
+	 * @param y the y to move the character to
+	 */
 	public void moveToLocation(double x, double y) {
 		super.x = x;
 		super.y = y;
 	}
-	
+	/**
+	 * Moves the character by a specified x and y amount
+	 * @param x the x amount to move the character
+	 * @param y the y amount to move the character
+	 */
 	public void moveByAmount(double x, double y) {
 		super.x += x;
 		super.y += y;
 	}
-	
+	/**
+	 * Moves the character by velocities
+	 */
 	public void moveByVelocities() {
 		super.x += vx;
 		super.y += vy;
 	}
-	
+	/**
+	 * Sets x and y velocities of character
+	 * @param vx the x velocity of the character
+	 * @param vy the y velocity of the character
+	 */
 	public void setVelocity(double vx, double vy) {
 		this.vx = vx;
 		this.vy = vy;
 	}
-	
+	/**
+	 * Accelerates the character by a given x and y  amount
+	 * @param ax the x acceleration
+	 * @param ay the y acceleration
+	 */
 	public void accelerate(double ax, double ay) {
 		vx += ax;
 		vy += ay;
@@ -77,68 +108,108 @@ public class Character extends Rectangle2D.Double {
 	
 	
 	
+	
+	/**
+	 * @return the speed
+	 */
 	public double getSpeed() {
 		return speed;
 	}
-
+	/**
+	 * @param speed the speed to set
+	 */
 	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
-
+	/**
+	 * @return the atkSpeed
+	 */
 	public double getAtkSpeed() {
 		return atkSpeed;
 	}
-
+	/**
+	 * @param atkSpeed the atkSpeed to set
+	 */
 	public void setAtkSpeed(double atkSpeed) {
 		this.atkSpeed = atkSpeed;
 	}
-
+	/**
+	 * @return the hP
+	 */
 	public double getHP() {
 		return HP;
 	}
-
+	/**
+	 * @param hP the hP to set
+	 */
 	public void setHP(double hP) {
 		HP = hP;
 	}
-
+	/**
+	 * @return the range
+	 */
 	public double getRange() {
 		return range;
 	}
-
+	/**
+	 * @param range the range to set
+	 */
 	public void setRange(double range) {
 		this.range = range;
 	}
-
+	/**
+	 * @return the damage
+	 */
 	public double getDamage() {
 		return damage;
 	}
-
+	/**
+	 * @param damage the damage to set
+	 */
 	public void setDamage(double damage) {
-		
+		this.damage = damage;
 	}
-
+	/**
+	 * @return the vx
+	 */
 	public double getVx() {
 		return vx;
 	}
-
+	/**
+	 * @param vx the vx to set
+	 */
 	public void setVx(double vx) {
 		this.vx = vx;
 	}
-
+	/**
+	 * @return the vy
+	 */
 	public double getVy() {
 		return vy;
 	}
-
+	/**
+	 * @param vy the vy to set
+	 */
 	public void setVy(double vy) {
 		this.vy = vy;
 	}
-	//detects if user gets hit based on shot location
+	/**
+	 * Detects whether a Character is hit by a shot
+	 * @param shotX the x of the shot
+	 * @param shotY the y of the shot
+	 * @param shotWidth the width of the shot
+	 * @param shotHeight the height of the shot
+	 * @return true if the character is hit, otherwise false
+	 */
 	public boolean isHit(double shotX, double shotY, double shotWidth, double shotHeight) {
 		
 		return this.intersects(new Rectangle2D.Double(shotX, shotY, shotWidth, shotHeight));
 	}
 	
-	//PRECONDITION IS THAT DIRX AND DIRY ARE -1 < dir < 1, then it changes the velocities
+	/**
+	 * Makes the character walk by changing velocities
+	 * @param dir the direction the character should walk if dir is 1, the character moves right; 2: down; 3: left; 4: up; 5: the character stops moving
+	 */
 	public void walk(double dir) {
 		if(dir == 1) {
 			vx = speed;
@@ -162,6 +233,10 @@ public class Character extends Rectangle2D.Double {
 		}
 
 	}
+	/**
+	 * Checks if the character is dead
+	 * @return true if HP is 0 or less, otherwise false
+	 */
 	public boolean die() {
 		if(HP <= 0) {
 			return true;
@@ -170,6 +245,12 @@ public class Character extends Rectangle2D.Double {
 			return false;
 		}
 	}
+	/**
+	 * Makes the character shoot
+	 * @param mouseX the x coordinate of the direction to shoot
+	 * @param mouseY the y coordinate of the direction to shoot
+	 * @param marker the PApplet to draw the shot
+	 */
 	public void shoot(int mouseX, int mouseY, PApplet marker) {
 		int shootX = (int)x;
 		int shootY = (int)y;
@@ -179,6 +260,11 @@ public class Character extends Rectangle2D.Double {
 		}
 			
 	}
+	/**
+	 * Draws the character
+	 * @param marker the PApplet to draw the character
+	 * @param image the sprite image to draw
+	 */
 	public void spawn(PApplet marker, PImage image) {
 		marker.image(image, (float)x, (float)y, w ,h);
 	}
