@@ -2,6 +2,12 @@ package enemies;
 
 import characters.Enemy;
 
+/**
+ * Creates a difficult leveled enemy 
+ * 
+ * @author ?
+ *
+ */
 public class MiniBoss extends Enemy {
 
 	/**

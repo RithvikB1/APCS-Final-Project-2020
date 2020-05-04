@@ -2,6 +2,12 @@ package enemies;
 
 import characters.Enemy;
 
+/**
+ * Creates an easy level enemy
+ * 
+ * @author ?
+ *
+ */
 public class SmallBoi extends Enemy {
 
 	/**

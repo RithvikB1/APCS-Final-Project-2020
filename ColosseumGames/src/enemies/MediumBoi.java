@@ -2,6 +2,12 @@ package enemies;
 
 import characters.Enemy;
 
+/**
+ * Creates a medium level enemy
+ * 
+ * @author ?
+ *
+ */
 public class MediumBoi extends Enemy {
 
 	/**

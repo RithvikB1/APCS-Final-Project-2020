@@ -2,6 +2,12 @@ package enemies;
 
 import characters.Enemy;
 
+/**
+ * Creates the hardest and last enemy user has to face
+ * 
+ * @author ?
+ *
+ */
 public class FinalBoss extends Enemy {
 
 	/**
