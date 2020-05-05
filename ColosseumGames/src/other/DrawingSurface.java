@@ -14,10 +14,10 @@ import processing.sound.*;
  */
 public class DrawingSurface extends PApplet {
 	
-	private PImage g, i, hercules, achilles;
-	
 	private Screen screen;
-	private ArrayList<PImage> images;
+	
+	private ArrayList<PImage> images, hercules, achilles, smallBoi, mediumBoi, bigBoi, miniBoss, finalBoss;
+	private ArrayList<ArrayList> heroes, enemies;
 	
 	private String audioPath = "files/audio/smash.wav";
 	
@@ -37,18 +37,30 @@ public class DrawingSurface extends PApplet {
 	public void setup() {
 		background(255);
 		
-		g = loadImage("files/images/arenaBackground.jpg");
-		i = loadImage("files/images/TitleScreen.png");
-		hercules = loadImage("sprites/Hercules/FacingRight.png");
-		achilles = loadImage("sprites/Achilles/PRESelectedAchilles.png");
-		
 		images = new ArrayList<>();
-		images.add(g);
-		images.add(i);
-		images.add(hercules);
-		images.add(achilles);
+		heroes = new ArrayList<>();
 		
-		file = new SoundFile(this, audioPath);
+		hercules = new ArrayList<>();
+		achilles = new ArrayList<>();
+		
+		enemies = new ArrayList<>();
+		
+		images.add(loadImage("files/images/arenaBackground.jpg"));
+		images.add(loadImage("files/images/TitleScreen.png"));
+		
+		hercules.add(loadImage("sprites/Hercules/FacingRight.png"));
+		hercules.add(loadImage("sprites/Hercules/FacingFront.png"));
+		hercules.add(loadImage("sprites/Hercules/FacingBack.png"));
+		hercules.add(loadImage("sprites/Hercules/FacingLeft.png"));
+		hercules.add(loadImage("sprites/Hercules/HerculesSelected.png"));
+		hercules.add(loadImage("sprites/Hercules/PRESelectedHercules.png"));
+		
+		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
+		
+		heroes.add(hercules);
+		heroes.add(achilles);
+		
+		//file = new SoundFile(this, audioPath);
 	}
 	
 	/**
@@ -56,23 +68,23 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		playSound();
+		//playSound();
 		
 		if (screen.getScreenToggle() != 0) {
-			screen.screenSifter(this,  images, mouseX, mouseY);
+			screen.screenSifter(this, images.get(1), heroes, mouseX, mouseY);
 			
 			if (screen.getScreenToggle() == 0)
 			{
-				hero = screen.choiceOfHero();
+				hero = screen.choiceOfHero(heroes);
 			}
 			
 			return;
 		}
 		
-		image(g, 0, 0, 800, 600);
+		image(images.get(0), 0, 0, 800, 600);
 		
 		hero.moveByVelocities();
-		hero.spawn(this, hercules);
+		hero.spawn(this);
 				
 	}
 	

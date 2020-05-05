@@ -2,6 +2,7 @@ package characters;
 
 import characters.Character;
 import processing.core.PApplet;
+import processing.core.PImage;
 /**
  * 
  * @author Richard, Rithvik, Aditya
@@ -22,9 +23,9 @@ public abstract class Enemy extends Character {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public Enemy(String spriteFile, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
+	public Enemy(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
-		super(spriteFile, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 	

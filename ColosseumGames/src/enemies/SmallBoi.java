@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Enemy;
+import processing.core.PImage;
 
 /**
  * Creates an easy level enemy
@@ -23,9 +24,9 @@ public class SmallBoi extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public SmallBoi(String spriteFile, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public SmallBoi(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
-		super(spriteFile, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 

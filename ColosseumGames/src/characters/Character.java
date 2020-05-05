@@ -14,7 +14,7 @@ import processing.core.PImage;
  */
 public class Character extends Rectangle2D.Double {
 	
-	private String spriteFile;
+	private PImage spriteImage;
 	private double speed, atkSpeed, HP;
 	private double range;
 	private double damage;
@@ -36,7 +36,7 @@ public class Character extends Rectangle2D.Double {
 	 * @param w	the width of the character's hit box
 	 * @param h the height of the character's hitbox
 	 */
-	public Character(String spriteFile, double speed, 
+	public Character(PImage spriteImage, double speed, 
 			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -50,7 +50,7 @@ public class Character extends Rectangle2D.Double {
 		vy = 0;
 		
 		//sprite
-		this.spriteFile = spriteFile;
+		this.spriteImage = spriteImage;
 		
 		//stats
 		this.speed = speed;
@@ -265,8 +265,8 @@ public class Character extends Rectangle2D.Double {
 	 * @param marker the PApplet to draw the character
 	 * @param image the sprite image to draw
 	 */
-	public void spawn(PApplet marker, PImage image) {
-		marker.image(image, (float)x, (float)y, w ,h);
+	public void spawn(PApplet marker) {
+		marker.image(spriteImage, (float)x, (float)y, w ,h);
 	}
 	
 	

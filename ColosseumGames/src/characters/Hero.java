@@ -1,6 +1,7 @@
 package characters;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 
 public class Hero extends Character {
@@ -18,9 +19,9 @@ public class Hero extends Character {
 	 * @param w how wide the hero is
 	 * @param h how tall the hero is
 	 */
-	public Hero(String spriteFile, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
+	public Hero(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
-		super(spriteFile, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		
 	}
 	

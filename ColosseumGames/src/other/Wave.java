@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import characters.Enemy;
 import enemies.*;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * Used to show the multiple and varied waves presented in the game
@@ -12,6 +13,7 @@ import processing.core.PApplet;
  */
 public class Wave {
 	private int wave;
+	
 	public Wave() {
 		wave = 1;
 		
@@ -21,16 +23,16 @@ public class Wave {
 	 * Used to draw the waves as dependent on the current wave the user is on
 	 * @param marker allows PApplet access
 	 */
-	public void startWave(PApplet marker) {
-		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	public void startWave(PApplet marker, ArrayList<PImage> enemies) {
+		ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
 		BigBoi bigBoi;
 		MediumBoi mediumBoi;
 		SmallBoi smallBoi;
 		
 		if(wave == 1) {
-			enemies.add(new SmallBoi("small.png", 20, 20, 20, 20, 20, 20, 20, 20, 20));
+			enemyList.add(new SmallBoi(enemies.get(0), 20, 20, 20, 20, 20, 20, 20, 20, 20));
 			//and so on
-			for(Enemy e: enemies) {
+			for(Enemy e: enemyList) {
 				//e.spawn(marker);
 			}
 		}

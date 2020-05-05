@@ -129,11 +129,12 @@ public class Screen {
 	 * Creates a menu that allows the user to choose a hero. Allows going back to the start screen, going to settings menu,
 	 * and going to the chooseGamePlay Screen if hero is picked
 	 * @param marker allows PApplet access
-	 * @param images the array of images that will be used for the hero sprites
+	 * @param heroes the array of images that will be used for the hero sprites
 	 * @param mouseX the current x position of user mouse
 	 * @param mouseY the current y position of user mouse
+	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
-	public void drawHeroMenu(PApplet marker, ArrayList<PImage> images, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
+	public void drawHeroMenu(PApplet marker, ArrayList<ArrayList> heroes, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
 		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
@@ -211,13 +212,13 @@ public class Screen {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
 			shape6.setFill(0);
 			shape6.setVisible(false);
-			marker.image(images.get(2), 215, 100, 350, 350);
+			marker.image((PImage) heroes.get(0).get(0), 215, 100, 350, 350);
 		}
 		else if (specificHero == 2) {
 			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
 			shape6.setFill(200);
 			shape6.setVisible(false);
-			marker.image(images.get(3), 215, 100, 350, 350);
+			marker.image((PImage) heroes.get(1).get(0), 215, 100, 350, 350);
 			
 		}
 		else if (specificHero == 3) {
@@ -613,14 +614,15 @@ public class Screen {
 	 * @param images the images used as backgrounds or hero sprites in the game screens
 	 * @param mouseX the current x position of the user mouse
 	 * @param mouseY the current y position of the user mouse
+	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
-	public void screenSifter(PApplet marker,  ArrayList<PImage> images, int mouseX, int mouseY) {
+	public void screenSifter(PApplet marker, PImage background, ArrayList<ArrayList> heroes, int mouseX, int mouseY) {
 		if (screenToggle == 1) {
-			drawStartMenu(marker, images.get(1), mouseX, mouseY);
+			drawStartMenu(marker, background, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == 2) {
-			drawHeroMenu(marker, images, mouseX, mouseY);
+			drawHeroMenu(marker, heroes, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == 3) {
@@ -628,14 +630,14 @@ public class Screen {
 			resetClick();
 		}
 		else if (screenToggle == 4) {
-			drawSettingsMenu(marker, images.get(1), mouseX, mouseY); // no resetting click due to key manipulation involved
+			drawSettingsMenu(marker, background, mouseX, mouseY); // no resetting click due to key manipulation involved
 		}
 		else if (screenToggle == 5) {
-			drawRulesScreen(marker, images.get(1), mouseX, mouseY);
+			drawRulesScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == 6) {
-			drawCreditsScreen(marker, images.get(1), mouseX, mouseY);
+			drawCreditsScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == 7) {
@@ -653,19 +655,22 @@ public class Screen {
 	
 	/**
 	 * Creates and returns a hero based on what the user chose
+	 * @param heroes an arraylist that stores all the images of all heroes in the game
 	 * @return the hero that the player chose
+	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
-	public Hero choiceOfHero()
+	public Hero choiceOfHero(ArrayList<ArrayList> heroes)
 	{
 		Hero h = null;
+		
 		if (specificHero == 1)
 		{
-			h = new Hero("sprites/Hercules/FacingBack.png", 20, 10, 10 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10 ,10, 10, 400, 300, 100, 100);
 			
 		}
 		else if (specificHero == 2) 
 		{
-			h = new Hero("sprites/Achilles/PRESelectedAchilles.png", 10, 10, 10 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(1).get(0), 10, 10, 10 ,10, 10, 400, 300, 100, 100);
 		}
 		
 		else if (specificHero == 3)
@@ -727,7 +732,7 @@ public class Screen {
 	 * @param mouseX the current x position of the user's mouse
 	 * @param mouseY the current y position of the user's mouse
 	 * @param pmouseX the previous x position of the user's mouse
-	 * @param pmouseY the previouse y position of the user's mouse
+	 * @param pmouseY the previous y position of the user's mouse
 	 */
 	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
 		if (screenToggle == 4) {

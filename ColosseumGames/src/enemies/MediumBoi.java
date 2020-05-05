@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Enemy;
+import processing.core.PImage;
 
 /**
  * Creates a medium level enemy
@@ -23,9 +24,9 @@ public class MediumBoi extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public MediumBoi(String spriteFile, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public MediumBoi(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
-		super(spriteFile, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 
