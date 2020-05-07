@@ -35,24 +35,43 @@ public abstract class Enemy extends Character {
 	 * @param marker draws the enemy
 	 * @param enemyType the type of enemy
 	 */
-	public void behave(Character c, PApplet marker, int enemyType) {
+	public void behave(Character c) {
 		int vx = 0;
 		int vy = 0;
-		if(enemyType == 1) {
-			this.shoot((int)c.getX(), (int)c.getY(), marker);
-			if(c.getX() - this.getX() < 0) {
-				vx = -1;
-			}
-			if(c.getX() - this.getX() > 0) {
-				vx = 1;
-			}
-			if(c.getY() - this.getY() > 0) {
-				vy = 1;
-			}
-			if(c.getY() - this.getY() < 0) {
-				vy = -1;
-			}
+		
+//		this.shoot((int)c.getX(), (int)c.getY(), marker);
+//		if(c.getX() - this.getX() < 0) {
+//			vx = -1;
+//		}
+//		if(c.getX() - this.getX() > 0) {
+//			vx = 1;
+//		}
+//		if(c.getY() - this.getY() > 0) {
+//			vy = 1;
+//		}
+//		if(c.getY() - this.getY() < 0) {
+//			vy = -1;
+//		}
 			//this.walk(vx, vy);
-		}
 	}
+	public int getDirectionToPlayer(Character c) {
+		int directionToPlayer = 0;
+		
+		if(this.y - c.getY() < 0) {
+			directionToPlayer = 2;
+		}
+		if(this.y - c.getY() > 0) {
+			directionToPlayer = 4;
+		}
+		if(this.x - c.getX() > 0) {
+			directionToPlayer = 3; 
+		}
+		if(this.x - c.getX() < 0) {
+			directionToPlayer =  1;
+		}
+		return directionToPlayer;
+	}
+		
+	
 }
+

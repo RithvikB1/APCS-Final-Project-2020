@@ -2,6 +2,7 @@ package other;
 
 import java.util.ArrayList;
 
+import characters.Enemy;
 import characters.Hero;
 import processing.core.*;
 import processing.sound.*;
@@ -16,19 +17,22 @@ public class DrawingSurface extends PApplet {
 	
 	private Screen screen;
 	
-	private ArrayList<PImage> images, hercules, achilles, smallBoi, mediumBoi, bigBoi, miniBoss, finalBoss;
-	private ArrayList<ArrayList> heroes, enemies;
+	private ArrayList<PImage> images, hercules, achilles, smallBoi, minotaur, bigBoi, miniBoss, finalBoss;
+	private ArrayList<ArrayList> heroes;
+	private ArrayList<Enemy> enemiesInWave;
 	
 	private String audioPath = "files/audio/smash.wav";
 	
 	private SoundFile file;
 	private Hero hero;
+	private Wave wave;
 	
 	/**
 	 * Creates a DrawingSurface that can have all game components
 	 */
 	public DrawingSurface() {
 		screen = new Screen();
+		wave = new Wave();
 	}
 	
 	/**
@@ -42,8 +46,9 @@ public class DrawingSurface extends PApplet {
 		
 		hercules = new ArrayList<>();
 		achilles = new ArrayList<>();
-		
-		enemies = new ArrayList<>();
+				
+		minotaur = new ArrayList<>();
+		enemiesInWave = wave.getEnemyList();
 		
 		images.add(loadImage("files/images/arenaBackground.jpg"));
 		images.add(loadImage("files/images/TitleScreen.png"));
@@ -56,6 +61,9 @@ public class DrawingSurface extends PApplet {
 		hercules.add(loadImage("sprites/Hercules/PRESelectedHercules.png"));
 		
 		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
+		
+		minotaur.add(loadImage("sprites/Minotaur/MinotaurFacingRight.png"));
+		
 		
 		heroes.add(hercules);
 		heroes.add(achilles);
@@ -83,9 +91,13 @@ public class DrawingSurface extends PApplet {
 		
 		image(images.get(0), 0, 0, 800, 600);
 		
+		wave.startWave(this, hero, minotaur);
+		enemiesInWave.get(0).moveByVelocities();
+		
 		hero.moveByVelocities();
 		hero.spawn(this);
-				
+		
+		
 	}
 	
 	/**

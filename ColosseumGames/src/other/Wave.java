@@ -2,6 +2,7 @@ package other;
 import java.util.ArrayList;
 
 import characters.Enemy;
+import characters.Character;
 import enemies.*;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -13,27 +14,28 @@ import processing.core.PImage;
  */
 public class Wave {
 	private int wave;
+	ArrayList<Enemy> enemyList;
 	
 	public Wave() {
 		wave = 1;
-		
+		enemyList = new ArrayList<Enemy>();
 	}
 	
 	/**
 	 * Used to draw the waves as dependent on the current wave the user is on
 	 * @param marker allows PApplet access
 	 */
-	public void startWave(PApplet marker, ArrayList<PImage> enemies) {
-		ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
-		BigBoi bigBoi;
-		MediumBoi mediumBoi;
-		SmallBoi smallBoi;
+	public void startWave(PApplet marker, Character c, ArrayList<PImage> enemies) {
+		
 		
 		if(wave == 1) {
-			enemyList.add(new SmallBoi(enemies.get(0), 20, 20, 20, 20, 20, 20, 20, 20, 20));
+			enemyList.add(new MediumBoi(enemies.get(0), 20, 20, 20, 20, 20, 20, 20, 100, 100));
 			//and so on
 			for(Enemy e: enemyList) {
-				//e.spawn(marker);
+				e.behave(c);
+				e.spawn(marker);
+				
+
 			}
 		}
 		else if(wave == 2) {
@@ -71,5 +73,8 @@ public class Wave {
 	 */
 	public int getWave() {
 		return wave;
+	}
+	public ArrayList<Enemy> getEnemyList(){
+		return enemyList;
 	}
 }

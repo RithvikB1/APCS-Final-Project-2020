@@ -1,7 +1,9 @@
 package enemies;
 
 import characters.Enemy;
+import processing.core.PApplet;
 import processing.core.PImage;
+import characters.Character;
 
 /**
  * Creates a medium level enemy
@@ -28,6 +30,10 @@ public class MediumBoi extends Enemy {
 			int y, int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
+	}
+	public void behave(Character c) {
+		super.behave(c);
+		this.walk(getDirectionToPlayer(c));
 	}
 
 }

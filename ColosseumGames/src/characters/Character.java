@@ -211,22 +211,27 @@ public class Character extends Rectangle2D.Double {
 	 * @param dir the direction the character should walk if dir is 1, the character moves right; 2: down; 3: left; 4: up; 5: the character stops moving
 	 */
 	public void walk(double dir) {
+		//right
 		if(dir == 1) {
 			vx = speed;
 			vy = 0;
 		}
+		//down
 		if(dir == 2) {
 			vy = speed;
 			vx = 0;
 		}
+		//left
 		if(dir == 3) {
 			vx = -speed;
 			vy = 0;
 		}
+		//up
 		if(dir == 4) {
 			vy = -speed;
 			vx = 0;
 		}
+		//stop
 		if(dir == 5) {
 			vy = 0;
 			vx = 0;
