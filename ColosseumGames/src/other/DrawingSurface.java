@@ -113,6 +113,14 @@ public class DrawingSurface extends PApplet {
 		hero.shoot(mouseX, mouseY, 300, this);
 		hero.spawn(this);
 		
+		this.line(40, 40, 760, 40);
+		
+		this.line(40, 40, 40, 450);
+		
+		this.line(40, 450, 760, 450);
+		
+		this.line(760, 40, 760, 450);
+		
 		
 	}
 	

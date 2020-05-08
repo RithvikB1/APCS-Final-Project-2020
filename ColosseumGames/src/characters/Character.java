@@ -214,10 +214,13 @@ public class Character extends Rectangle2D.Double {
 	 */
 	public void walk(double dir) {
 		//right
-		
+		int minX = 40;
+		int minY = 40;
+		int maxX = 760;
+		int maxY = 450;
 		if(dir == 1) {
 			
-			if (!(x + speed >= 760))
+			if (x + w + speed < maxX)
 			{
 				vx = speed;
 				vy = 0;
@@ -230,7 +233,7 @@ public class Character extends Rectangle2D.Double {
 		}
 		//down
 		if(dir == 2) {
-			if (!(y + speed >= 450))
+			if (y + speed < maxY)
 			{
 				vy = speed;
 				vx = 0;
@@ -243,7 +246,7 @@ public class Character extends Rectangle2D.Double {
 		}
 		//left
 		if(dir == 3) {
-			if (!(x - speed <= 40))
+			if (x - speed > minX)
 			{
 				vx = -speed;
 				vy = 0;
@@ -256,7 +259,7 @@ public class Character extends Rectangle2D.Double {
 		}
 		//up
 		if(dir == 4) {
-			if (!(y - speed <= 40))
+			if (y - speed > minY)
 			{
 				vy = -speed;
 				vx = 0;
