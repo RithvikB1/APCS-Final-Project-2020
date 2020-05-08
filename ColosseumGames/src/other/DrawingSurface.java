@@ -52,7 +52,7 @@ public class DrawingSurface extends PApplet {
 		
 		enemiesInWave = wave.getEnemyList();
 		
-		images.add(loadImage("files/images/arenaBackground.jpg"));
+		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/TitleScreen.png"));
 		
 		hercules.add(loadImage("sprites/Hercules/FacingRight.png"));

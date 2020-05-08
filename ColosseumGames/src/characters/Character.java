@@ -84,14 +84,13 @@ public class Character extends Rectangle2D.Double {
 	 * Moves the character by velocities
 	 */
 	public void moveByVelocities() {
+		super.x += vx;
+		super.y += vy;
+		
 		int minX = 40;
 		int minY = 40;
 		int maxX = 760;
 		int maxY = 450;
-		super.x += vx;
-		super.y += vy;
-		//Check to see if x is out of bounds and if x is out of bounds set vx to 0 
-		//Change x so that it is in bounds
 		if(x < minX) {
 			vx = 0;
 			x = minX;
