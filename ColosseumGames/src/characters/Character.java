@@ -101,13 +101,13 @@ public class Character extends Rectangle2D.Double {
 			y = minY; 
 			//have 4 of these
 		}
-		if(x > maxX) {
+		if(x + w > maxX) {
 			vx = 0;
-			x = maxX;
+			x = maxX - w;
 		}
-		if(y > maxY) {
+		if(y + h > maxY) {
 			vy = 0;
-			y = maxY;
+			y = maxY - h;
 		}
 	}
 	/**
