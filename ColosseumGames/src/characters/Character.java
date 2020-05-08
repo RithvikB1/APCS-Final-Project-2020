@@ -298,13 +298,17 @@ public class Character extends Rectangle2D.Double {
 	 * @param mouseY the y coordinate of the direction to shoot
 	 * @param marker the PApplet to draw the shot
 	 */
-	public void shoot(int mouseX, int mouseY, PApplet marker) {
-		int shootX = (int)x;
-		int shootY = (int)y;
-		while(Math.abs(shootX - x) < 20) {
-			
-			marker.rect(shootX++, shootY, shootX + 10, shootY + 5);
+	public void shoot(int mouseX, int mouseY, double shotLength, PApplet marker) {
+		double shotX = x;
+		double shotY = y;
+		
+		double angle = Math.atan((mouseY - y)/(mouseX - x));
+		if(mouseX - x< 0) {
+			angle += Math.PI;
 		}
+		double maxXPoint = range * Math.cos(angle) + x;
+		double maxYPoint = range * Math.sin(angle) + y;
+		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);		
 			
 	}
 	/**
