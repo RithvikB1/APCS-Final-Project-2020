@@ -20,7 +20,7 @@ public class Character extends Rectangle2D.Double {
 	private double damage;
 	private int w, h;
 	private double vx, vy;
-	private Character placeHolder;
+
 	
 	
 	/**
@@ -105,6 +105,8 @@ public class Character extends Rectangle2D.Double {
 		vx += ax;
 		vy += ay;
 	}
+	
+	
 	
 	
 	
@@ -212,24 +214,58 @@ public class Character extends Rectangle2D.Double {
 	 */
 	public void walk(double dir) {
 		//right
+		
 		if(dir == 1) {
-			vx = speed;
-			vy = 0;
+			
+			if (!(x + speed >= 760))
+			{
+				vx = speed;
+				vy = 0;
+			}
+			
+			else
+			{
+				stop();
+			}
 		}
 		//down
 		if(dir == 2) {
-			vy = speed;
-			vx = 0;
+			if (!(y + speed >= 450))
+			{
+				vy = speed;
+				vx = 0;
+			}
+			else
+			{
+				stop();
+			}
+			
 		}
 		//left
 		if(dir == 3) {
-			vx = -speed;
-			vy = 0;
+			if (!(x - speed <= 40))
+			{
+				vx = -speed;
+				vy = 0;
+			}
+			else
+			{
+				stop();
+			}
+			
 		}
 		//up
 		if(dir == 4) {
-			vy = -speed;
-			vx = 0;
+			if (!(y - speed <= 40))
+			{
+				vy = -speed;
+				vx = 0;
+			}
+			else
+			{
+				stop();
+			}
+			
 		}
 		//stop
 		if(dir == 5) {
@@ -237,6 +273,12 @@ public class Character extends Rectangle2D.Double {
 			vx = 0;
 		}
 
+	}
+	
+	public void stop()
+	{
+		vy = 0;
+		vx = 0;
 	}
 	/**
 	 * Checks if the character is dead

@@ -201,6 +201,6 @@ public class DrawingSurface extends PApplet {
 		if (hero == null)
 			return;
 		
-		hero.walk(5);
+		hero.stop();
 	}
 }
