@@ -96,19 +96,19 @@ public class DrawingSurface extends PApplet {
 
 		
 		wave.startWave(this, hero, harpy);
-//		for(int i = 0; i < enemiesInWave.size(); i++) {
-//
-//			enemiesInWave.get(i).moveByVelocities();
-//			enemiesInWave.get(i).spawn(this);
-//		}
-		enemiesInWave.get(0).moveByVelocities();
-		enemiesInWave.get(0).spawn(this);
-		enemiesInWave.get(1).moveByVelocities();
-		enemiesInWave.get(1).spawn(this);
-		enemiesInWave.get(2).moveByVelocities();
-		enemiesInWave.get(2).spawn(this);
-		enemiesInWave.get(3).moveByVelocities();
-		enemiesInWave.get(3).spawn(this);
+		for(int i = 0; i < enemiesInWave.size(); i++) {
+
+			enemiesInWave.get(i).moveByVelocities();
+			enemiesInWave.get(i).spawn(this);
+		}
+//		enemiesInWave.get(0).moveByVelocities();
+//		enemiesInWave.get(0).spawn(this);
+//		enemiesInWave.get(1).moveByVelocities();
+//		enemiesInWave.get(1).spawn(this);
+//		enemiesInWave.get(2).moveByVelocities();
+//		enemiesInWave.get(2).spawn(this);
+//		enemiesInWave.get(3).moveByVelocities();WHAWT
+//		enemiesInWave.get(3).spawn(this);
 		hero.moveByVelocities();
 		hero.spawn(this);
 		
