@@ -84,8 +84,31 @@ public class Character extends Rectangle2D.Double {
 	 * Moves the character by velocities
 	 */
 	public void moveByVelocities() {
+		int minX = 40;
+		int minY = 40;
+		int maxX = 760;
+		int maxY = 450;
 		super.x += vx;
 		super.y += vy;
+		//Check to see if x is out of bounds and if x is out of bounds set vx to 0 
+		//Change x so that it is in bounds
+		if(x < minX) {
+			vx = 0;
+			x = minX;
+		} 
+		if(y < minY) {
+			vy = 0;
+			y = minY; 
+			//have 4 of these
+		}
+		if(x > maxX) {
+			vx = 0;
+			x = maxX;
+		}
+		if(y > maxY) {
+			vy = 0;
+			y = maxY;
+		}
 	}
 	/**
 	 * Sets x and y velocities of character
@@ -213,62 +236,38 @@ public class Character extends Rectangle2D.Double {
 	 * @param dir the direction the character should walk if dir is 1, the character moves right; 2: down; 3: left; 4: up; 5: the character stops moving
 	 */
 	public void walk(double dir) {
+		//no collision in here
 		//right
-		int minX = 40;
-		int minY = 40;
-		int maxX = 760;
-		int maxY = 450;
 		if(dir == 1) {
-			
-			if (x + w + speed < maxX)
-			{
-				vx = speed;
-				vy = 0;
-			}
-			
-			else
-			{
-				stop();
-			}
+			vx = speed;
+			vy = 0;
+
+
+
 		}
 		//down
 		if(dir == 2) {
-			if (y + speed < maxY)
-			{
-				vy = speed;
-				vx = 0;
-			}
-			else
-			{
-				stop();
-			}
-			
+
+			vy = speed;
+			vx = 0;
+
+
 		}
 		//left
 		if(dir == 3) {
-			if (x - speed > minX)
-			{
-				vx = -speed;
-				vy = 0;
-			}
-			else
-			{
-				stop();
-			}
-			
+
+			vx = -speed;
+			vy = 0;
+
+
 		}
 		//up
 		if(dir == 4) {
-			if (y - speed > minY)
-			{
-				vy = -speed;
-				vx = 0;
-			}
-			else
-			{
-				stop();
-			}
-			
+
+			vy = -speed;
+			vx = 0;
+
+
 		}
 		//stop
 		if(dir == 5) {

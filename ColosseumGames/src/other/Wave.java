@@ -36,11 +36,6 @@ public class Wave {
 
 
 			//and so on
-			for(Enemy e: enemyList) {
-				e.behave(c);
-				
-
-			}
 		}
 		else if(wave == 2) {
 
