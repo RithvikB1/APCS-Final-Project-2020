@@ -17,7 +17,7 @@ public class DrawingSurface extends PApplet {
 	
 	private Screen screen;
 	
-	private ArrayList<PImage> images, hercules, achilles, smallBoi, minotaur, bigBoi, miniBoss, finalBoss;
+	private ArrayList<PImage> images, hercules, achilles, harpy, minotaur, bigBoi, miniBoss, finalBoss;
 	private ArrayList<ArrayList> heroes;
 	private ArrayList<Enemy> enemiesInWave;
 	
@@ -46,8 +46,10 @@ public class DrawingSurface extends PApplet {
 		
 		hercules = new ArrayList<>();
 		achilles = new ArrayList<>();
-				
+		
+		harpy = new ArrayList<>();
 		minotaur = new ArrayList<>();
+		
 		enemiesInWave = wave.getEnemyList();
 		
 		images.add(loadImage("files/images/arenaBackground.jpg"));
@@ -62,6 +64,7 @@ public class DrawingSurface extends PApplet {
 		
 		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
 		
+		harpy.add(loadImage("sprites/Harpy/WalkRight.png"));
 		minotaur.add(loadImage("sprites/Minotaur/MinotaurFacingRight.png"));
 		
 		
@@ -91,8 +94,9 @@ public class DrawingSurface extends PApplet {
 		
 		image(images.get(0), 0, 0, 800, 600);
 		
-		wave.startWave(this, hero, minotaur);
+		wave.startWave(this, hero, harpy);
 		enemiesInWave.get(0).moveByVelocities();
+		enemiesInWave.get(0).spawn(this);
 		
 		hero.moveByVelocities();
 		hero.spawn(this);

@@ -1,5 +1,6 @@
 package enemies;
 
+import characters.Character;
 import characters.Enemy;
 import processing.core.PImage;
 
@@ -9,7 +10,7 @@ import processing.core.PImage;
  * @author ?
  *
  */
-public class SmallBoi extends Enemy {
+public class Harpy extends Enemy {
 
 	/**
 	 * Creates an Enemy
@@ -24,10 +25,18 @@ public class SmallBoi extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public SmallBoi(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public Harpy(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-
+	public void behave(Character c) {
+		super.behave(c);
+		if(Math.abs(c.getX()-this.getX()) < 150 && Math.abs(c.getY()-this.getY()) < 150) {
+			this.walk(getDirectionAwayFromPlayer(c, 150));
+		}
+		else {
+			this.walk(getDirectionToPlayer(c));
+		}
+	}
 }

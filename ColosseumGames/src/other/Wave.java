@@ -29,11 +29,10 @@ public class Wave {
 		
 		
 		if(wave == 1) {
-			enemyList.add(new MediumBoi(enemies.get(0), 20, 20, 20, 20, 20, 20, 20, 100, 100));
+			enemyList.add(new Harpy(enemies.get(0), 10, 20, 20, 20, 20, 20, 20, 50, 50));
 			//and so on
 			for(Enemy e: enemyList) {
 				e.behave(c);
-				e.spawn(marker);
 				
 
 			}

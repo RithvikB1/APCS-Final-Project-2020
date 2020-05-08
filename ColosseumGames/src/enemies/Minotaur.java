@@ -11,7 +11,7 @@ import characters.Character;
  * @author ?
  *
  */
-public class MediumBoi extends Enemy {
+public class Minotaur extends Enemy {
 
 	/**
 	 * Creates an Enemy
@@ -26,7 +26,7 @@ public class MediumBoi extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public MediumBoi(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public Minotaur(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub

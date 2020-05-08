@@ -39,20 +39,33 @@ public abstract class Enemy extends Character {
 		int vx = 0;
 		int vy = 0;
 		
-//		this.shoot((int)c.getX(), (int)c.getY(), marker);
-//		if(c.getX() - this.getX() < 0) {
-//			vx = -1;
-//		}
-//		if(c.getX() - this.getX() > 0) {
-//			vx = 1;
-//		}
-//		if(c.getY() - this.getY() > 0) {
-//			vy = 1;
-//		}
-//		if(c.getY() - this.getY() < 0) {
-//			vy = -1;
-//		}
-			//this.walk(vx, vy);
+
+	}
+	public int getDirectionAwayFromPlayer(Character c, double distance)
+	{
+		int directionAway = 0;
+		if(Math.abs(this.x - c.getX()) < distance) {
+			if(this.x - c.getX() < 0) {
+				directionAway = 1;
+			}
+			else {
+				directionAway = 3;
+			}
+		}
+		if(Math.abs(this.y - c.getY()) < distance) {
+			if(this.y - c.getY() < 0) {
+				directionAway = 4;
+			}
+			else {
+				directionAway = 2;
+			}
+		}
+		if(Math.abs(this.y - c.getY()) < distance + 10 || Math.abs(this.x - c.getX()) < distance + 10) {
+			
+			directionAway = 5;
+		}
+		return directionAway;
+		
 	}
 	public int getDirectionToPlayer(Character c) {
 		int directionToPlayer = 0;
@@ -68,6 +81,9 @@ public abstract class Enemy extends Character {
 		}
 		if(this.x - c.getX() < 0) {
 			directionToPlayer =  1;
+		}
+		if(this.x - c.getX() == 0 && this.y - c.getY() == 0) {
+			directionToPlayer = 5;
 		}
 		return directionToPlayer;
 	}
