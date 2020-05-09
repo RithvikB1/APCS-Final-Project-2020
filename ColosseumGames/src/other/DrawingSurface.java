@@ -62,34 +62,34 @@ public class DrawingSurface extends PApplet {
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/TitleScreen.png"));
 		
-		hercules.add(loadImage("sprites/Hercules/FacingRight.png"));
-		hercules.add(loadImage("sprites/Hercules/FacingFront.png"));
-		hercules.add(loadImage("sprites/Hercules/FacingBack.png"));
-		hercules.add(loadImage("sprites/Hercules/FacingLeft.png"));
-		hercules.add(loadImage("sprites/Hercules/HerculesSelected.png"));
-		hercules.add(loadImage("sprites/Hercules/PRESelectedHercules.png"));
-		hercules.add(loadImage("sprites/Hercules/AttackBack.gif"));
-		hercules.add(loadImage("sprites/Hercules/AttackFront.gif"));
-		hercules.add(loadImage("sprites/Hercules/AttackLeft.gif"));
-		hercules.add(loadImage("sprites/Hercules/AttackRight.gif"));
-		hercules.add(loadImage("sprites/Hercules/WalkBack.gif"));
-		hercules.add(loadImage("sprites/Hercules/WalkFront.gif"));
-		hercules.add(loadImage("sprites/Hercules/WalkLeft.gif"));
-		hercules.add(loadImage("sprites/Hercules/WalkRight.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/FacingRight.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/FacingFront.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/FacingBack.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/FacingLeft.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/AttackBack.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/AttackFront.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/AttackLeft.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/AttackRight.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/WalkBack.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/WalkFront.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/WalkLeft.gif"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/WalkRight.gif"));
 		
-		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
+		achilles.add(loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
 		
-		chiron.add(loadImage("sprites/Chiron/Chiron.jpg"));
+		chiron.add(loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
 		
-		helen.add(loadImage("sprites/Helen/Helen.png"));
+		helen.add(loadImage("sprites/Heroes/Helen/Helen.png"));
 		
-		perseus.add(loadImage("sprites/Perseus/Perseus.png"));
+		perseus.add(loadImage("sprites/Heroes/Perseus/Perseus.png"));
 		
-		harpy.add(loadImage("sprites/Harpy/WalkRight.png"));
-		minotaur.add(loadImage("sprites/Minotaur/MinotaurFacingRight.png"));
+		harpy.add(loadImage("sprites/Enemies/Harpy/WalkRight.png"));
+		minotaur.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 		
-		enemies.add(loadImage("sprites/Harpy/WalkRight.png"));
-		enemies.add(loadImage("sprites/Minotaur/MinotaurFacingRight.png"));
+		enemies.add(loadImage("sprites/Enemies/Harpy/WalkRight.png"));
+		enemies.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 		
 		heroes.add(hercules);
 		heroes.add(achilles);

@@ -123,7 +123,7 @@ public class Screen {
 		marker.textSize(60);
 		marker.text("Quit", 260, 720);
 		marker.text("Credits", 550, 720);
-		marker.text("Lost?", 900, 720);
+		marker.text("Help", 900, 720);
 		
 	}
 	
