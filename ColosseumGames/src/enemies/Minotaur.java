@@ -67,7 +67,13 @@ public class Minotaur extends Enemy {
 			this.walk(getDirectionToPlayer(c));
 		}
 		this.shoot(c.getX(), c.getY(), marker, c);
-
+		if(c.getVx() == 0 && c.getVy() == 0) {
+			this.walk(getDirectionToPlayer(c));
+			this.setSpeed(2);
+		}
+		else {
+			this.setSpeed(40);
+		}
 		
 	}
 
