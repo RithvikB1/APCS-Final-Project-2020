@@ -98,20 +98,17 @@ public abstract class Enemy extends Character {
 	public int getDirectionToPlayer(Character c) {
 		int directionToPlayer = 0;
 		
-		if(this.y - c.getY() < 0) {
+		if(this.y - c.getY() < 10) {
 			directionToPlayer = 2;
 		}
-		if(this.y - c.getY() > 0) {
+		if(this.y - c.getY() > 10) {
 			directionToPlayer = 4;
 		}
-		if(this.x - c.getX() > 0) {
+		if(this.x - c.getX() > 10) {
 			directionToPlayer = 3; 
 		}
-		if(this.x - c.getX() < 0) {
+		if(this.x - c.getX() < 10) {
 			directionToPlayer =  1;
-		}
-		if(this.x - c.getX() == 0 && this.y - c.getY() == 0) {
-			directionToPlayer = 5;
 		}
 		return directionToPlayer;
 	}

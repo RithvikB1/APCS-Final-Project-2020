@@ -12,7 +12,9 @@ import characters.Character;
  *
  */
 public class Minotaur extends Enemy {
-
+	int reset = 0;
+	long chargePlayer = System.currentTimeMillis();
+	long seePlayer = 0;
 	/**
 	 * Creates an Enemy
 	 * @param spriteFile the image/looks of the enemy
@@ -33,7 +35,40 @@ public class Minotaur extends Enemy {
 	}
 	public void behave(Character c, PApplet marker) {
 		super.behave(c, marker);
-		this.walk(getDirectionToPlayer(c));
+		
+		if(Math.abs(this.getX() - c.getX()) < 15) {
+			this.setVx(0);
+			if(this.getY() - c.getY() > 0) {
+				this.walk(4);
+			}
+			else {
+				this.walk(2);
+			}
+		}
+		if(Math.abs(this.getY() - c.getY()) < 15) {
+			this.setVy(0);
+			if(this.getX() - c.getX() > 0) {
+				this.walk(3);
+			}
+			else {
+				this.walk(1);
+			}
+		}
+		if(reset == 0) {
+			seePlayer = System.currentTimeMillis();
+		} 
+		else if(chargePlayer/1000 - seePlayer/1000 < 2) {
+			chargePlayer = System.currentTimeMillis();
+			reset++;
+
+		}
+		else {
+			reset = 0;
+			this.walk(getDirectionToPlayer(c));
+		}
+		this.shoot(c.getX(), c.getY(), marker, c);
+
+		
 	}
 
 }
