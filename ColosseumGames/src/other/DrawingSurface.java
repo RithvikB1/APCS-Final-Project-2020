@@ -135,6 +135,24 @@ public class DrawingSurface extends PApplet {
 		if(!hero.die()) {
 			hero.moveByVelocities();
 			hero.spawn(this);
+			
+			textSize(60);
+//			
+			fill(255);
+			stroke(255);
+			
+			line(0, 700, 1300, 700);
+			
+			text("HP: " + (int)hero.getHP() + "/100000", 370, 770);
+//			
+			textSize(30);
+//			fill(255);
+//			
+			text("Speed: " + (int)hero.getSpeed(), 150, 680);
+			
+			text("AttackSpeed: " + (int)hero.getAtkSpeed(), 544, 680);
+			
+			text("Damage: " + (int)hero.getDamage(), 961,680);
 		}
 		
 		this.stroke(0);
