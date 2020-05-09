@@ -1,6 +1,7 @@
 package characters;
 
 import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 
 import characters.Character;
 import processing.core.PApplet;
@@ -112,20 +113,17 @@ public abstract class Enemy extends Character {
 		}
 		return directionToPlayer;
 	}
-	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero) {
-		double shotX = x;
-		double shotY = y;
-		
+	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero, double shotX, double shotY) {
 		double angle = Math.atan((mouseY - y)/(mouseX - x));
 		if(mouseX - x< 0) {
 			angle += Math.PI;
 		}
-		double maxXPoint = range * Math.cos(angle) + x;
-		double maxYPoint = range * Math.sin(angle) + y;
+		double maxXPoint = range * Math.cos(angle) + shotX;
+		double maxYPoint = range * Math.sin(angle) + shotY;
 		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
 		
-		if(shot.intersects(hero)) {
-			hero.setHP(hero.getHP() - 10);
+		if(shot.intersects(new Rectangle2D.Double(hero.getX() - 10, hero.getY() - 10, hero.getWidth() + 20, hero.getHeight() + 20))) {
+			hero.setHP(hero.getHP() - damage);
 		}
 		marker.pushMatrix();
 		marker.strokeWeight(10);

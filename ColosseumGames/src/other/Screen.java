@@ -669,7 +669,7 @@ public class Screen {
 		
 		if (specificHero == 1)
 		{
-			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 100000, 50, 100, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000, 100, 100, 400, 300, 100, 100);
 			
 		}
 		else if (specificHero == 2) 
