@@ -28,6 +28,9 @@ public class Screen {
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
 	
+	public static final int SCREEN_WIDTH = 1300;
+	public static final int SCREEN_HEIGHT = 800;
+	
 	/**
 	 * Creates a new screen object
 	 */
@@ -66,15 +69,15 @@ public class Screen {
 		
 		marker.image(g, 0, 0, 1300, 800);
 		
-		Rectangle chooseHeroButton = new Rectangle(200, 470, 900, 130);
-		Rectangle quitButton = new Rectangle(200, 630, 260, 130);
-		Rectangle credits = new Rectangle(520, 630, 260, 130);
-		Rectangle howToPlay = new Rectangle(840, 630, 260, 130);
+		Rectangle playButton = new Rectangle(200, 500, 900, 100);
+		Rectangle quitButton = new Rectangle(200, 630, 260, 100);
+		Rectangle credits = new Rectangle(520, 630, 260, 100);
+		Rectangle howToPlay = new Rectangle(840, 630, 260, 100);
 		
-		PShape shape = marker.createShape(PConstants.RECT, 200, 470, 900, 130, 20);
-		PShape shape2 = marker.createShape(PConstants.RECT, 200, 630, 260, 130, 20);
-		PShape shape3 = marker.createShape(PConstants.RECT, 520, 630, 260, 130, 20);
-		PShape shape4 = marker.createShape(PConstants.RECT, 840, 630, 260, 130, 20); 
+		PShape shape = marker.createShape(PConstants.RECT, 200, 500, 900, 100, 20);
+		PShape shape2 = marker.createShape(PConstants.RECT, 200, 630, 260, 100, 20);
+		PShape shape3 = marker.createShape(PConstants.RECT, 520, 630, 260, 100, 20);
+		PShape shape4 = marker.createShape(PConstants.RECT, 840, 630, 260, 100, 20); 
 		
 		int c1 = marker.color(204, 153, 0); // +230 -200
 		int c2 = marker.color(140, 153, 0);
@@ -84,12 +87,12 @@ public class Screen {
 		shape3.setFill(c1);
 		shape4.setFill(c1);
 		
-		hover(chooseHeroButton, shape, mouseX, mouseY, c1, c2);
+		hover(playButton, shape, mouseX, mouseY, c1, c2);
 		hover(quitButton, shape2, mouseX, mouseY, c1, c2);
 		hover(credits, shape3, mouseX, mouseY, c1, c2);
 		hover(howToPlay, shape4, mouseX, mouseY, c1, c2);
 		
-		if (chooseHeroButton.contains(cmouseX, cmouseY)) { // chooseHero screen
+		if (playButton.contains(cmouseX, cmouseY)) { // chooseHero screen
 			screenToggle = 2;
 			
 			return;
@@ -118,12 +121,12 @@ public class Screen {
 		marker.shape(shape4);
 		
 		marker.fill(0);
-		marker.text("Play", 565, 560);
+		marker.text("Play", 565, 570);
 		
 		marker.textSize(60);
-		marker.text("Quit", 260, 720);
-		marker.text("Credits", 550, 720);
-		marker.text("Help", 900, 720);
+		marker.text("Quit", 260, 700);
+		marker.text("Credits", 550, 700);
+		marker.text("Help", 900, 700);
 		
 	}
 	

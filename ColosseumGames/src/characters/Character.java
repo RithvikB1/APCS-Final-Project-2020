@@ -5,6 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import other.DrawingSurface;
+import other.Screen;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
@@ -22,8 +23,6 @@ public class Character extends Rectangle2D.Double {
 	private int w, h;
 	private double vx, vy;
 
-	
-	
 	/**
 	 * Creates a character either a playable hero or an enemy
 	 * @param spriteFile the file location for the sprite images
@@ -97,13 +96,13 @@ public class Character extends Rectangle2D.Double {
 			y = 40; 
 			//have 4 of these
 		}
-		if(x + w > DrawingSurface.SCREEN_WIDTH - 40) {
+		if(x + w > Screen.SCREEN_WIDTH - 40) {
 			vx = 0;
-			x = DrawingSurface.SCREEN_WIDTH - 40 - w;
+			x = Screen.SCREEN_WIDTH - 40 - w;
 		}
-		if(y + h > DrawingSurface.SCREEN_HEIGHT - 200) {
+		if(y + h > Screen.SCREEN_HEIGHT - 200) {
 			vy = 0;
-			y = DrawingSurface.SCREEN_HEIGHT - 200 - h;
+			y = Screen.SCREEN_HEIGHT - 200 - h;
 		}
 	}
 	/**
@@ -311,9 +310,6 @@ public class Character extends Rectangle2D.Double {
 	 */
 	public void spawn(PApplet marker) {
 		marker.image(spriteImage, (float)x, (float)y, w ,h);
-	}
-	
-	
-	
+	}	
 	
 }

@@ -27,9 +27,6 @@ public class DrawingSurface extends PApplet {
 	private Hero hero;
 	private Wave wave;
 	
-	public static final int SCREEN_WIDTH = 1300;
-	public static final int SCREEN_HEIGHT = 800;
-	
 	/**
 	 * Creates a DrawingSurface that can have all game components
 	 */
