@@ -87,26 +87,22 @@ public class Character extends Rectangle2D.Double {
 		super.x += vx;
 		super.y += vy;
 		
-		int minX = 40;
-		int minY = 40;
-		int maxX = 760;
-		int maxY = 450;
-		if(x < minX) {
+		if(x < 40) {
 			vx = 0;
-			x = minX;
+			x = 40;
 		} 
-		if(y < minY) {
+		if(y < 40) {
 			vy = 0;
-			y = minY; 
+			y = 40; 
 			//have 4 of these
 		}
-		if(x + w > maxX) {
+		if(x + w > 760) {
 			vx = 0;
-			x = maxX - w;
+			x = 760 - w;
 		}
-		if(y + h > maxY) {
+		if(y + h > 450) {
 			vy = 0;
-			y = maxY - h;
+			y = 450 - h;
 		}
 	}
 	/**
