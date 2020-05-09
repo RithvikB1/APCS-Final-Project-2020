@@ -1,10 +1,19 @@
 package characters;
 
+import java.awt.geom.Line2D;
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
 
 public class Hero extends Character {
+	private PImage spriteImage;
+	private double speed, atkSpeed, HP;
+	private double range;
+	private double damage;
+	private int w, h;
+	private double vx, vy;
 
 	/**
 	 * Creates a hero 
@@ -22,9 +31,54 @@ public class Hero extends Character {
 	public Hero(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		
+		//velocities
+		vx = 0;
+		vy = 0;
+		
+		//sprite
+		this.spriteImage = spriteImage;
+		
+		//stats
+		this.speed = speed;
+		this.atkSpeed = atkSpeed;
+		this.HP = HP;
+		
+		//weapon stats
+		this.range = range;
+		this.damage = damage;
 		
 	}
+	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies) {
+		double shotX = x;
+		double shotY = y;
+
+		double angle = Math.atan((mouseY - y)/(mouseX - x));
+		if(mouseX - x< 0) {
+			angle += Math.PI;
+		}
+		double maxXPoint = range * Math.cos(angle) + x;
+		double maxYPoint = range * Math.sin(angle) + y;
+		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
+
+		marker.stroke(20);
+		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
+		for(Enemy e: enemies) {
+			if(shot.intersects(e)) {
+				e.setHP(e.getHP() - 30);
+			}
+		}
+	}
 	
+	
+	
+	
+	
+
 	
 	
 	

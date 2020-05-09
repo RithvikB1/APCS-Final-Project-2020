@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import characters.Enemy;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -30,13 +31,17 @@ public class Harpy extends Enemy {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-	public void behave(Character c) {
-		super.behave(c);
+	public void behave(Character c, PApplet marker) {
+		super.behave(c, marker);
+		if(getDirectionAwayFromPlayer(c, 100) == 5) {
+			this.shoot(c.getX(), c.getY(), marker, c);
+		}
 		if(Math.abs(c.getX()-this.getX()) < 150 && Math.abs(c.getY()-this.getY()) < 150) {
-			this.walk(getDirectionAwayFromPlayer(c, 150));
+			this.walk(getDirectionAwayFromPlayer(c, 100));
 		}
 		else {
 			this.walk(getDirectionToPlayer(c));
 		}
+		
 	}
 }

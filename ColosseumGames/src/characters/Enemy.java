@@ -1,5 +1,7 @@
 package characters;
 
+import java.awt.geom.Line2D;
+
 import characters.Character;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -9,6 +11,12 @@ import processing.core.PImage;
  *
  */
 public abstract class Enemy extends Character {
+	private PImage spriteImage;
+	private double speed, atkSpeed, HP;
+	private double range;
+	private double damage;
+	private int w, h;
+	private double vx, vy;
 	
 	/**
 	 * Creates an Enemy
@@ -27,6 +35,26 @@ public abstract class Enemy extends Character {
 			int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		
+		//velocities
+		vx = 0;
+		vy = 0;
+		
+		//sprite
+		this.spriteImage = spriteImage;
+		
+		//stats
+		this.speed = speed;
+		this.atkSpeed = atkSpeed;
+		this.HP = HP;
+		
+		//weapon stats
+		this.range = range;
+		this.damage = damage;
 	}
 	
 	/**
@@ -35,7 +63,7 @@ public abstract class Enemy extends Character {
 	 * @param marker draws the enemy
 	 * @param enemyType the type of enemy
 	 */
-	public void behave(Character c) {
+	public void behave(Character c, PApplet marker) {
 		int vx = 0;
 		int vy = 0;
 		
@@ -86,6 +114,28 @@ public abstract class Enemy extends Character {
 			directionToPlayer = 5;
 		}
 		return directionToPlayer;
+	}
+	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero) {
+		double shotX = x;
+		double shotY = y;
+		
+		double angle = Math.atan((mouseY - y)/(mouseX - x));
+		if(mouseX - x< 0) {
+			angle += Math.PI;
+		}
+		double maxXPoint = range * Math.cos(angle) + x;
+		double maxYPoint = range * Math.sin(angle) + y;
+		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
+		
+		if(shot.intersects(hero)) {
+			hero.setHP(hero.getHP() - 10);
+		}
+		marker.pushMatrix();
+		marker.strokeWeight(10);
+		marker.stroke(255, 0, 0);
+		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);		
+		marker.popMatrix();
+			
 	}
 		
 	

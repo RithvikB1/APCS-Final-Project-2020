@@ -98,25 +98,21 @@ public class DrawingSurface extends PApplet {
 			wave.startWave(this, hero, harpy);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
-
-			enemiesInWave.get(i).behave(hero);
-			enemiesInWave.get(i).moveByVelocities();
-			enemiesInWave.get(i).spawn(this);
+			if(!enemiesInWave.get(i).die()) {
+				enemiesInWave.get(i).behave(hero, this);
+				enemiesInWave.get(i).moveByVelocities();
+				enemiesInWave.get(i).spawn(this);
+			}
 		}
-//		enemiesInWave.get(0).moveByVelocities();
-//		enemiesInWave.get(0).spawn(this);
-//		enemiesInWave.get(1).moveByVelocities();
-//		enemiesInWave.get(1).spawn(this);
-//		enemiesInWave.get(2).moveByVelocities();
-//		enemiesInWave.get(2).spawn(this);
-//		enemiesInWave.get(3).moveByVelocities();
-//		enemiesInWave.get(3).spawn(this);
+
 		
 		
-		hero.moveByVelocities();
-		hero.shoot(mouseX, mouseY, 300, this);
-		hero.spawn(this);
-		
+		if(!hero.die()) {
+			hero.moveByVelocities();
+			hero.spawn(this);
+		}
+		System.out.println(hero.getHP());
+		this.stroke(0);
 		this.line(40, 40, 760, 40);
 		
 		this.line(40, 40, 40, 450);
@@ -155,6 +151,9 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mouseDragged() {
 		screen.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
+		if(screen.getScreenToggle() == 0) {
+			hero.shoot(mouseX, mouseY, this, enemiesInWave);
+		}
 	}
 	
 	/**
@@ -162,6 +161,9 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mousePressed() {
 		screen.mousePressed(mouseX, mouseY);
+		if(screen.getScreenToggle() == 0) {
+			hero.shoot(mouseX, mouseY, this, enemiesInWave);
+		}
 	}
 	
 	/**

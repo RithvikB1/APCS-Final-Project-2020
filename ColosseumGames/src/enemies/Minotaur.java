@@ -31,8 +31,8 @@ public class Minotaur extends Enemy {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-	public void behave(Character c) {
-		super.behave(c);
+	public void behave(Character c, PApplet marker) {
+		super.behave(c, marker);
 		this.walk(getDirectionToPlayer(c));
 	}
 
