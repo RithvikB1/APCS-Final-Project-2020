@@ -61,6 +61,17 @@ public class DrawingSurface extends PApplet {
 		hercules.add(loadImage("sprites/Hercules/FacingLeft.png"));
 		hercules.add(loadImage("sprites/Hercules/HerculesSelected.png"));
 		hercules.add(loadImage("sprites/Hercules/PRESelectedHercules.png"));
+		hercules.add(loadImage("sprites/Hercules/AttackBack.gif"));
+		hercules.add(loadImage("sprites/Hercules/AttackFront.gif"));
+		hercules.add(loadImage("sprites/Hercules/AttackLeft.gif"));
+		hercules.add(loadImage("sprites/Hercules/AttackRight.gif"));
+		hercules.add(loadImage("sprites/Hercules/WalkBack.gif"));
+		hercules.add(loadImage("sprites/Hercules/WalkFront.gif"));
+		hercules.add(loadImage("sprites/Hercules/WalkLeft.gif"));
+		hercules.add(loadImage("sprites/Hercules/WalkRight.gif"));
+		
+
+		
 		
 		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
 		
@@ -93,7 +104,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		image(images.get(0), 0, 0, 800, 600);
-//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
+		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
 			wave.startWave(this, hero, harpy);
