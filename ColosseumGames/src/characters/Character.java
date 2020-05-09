@@ -4,6 +4,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+import other.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
@@ -96,13 +97,13 @@ public class Character extends Rectangle2D.Double {
 			y = 40; 
 			//have 4 of these
 		}
-		if(x + w > 760) {
+		if(x + w > DrawingSurface.SCREEN_WIDTH - 40) {
 			vx = 0;
-			x = 760 - w;
+			x = DrawingSurface.SCREEN_WIDTH - 40 - w;
 		}
-		if(y + h > 450) {
+		if(y + h > DrawingSurface.SCREEN_HEIGHT - 200) {
 			vy = 0;
-			y = 450 - h;
+			y = DrawingSurface.SCREEN_HEIGHT - 200 - h;
 		}
 	}
 	/**
@@ -123,11 +124,6 @@ public class Character extends Rectangle2D.Double {
 		vx += ax;
 		vy += ay;
 	}
-	
-	
-	
-	
-	
 	
 	/**
 	 * @return the speed

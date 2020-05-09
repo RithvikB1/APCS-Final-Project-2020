@@ -64,17 +64,17 @@ public class Screen {
 	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY) { 
 		marker.clear();
 		
-		marker.image(g, 0, 0, 800, 600);
+		marker.image(g, 0, 0, 1300, 800);
 		
-		Rectangle chooseHeroButton = new Rectangle(135, 370, 530, 60);
-		Rectangle quitButton = new Rectangle(135, 450, 130, 100);
-		Rectangle credits = new Rectangle(335, 450, 130, 100);
-		Rectangle howToPlay = new Rectangle(535, 450, 130, 100);
+		Rectangle chooseHeroButton = new Rectangle(200, 470, 900, 130);
+		Rectangle quitButton = new Rectangle(200, 630, 260, 130);
+		Rectangle credits = new Rectangle(520, 630, 260, 130);
+		Rectangle howToPlay = new Rectangle(840, 630, 260, 130);
 		
-		PShape shape = marker.createShape(PConstants.RECT, 135, 370, 530, 60, 20);
-		PShape shape2 = marker.createShape(PConstants.RECT, 135, 450, 130, 100, 20);
-		PShape shape3 = marker.createShape(PConstants.RECT, 335, 450, 130, 100, 20);
-		PShape shape4 = marker.createShape(PConstants.RECT, 535, 450, 130, 100, 20); 
+		PShape shape = marker.createShape(PConstants.RECT, 200, 470, 900, 130, 20);
+		PShape shape2 = marker.createShape(PConstants.RECT, 200, 630, 260, 130, 20);
+		PShape shape3 = marker.createShape(PConstants.RECT, 520, 630, 260, 130, 20);
+		PShape shape4 = marker.createShape(PConstants.RECT, 840, 630, 260, 130, 20); 
 		
 		int c1 = marker.color(204, 153, 0); // +230 -200
 		int c2 = marker.color(140, 153, 0);
@@ -110,7 +110,7 @@ public class Screen {
 			return;
 		}
 	
-		marker.textSize(32);
+		marker.textSize(75);
 		
 		marker.shape(shape);
 		marker.shape(shape2);
@@ -118,10 +118,12 @@ public class Screen {
 		marker.shape(shape4);
 		
 		marker.fill(0);
-		marker.text("Play", 370, 410);
-		marker.text("Quit", 165, 510);
-		marker.text("Credits", 345, 510);
-		marker.text("Lost?", 560, 510);
+		marker.text("Play", 565, 560);
+		
+		marker.textSize(60);
+		marker.text("Quit", 260, 720);
+		marker.text("Credits", 550, 720);
+		marker.text("Lost?", 900, 720);
 		
 	}
 	
@@ -137,27 +139,32 @@ public class Screen {
 	public void drawHeroMenu(PApplet marker, ArrayList<ArrayList> heroes, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		marker.background(marker.color(98, 102, 17));
 		
-		Rectangle previousArrow = new Rectangle(60, 225, 70, 140);
-		Rectangle nextArrow = new Rectangle(650, 225, 70, 140);
-		Rectangle next = new Rectangle(215, 480, 350, 70);
-		Rectangle backButton = new Rectangle(35, 450, 130, 100);
-		Rectangle settings = new Rectangle(600, 450, 130, 100);
-		Rectangle hero = new Rectangle(215, 100, 350, 350);
+		Rectangle previousArrow = new Rectangle(80, 215, 100, 200);
+		Rectangle nextArrow = new Rectangle(1120, 215, 100, 200);
+		Rectangle next = new Rectangle(370, 630, 560, 100); // next screen
+		Rectangle backButton = new Rectangle(60, 630, 260, 100);
+		Rectangle settings = new Rectangle(980, 630, 260, 100);
 		
-		PShape shape = marker.createShape(PConstants.RECT, 60, 225, 70, 140); // previous Arrow
-		PShape shape2 = marker.createShape(PConstants.RECT, 650, 225, 70, 140); // next Arrow
-		PShape shape3 = marker.createShape(PConstants.RECT, 215, 480, 350, 70, 20); // start button
-		PShape shape4 = marker.createShape(PConstants.RECT, 35, 450, 130, 100, 20); // back button
-		PShape shape5 = marker.createShape(PConstants.RECT, 615, 450, 130, 100, 20); // settings button
-		PShape shape6; // hero    
+		Rectangle hero = new Rectangle(450, 100, 420, 420);
+		
+		PShape shape = marker.createShape(PConstants.RECT, 80, 215, 100, 200); // previous Arrow
+		PShape shape2 = marker.createShape(PConstants.RECT, 1120, 215, 100, 200); // next Arrow
+		PShape shape3 = marker.createShape(PConstants.RECT, 385, 630, 560, 100, 20); // start button
+		PShape shape4 = marker.createShape(PConstants.RECT, 30, 630, 295, 100, 20); // back button
+		PShape shape5 = marker.createShape(PConstants.RECT, 1007, 630, 260, 100, 20); // settings button 
+		
+		PShape shape6 = marker.createShape(PConstants.RECT, 450, 540, 420, 70, 20);
 		
 		boolean isScrollPicked = previousArrow.contains(cmouseX, cmouseY) || nextArrow.contains(cmouseX, cmouseY);
+		
 		int c1 = marker.color(201, 147, 28);
 		int c2 = marker.color(143, 104, 19);
 		int c3 = marker.color(152, 176, 19);
 		int c4 = marker.color(122, 140, 17);
 		int c5 = marker.color(230, 132, 21);
 		int c6 = marker.color(153, 87, 12);
+		
+		shape6.setFill(255);
 		
 		hover(previousArrow, shape, mouseX, mouseY, c3, c4);
 		hover(nextArrow, shape2, mouseX, mouseY, c3, c4);
@@ -207,61 +214,56 @@ public class Screen {
 			}
 		}
 		
-		// TODO: heroes will actually be images, rectangles are placeholders for now
+		marker.textSize(60);
+		marker.fill(0);
+		
+		// heroes 3-5 are placeholder images for now
 		if (specificHero == 1) {
-			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
-			shape6.setFill(0);
-			shape6.setVisible(false);
-			marker.image((PImage) heroes.get(0).get(0), 215, 100, 350, 350);
+			marker.image((PImage) heroes.get(0).get(0), 450, 100, 420, 420);
+			marker.shape(shape6);
+			marker.text("Hercules", 530, 590);
 		}
 		else if (specificHero == 2) {
-			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
-			shape6.setFill(200);
-			shape6.setVisible(false);
-			marker.image((PImage) heroes.get(1).get(0), 215, 100, 350, 350);
-			
+			marker.image((PImage) heroes.get(1).get(0), 450, 100, 420, 420);
+			marker.shape(shape6);
+			marker.text("Achilles", 550, 590);
 		}
 		else if (specificHero == 3) {
-			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
-			shape6.setFill(150);
+			marker.image((PImage) heroes.get(2).get(0), 450, 100, 420, 420);
+			marker.shape(shape6);
+			marker.text("Chiron", 560, 590);
 		}
 		else if (specificHero == 4) {
-			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
-			shape6.setFill(100);
+			marker.image((PImage) heroes.get(3).get(0), 450, 100, 420, 420);
+			marker.shape(shape6);
+			marker.text("Helen", 570, 590);
 		}
 		else if (specificHero == 5) {
-			shape6 = marker.createShape(PConstants.RECT, 215, 100, 350, 350);
-			shape6.setFill(50);
-		}
-		else {
-			shape6 = null;
+			marker.image((PImage) heroes.get(4).get(0), 450, 100, 420, 420);
+			marker.shape(shape6);
+			marker.text("Perseus", 550, 590);
 		}
 		
 		marker.textSize(80);
-		marker.text("Choose Hero", 140, 70);
-		
-		marker.textSize(60);
+		marker.text("Choose Hero", 400, 70);
 		
 		marker.shape(shape);
 		marker.shape(shape2);
 		marker.shape(shape4);
 		marker.shape(shape5);
-		marker.shape(shape6);
 		
 		if (isHeroPicked)
 			marker.shape(shape3);
+	
+		marker.text("<", 100, 335);
+		marker.text(">", 1140, 335);
 		
-		marker.fill(0);
-		marker.text("<", 70, 310);
-		marker.text(">", 665, 310);
-		
-		marker.textSize(32);
-		
-		marker.text("Back", 65, 510);
-		marker.text("Settings", 620, 510);
+		marker.textSize(60);
+		marker.text("Settings", 1020, 700);
+		marker.text("Back", 105, 700);
 		
 		if (isHeroPicked)
-			marker.text("Next", 350, 525);
+			marker.text("Next", 590, 700);
 		
 	}
 	
@@ -288,7 +290,7 @@ public class Screen {
 	public void drawSettingsMenu(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
-		marker.image(g, 0, 0, 800, 600);
+		marker.image(g, 0, 0, 1300, 800);
 		
 		marker.fill(200, 150, 250);
 		
@@ -492,10 +494,10 @@ public class Screen {
 	public void drawRulesScreen(PApplet marker, PImage g, int mouseX, int mouseY) {
 		marker.clear();
 		
-		marker.image(g, 0, 0, 800, 600);
+		marker.image(g, 0, 0, 1300, 800);
 		
-		Rectangle backButton = new Rectangle(60, 450, 130, 100);
-		PShape shape = marker.createShape(PConstants.RECT, 60, 450, 130, 100, 20);
+		Rectangle backButton = new Rectangle(60, 600, 260, 130);
+		PShape shape = marker.createShape(PConstants.RECT, 60, 600, 260, 130, 20);
 		
 		int c1 = marker.color(204, 153, 0);
 		int c2 = marker.color(140, 153, 0);
@@ -508,11 +510,11 @@ public class Screen {
 			return;
 		}
 		
-		marker.textSize(32);
+		marker.textSize(60);
 		
 		marker.shape(shape);
 		marker.fill(0);
-		marker.text("Back", 90, 510);
+		marker.text("Back", 120, 690);
 		
 	}
 	
@@ -537,10 +539,10 @@ public class Screen {
 		marker.background(0);
 		
 		marker.fill(255);
-		marker.rect(100, 100, 550, 150);
+		//marker.rect(100, 100, 550, 150);
 		
-		Rectangle start = new Rectangle(215, 480, 350, 70);
-		PShape shape = marker.createShape(PConstants.RECT, 215, 480, 350, 70, 20);
+		Rectangle start = new Rectangle(300, 600, 700, 100);
+		PShape shape = marker.createShape(PConstants.RECT, 300, 600, 700, 100, 20);
 		
 		hover(start, shape, mouseX, mouseY, 200, 100);
 		
@@ -552,11 +554,10 @@ public class Screen {
 		
 		marker.shape(shape);
 		
-		marker.textSize(32);
+		marker.textSize(75);
 		
 		marker.fill(0);
-		marker.text("Start", 350, 525);
-	//	marker.line(x1, y1, x2, y2);
+		marker.text("Start", 555, 670);
 		
 	}
 	
@@ -665,25 +666,25 @@ public class Screen {
 		
 		if (specificHero == 1)
 		{
-			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000000, 50, 100, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 100000, 50, 100, 400, 300, 100, 100);
 			
 		}
 		else if (specificHero == 2) 
 		{
-			h = new Hero((PImage) heroes.get(1).get(0), 10, 10, 10 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(1).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
 		
 		else if (specificHero == 3)
 		{
-			
+			h = new Hero((PImage) heroes.get(2).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
 		else if (specificHero == 4)
 		{
-			
+			h = new Hero((PImage) heroes.get(3).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
 		else if (specificHero == 5)
 		{
-			
+			h = new Hero((PImage) heroes.get(4).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
 		
 		return h;

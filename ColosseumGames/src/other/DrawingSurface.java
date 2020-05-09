@@ -17,7 +17,7 @@ public class DrawingSurface extends PApplet {
 	
 	private Screen screen;
 	
-	private ArrayList<PImage> images, hercules, achilles, harpy, minotaur, bigBoi, miniBoss, finalBoss, enemies;
+	private ArrayList<PImage> images, hercules, achilles, perseus, helen, chiron, harpy, minotaur, bigBoi, miniBoss, finalBoss, enemies;
 	private ArrayList<ArrayList> heroes;
 	private ArrayList<Enemy> enemiesInWave;
 	
@@ -26,6 +26,9 @@ public class DrawingSurface extends PApplet {
 	private SoundFile file;
 	private Hero hero;
 	private Wave wave;
+	
+	public static final int SCREEN_WIDTH = 1300;
+	public static final int SCREEN_HEIGHT = 800;
 	
 	/**
 	 * Creates a DrawingSurface that can have all game components
@@ -46,6 +49,9 @@ public class DrawingSurface extends PApplet {
 		
 		hercules = new ArrayList<>();
 		achilles = new ArrayList<>();
+		chiron = new ArrayList<>();
+		helen = new ArrayList<>();
+		perseus = new ArrayList<>();
 		
 		harpy = new ArrayList<>();
 		minotaur = new ArrayList<>();
@@ -71,10 +77,13 @@ public class DrawingSurface extends PApplet {
 		hercules.add(loadImage("sprites/Hercules/WalkLeft.gif"));
 		hercules.add(loadImage("sprites/Hercules/WalkRight.gif"));
 		
-
-		
-		
 		achilles.add(loadImage("sprites/Achilles/PRESelectedAchilles.png"));
+		
+		chiron.add(loadImage("sprites/Chiron/Chiron.jpg"));
+		
+		helen.add(loadImage("sprites/Helen/Helen.png"));
+		
+		perseus.add(loadImage("sprites/Perseus/Perseus.png"));
 		
 		harpy.add(loadImage("sprites/Harpy/WalkRight.png"));
 		minotaur.add(loadImage("sprites/Minotaur/MinotaurFacingRight.png"));
@@ -84,8 +93,11 @@ public class DrawingSurface extends PApplet {
 		
 		heroes.add(hercules);
 		heroes.add(achilles);
+		heroes.add(chiron);
+		heroes.add(helen);
+		heroes.add(perseus);
 		
-		//file = new SoundFile(this, audioPath);
+		file = new SoundFile(this, audioPath);
 	}
 	
 	/**
@@ -93,7 +105,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		//playSound();
+		playSound();
 		
 		if (screen.getScreenToggle() != 0) {
 			screen.screenSifter(this, images.get(1), heroes, mouseX, mouseY);
@@ -106,7 +118,7 @@ public class DrawingSurface extends PApplet {
 			return;
 		}
 		
-		image(images.get(0), 0, 0, 800, 600);
+		image(images.get(0), 0, 0, 1300, 800);
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
@@ -123,21 +135,19 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		
-
-		
-		
 		if(!hero.die()) {
 			hero.moveByVelocities();
 			hero.spawn(this);
 		}
+		
 		this.stroke(0);
-		this.line(40, 40, 760, 40);
+		this.line(40, 40, 1260, 40);
 		
-		this.line(40, 40, 40, 450);
+		this.line(40, 40, 40, 600);
 		
-		this.line(40, 450, 760, 450);
+		this.line(40, 600, 1260, 600);
 		
-		this.line(760, 40, 760, 450);
+		this.line(1260, 40, 1260, 600);
 		
 		
 	}
