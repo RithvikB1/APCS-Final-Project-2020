@@ -38,11 +38,12 @@ public class Wave {
 			//and so on
 		}
 		else if(wave == 2) {
-			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 141, 100, 20, 300, 100, 100));
-			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 141, 100, 20, 450, 100, 100));
+			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 50, 100, 20, 300, 100, 100));
+			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 50, 100, 20, 450, 100, 100));
 			
 		}
 		else if(wave == 3) {
+			enemyList.add(new Minotaur(enemies.get(1), 20, 20, 10000, 50, 1000, 20, 450, 200, 200));
 
 		}
 		else if(wave == 4) {

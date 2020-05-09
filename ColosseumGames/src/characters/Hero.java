@@ -53,23 +53,21 @@ public class Hero extends Character {
 		this.damage = damage;
 		
 	}
-	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies) {
-		double shotX = x;
-		double shotY = y;
-
+public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY) {
+		
 		double angle = Math.atan((mouseY - y)/(mouseX - x));
 		if(mouseX - x< 0) {
 			angle += Math.PI;
 		}
-		double maxXPoint = range * Math.cos(angle) + x;
-		double maxYPoint = range * Math.sin(angle) + y;
+		double maxXPoint = range * Math.cos(angle) + shotX;
+		double maxYPoint = range * Math.sin(angle) + shotY;
 		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
 
 		marker.stroke(20);
 		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
 		for(Enemy e: enemies) {
 			if(shot.intersects(e)) {
-				e.setHP(e.getHP() - 30);
+				e.setHP(e.getHP() - damage);
 			}
 		}
 	}

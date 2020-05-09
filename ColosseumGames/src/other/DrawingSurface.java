@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import characters.Enemy;
 import characters.Hero;
+import enemies.Harpy;
+import enemies.Minotaur;
 import processing.core.*;
 import processing.sound.*;
 
@@ -128,6 +130,11 @@ public class DrawingSurface extends PApplet {
 				enemiesInWave.get(i).spawn(this);
 			}
 			else {
+				if(enemiesInWave.get(i) instanceof Minotaur) {
+					hero.setHP(hero.getHP() + 100);
+				} else if(enemiesInWave.get(i) instanceof Harpy) {
+					hero.setHP(hero.getHP() + 50);
+				}
 				enemiesInWave.remove(i);
 			}
 		}
@@ -195,7 +202,7 @@ public class DrawingSurface extends PApplet {
 	public void mouseDragged() {
 		screen.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
 		if(screen.getScreenToggle() == 0) {
-			hero.shoot(mouseX, mouseY, this, enemiesInWave);
+			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
 		}
 	}
 	
@@ -205,7 +212,7 @@ public class DrawingSurface extends PApplet {
 	public void mousePressed() {
 		screen.mousePressed(mouseX, mouseY);
 		if(screen.getScreenToggle() == 0) {
-			hero.shoot(mouseX, mouseY, this, enemiesInWave);
+			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
 		}
 	}
 	

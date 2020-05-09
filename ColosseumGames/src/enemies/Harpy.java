@@ -34,7 +34,7 @@ public class Harpy extends Enemy {
 	public void behave(Character c, PApplet marker) {
 		super.behave(c, marker);
 		if(getDirectionAwayFromPlayer(c, 100) == 5) {
-			this.shoot(c.getX(), c.getY(), marker, c);
+			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
 		}
 		if(Math.abs(c.getX()-this.getX()) < 150 && Math.abs(c.getY()-this.getY()) < 150) {
 			this.walk(getDirectionAwayFromPlayer(c, 100));
