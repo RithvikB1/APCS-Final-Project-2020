@@ -96,7 +96,6 @@ public class DrawingSurface extends PApplet {
 //when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
-			System.out.println(wave.getWave());
 			wave.startWave(this, hero, harpy);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {

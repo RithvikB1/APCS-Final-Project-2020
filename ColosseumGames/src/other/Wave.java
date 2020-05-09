@@ -29,8 +29,6 @@ public class Wave {
 		
 		
 		if(wave == 1) {
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 20, 50, 50));
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 400, 50, 50));
 			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 20, 300, 50, 50));
 			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 750, 300, 50, 50));
 
