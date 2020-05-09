@@ -95,6 +95,8 @@ public class DrawingSurface extends PApplet {
 		image(images.get(0), 0, 0, 800, 600);
 //when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
+			wave.setWave(wave.getWave() + 1);
+			System.out.println(wave.getWave());
 			wave.startWave(this, hero, harpy);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
@@ -103,7 +105,11 @@ public class DrawingSurface extends PApplet {
 				enemiesInWave.get(i).moveByVelocities();
 				enemiesInWave.get(i).spawn(this);
 			}
+			else {
+				enemiesInWave.remove(i);
+			}
 		}
+		
 
 		
 		
@@ -111,7 +117,6 @@ public class DrawingSurface extends PApplet {
 			hero.moveByVelocities();
 			hero.spawn(this);
 		}
-		System.out.println(hero.getHP());
 		this.stroke(0);
 		this.line(40, 40, 760, 40);
 		

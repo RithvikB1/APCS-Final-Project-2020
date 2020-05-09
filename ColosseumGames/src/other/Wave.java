@@ -17,7 +17,7 @@ public class Wave {
 	ArrayList<Enemy> enemyList;
 	
 	public Wave() {
-		wave = 1;
+		wave = 0;
 		enemyList = new ArrayList<Enemy>();
 	}
 	
@@ -38,7 +38,10 @@ public class Wave {
 			//and so on
 		}
 		else if(wave == 2) {
-
+			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 20, 50, 50));
+			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 400, 50, 50));
+			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 20, 300, 50, 50));
+			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 750, 300, 50, 50));
 		}
 		else if(wave == 3) {
 
