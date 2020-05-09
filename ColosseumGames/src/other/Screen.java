@@ -66,8 +66,12 @@ public class Screen {
 	 */
 	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY) { 
 		marker.clear();
+		marker.pushStyle();
 		
+		marker.tint(255, 126);
 		marker.image(g, 0, 0, 1300, 800);
+		
+		marker.popStyle();
 		
 		Rectangle playButton = new Rectangle(200, 500, 900, 100);
 		Rectangle quitButton = new Rectangle(200, 630, 260, 100);
@@ -572,7 +576,7 @@ public class Screen {
 	 */
 	public void drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
 		marker.rect(200, 150, 400, 300, 7);
-		
+	
 		Rectangle resumeButton = new Rectangle(230, 400, 90, 40);
 		Rectangle quitButton = new Rectangle(480, 400, 90, 100);
 		
@@ -608,8 +612,19 @@ public class Screen {
 	 * Creates a menu that shows up when user wants to upgrade stats or weapons with a merchant
 	 * @param marker allows PApplet access
 	 */
-	public void drawMerchantMenu(PApplet marker) {
+	public void drawMerchantMenu(PApplet marker, int mouseX, int mouseY) {
+		//marker.pushStyle();
 		
+		marker.fill(200, 150, 250);
+		
+		marker.rect(100, 100, 1100, 440);
+		
+		if (mouseX >= 1000) {
+			screenToggle = 0;
+			
+			return;
+		}
+		//marker.popStyle();
 	}
 	
 	/**
@@ -650,6 +665,10 @@ public class Screen {
 		}
 		else if (screenToggle == 8) {
 			drawPauseMenu(marker, mouseX, mouseY);
+			resetClick();
+		}
+		else if (screenToggle == 9) {
+			drawMerchantMenu(marker, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == -1) { // special value for quitting the program
