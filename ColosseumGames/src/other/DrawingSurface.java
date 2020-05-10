@@ -40,15 +40,6 @@ public class DrawingSurface extends PApplet {
 		wave = new Wave();
 		hero = null;
 		
-		enemiesInWave = wave.getEnemyList();
-	}
-	
-	/**
-	 * Loads all images, sounds, and sets temporary background color
-	 */
-	public void setup() {
-		background(255);
-		
 		images = new ArrayList<>();
 		heroes = new ArrayList<>();
 		
@@ -61,6 +52,14 @@ public class DrawingSurface extends PApplet {
 		harpy = new ArrayList<>();
 		minotaur = new ArrayList<>();
 		enemies = new ArrayList<>();
+		enemiesInWave = wave.getEnemyList();
+	}
+	
+	/**
+	 * Loads all images, sounds, and sets temporary background color
+	 */
+	public void setup() {
+		background(255);
 		
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/Arena.png"));
@@ -100,7 +99,6 @@ public class DrawingSurface extends PApplet {
 		heroes.add(helen);
 		heroes.add(perseus);
 		
-		frameRate(10);
 		file = new SoundFile(this, audioPath);
 	}
 	
@@ -130,7 +128,7 @@ public class DrawingSurface extends PApplet {
 		if (wave.getWave() == 4 && count == 0) { // merchant menu
 			screen.setScreenToggle(Screen.UPGRADE_MENU);
 			tint(0, 255, 126);
-			image(images.get(0), 0, 0, 1300, 800);
+			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 			
 			return;
 		}
@@ -139,12 +137,13 @@ public class DrawingSurface extends PApplet {
 			wave = new Wave();
 			enemiesInWave = wave.getEnemyList();
 			tint(255, 126, 0);
-			image(images.get(0), 0, 0, 1300, 800);
+			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
+			hero = null;
 			
 			return;
 		}
 		else {
-			image(images.get(0), 0, 0, 1300, 800);
+			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		}
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
@@ -191,11 +190,6 @@ public class DrawingSurface extends PApplet {
 			text("AttackSpeed: " + (int)hero.getAtkSpeed(), 544, 680);
 			
 			text("Damage: " + (int)hero.getDamage(), 961,680);
-		}
-		else {
-			textSize(100);
-			text("DEAD", 500, 750);
-			screen.drawDeathMenu(this, mouseX, mouseY);
 		}
 		
 		PShape pause = createShape(PConstants.RECT, 1150, 10, 50, 50);
@@ -246,7 +240,7 @@ public class DrawingSurface extends PApplet {
 		
 		Rectangle pause = new Rectangle(1150, 10, 50, 50);
 		
-		if (screen.getScreenToggle() == 0)
+		if (screen.getScreenToggle() == Screen.PLAY_GAME)
 			if (pause.contains(mouseX, mouseY))
 				screen.setScreenToggle(Screen.PAUSE);
 	}

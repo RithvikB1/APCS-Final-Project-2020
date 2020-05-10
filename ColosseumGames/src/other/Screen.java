@@ -33,6 +33,8 @@ public class Screen {
 	public static final int SCREEN_WIDTH = 1300;
 	public static final int SCREEN_HEIGHT = 800;
 	
+	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
+	
 	public static final int QUIT = -1, PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, CONFIRM_QUIT = 3, 
 			SETTINGS_MENU = 4, RULES = 5, CREDITS = 6, CHOOSE_GAME = 7, PAUSE = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
 	/**
@@ -44,7 +46,7 @@ public class Screen {
 		waveNumber = 20;  // 20 waves by default
 		
 		screenToggle = START_MENU; // start menu, default
-		specificHero = 1; // hercules, default
+		specificHero = HERCULES; 
 		
 		isHeroPicked = false;                                         
 		isSoundOn = false;
@@ -69,11 +71,10 @@ public class Screen {
 	 * @param mouseY the current y position of user mouse
 	 */
 	public void drawStartMenu(PApplet marker, PImage g, int mouseX, int mouseY) { 
-		marker.clear();
 		marker.pushStyle();
 		
 		marker.tint(255, 200);
-		marker.image(g, 0, 0, 1300, 800);
+		marker.image(g, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		marker.popStyle();
 		
@@ -149,7 +150,7 @@ public class Screen {
 	 */
 	public void drawHeroMenu(PApplet marker, PImage g, ArrayList<ArrayList> heroes, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
 		
-		marker.image(g, 0, 0, 1300, 800);
+		marker.image(g, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		Rectangle previousArrow = new Rectangle(80, 215, 100, 200);
 		Rectangle nextArrow = new Rectangle(1120, 215, 100, 200);
@@ -184,16 +185,16 @@ public class Screen {
 		hover(settings, shape5, mouseX, mouseY, c1, c2);
 		
 		if (previousArrow.contains(cmouseX, cmouseY)) {
-			if (specificHero != 1)
+			if (specificHero != HERCULES)
 				specificHero--;
 			else 
-				specificHero = 5;
+				specificHero = PERSEUS;
 		}
 		else if (nextArrow.contains(cmouseX, cmouseY)) {
-			if (specificHero != 5) 
+			if (specificHero != PERSEUS) 
 				specificHero++;
 			else 
-				specificHero = 1;
+				specificHero = HERCULES;
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
 			screenToggle = START_MENU;
@@ -230,27 +231,27 @@ public class Screen {
 		marker.fill(0);
 		
 		// heroes 3-5 are placeholder images for now
-		if (specificHero == 1) {
+		if (specificHero == HERCULES) {
 			marker.image((PImage) heroes.get(0).get(0), 450, 100, 420, 420);
 			marker.shape(shape6);
 			marker.text("Hercules", 530, 590);
 		}
-		else if (specificHero == 2) {
+		else if (specificHero == ACHILLES) {
 			marker.image((PImage) heroes.get(1).get(0), 450, 100, 420, 420);
 			marker.shape(shape6);
 			marker.text("Achilles", 550, 590);
 		}
-		else if (specificHero == 3) {
+		else if (specificHero == CHIRON) {
 			marker.image((PImage) heroes.get(2).get(0), 450, 100, 420, 420);
 			marker.shape(shape6);
 			marker.text("Chiron", 560, 590);
 		}
-		else if (specificHero == 4) {
+		else if (specificHero == HELEN) {
 			marker.image((PImage) heroes.get(3).get(0), 450, 100, 420, 420);
 			marker.shape(shape6);
 			marker.text("Helen", 570, 590);
 		}
-		else if (specificHero == 5) {
+		else if (specificHero == PERSEUS) {
 			marker.image((PImage) heroes.get(4).get(0), 450, 100, 420, 420);
 			marker.shape(shape6);
 			marker.text("Perseus", 550, 590);
@@ -300,9 +301,7 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawSettingsMenu(PApplet marker, PImage g, int mouseX, int mouseY) {
-		marker.clear();
-		
-		marker.image(g, 0, 0, 1300, 800);
+		marker.image(g, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		marker.fill(200, 150, 250);
 		
@@ -507,9 +506,7 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawRulesScreen(PApplet marker, PImage g, int mouseX, int mouseY) {
-		marker.clear();
-		
-		marker.image(g, 0, 0, 1300, 800);
+		marker.image(g, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		Rectangle backButton = new Rectangle(60, 600, 260, 130);
 		PShape shape = marker.createShape(PConstants.RECT, 60, 600, 260, 130, 20);
@@ -541,7 +538,7 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawCreditsScreen(PApplet marker, PImage i, int mouseX, int mouseY) {
-		marker.image(i, 0, 0, 1300, 800);
+		marker.image(i, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		marker.fill(255);
 		marker.rect(300, 150, 700, 500);
@@ -854,26 +851,25 @@ public class Screen {
 	{
 		Hero h = null;
 		
-		if (specificHero == 1)
+		if (specificHero == HERCULES)
 		{
 			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
 			
-			
 		}
-		else if (specificHero == 2) 
+		else if (specificHero == ACHILLES) 
 		{
 			h = new Hero((PImage) heroes.get(1).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
 		
-		else if (specificHero == 3)
+		else if (specificHero == CHIRON)
 		{
 			h = new Hero((PImage) heroes.get(2).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
-		else if (specificHero == 4)
+		else if (specificHero == HELEN)
 		{
 			h = new Hero((PImage) heroes.get(3).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
-		else if (specificHero == 5)
+		else if (specificHero == PERSEUS)
 		{
 			h = new Hero((PImage) heroes.get(4).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
 		}
@@ -904,7 +900,7 @@ public class Screen {
 	 */
 	public void resetSettings() {
 		adjuster = 240;
-		specificHero = 1;
+		specificHero = HERCULES;
 		isHeroPicked = false;
 		isSoundOn = false;
 		keyUp = 'W';
