@@ -33,14 +33,14 @@ public class Screen {
 	public static final int SCREEN_WIDTH = 1300;
 	public static final int SCREEN_HEIGHT = 800;
 	
-	public static final int PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, QUIT = 3, SETTINGS = 4, HOW_TO_PLAY = 5, 
-			CREDITS = 6, CHOOSE_GAME = 7, PAUSE = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
+	public static final int QUIT = -1, PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, CONFIRM_QUIT = 3, 
+			SETTINGS_MENU = 4, RULES = 5, CREDITS = 6, CHOOSE_GAME = 7, PAUSE = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
 	/**
 	 * Creates a new screen object
 	 */
 	public Screen() {
 		difficultyLevel = 2; // medium by default
-		adjuster = 240; // used for slider, volume 0 by default
+		adjuster = 400; // used for slider, volume 0 by default
 		waveNumber = 20;  // 20 waves by default
 		
 		screenToggle = START_MENU; // start menu, default
@@ -111,7 +111,7 @@ public class Screen {
 			return;
 		}
 		else if (howToPlay.contains(cmouseX, cmouseY)) {
-			screenToggle = HOW_TO_PLAY;
+			screenToggle = RULES;
 			
 			return;
 		}
@@ -201,7 +201,7 @@ public class Screen {
 			return;
 		}
 		else if (settings.contains(cmouseX, cmouseY)) {
-			screenToggle = SETTINGS;
+			screenToggle = SETTINGS_MENU;
 			
 			return;
 		}
@@ -306,46 +306,46 @@ public class Screen {
 		
 		marker.fill(200, 150, 250);
 		
-		marker.rect(200, 10, 400, 500, 7);
+		marker.rect(325, 50, 650, 650, 7);
 		
 		marker.stroke(0);
 		
 		// divider lines
-		marker.line(200, 70, 600, 70);
-		marker.line(200, 160, 600, 160);
-		marker.line(200, 300, 600, 300);
+		marker.line(325, 130, 975, 130);
+		marker.line(325, 260, 975, 260);
+		marker.line(325, 420, 975, 420);
 		
-		marker.line(240, 240, 560, 240); // volume line
-		marker.line(400, 215, 400, 265); // halfway
-		marker.line(320, 215, 320, 265); // first quarter
-		marker.line(480, 215, 480, 265); // third quarter
+		marker.line(400, 370, 900, 370); // volume line
+		marker.line(650, 330, 650, 410); // halfway
+		marker.line(525, 330, 525, 410); // first quarter
+		marker.line(775, 330, 775, 410); // third quarter
 		
-		if (adjuster >= 530) {
-			adjuster = 530;
+		if (adjuster >= 860) {
+			adjuster = 860;
 		}
-		else if (adjuster <= 240) {
-			adjuster = 240;
+		else if (adjuster <= 400) {
+			adjuster = 400;
 		}
 		
-		Rectangle soundOn = new Rectangle(450, 80, 60, 60);
-		Rectangle soundOff = new Rectangle(510, 80, 60, 60);
-		Rectangle backButton = new Rectangle(35, 450, 130, 100);
-		Rectangle sliderArea = new Rectangle(240, 240, 320, 35); // does not have a PShape, not to be confused with slider
-		Rectangle upKey = new Rectangle(370, 360, 60, 60);
-		Rectangle downKey = new Rectangle(370, 430, 60, 60);
-		Rectangle leftKey = new Rectangle(300, 430, 60, 60);
-		Rectangle rightKey = new Rectangle(440, 430, 60, 60);
-		Rectangle resetSettings = new Rectangle(540, 520, 60, 40);
+		Rectangle soundOn = new Rectangle(740, 152, 80, 80);
+		Rectangle soundOff = new Rectangle(820, 152, 80, 80);
+		Rectangle backButton = new Rectangle(25, 620, 260, 130);
+		Rectangle sliderArea = new Rectangle(400, 350, 900, 50); // does not have a PShape, not to be confused with slider
+		Rectangle upKey = new Rectangle(610, 515, 80, 80);
+		Rectangle downKey = new Rectangle(610, 605, 80, 80);
+		Rectangle leftKey = new Rectangle(520, 605, 80, 80);
+		Rectangle rightKey = new Rectangle(700, 605, 80, 80);
+		Rectangle resetSettings = new Rectangle(1000, 650, 150, 100);
 		
-		PShape shape = marker.createShape(PConstants.RECT, 450, 80, 60, 60); // on
-		PShape shape2 = marker.createShape(PConstants.RECT, 510, 80, 60, 60); // off
-		PShape shape3 = marker.createShape(PConstants.RECT, 35, 450, 130, 100, 20); // back button
-		PShape shape4 = marker.createShape(PConstants.RECT, adjuster, 223, 30, 35); // slider
-		PShape shape5 = marker.createShape(PConstants.RECT, 370, 360, 60, 60); // up key
-		PShape shape6 = marker.createShape(PConstants.RECT, 370, 430, 60, 60); // down key
-		PShape shape7 = marker.createShape(PConstants.RECT, 300, 430, 60, 60); // left key
-		PShape shape8 = marker.createShape(PConstants.RECT, 440, 430, 60, 60); // right key
-		PShape shape9 = marker.createShape(PConstants.RECT, 540, 520, 60, 40, 20); // reset 
+		PShape shape = marker.createShape(PConstants.RECT, 740, 152, 80, 80); // on
+		PShape shape2 = marker.createShape(PConstants.RECT, 820, 152, 80, 80); // off
+		PShape shape3 = marker.createShape(PConstants.RECT, 25, 620, 260, 130, 20); // back button
+		PShape shape4 = marker.createShape(PConstants.RECT, adjuster, 345, 40, 50); // slider (30, 35)
+		PShape shape5 = marker.createShape(PConstants.RECT, 610, 515, 80, 80); // up key
+		PShape shape6 = marker.createShape(PConstants.RECT, 610, 605, 80, 80); // down key
+		PShape shape7 = marker.createShape(PConstants.RECT, 520, 605, 80, 80); // left key
+		PShape shape8 = marker.createShape(PConstants.RECT, 700, 605, 80, 80); // right key
+		PShape shape9 = marker.createShape(PConstants.RECT, 1000, 650, 150, 100, 20); // reset 
 	
 		int c1 = marker.color(204, 153, 0);
 		int c2 = marker.color(140, 153, 0);
@@ -397,14 +397,14 @@ public class Screen {
 		
 		if (soundOn.contains(cmouseX, cmouseY)) {
 			if (!isSoundOn && getVolume() == 0) 
-				adjuster = 270;
+				adjuster = 450;
 			
 			isSoundOn = true;
 			resetClick();
 		}
 		else if (soundOff.contains(cmouseX, cmouseY)) {
 			isSoundOn = false;
-			adjuster = 240;
+			adjuster = 400;
 			resetClick();
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
@@ -441,8 +441,6 @@ public class Screen {
 			resetClick();
 		}
 		
-		marker.textSize(32);
-		
 		marker.shape(shape);
 		marker.shape(shape2);
 		marker.shape(shape3);
@@ -454,15 +452,15 @@ public class Screen {
 		marker.shape(shape9);
 		
 		marker.fill(0);
+		marker.textSize(50);
 		
-		marker.text("Back", 65, 510);
-		marker.text("Sound?", 240, 120);
-		marker.text("On", 460, 120);
-		marker.text("Off", 515, 120);
-		marker.text("Volume", 340, 198);
-		marker.text("<", 229, 250);
-		marker.text(">", 548, 250);
-		marker.text("Change Keys", 300, 340);
+		marker.text("Sound?", 360, 210);
+		marker.text("On", 745, 210);
+		marker.text("Off", 820, 210);
+		marker.text("Volume", 550, 310);
+		marker.text("<", 382, 385);
+		marker.text(">", 880, 385);
+		marker.text("Change Keys", 500, 475);
 		
 		String keys[] = {keyUp + "", keyDown + "", keyLeft + "", keyRight + ""};
 		int[] arrowNums = {38, 40, 37, 39};
@@ -483,17 +481,21 @@ public class Screen {
 			count++;
 		}
 		
-		marker.text(keys[0], 387, 400);
-		marker.text(keys[1], 392, 470);
-		marker.text(keys[2], 323, 470);
-		marker.text(keys[3], 460, 470);
+		marker.text(keys[0], 630, 575);
+		marker.text(keys[1], 635, 665);
+		marker.text(keys[2], 540, 665);
+		marker.text(keys[3], 720, 665);
 		
-		marker.textSize(15);
-		marker.text("Reset", 550, 545);
+		marker.textSize(40);
+		marker.text("Reset", 1020, 710);
 		
-		marker.textSize(55);
+		marker.textSize(60);
 		
-		marker.text("Settings", 290, 57);
+		marker.text("Back", 90, 705);
+		
+		marker.textSize(70);
+		
+		marker.text("Settings", 530, 110);
 		
 	}
 	
@@ -527,7 +529,7 @@ public class Screen {
 		
 		marker.shape(shape);
 		marker.fill(0);
-		marker.text("Back", 120, 690);
+		marker.text("Back", 120, 685);
 		
 	}
 	
@@ -539,7 +541,37 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawCreditsScreen(PApplet marker, PImage i, int mouseX, int mouseY) {
+		marker.image(i, 0, 0, 1300, 800);
 		
+		marker.fill(255);
+		marker.rect(300, 150, 700, 500);
+		
+		Rectangle backButton = new Rectangle(25, 620, 260, 130);
+		PShape shape = marker.createShape(PConstants.RECT, 25, 620, 260, 130, 20);
+		
+		int c1 = marker.color(204, 153, 0);
+		int c2 = marker.color(140, 153, 0);
+		
+		hover(backButton, shape, mouseX, mouseY, c1, c2);
+		
+		if (backButton.contains(cmouseX, cmouseY)) {
+			screenToggle = START_MENU;
+			
+			return;
+		}
+		
+		marker.shape(shape);
+		
+		marker.fill(0);
+		marker.textSize(80);
+		
+		marker.text("Rithvik Bhakhri", 350, 275);
+		marker.text("Aditya Senthilvel", 330, 425);
+		marker.text("Richard Huang", 360, 575);
+		
+		marker.textSize(60);
+		
+		marker.text("Back", 90, 705);
 	}
 	
 	/**
@@ -581,27 +613,44 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
-		marker.rect(200, 150, 400, 300, 7);
-	
-		Rectangle resumeButton = new Rectangle(230, 400, 90, 40);
-		Rectangle quitButton = new Rectangle(480, 400, 90, 100);
+		marker.pushStyle();
 		
-		PShape shape = marker.createShape(PConstants.RECT, 230, 400, 90, 40);
-		PShape shape2 = marker.createShape(PConstants.RECT, 480, 400, 90, 40);
+		marker.fill(0);
+		marker.rect(250, 100, 800, 500);
+	
+		Rectangle resumeButton = new Rectangle(270, 450, 200, 100);
+		Rectangle quitButton = new Rectangle(830, 450, 200, 100);
+		
+		PShape shape = marker.createShape(PConstants.RECT, 270, 450, 200, 100);
+		PShape shape2 = marker.createShape(PConstants.RECT, 830, 450, 200, 100);
 		
 		hover(resumeButton, shape, mouseX, mouseY, 255, 180);
 		hover(quitButton, shape2, mouseX, mouseY, 255, 180);
 		
 		if (resumeButton.contains(cmouseX, cmouseY)) {
+			screenToggle = PLAY_GAME;
 			return;
 		}
 		else if (quitButton.contains(cmouseX, cmouseY)) {
+			screenToggle = QUIT;
 			return;
 		}
 		
 		marker.shape(shape);
 		marker.shape(shape2);
 		
+		marker.fill(255);
+		marker.textSize(70);
+		
+		marker.text("Paused", 540, 300);
+		
+		marker.fill(0);
+		marker.textSize(40);
+		
+		marker.text("Resume", 300, 510);
+		marker.text("Quit", 885, 510);
+		
+		marker.popStyle();
 	}
 
 	/**
@@ -611,7 +660,43 @@ public class Screen {
 	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawDeathMenu(PApplet marker, int mouseX, int mouseY) { 
-	
+		marker.fill(200, 150, 250);
+		marker.stroke(0);
+		
+		marker.rect(300, 100, 700, 440);
+		marker.line(300, 200, 1000, 200);
+		marker.line(650, 200, 650, 540);
+		
+		Rectangle quit = new Rectangle(300, 200, 350, 340);
+		Rectangle restart = new Rectangle(650, 200, 350, 340);
+		
+		PShape shape = marker.createShape(PConstants.RECT, 300, 200, 350, 340);
+		PShape shape2 = marker.createShape(PConstants.RECT, 650, 200, 350, 340);
+		
+		hover(quit, shape, mouseX, mouseY, 255, 120);
+		hover(restart, shape2, mouseX, mouseY, 255, 120);
+		
+		if (quit.contains(cmouseX, cmouseY)) {
+			screenToggle = QUIT;
+			
+			return;
+		}
+		else if (restart.contains(cmouseX, cmouseY)) {
+			screenToggle = START_MENU;
+			resetSettings();
+			resetClick();
+			
+			return;
+		}
+		
+		marker.shape(shape);
+		marker.shape(shape2);
+		
+		marker.textSize(60);
+		marker.fill(0);
+		marker.text("You Died!", 500, 175);
+		marker.text("Quit", 410, 375);
+		marker.text("Restart", 710, 375);
 	}
 
 	/**
@@ -728,14 +813,13 @@ public class Screen {
 			drawHeroMenu(marker, background, heroes, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == QUIT) {
-			drawConfirmQuit(marker, mouseX, mouseY);
-			resetClick();
+		else if (screenToggle == QUIT) { // will eventually confirm quit
+			System.exit(0);
 		}
-		else if (screenToggle == SETTINGS) {
+		else if (screenToggle == SETTINGS_MENU) {
 			drawSettingsMenu(marker, background, mouseX, mouseY); // no resetting click due to key manipulation involved
 		}
-		else if (screenToggle == HOW_TO_PLAY) {
+		else if (screenToggle == RULES) {
 			drawRulesScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
@@ -757,9 +841,6 @@ public class Screen {
 		else if (screenToggle == DEATH_MENU) {
 			drawDeathMenu(marker, mouseX, mouseY);
 			resetClick();
-		}
-		else if (screenToggle == -1) { // special value for quitting the program
-			System.exit(0);
 		}
 	}
 	
@@ -848,9 +929,9 @@ public class Screen {
 	 * @param pmouseY the previous y position of the user's mouse
 	 */
 	public void mouseDragged(int mouseX, int mouseY, int pmouseX, int pmouseY) {
-		if (screenToggle == 4) {
+		if (screenToggle == SETTINGS_MENU) {
 			
-			Rectangle slider = new Rectangle(adjuster, 223, 30, 35);
+			Rectangle slider = new Rectangle(adjuster, 345, 40, 50);
 			
 			if (slider.contains(mouseX, mouseY)) {
 				if (mouseX > pmouseX) {
@@ -939,7 +1020,7 @@ public class Screen {
 	 * @return the volume as an int out of 100
 	 */
 	public int getVolume() {
-		int volume = (int)((adjuster - 240) / 290.0 * 100);
+		int volume = (int)((adjuster - 400) / 460.0 * 100);
 		
 		if (volume > 100) { // will not likely happen due to calculation, but to prevent sound library error
 			volume = 100;

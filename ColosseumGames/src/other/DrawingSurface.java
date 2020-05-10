@@ -1,5 +1,6 @@
 package other;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import characters.Enemy;
@@ -37,6 +38,9 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		screen = new Screen();
 		wave = new Wave();
+		hero = null;
+		
+		enemiesInWave = wave.getEnemyList();
 	}
 	
 	/**
@@ -57,8 +61,6 @@ public class DrawingSurface extends PApplet {
 		harpy = new ArrayList<>();
 		minotaur = new ArrayList<>();
 		enemies = new ArrayList<>();
-		
-		enemiesInWave = wave.getEnemyList();
 		
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/Arena.png"));
@@ -98,7 +100,8 @@ public class DrawingSurface extends PApplet {
 		heroes.add(helen);
 		heroes.add(perseus);
 		
-	//	file = new SoundFile(this, audioPath);
+		frameRate(10);
+		file = new SoundFile(this, audioPath);
 	}
 	
 	/**
@@ -106,12 +109,13 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-//		playSound();
+		playSound();
+		noTint();
 		
 		if (screen.getScreenToggle() != Screen.PLAY_GAME) {
 			screen.screenSifter(this, images.get(1), heroes, mouseX, mouseY);
 			
-			if (screen.getScreenToggle() == Screen.PLAY_GAME)
+			if (screen.getScreenToggle() == Screen.PLAY_GAME && hero == null)
 			{
 				hero = screen.choiceOfHero(heroes);
 			}
@@ -124,12 +128,25 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if (wave.getWave() == 4 && count == 0) { // merchant menu
-			screen.setScreenToggle(9);
-			System.out.println("hmm");
+			screen.setScreenToggle(Screen.UPGRADE_MENU);
+			tint(0, 255, 126);
+			image(images.get(0), 0, 0, 1300, 800);
+			
 			return;
 		}
+		else if (hero.die()) {
+			screen.setScreenToggle(Screen.DEATH_MENU);
+			wave = new Wave();
+			enemiesInWave = wave.getEnemyList();
+			tint(255, 126, 0);
+			image(images.get(0), 0, 0, 1300, 800);
+			
+			return;
+		}
+		else {
+			image(images.get(0), 0, 0, 1300, 800);
+		}
 		
-		image(images.get(0), 0, 0, 1300, 800);
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
@@ -177,13 +194,18 @@ public class DrawingSurface extends PApplet {
 		}
 		else {
 			textSize(100);
-			screen.setScreenToggle(Screen.DEATH_MENU);
 			text("DEAD", 500, 750);
 		}
 		
-		pushStyle();
+		PShape pause = createShape(PConstants.RECT, 1150, 10, 50, 50);
+		screen.hover(new Rectangle(1150, 10, 50, 50), pause, mouseX, mouseY, 255, 150);
+		shape(pause);
 		
 		this.stroke(0);
+		
+		pushStyle();
+		strokeWeight(0);
+		
 		this.line(40, 40, 1260, 40);
 		
 		this.line(40, 40, 40, 600);
@@ -192,9 +214,12 @@ public class DrawingSurface extends PApplet {
 		
 		this.line(1260, 40, 1260, 600);
 		
+		this.strokeWeight(10);
+		
+		this.line(1165, 20, 1165, 50);
+		this.line(1185, 20, 1185, 50);
+		
 		popStyle();
-		
-		
 	}
 	
 	/**
@@ -217,6 +242,12 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mouseClicked() {
 		screen.mouseClicked(mouseX, mouseY);
+		
+		Rectangle pause = new Rectangle(1150, 10, 50, 50);
+		
+		if (screen.getScreenToggle() == 0)
+			if (pause.contains(mouseX, mouseY))
+				screen.setScreenToggle(Screen.PAUSE);
 	}
 	
 	/**
@@ -272,10 +303,7 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == screen.getKeys()[3])
 		{
 			hero.walk(1);
-
-
-		}
-		
+		}	
 		
 	}
 	
