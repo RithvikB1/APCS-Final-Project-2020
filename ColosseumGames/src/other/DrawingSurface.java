@@ -161,6 +161,11 @@ public class DrawingSurface extends PApplet {
 			
 			text("Damage: " + (int)hero.getDamage(), 961,680);
 		}
+		else {
+			textSize(100);
+			
+			text("DEAD", 500, 750);
+		}
 		
 		this.stroke(0);
 		this.line(40, 40, 1260, 40);
@@ -201,7 +206,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mouseDragged() {
 		screen.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
-		if(screen.getScreenToggle() == 0) {
+		if(screen.getScreenToggle() == 0 && !hero.die()) {
 			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
 		}
 	}
@@ -211,7 +216,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void mousePressed() {
 		screen.mousePressed(mouseX, mouseY);
-		if(screen.getScreenToggle() == 0) {
+		if(screen.getScreenToggle() == 0 && !hero.die()) {
 			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
 		}
 	}
@@ -227,7 +232,7 @@ public class DrawingSurface extends PApplet {
 	 * Moves player according to what directional keys are pressed 
 	 */
 	public void keyPressed() {
-		if (hero == null) {
+		if (hero == null || hero.die()) {
 			return;
 		}
 	
