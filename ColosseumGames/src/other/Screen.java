@@ -68,7 +68,6 @@ public class Screen {
 		marker.clear();
 		marker.pushStyle();
 		
-		marker.tint(255, 126);
 		marker.image(g, 0, 0, 1300, 800);
 		
 		marker.popStyle();
@@ -604,8 +603,8 @@ public class Screen {
 	 * @param mouseX the current x position of the user mouse
 	 * @param mouseY the current y position of the user mouse
 	 */
-	public void drawDeathMenu(PApplet marker, int mouseX, int mouseY) { // returns false if user would like to quit game, true if user would like to play game again
-		
+	public void drawDeathMenu(PApplet marker, int mouseX, int mouseY) { 
+	
 	}
 
 	/**
@@ -624,6 +623,7 @@ public class Screen {
 			
 			return;
 		}
+		
 		//marker.popStyle();
 	}
 	
@@ -671,6 +671,10 @@ public class Screen {
 			drawMerchantMenu(marker, mouseX, mouseY);
 			resetClick();
 		}
+		else if (screenToggle == 10) {
+			drawDeathMenu(marker, mouseX, mouseY);
+			resetClick();
+		}
 		else if (screenToggle == -1) { // special value for quitting the program
 			System.exit(0);
 		}
@@ -688,7 +692,8 @@ public class Screen {
 		
 		if (specificHero == 1)
 		{
-			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000, 100, 100, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			
 			
 		}
 		else if (specificHero == 2) 
@@ -735,6 +740,8 @@ public class Screen {
 	 */
 	public void resetSettings() {
 		adjuster = 240;
+		specificHero = 1;
+		isHeroPicked = false;
 		isSoundOn = false;
 		keyUp = 'W';
 		keyDown = 'S';

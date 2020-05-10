@@ -59,7 +59,7 @@ public class DrawingSurface extends PApplet {
 		enemiesInWave = wave.getEnemyList();
 		
 		images.add(loadImage("files/images/Background.png"));
-		images.add(loadImage("files/images/TitleScreen.png"));
+		images.add(loadImage("files/images/Arena.png"));
 		
 		hercules.add(loadImage("sprites/Heroes/Hercules/FacingRight.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/FacingFront.png"));
@@ -152,7 +152,7 @@ public class DrawingSurface extends PApplet {
 			
 			line(0, 700, 1300, 700);
 			
-			text("HP: " + (int)hero.getHP() + "/100000", 370, 770);
+			text("HP: " + (int)hero.getHP() + "/10000", 370, 770);
 //			
 			textSize(30);
 //			fill(255);
@@ -165,7 +165,7 @@ public class DrawingSurface extends PApplet {
 		}
 		else {
 			textSize(100);
-			
+			screen.setScreenToggle(10);
 			text("DEAD", 500, 750);
 		}
 		

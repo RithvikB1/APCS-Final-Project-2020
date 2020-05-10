@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import characters.Enemy;
 import characters.Character;
 import enemies.*;
-import processing.core.PApplet;
-import processing.core.PImage;
+import processing.core.*;
 
 /**
  * Used to show the multiple and varied waves presented in the game

@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Enemy;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -30,4 +31,7 @@ public class MiniBoss extends Enemy {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void behave(PApplet marker, Character c) {
+		this.walk(2);
+	}
 }
