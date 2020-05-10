@@ -267,11 +267,6 @@ public class Character extends Rectangle2D.Double {
 
 	}
 	
-	public void stop()
-	{
-		vy = 0;
-		vx = 0;
-	}
 	/**
 	 * Checks if the character is dead
 	 * @return true if HP is 0 or less, otherwise false

@@ -195,6 +195,7 @@ public class DrawingSurface extends PApplet {
 		else {
 			textSize(100);
 			text("DEAD", 500, 750);
+			screen.drawDeathMenu(this, mouseX, mouseY);
 		}
 		
 		PShape pause = createShape(PConstants.RECT, 1150, 10, 50, 50);
@@ -317,6 +318,6 @@ public class DrawingSurface extends PApplet {
 		if (hero == null)
 			return;
 		
-		hero.stop();
+		hero.walk(5);
 	}
 }

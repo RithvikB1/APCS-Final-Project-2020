@@ -12,12 +12,10 @@ import processing.core.PImage;
  *
  */
 public abstract class Enemy extends Character {
-	private PImage spriteImage;
-	private double speed, atkSpeed, HP;
+	
 	private double range;
 	private double damage;
-	private int w, h;
-	private double vx, vy;
+	
 	
 	/**
 	 * Creates an Enemy
@@ -38,20 +36,7 @@ public abstract class Enemy extends Character {
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y = y;
-		this.w = w;
-		this.h = h;
 		
-		//velocities
-		vx = 0;
-		vy = 0;
-		
-		//sprite
-		this.spriteImage = spriteImage;
-		
-		//stats
-		this.speed = speed;
-		this.atkSpeed = atkSpeed;
-		this.HP = HP;
 		
 		//weapon stats
 		this.range = range;
@@ -70,6 +55,12 @@ public abstract class Enemy extends Character {
 		
 
 	}
+	/**
+	 * 
+	 * @param c the Character object that the Enemy object is receiving the opposite direction
+	 * @param distance the distance required to stay away from the Character object
+	 * @return the direction that the Enemy object will walk
+	 */
 	public int getDirectionAwayFromPlayer(Character c, double distance)
 	{
 		int directionAway = 0;
@@ -96,6 +87,11 @@ public abstract class Enemy extends Character {
 		return directionAway;
 		
 	}
+	/**
+	 * tells the Enemy object the direction another Character object
+	 * @param c Character object that the Enemy object is tracking
+	 * @return the direction to the Character object
+	 */
 	public int getDirectionToPlayer(Character c) {
 		int directionToPlayer = 0;
 		
@@ -113,6 +109,16 @@ public abstract class Enemy extends Character {
 		}
 		return directionToPlayer;
 	}
+	
+	/**
+	 * allows the Enemy object to attack another Character object
+	 * @param mouseX
+	 * @param mouseY
+	 * @param marker PApplet object needed to draw the shots
+	 * @param hero the Character that the Enemy object is aiming at
+	 * @param shotX
+	 * @param shotY
+	 */
 	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero, double shotX, double shotY) {
 		double angle = Math.atan((mouseY - y)/(mouseX - x));
 		if(mouseX - x< 0) {

@@ -35,26 +35,36 @@ public class Hero extends Character {
 		this.y = y;
 		this.w = w;
 		this.h = h;
-		
+
 		//velocities
 		vx = 0;
 		vy = 0;
-		
+
 		//sprite
 		this.spriteImage = spriteImage;
-		
+
 		//stats
 		this.speed = speed;
 		this.atkSpeed = atkSpeed;
 		this.HP = HP;
-		
+
 		//weapon stats
 		this.range = range;
 		this.damage = damage;
-		
+
 	}
-public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY) {
-		
+	
+	/**
+	 * gives the Hero object the ability to attack Enemy objects
+	 * @param mouseX
+	 * @param mouseY
+	 * @param marker
+	 * @param enemies
+	 * @param shotX
+	 * @param shotY
+	 */
+	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY) {
+
 		double angle = Math.atan((mouseY - y)/(mouseX - x));
 		if(mouseX - x< 0) {
 			angle += Math.PI;
@@ -64,7 +74,7 @@ public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy>
 		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
 
 		marker.pushStyle();
-		
+
 		marker.stroke(20);
 		marker.strokeWeight(10);
 		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
@@ -73,19 +83,19 @@ public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy>
 				e.setHP(e.getHP() - damage);
 			}
 		}
-		
+
 		marker.popStyle();
 	}
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 
 
 }

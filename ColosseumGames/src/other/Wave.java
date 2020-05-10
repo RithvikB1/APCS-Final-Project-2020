@@ -75,6 +75,10 @@ public class Wave {
 	public int getWave() {
 		return wave;
 	}
+	/**
+	 * gives the current list of enemies
+	 * @return the current list of enemies in the game
+	 */
 	public ArrayList<Enemy> getEnemyList(){
 		return enemyList;
 	}

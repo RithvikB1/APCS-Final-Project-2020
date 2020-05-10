@@ -31,6 +31,11 @@ public class Harpy extends Enemy {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * tells Harpy objects how to attack the Hero objects
+	 * @param c character objects that the Harpy is targeting
+	 * @param marker PApplet object needed to draw
+	 */
 	public void behave(Character c, PApplet marker) {
 		super.behave(c, marker);
 		if(getDirectionAwayFromPlayer(c, 100) == 5) {
