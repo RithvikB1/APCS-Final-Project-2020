@@ -63,13 +63,18 @@ public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy>
 		double maxYPoint = range * Math.sin(angle) + shotY;
 		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
 
+		marker.pushStyle();
+		
 		marker.stroke(20);
+		marker.strokeWeight(10);
 		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
 		for(Enemy e: enemies) {
 			if(shot.intersects(e)) {
 				e.setHP(e.getHP() - damage);
 			}
 		}
+		
+		marker.popStyle();
 	}
 	
 	

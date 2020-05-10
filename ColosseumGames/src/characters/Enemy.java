@@ -125,11 +125,13 @@ public abstract class Enemy extends Character {
 		if(shot.intersects(new Rectangle2D.Double(hero.getX() - 10, hero.getY() - 10, hero.getWidth() + 20, hero.getHeight() + 20))) {
 			hero.setHP(hero.getHP() - damage);
 		}
-		marker.pushMatrix();
+		marker.pushStyle();
+		
 		marker.strokeWeight(10);
 		marker.stroke(255, 0, 0);
-		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);		
-		marker.popMatrix();
+		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);
+		
+		marker.popStyle();
 			
 	}
 		

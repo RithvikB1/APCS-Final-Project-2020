@@ -28,9 +28,13 @@ public class Screen {
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
 	
+	private int statPicked;
+	
 	public static final int SCREEN_WIDTH = 1300;
 	public static final int SCREEN_HEIGHT = 800;
 	
+	public static final int PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, QUIT = 3, SETTINGS = 4, HOW_TO_PLAY = 5, 
+			CREDITS = 6, CHOOSE_GAME = 7, PAUSE = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
 	/**
 	 * Creates a new screen object
 	 */
@@ -39,7 +43,7 @@ public class Screen {
 		adjuster = 240; // used for slider, volume 0 by default
 		waveNumber = 20;  // 20 waves by default
 		
-		screenToggle = 1; // start menu, default
+		screenToggle = START_MENU; // start menu, default
 		specificHero = 1; // hercules, default
 		
 		isHeroPicked = false;                                         
@@ -68,6 +72,7 @@ public class Screen {
 		marker.clear();
 		marker.pushStyle();
 		
+		marker.tint(255, 200);
 		marker.image(g, 0, 0, 1300, 800);
 		
 		marker.popStyle();
@@ -96,22 +101,22 @@ public class Screen {
 		hover(howToPlay, shape4, mouseX, mouseY, c1, c2);
 		
 		if (playButton.contains(cmouseX, cmouseY)) { // chooseHero screen
-			screenToggle = 2;
+			screenToggle = CHOOSE_HERO;
 			
 			return;
 		}
 		else if (quitButton.contains(cmouseX, cmouseY)) {
-			screenToggle = 3;
+			screenToggle = QUIT;
 			
 			return;
 		}
 		else if (howToPlay.contains(cmouseX, cmouseY)) {
-			screenToggle = 5;
+			screenToggle = HOW_TO_PLAY;
 			
 			return;
 		}
 		else if (credits.contains(cmouseX, cmouseY)) {
-			screenToggle = 6;
+			screenToggle = CREDITS;
 			
 			return;
 		}
@@ -142,8 +147,9 @@ public class Screen {
 	 * @param mouseY the current y position of user mouse
 	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
-	public void drawHeroMenu(PApplet marker, ArrayList<ArrayList> heroes, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
-		marker.background(marker.color(98, 102, 17));
+	public void drawHeroMenu(PApplet marker, PImage g, ArrayList<ArrayList> heroes, /*int[] heroHealth, int[] heroAttackSpeed, int[] heroSpeed,*/ int mouseX, int mouseY) {
+		
+		marker.image(g, 0, 0, 1300, 800);
 		
 		Rectangle previousArrow = new Rectangle(80, 215, 100, 200);
 		Rectangle nextArrow = new Rectangle(1120, 215, 100, 200);
@@ -190,12 +196,12 @@ public class Screen {
 				specificHero = 1;
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
-			screenToggle = 1;
+			screenToggle = START_MENU;
 			
 			return;
 		}
 		else if (settings.contains(cmouseX, cmouseY)) {
-			screenToggle = 4;
+			screenToggle = SETTINGS;
 			
 			return;
 		}
@@ -213,7 +219,7 @@ public class Screen {
 			hover(next, shape3, mouseX, mouseY, c5, c6);
 			
 			if (next.contains(cmouseX, cmouseY)) { 
-				screenToggle = 7;
+				screenToggle = CHOOSE_GAME;
 				
 				return;
 				
@@ -402,7 +408,7 @@ public class Screen {
 			resetClick();
 		}
 		else if (backButton.contains(cmouseX, cmouseY)) {
-			screenToggle = 2;
+			screenToggle = CHOOSE_HERO;
 			resetClick();
 			
 			return;
@@ -432,6 +438,7 @@ public class Screen {
 			isDown = false;
 			isLeft = false;
 			isRight = false;
+			resetClick();
 		}
 		
 		marker.textSize(32);
@@ -511,7 +518,7 @@ public class Screen {
 		hover(backButton, shape, mouseX, mouseY, c1, c2);
 		
 		if (backButton.contains(cmouseX, cmouseY)) {
-			screenToggle = 1;
+			screenToggle = START_MENU;
 			
 			return;
 		}
@@ -553,7 +560,7 @@ public class Screen {
 		hover(start, shape, mouseX, mouseY, 200, 100);
 		
 		if (start.contains(cmouseX, cmouseY)) {
-			screenToggle = 0;
+			screenToggle = PLAY_GAME;
 			
 			return;
 		}
@@ -611,20 +618,97 @@ public class Screen {
 	 * Creates a menu that shows up when user wants to upgrade stats or weapons with a merchant
 	 * @param marker allows PApplet access
 	 */
-	public void drawMerchantMenu(PApplet marker, int mouseX, int mouseY) {
-		//marker.pushStyle();
-		
+	public void drawMerchantMenu(PApplet marker, int mouseX, int mouseY) {	
 		marker.fill(200, 150, 250);
+		marker.stroke(0);
 		
 		marker.rect(100, 100, 1100, 440);
+		marker.line(100, 200, 1200, 200);
 		
-		if (mouseX >= 1000) {
-			screenToggle = 0;
+		Rectangle atkSpeed = new Rectangle(210, 250, 220, 100);
+		Rectangle health = new Rectangle(540, 250, 220, 100);
+		Rectangle speed = new Rectangle(870, 250, 220, 100);
+		Rectangle confirm = new Rectangle(485, 420, 330, 100);
+		
+		PShape shape = marker.createShape(PConstants.RECT, 210, 250, 220, 100);
+		PShape shape2 = marker.createShape(PConstants.RECT, 540, 250, 220, 100);
+		PShape shape3 = marker.createShape(PConstants.RECT, 870, 250, 220, 100);
+		PShape shape4 = marker.createShape(PConstants.RECT, 485, 420, 330, 100);
+		
+		boolean isClicked = atkSpeed.contains(cmouseX, cmouseY) || health.contains(cmouseX, cmouseY) || speed.contains(cmouseX, cmouseY);
+		
+		int c1 = marker.color(204, 153, 0); // +230 -200
+		int c2 = marker.color(140, 153, 0);
+		int c3 = marker.color(140, 220, 0);
+		
+		hover(atkSpeed, shape, mouseX, mouseY, c1, c2);
+		hover(health, shape2, mouseX, mouseY, c1, c2);
+		hover(speed, shape3, mouseX, mouseY, c1, c2);
+		
+		if (atkSpeed.contains(cmouseX, cmouseY)) {
+			shape.setFill(marker.color(255, 0, 0));
+			//statPicked = 1;
+		}
+		else if (health.contains(cmouseX, cmouseY)) {
+			shape2.setFill(marker.color(255, 0, 0));
+			//statPicked = 2;
+		}
+		else if (speed.contains(cmouseX, cmouseY)) {
+			shape3.setFill(marker.color(255, 0, 0));
+			//statPicked = 3;
+		}
+		else {
+			resetClick();
+		}
+		
+		if (isClicked) {
+			hover(confirm, shape4, mouseX, mouseY, c1, c2);
+			
+			marker.shape(shape4);
+		}
+		
+		if (confirm.contains(cmouseX, cmouseY)) {
+			screenToggle = PLAY_GAME;
+			resetClick();
 			
 			return;
 		}
 		
-		//marker.popStyle();
+		marker.shape(shape);
+		marker.shape(shape2);
+		marker.shape(shape3);
+		
+		marker.fill(c3);
+		marker.ellipseMode(PConstants.CORNER);
+		marker.textSize(30);
+		
+		if (atkSpeed.contains(mouseX, mouseY)) {
+			marker.arc(210, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
+			marker.fill(0);
+			marker.text("+5", 295, 380);
+		}
+		else if (health.contains(mouseX, mouseY)) {
+			marker.arc(540, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
+			marker.fill(0);
+			marker.text("+10", 615, 380);
+		}
+		else if (speed.contains(mouseX, mouseY)) {
+			marker.arc(870, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
+			marker.fill(0);
+			marker.text("+5", 960, 380);
+		}
+		
+		marker.textSize(60);
+		marker.fill(0);
+		marker.text("Upgrade Stats", 450, 175);
+		
+		marker.textSize(40);
+		marker.text("AtkSpeed", 230, 315);
+		marker.text("Health", 590, 315);
+		marker.text("Speed", 925, 315);
+		
+		if (isClicked) 
+			marker.text("Confirm", 570, 485);
 	}
 	
 	/**
@@ -636,42 +720,41 @@ public class Screen {
 	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
 	public void screenSifter(PApplet marker, PImage background, ArrayList<ArrayList> heroes, int mouseX, int mouseY) {
-		if (screenToggle == 1) {
+		if (screenToggle == START_MENU) {
 			drawStartMenu(marker, background, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 2) {
-			drawHeroMenu(marker, heroes, mouseX, mouseY);
+		else if (screenToggle == CHOOSE_HERO) {
+			drawHeroMenu(marker, background, heroes, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 3) {
+		else if (screenToggle == QUIT) {
 			drawConfirmQuit(marker, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 4) {
+		else if (screenToggle == SETTINGS) {
 			drawSettingsMenu(marker, background, mouseX, mouseY); // no resetting click due to key manipulation involved
 		}
-		else if (screenToggle == 5) {
+		else if (screenToggle == HOW_TO_PLAY) {
 			drawRulesScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 6) {
+		else if (screenToggle == CREDITS) {
 			drawCreditsScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 7) {
+		else if (screenToggle == CHOOSE_GAME) {
 			drawChooseGameScreen(marker, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 8) {
+		else if (screenToggle == PAUSE) {
 			drawPauseMenu(marker, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == 9) {
+		else if (screenToggle == UPGRADE_MENU) {
 			drawMerchantMenu(marker, mouseX, mouseY);
-			resetClick();
 		}
-		else if (screenToggle == 10) {
+		else if (screenToggle == DEATH_MENU) {
 			drawDeathMenu(marker, mouseX, mouseY);
 			resetClick();
 		}

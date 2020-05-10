@@ -21,6 +21,7 @@ public class DrawingSurface extends PApplet {
 	
 	private ArrayList<PImage> images, hercules, achilles, perseus, helen, chiron, harpy, minotaur, bigBoi, miniBoss, finalBoss, enemies;
 	private ArrayList<ArrayList> heroes;
+	
 	private ArrayList<Enemy> enemiesInWave;
 	
 	private String audioPath = "files/audio/smash.wav";
@@ -28,6 +29,7 @@ public class DrawingSurface extends PApplet {
 	private SoundFile file;
 	private Hero hero;
 	private Wave wave;
+	private int count;
 	
 	/**
 	 * Creates a DrawingSurface that can have all game components
@@ -96,7 +98,7 @@ public class DrawingSurface extends PApplet {
 		heroes.add(helen);
 		heroes.add(perseus);
 		
-		file = new SoundFile(this, audioPath);
+	//	file = new SoundFile(this, audioPath);
 	}
 	
 	/**
@@ -104,16 +106,26 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		playSound();
+//		playSound();
 		
-		if (screen.getScreenToggle() != 0) {
+		if (screen.getScreenToggle() != Screen.PLAY_GAME) {
 			screen.screenSifter(this, images.get(1), heroes, mouseX, mouseY);
 			
-			if (screen.getScreenToggle() == 0)
+			if (screen.getScreenToggle() == Screen.PLAY_GAME)
 			{
 				hero = screen.choiceOfHero(heroes);
 			}
 			
+			if (screen.getScreenToggle() == Screen.UPGRADE_MENU) {
+				count = 1;
+			}
+			
+			return;
+		}
+		
+		if (wave.getWave() == 4 && count == 0) { // merchant menu
+			screen.setScreenToggle(9);
+			System.out.println("hmm");
 			return;
 		}
 		
@@ -165,9 +177,11 @@ public class DrawingSurface extends PApplet {
 		}
 		else {
 			textSize(100);
-			screen.setScreenToggle(10);
+			screen.setScreenToggle(Screen.DEATH_MENU);
 			text("DEAD", 500, 750);
 		}
+		
+		pushStyle();
 		
 		this.stroke(0);
 		this.line(40, 40, 1260, 40);
@@ -177,6 +191,8 @@ public class DrawingSurface extends PApplet {
 		this.line(40, 600, 1260, 600);
 		
 		this.line(1260, 40, 1260, 600);
+		
+		popStyle();
 		
 		
 	}

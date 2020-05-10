@@ -1,7 +1,6 @@
 package other;
-import java.awt.Dimension;
-import java.io.*;
 
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import processing.awt.PSurfaceAWT;
@@ -15,10 +14,11 @@ public class Main {
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
-
-		window.setSize(1300, 800);
-		window.setLocation(50, 0);
-		window.setMinimumSize(new Dimension(100,100));
+		
+		window.setLocation(65, 0);
+		window.setMinimumSize(new Dimension(1300, 800));
+		window.setMaximumSize(new Dimension(1300, 800));
+		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 
