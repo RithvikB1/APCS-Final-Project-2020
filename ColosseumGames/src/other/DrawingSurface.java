@@ -125,8 +125,10 @@ public class DrawingSurface extends PApplet {
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
-				enemiesInWave.get(i).behave(hero, this);
-				enemiesInWave.get(i).moveByVelocities();
+				if(!hero.die()) {
+					enemiesInWave.get(i).behave(hero, this);
+					enemiesInWave.get(i).moveByVelocities();
+				}
 				enemiesInWave.get(i).spawn(this);
 			}
 			else {
