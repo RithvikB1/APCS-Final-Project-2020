@@ -12,9 +12,13 @@ import processing.core.*;
  *
  */
 public class Wave {
-	private int wave;
-	ArrayList<Enemy> enemyList;
 	
+	private int wave;
+	private ArrayList<Enemy> enemyList;
+	
+	/**
+	 * Creates a wave object
+	 */
 	public Wave() {
 		wave = 0;
 		enemyList = new ArrayList<Enemy>();
@@ -23,6 +27,7 @@ public class Wave {
 	/**
 	 * Used to draw the waves as dependent on the current wave the user is on
 	 * @param marker allows PApplet access
+	 * @param enemies the sprites used for the enemies used in waves
 	 */
 	public void startWave(PApplet marker, Character c, ArrayList<PImage> enemies) {
 		

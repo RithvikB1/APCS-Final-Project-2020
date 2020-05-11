@@ -14,7 +14,7 @@ public class MiniBoss extends Enemy {
 
 	/**
 	 * Creates an Enemy
-	 * @param spriteFile the image/looks of the enemy
+	 * @param spriteImage the image of the character
 	 * @param speed how fast the enemy moves
 	 * @param atkSpeed how fast the enemy attacks
 	 * @param HP how much damage a enemy can take before dying
@@ -29,9 +29,5 @@ public class MiniBoss extends Enemy {
 			int y, int w, int h) {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
-	}
-
-	public void behave(PApplet marker, Character c) {
-		this.walk(2);
 	}
 }

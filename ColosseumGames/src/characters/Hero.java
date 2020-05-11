@@ -17,7 +17,7 @@ public class Hero extends Character {
 
 	/**
 	 * Creates a hero 
-	 * @param spriteFile the image/looks of the hero
+	 * @param spriteImage the image of the character
 	 * @param speed how fast the hero moves
 	 * @param atkSpeed how fast the hero attacks
 	 * @param HP how much damage a hero can take before dying
@@ -56,12 +56,12 @@ public class Hero extends Character {
 	
 	/**
 	 * gives the Hero object the ability to attack Enemy objects
-	 * @param mouseX
-	 * @param mouseY
-	 * @param marker
-	 * @param enemies
-	 * @param shotX
-	 * @param shotY
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 * @param marker allows PApplet access
+	 * @param enemies the arraylist of enemies used for detection
+	 * @param shotX the current x position of the shot
+	 * @param shotY the current y position of the shot
 	 */
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY) {
 
@@ -86,16 +86,4 @@ public class Hero extends Character {
 
 		marker.popStyle();
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -17,7 +17,7 @@ public class Minotaur extends Enemy {
 	long seePlayer = 0;
 	/**
 	 * Creates an Enemy
-	 * @param spriteFile the image/looks of the enemy
+	 *@param spriteImage the image of the character
 	 * @param speed how fast the enemy moves
 	 * @param atkSpeed how fast the enemy attacks
 	 * @param HP how much damage a enemy can take before dying
@@ -33,6 +33,12 @@ public class Minotaur extends Enemy {
 		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * tells Minotaur objects how to attack the Hero objects
+	 * @param c character objects that the Minotaur is targeting
+	 * @param marker PApplet object needed to draw
+	 */
 	public void behave(Character c, PApplet marker) {
 		super.behave(c, marker);
 		

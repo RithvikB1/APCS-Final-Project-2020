@@ -19,7 +19,7 @@ public abstract class Enemy extends Character {
 	
 	/**
 	 * Creates an Enemy
-	 * @param spriteFile the image/looks of the enemy
+	 * @param spriteImage the image of the character
 	 * @param speed how fast the enemy moves
 	 * @param atkSpeed how fast the enemy attacks
 	 * @param HP how much damage a enemy can take before dying
@@ -87,6 +87,7 @@ public abstract class Enemy extends Character {
 		return directionAway;
 		
 	}
+	
 	/**
 	 * tells the Enemy object the direction another Character object
 	 * @param c Character object that the Enemy object is tracking
@@ -112,12 +113,12 @@ public abstract class Enemy extends Character {
 	
 	/**
 	 * allows the Enemy object to attack another Character object
-	 * @param mouseX
-	 * @param mouseY
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
 	 * @param marker PApplet object needed to draw the shots
 	 * @param hero the Character that the Enemy object is aiming at
-	 * @param shotX
-	 * @param shotY
+	 * @param shotX the current x position of the shot
+	 * @param shotY the current y position of the shot
 	 */
 	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero, double shotX, double shotY) {
 		double angle = Math.atan((mouseY - y)/(mouseX - x));

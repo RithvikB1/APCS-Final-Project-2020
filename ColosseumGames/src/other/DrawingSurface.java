@@ -234,7 +234,7 @@ public class DrawingSurface extends PApplet {
 		
 		if (screen.getScreenToggle() == Screen.PLAY_GAME)
 			if (pause.contains(mouseX, mouseY))
-				screen.setScreenToggle(Screen.PAUSE);
+				screen.setScreenToggle(Screen.PAUSE_MENU);
 	}
 	
 	/**

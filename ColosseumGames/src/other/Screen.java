@@ -14,12 +14,7 @@ import processing.core.*;
  */
 public class Screen {
 	
-	private int difficultyLevel; // 1 is easy, 2 is medium, 3 is hard
-	private int waveNumber;
-
-	private int adjuster;
-	private int screenToggle;
-	private int specificHero;
+	private int difficultyLevel, adjuster, screenToggle, specificHero;
 	
 	private boolean isHeroPicked; // does not have a getter, only for this class
 	private boolean isSoundOn;
@@ -28,24 +23,24 @@ public class Screen {
 	private char keyUp, keyDown, keyLeft, keyRight;
 	private boolean isUp, isDown, isLeft, isRight;
 	
-	private int statPicked;
-	
-	public static final int SCREEN_WIDTH = 1300;
-	public static final int SCREEN_HEIGHT = 800;
+	public static final int SCREEN_WIDTH = 1300, SCREEN_HEIGHT = 800;
 	
 	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
 	
+	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
+	
 	public static final int QUIT = -1, PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, CONFIRM_QUIT = 3, 
-			SETTINGS_MENU = 4, RULES = 5, CREDITS = 6, CHOOSE_GAME = 7, PAUSE = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
+			SETTINGS_MENU = 4, RULES_SCREEN = 5, CREDITS_SCREEN = 6, CHOOSE_GAME = 7,
+			PAUSE_MENU = 8, UPGRADE_MENU = 9, DEATH_MENU = 10, LOADING_SCREEN = 11;
+	
 	/**
 	 * Creates a new screen object
 	 */
 	public Screen() {
-		difficultyLevel = 2; // medium by default
+		difficultyLevel = MEDIUM; 
 		adjuster = 400; // used for slider, volume 0 by default
-		waveNumber = 20;  // 20 waves by default
 		
-		screenToggle = START_MENU; // start menu, default
+		screenToggle = START_MENU; 
 		specificHero = HERCULES; 
 		
 		isHeroPicked = false;                                         
@@ -112,12 +107,12 @@ public class Screen {
 			return;
 		}
 		else if (howToPlay.contains(cmouseX, cmouseY)) {
-			screenToggle = RULES;
+			screenToggle = RULES_SCREEN;
 			
 			return;
 		}
 		else if (credits.contains(cmouseX, cmouseY)) {
-			screenToggle = CREDITS;
+			screenToggle = CREDITS_SCREEN;
 			
 			return;
 		}
@@ -574,32 +569,101 @@ public class Screen {
 	/**
 	 * Creates a screen where user can choose difficulty level and wave number
 	 * @param marker allows PApplet access
+	 * @param background the background image of the choose difficulty screen
 	 * @param mouseX the current x position of the user mouse
 	 * @param mouseY the current y position of the user mouse
 	 */
-	public void drawChooseGameScreen(PApplet marker, int mouseX, int mouseY) {
-		marker.background(0);
-		
-		marker.fill(255);
-		//marker.rect(100, 100, 550, 150);
+	public void drawChooseDiffScreen(PApplet marker, PImage background, int mouseX, int mouseY) {
+		marker.image(background, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		Rectangle start = new Rectangle(300, 600, 700, 100);
+		Rectangle easy = new Rectangle(50, 230, 400, 100);
+		Rectangle medium = new Rectangle(450, 230, 400, 100);
+		Rectangle hard = new Rectangle(850, 230, 400, 100);
+		Rectangle backButton = new Rectangle(25, 600, 200, 100);
+		
 		PShape shape = marker.createShape(PConstants.RECT, 300, 600, 700, 100, 20);
+		PShape shape2 = marker.createShape(PConstants.RECT, 50, 230, 400, 100, 20);
+		PShape shape3 = marker.createShape(PConstants.RECT, 450, 230, 400, 100, 20);
+		PShape shape4 = marker.createShape(PConstants.RECT, 850, 230, 400, 100, 20);
+		PShape shape5 = marker.createShape(PConstants.RECT, 25, 600, 200, 100, 20);
+				
+		PShape shape6 = marker.createShape(PConstants.RECT, 70, 330, 360, 200);
+		PShape shape7 = marker.createShape(PConstants.RECT, 470, 330, 360, 200);
+		PShape shape8 = marker.createShape(PConstants.RECT, 870, 330, 360, 200);
 		
 		hover(start, shape, mouseX, mouseY, 200, 100);
+		hover(easy, shape2, mouseX, mouseY, 200, 100);
+		hover(medium, shape3, mouseX, mouseY, 200, 100);
+		hover(hard, shape4, mouseX, mouseY, 200, 100);
+		hover(backButton, shape5, mouseX, mouseY, 200, 100);
+		
+		if (easy.contains(cmouseX, cmouseY) || difficultyLevel == EASY) {
+			shape2.setFill(marker.color(255, 0, 0));
+			
+			difficultyLevel = EASY;
+		}
+		if (medium.contains(cmouseX, cmouseY) || difficultyLevel == MEDIUM) {
+			shape3.setFill(marker.color(255, 0, 0));
+			
+			difficultyLevel = MEDIUM;
+		}
+		if (hard.contains(cmouseX, cmouseY) || difficultyLevel == HARD) {
+			shape4.setFill(marker.color(255, 0, 0));
+			
+			difficultyLevel = HARD;
+		}
 		
 		if (start.contains(cmouseX, cmouseY)) {
 			screenToggle = PLAY_GAME;
 			
 			return;
 		}
+		else if (backButton.contains(cmouseX, cmouseY)) {
+			screenToggle = CHOOSE_HERO;
+			isHeroPicked = false;
+			
+			return;
+		}
 		
 		marker.shape(shape);
+		marker.shape(shape2);
+		marker.shape(shape3);
+		marker.shape(shape4);
+		marker.shape(shape5);
+		
+		marker.fill(0);
+		marker.textSize(40);
+		
+		if (easy.contains(mouseX, mouseY)) {
+			shape6.setFill(255);
+			marker.shape(shape6);
+			marker.text("Details", 180, 435);
+		}
+		else if (medium.contains(mouseX, mouseY)) {
+			shape7.setFill(255);
+			marker.shape(shape7);
+			marker.text("Details", 580, 435);
+		}
+		else if (hard.contains(mouseX, mouseY)) {
+			shape8.setFill(255);
+			marker.shape(shape8);
+			marker.text("Details", 980, 435);
+		}
+		
+		marker.textSize(90);
+		
+		marker.text("Choose Difficulty", 300, 100);
 		
 		marker.textSize(75);
 		
-		marker.fill(0);
 		marker.text("Start", 555, 670);
+		marker.text("Easy", 160, 300);
+		marker.text("Medium", 500, 300);
+		marker.text("Hard", 950, 300);
+		
+		marker.textSize(50);
+		marker.text("Back", 70, 670);
 		
 	}
 	
@@ -609,7 +673,7 @@ public class Screen {
 	 * @param mouseX the current x position of the user mouse
 	 * @param mouseY the current y position of the user mouse
 	 */
-	public void drawPauseMenu(PApplet marker, int mouseX, int mouseY) { // returns 1 if resume, 2 if quit, 0 otherwise
+	public void drawPauseMenu(PApplet marker, int mouseX, int mouseY) { 
 		marker.pushStyle();
 		
 		marker.fill(0);
@@ -699,6 +763,8 @@ public class Screen {
 	/**
 	 * Creates a menu that shows up when user wants to upgrade stats or weapons with a merchant
 	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
 	 */
 	public void drawMerchantMenu(PApplet marker, int mouseX, int mouseY) {	
 		marker.fill(200, 150, 250);
@@ -794,6 +860,16 @@ public class Screen {
 	}
 	
 	/**
+	 * Creates a 5 second transition between some screens as needed
+	 * @param marker allows PApplet access
+	 * @param mouseX the current x position of the user mouse
+	 * @param mouseY the current y position of the user mouse
+	 */
+	public void loadingScreen(PApplet marker, int mouseX, int mouseY) {
+		
+	}
+	
+	/**
 	 * Toggles between screens to decide when to appropriately display which screen
 	 * @param marker allows PApplet access
 	 * @param images the images used as backgrounds or hero sprites in the game screens
@@ -816,19 +892,19 @@ public class Screen {
 		else if (screenToggle == SETTINGS_MENU) {
 			drawSettingsMenu(marker, background, mouseX, mouseY); // no resetting click due to key manipulation involved
 		}
-		else if (screenToggle == RULES) {
+		else if (screenToggle == RULES_SCREEN) {
 			drawRulesScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == CREDITS) {
+		else if (screenToggle == CREDITS_SCREEN) {
 			drawCreditsScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
 		else if (screenToggle == CHOOSE_GAME) {
-			drawChooseGameScreen(marker, mouseX, mouseY);
+			drawChooseDiffScreen(marker, background, mouseX, mouseY);
 			resetClick();
 		}
-		else if (screenToggle == PAUSE) {
+		else if (screenToggle == PAUSE_MENU) {
 			drawPauseMenu(marker, mouseX, mouseY);
 			resetClick();
 		}
@@ -1057,14 +1133,6 @@ public class Screen {
 	 */
 	public int getDiffLevel() {
 		return difficultyLevel;
-	}
-	
-	/**
-	 * Gets the number of waves the user wants to play through
-	 * @return the specified number of waves
-	 */
-	public int getWaveNumber() {
-		return waveNumber;
 	}
 	
 }

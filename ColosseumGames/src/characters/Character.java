@@ -25,7 +25,7 @@ public class Character extends Rectangle2D.Double {
 
 	/**
 	 * Creates a character either a playable hero or an enemy
-	 * @param spriteFile the file location for the sprite images
+	 * @param spriteImage the image of the character
 	 * @param speed the character's speed
 	 * @param atkSpeed the character's attack speed
 	 * @param HP the character's HP
@@ -279,10 +279,12 @@ public class Character extends Rectangle2D.Double {
 			return false;
 		}
 	}
+	
 	/**
 	 * Makes the character shoot
 	 * @param mouseX the x coordinate of the direction to shoot
 	 * @param mouseY the y coordinate of the direction to shoot
+	 * @param shotLength the length of the shot
 	 * @param marker the PApplet to draw the shot
 	 */
 	public void shoot(int mouseX, int mouseY, double shotLength, PApplet marker) {
@@ -301,7 +303,6 @@ public class Character extends Rectangle2D.Double {
 	/**
 	 * Draws the character
 	 * @param marker the PApplet to draw the character
-	 * @param image the sprite image to draw
 	 */
 	public void spawn(PApplet marker) {
 		marker.image(spriteImage, (float)x, (float)y, w ,h);
