@@ -64,33 +64,25 @@ public class DrawingSurface extends PApplet {
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/Arena.png"));
 		
-		hercules.add(loadImage("sprites/Heroes/Hercules/FacingRight.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/FacingFront.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/FacingBack.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/FacingLeft.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingLeft.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/AttackBack.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/AttackFront.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/AttackLeft.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/AttackRight.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/WalkBack.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/WalkFront.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/WalkLeft.gif"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/WalkRight.gif"));
-		
+
 		achilles.add(loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
 		
 		chiron.add(loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
 		
-		helen.add(loadImage("sprites/Heroes/Helen/Helen.png"));
+		helen.add(loadImage("sprites/Heroes/Helen/PRESelectedHelen.png"));
 		
 		perseus.add(loadImage("sprites/Heroes/Perseus/Perseus.png"));
 		
-		harpy.add(loadImage("sprites/Enemies/Harpy/WalkRight.png"));
+		harpy.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
 		minotaur.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 		
-		enemies.add(loadImage("sprites/Enemies/Harpy/WalkRight.png"));
+		enemies.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
 		enemies.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 		
 		heroes.add(hercules);
