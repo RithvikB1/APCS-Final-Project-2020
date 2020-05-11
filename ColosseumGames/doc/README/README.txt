@@ -1,7 +1,7 @@
 -------------------When README is finalized, remove everything above this line--------------------
 
 [Colosseum Games]  
-Authors: Aditya Senthilvel, Rithvik Bhakri, Richard Huang
+Authors: Aditya Senthilvel, Rithvik Bhakhri, Richard Huang
 Revision: 5/10/20
 
 Introduction: 

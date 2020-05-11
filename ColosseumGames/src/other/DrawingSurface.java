@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		screen = new Screen();
 		wave = new Wave();
+		
 		hero = null;
 		
 		images = new ArrayList<>();
@@ -53,6 +54,7 @@ public class DrawingSurface extends PApplet {
 		harpy = new ArrayList<>();
 		minotaur = new ArrayList<>();
 		enemies = new ArrayList<>();
+		
 		enemiesInWave = wave.getEnemyList();
 	}
 	
@@ -65,18 +67,20 @@ public class DrawingSurface extends PApplet {
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/Arena.png"));
 		
+		hercules.add(loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingLeft.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
-
+		
 		achilles.add(loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
+		achilles.add(loadImage("sprites/Heroes/Achilles/AchillesSelected.png"));
 		
 		chiron.add(loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
 		
 		helen.add(loadImage("sprites/Heroes/Helen/PRESelectedHelen.png"));
+		helen.add(loadImage("sprites/Heroes/Helen/HelenSelected.png"));
 		
 		perseus.add(loadImage("sprites/Heroes/Perseus/Perseus.png"));
 		

@@ -11,7 +11,7 @@ import processing.core.*;
  * 
  * @author Rithvik
  * @version 2.0
- *
+ * 
  */
 public class Screen {
 	
@@ -32,7 +32,7 @@ public class Screen {
 	
 	public static final int QUIT = -1, PLAY_GAME = 0, START_MENU = 1, CHOOSE_HERO = 2, CONFIRM_QUIT = 3, 
 			SETTINGS_MENU = 4, RULES_SCREEN = 5, CREDITS_SCREEN = 6, CHOOSE_GAME = 7,
-			PAUSE_MENU = 8, UPGRADE_MENU = 9, DEATH_MENU = 10, LOADING_SCREEN = 11;
+			PAUSE_MENU = 8, UPGRADE_MENU = 9, DEATH_MENU = 10;
 	
 	/**
 	 * Creates a new screen object
@@ -229,12 +229,20 @@ public class Screen {
 		
 		// heroes 3-5 are placeholder images for now
 		if (specificHero == HERCULES) {
-			marker.image((PImage) heroes.get(0).get(0), 450, 100, 420, 420);
+			if (isHeroPicked) 
+				marker.image((PImage) heroes.get(0).get(1), 450, 100, 420, 420);
+			else 
+				marker.image((PImage) heroes.get(0).get(0), 450, 100, 420, 420);
+			
 			marker.shape(shape6);
 			marker.text("Hercules", 530, 590);
 		}
 		else if (specificHero == ACHILLES) {
-			marker.image((PImage) heroes.get(1).get(0), 450, 100, 420, 420);
+			if (isHeroPicked) 
+				marker.image((PImage) heroes.get(1).get(1), 450, 100, 420, 420);
+			else 
+				marker.image((PImage) heroes.get(1).get(0), 450, 100, 420, 420);
+			
 			marker.shape(shape6);
 			marker.text("Achilles", 550, 590);
 		}
@@ -244,7 +252,11 @@ public class Screen {
 			marker.text("Chiron", 560, 590);
 		}
 		else if (specificHero == HELEN) {
-			marker.image((PImage) heroes.get(3).get(0), 450, 100, 420, 420);
+			if (isHeroPicked) 
+				marker.image((PImage) heroes.get(3).get(1), 450, 100, 420, 420);
+			else 
+				marker.image((PImage) heroes.get(3).get(0), 450, 100, 420, 420);
+			
 			marker.shape(shape6);
 			marker.text("Helen", 570, 590);
 		}
@@ -262,7 +274,7 @@ public class Screen {
 		marker.shape(shape4);
 		marker.shape(shape5);
 		
-		if (isHeroPicked)
+		if (isHeroPicked) 
 			marker.shape(shape3);
 	
 		marker.text("<", 100, 335);
@@ -540,13 +552,15 @@ public class Screen {
 		marker.fill(255);
 		marker.rect(300, 150, 700, 500);
 		
+		marker.rect(300, 150, 700, 500, 20);
+		
+		marker.fill(140);
+		marker.rect(300, 50, 700, 100, 20);
+		
 		Rectangle backButton = new Rectangle(25, 620, 260, 130);
 		PShape shape = marker.createShape(PConstants.RECT, 25, 620, 260, 130, 20);
 		
-		int c1 = marker.color(204, 153, 0);
-		int c2 = marker.color(140, 153, 0);
-		
-		hover(backButton, shape, mouseX, mouseY, c1, c2);
+		hover(backButton, shape, mouseX, mouseY, 240, 140);
 		
 		if (backButton.contains(cmouseX, cmouseY)) {
 			screenToggle = START_MENU;
@@ -563,8 +577,10 @@ public class Screen {
 		marker.text("Aditya Senthilvel", 330, 425);
 		marker.text("Richard Huang", 360, 575);
 		
-		marker.textSize(60);
+		marker.textSize(90);
+		marker.text("Creators", 475, 125);
 		
+		marker.textSize(60);
 		marker.text("Back", 90, 705);
 	}
 	
@@ -932,25 +948,25 @@ public class Screen {
 		
 		if (specificHero == HERCULES)
 		{
-			h = new Hero((PImage) heroes.get(0).get(0), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(0).get(1), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
 			
 		}
 		else if (specificHero == ACHILLES) 
 		{
-			h = new Hero((PImage) heroes.get(1).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(1).get(1), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		
 		else if (specificHero == CHIRON)
 		{
-			h = new Hero((PImage) heroes.get(2).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(2).get(0), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (specificHero == HELEN)
 		{
-			h = new Hero((PImage) heroes.get(3).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(3).get(1), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (specificHero == PERSEUS)
 		{
-			h = new Hero((PImage) heroes.get(4).get(0), 10, 10, 100000 ,10, 10, 400, 300, 100, 100);
+			h = new Hero((PImage) heroes.get(4).get(0), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		
 		return h;

@@ -19,8 +19,8 @@ public class Hero extends Character {
 	private double damage;
 	private int w, h;
 	private double vx, vy;
-
-	/**
+	
+	/**w
 	 * Creates a hero 
 	 * @param spriteImage the image of the character
 	 * @param speed how fast the hero moves
