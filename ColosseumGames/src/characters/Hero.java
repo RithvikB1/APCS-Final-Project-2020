@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-
+/**
+ * Creates a playable hero that can perform several functions in-game
+ * @author Richard, Aditya 
+ * @version 2.0
+ *
+ */
 public class Hero extends Character {
 	private PImage spriteImage;
 	private double speed, atkSpeed, HP;

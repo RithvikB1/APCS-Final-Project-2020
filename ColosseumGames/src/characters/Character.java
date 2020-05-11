@@ -12,6 +12,7 @@ import processing.core.PImage;
  * Creates characters
  * 
  * @author Richard
+ * @version 2.0
  *
  */
 public class Character extends Rectangle2D.Double {

@@ -7,6 +7,7 @@ import processing.core.PImage;
  * Creates the hardest and last enemy user has to face
  * 
  * @author ?
+ * @version 2.0
  *
  */
 public class FinalBoss extends Enemy {

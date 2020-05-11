@@ -10,6 +10,7 @@ import processing.core.*;
  * Represents the screen that shows up primarily, as dependent on how user progresses through game
  * 
  * @author Rithvik
+ * @version 2.0
  *
  */
 public class Screen {
@@ -138,6 +139,7 @@ public class Screen {
 	 * Creates a menu that allows the user to choose a hero. Allows going back to the start screen, going to settings menu,
 	 * and going to the chooseGamePlay Screen if hero is picked
 	 * @param marker allows PApplet access
+	 * @param g the background image used in the menu
 	 * @param heroes the array of images that will be used for the hero sprites
 	 * @param mouseX the current x position of user mouse
 	 * @param mouseY the current y position of user mouse
@@ -872,7 +874,8 @@ public class Screen {
 	/**
 	 * Toggles between screens to decide when to appropriately display which screen
 	 * @param marker allows PApplet access
-	 * @param images the images used as backgrounds or hero sprites in the game screens
+	 * @param background the image used as a background of the menus
+	 * @param heroes the images used as backgrounds or hero sprites in the game screens
 	 * @param mouseX the current x position of the user mouse
 	 * @param mouseY the current y position of the user mouse
 	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage

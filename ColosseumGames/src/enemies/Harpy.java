@@ -8,7 +8,8 @@ import processing.core.PImage;
 /**
  * Creates an easy level enemy
  * 
- * @author ?
+ * @author Richard
+ * @version 2.0
  *
  */
 public class Harpy extends Enemy {

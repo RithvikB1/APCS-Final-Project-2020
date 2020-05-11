@@ -8,6 +8,7 @@ import processing.core.PImage;
  * Creates a difficult leveled enemy 
  * 
  * @author ?
+ * @version 2.0
  *
  */
 public class MiniBoss extends Enemy {

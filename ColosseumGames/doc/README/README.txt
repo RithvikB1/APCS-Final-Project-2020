@@ -1,6 +1,8 @@
+-------------------When README is finalized, remove everything above this line--------------------
+
 [Colosseum Games]  
 Authors: Aditya Senthilvel, Rithvik Bhakri, Richard Huang
-Revision: 4/16/20
+Revision: 5/10/20
 
 Introduction: 
 Our program is a game that revolves around waves of enemies spawning for each wave and the player needs to kill all the enemies before moving onto the next wave. The purpose of our program is for people who are feeling bored. If they are feeling bored and have nothing else to do, they should come play our game! The story of the game is as follows: 5 demigods have been chosen by the Three Fates to vanquish the enemies that plague Greece. However, due to mysterious circumstances, this time the gods are not on your side! You have to vanquish them to relinquish the curse that is upon them. But as you slay enemies one by one, you approach the real mastermind behind it all.
@@ -10,13 +12,13 @@ People who would want to use our program are anyone who has even a slight passio
 Instructions:
 Explain how to use the program. This needs to be specific: 
 Which keyboard keys will do what? 
-WASD to move the character around
+WASD to move the character around. Alternatively, the keys can be changed per the user’s desire in Settings
 Where will you need to click? 
-You will click to fire and aim, you will need to click through the start menu and if you choose to go to the upgrade menu, you will have to click around in order to upgrade your stats.
+You will click to fire and aim, you will need to click through the start menus and screens and if you choose to go to the upgrade menu, you will have to click around in order to upgrade your stats. 
 Will you have menus that need to be navigated? What will they look like? 
-Start menu and the upgrade menu, rules screen 
+Start menu, choosing a hero, and choosing difficulty before finally coming to the game screen. Additionally, other optional menus and screens are accessible such as credits and settings, as well as pause mid-game. Death menu and merchant menus’ appearances depend on how user progresses through the game.
 Do actions need to be taken in a certain order?
-You need to defeat the enemies in certain order of waves
+You need to defeat the enemies in certain order of waves after going through the initial amount of screens. 
 
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
@@ -50,20 +52,32 @@ Have an OST with different music per 5 waves and different music for the merchan
 
 Class List:
 [This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
-Character Class - super class of hero class and enemy class, will contain similar features of heroes and enemies
-Enemy Class extends Character - represents an enemy in the game 
-Hero Class extends Character  - represents the heroes available in the game
-Menu Class: class to store all the menus in the game such as the menu when you open the game, when you die, or if you pause the game. (will store difficulty level-player chosen)
-DrawingSurface: will decide when waves are implemented and will incorporate when the different menus will be implemented
-Wave Class: decides what Enemy objects go into the wave and how they behave, and enemy level/behavior will increase as waves increase
+*Character Class - super class of hero class and enemy class, will contain similar features of heroes and enemies
+
+**Enemy Class extends Character - represents an enemy in the game, will be abstract
+
+***Harpy Class extends Enemy - will be a low-level enemy
+***Minotaur Class extends Enemy - will be a medium-level enemy
+***BigBoi Class extends Enemy - will be a high-level enemy
+***MiniBoss Class extends Enemy - will be a boss like enemy every few waves
+***FinalBoss Class extends Enemy - will be the strongest enemy the player has to face
+
+**Hero Class extends Character  - represents the heroes available in the game
+
+*Screen Class: class to store all the menus and screens in the game such as the menu when you open the game, when you die, or if you pause the game. (will store difficulty level-player chosen)
+*DrawingSurface: will decide when waves are implemented and will incorporate when the different menus will be implemented
+*Wave Class: decides what Enemy objects go into the wave and how they behave, and enemy level/behavior will increase as waves increase
 
 Credits:
 
 Aditya - DrawingSurface, ½ Wave, ½ Hero
 Richard - Character, ½ Wave, ½ Enemy
-Rithvik - Menu, ½ Enemy, ½ Hero
-
-Other Enemy classes: undecided 
+Rithvik - Screen, ½ Enemy, ½ Hero
+All enemy classes will be subject to edits by everyone
 
 Outside libraries:
-Processing core and sound libraries
+Processing core and sound
+Smash 4 theme music
+
+
+

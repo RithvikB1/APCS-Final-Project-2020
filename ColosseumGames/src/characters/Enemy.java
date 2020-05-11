@@ -9,6 +9,7 @@ import processing.core.PImage;
 /**
  * 
  * @author Richard, Rithvik, Aditya
+ * @version 2.0
  *
  */
 public abstract class Enemy extends Character {
@@ -47,7 +48,6 @@ public abstract class Enemy extends Character {
 	 * Dictates how an enemy will behave
 	 * @param c character the enemy wants to kill
 	 * @param marker draws the enemy
-	 * @param enemyType the type of enemy
 	 */
 	public void behave(Character c, PApplet marker) {
 		int vx = 0;

@@ -9,6 +9,7 @@ import processing.core.*;
 /**
  * Used to show the multiple and varied waves presented in the game
  * @author Richard, Aditya
+ * @version 2.0
  *
  */
 public class Wave {
@@ -28,6 +29,7 @@ public class Wave {
 	 * Used to draw the waves as dependent on the current wave the user is on
 	 * @param marker allows PApplet access
 	 * @param enemies the sprites used for the enemies used in waves
+	 * @param c the hero used as detection in the wave
 	 */
 	public void startWave(PApplet marker, Character c, ArrayList<PImage> enemies) {
 		

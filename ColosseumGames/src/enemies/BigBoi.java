@@ -7,6 +7,7 @@ import processing.core.PImage;
  * Creates a high level enemy
  * 
  * @author ?
+ * @version 2.0
  *
  */
 public class BigBoi extends Enemy {

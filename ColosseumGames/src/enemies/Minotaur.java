@@ -8,7 +8,8 @@ import characters.Character;
 /**
  * Creates a medium level enemy
  * 
- * @author ?
+ * @author Richard
+ * @version 2.0
  *
  */
 public class Minotaur extends Enemy {
