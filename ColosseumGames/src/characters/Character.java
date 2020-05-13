@@ -257,11 +257,29 @@ public class Character extends Rectangle2D.Double {
 
 			vy = -speed;
 			vx = 0;
-
-
+		}
+		//down and right diagonal
+		if(dir == 5) {
+			vx = Math.sqrt((Math.pow(speed, 2))/2);
+			vy = Math.sqrt((Math.pow(speed, 2))/2);
+		}
+		//up and right diagonal
+		if(dir == 6) {
+			vx = Math.sqrt((Math.pow(speed, 2))/2);
+			vy = -Math.sqrt((Math.pow(speed, 2))/2);
+		}
+		//up and left diagonal
+		if(dir == 7) {
+			vx = -Math.sqrt((Math.pow(speed, 2))/2);
+			vy = -Math.sqrt((Math.pow(speed, 2))/2);
+		}
+		//down and left diagonal
+		if(dir == 8) {
+			vx = -Math.sqrt((Math.pow(speed, 2))/2);
+			vy = Math.sqrt((Math.pow(speed, 2))/2);
 		}
 		//stop
-		if(dir == 5) {
+		if(dir == 9) {
 			vy = 0;
 			vx = 0;
 		}

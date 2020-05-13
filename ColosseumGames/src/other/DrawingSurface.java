@@ -279,16 +279,26 @@ public class DrawingSurface extends PApplet {
 	
 		if (keyCode == screen.getKeys()[0])
 		{
-			hero.walk(4);
+			if(keyCode == screen.getKeys()[3]) {
+				hero.walk(6);
+			}
+			else if(keyCode == screen.getKeys()[2]) {
+				hero.walk(7);
+			}
+			else {
+				hero.walk(4);
+			}
 		}
 		
 		if (keyCode == screen.getKeys()[2])
 		{
+			System.out.println("hi");
 			hero.walk(3);
 		}
 		
 		if (keyCode == screen.getKeys()[1])
 		{
+			System.out.println("no");
 			hero.walk(2);
 		}
 		
@@ -309,6 +319,6 @@ public class DrawingSurface extends PApplet {
 		if (hero == null)
 			return;
 		
-		hero.walk(5);
+		hero.walk(9);
 	}
 }
