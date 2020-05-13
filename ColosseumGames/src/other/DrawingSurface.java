@@ -33,6 +33,8 @@ public class DrawingSurface extends PApplet {
 	private Wave wave;
 	private int count;
 	
+	private boolean[] keys;
+	
 	/**
 	 * Creates a DrawingSurface that can have all game components
 	 */
@@ -56,6 +58,8 @@ public class DrawingSurface extends PApplet {
 		enemies = new ArrayList<>();
 		
 		enemiesInWave = wave.getEnemyList();
+		
+		keys = new boolean[4];
 	}
 	
 	/**
@@ -276,41 +280,38 @@ public class DrawingSurface extends PApplet {
 		if (hero == null || hero.die()) {
 			return;
 		}
-	
-		if (keyCode == screen.getKeys()[0])
-		{
-			if(keyCode == screen.getKeys()[3]) {
-				hero.walk(6);
-			}
-			else if(keyCode == screen.getKeys()[2]) {
-				hero.walk(7);
-			}
-			else {
-				hero.walk(4);
-			}
-		}
-
-		if (keyCode == screen.getKeys()[0] && keyCode == screen.getKeys()[3])
-		{
-			
-				hero.walk(6);
-			
-		}
 		
-		if (keyCode == screen.getKeys()[2])
-		{
-			hero.walk(3);
-		}
+		if (keyCode == screen.getKeys()[0]) // up
+			keys[0] = true;
+		if (keyCode == screen.getKeys()[2]) // left
+			keys[2] = true;
+		if (keyCode == screen.getKeys()[1]) // down
+			keys[1] = true;
+		if (keyCode == screen.getKeys()[3]) // right
+			keys[3] = true;
 		
-		if (keyCode == screen.getKeys()[1])
-		{
-			hero.walk(2);
+		if (keys[0]) {
+			if (keys[2]) 
+				hero.walk(7); // up-left
+			else if (keys[3])
+				hero.walk(6); // up-right
+			else
+				hero.walk(4); // up
 		}
-		
-		if (keyCode == screen.getKeys()[3])
-		{
-			hero.walk(1);
-		}	
+		else if (keys[1]) {
+			if (keys[2]) 
+				hero.walk(8); // down-left
+			else if (keys[3])
+				hero.walk(5); // down-right
+			else 
+				hero.walk(2); // up
+		}
+		else if (keys[2]) {
+			hero.walk(3); // left
+		}
+		else if (keys[3]) {
+			hero.walk(1); // right
+		}
 		
 	}
 	
@@ -323,6 +324,15 @@ public class DrawingSurface extends PApplet {
 		
 		if (hero == null)
 			return;
+
+		if (keyCode == screen.getKeys()[0])
+			keys[0] = false;
+		if (keyCode == screen.getKeys()[2])
+			keys[2] = false;
+		if (keyCode == screen.getKeys()[1]) 
+			keys[1] = false;
+		if (keyCode == screen.getKeys()[3]) 
+			keys[3] = false;
 		
 		hero.walk(9);
 	}
