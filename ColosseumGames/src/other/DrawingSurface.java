@@ -339,12 +339,12 @@ public class DrawingSurface extends PApplet {
 			hero.walk(1); // right
 			if (position)
 			{
-				heroNumber = 20;
+				hero.spawn(this, 20);
 				position = false;
 			}
 			else
 			{
-				heroNumber = 21;
+				hero.spawn(this, 21);
 				position = true;
 			}
 		}
