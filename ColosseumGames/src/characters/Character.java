@@ -1,13 +1,11 @@
 package characters;
 
-import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
-import other.DrawingSurface;
-import other.Screen;
 import processing.core.PApplet;
 import processing.core.PImage;
+import screens.other.Screen;
 /**
  * Creates characters
  * 

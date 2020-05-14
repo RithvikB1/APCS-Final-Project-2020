@@ -1,14 +1,11 @@
 package other;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
-import characters.Enemy;
-import characters.Hero;
-import enemies.Harpy;
-import enemies.Minotaur;
 import processing.core.*;
-import processing.sound.*;
+import processing.sound.SoundFile;
+import screens.gameScreens.*;
+import screens.other.Screen;
+import screens.other.ScreenToggler;
+import screens.startScreens.*;
 
 /**
  * Draws all game components such as screens and draws gameplay in action
@@ -17,52 +14,22 @@ import processing.sound.*;
  * @version 2.0
  *
  */
-public class DrawingSurface extends PApplet {
+public class DrawingSurface extends PApplet implements ScreenToggler {
 	
-	private Screen screen;
+	private Screen[] screens;
+	private Screen currentScreen;
 	
-	private ArrayList<PImage> images, hercules, achilles, perseus, helen, chiron, harpy, minotaur, bigBoi, miniBoss, finalBoss, enemies;
-	private ArrayList<ArrayList> heroes;
-	
-	private ArrayList<Enemy> enemiesInWave;
-	
-	private String audioPath = "files/audio/smash.wav";
-	
-	private SoundFile file;
-	private Hero hero;
-	private Wave wave;
-	private int count, heroNumber;
-	private boolean position;
-
-	
-	private boolean[] keys;
+	private SoundFile audio;
 	
 	/**
 	 * Creates a DrawingSurface that can have all game components
 	 */
 	public DrawingSurface() {
-		screen = new Screen();
-		wave = new Wave();
+		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
+				new Rules(this), new Settings(this), new DeathMenu(this), new MerchantMenu(this), new Pause(this), 
+				new GameScreen(this)};
 		
-		hero = null;
-		
-		images = new ArrayList<>();
-		heroes = new ArrayList<>();
-		
-		hercules = new ArrayList<>();
-		achilles = new ArrayList<>();
-		chiron = new ArrayList<>();
-		helen = new ArrayList<>();
-		perseus = new ArrayList<>();
-		
-		harpy = new ArrayList<>();
-		minotaur = new ArrayList<>();
-		enemies = new ArrayList<>();
-		
-		enemiesInWave = wave.getEnemyList();
-		
-		keys = new boolean[4];
-		
+		currentScreen = screens[0];
 	}
 	
 	/**
@@ -71,305 +38,87 @@ public class DrawingSurface extends PApplet {
 	public void setup() {
 		background(255);
 		
-		images.add(loadImage("files/images/Background.png"));
-		images.add(loadImage("files/images/Arena.png"));
+		for (Screen s : screens) {
+			s.setup();
+		}
 		
-		hercules.add(loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingLeft.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackBack1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackBack2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackFront1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackFront2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackLeft1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackLeft2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackRight1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackRight2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkBack1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkBack2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkFront1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkFront2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkLeft1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkLeft2.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkRight1.png"));
-		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkRight2.png"));
-		
-		
-		
-		achilles.add(loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
-		achilles.add(loadImage("sprites/Heroes/Achilles/AchillesSelected.png"));
-		
-		chiron.add(loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
-		
-		helen.add(loadImage("sprites/Heroes/Helen/PRESelectedHelen.png"));
-		helen.add(loadImage("sprites/Heroes/Helen/HelenSelected.png"));
-		
-		perseus.add(loadImage("sprites/Heroes/Perseus/Perseus.png"));
-		
-		harpy.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-		minotaur.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
-		
-		enemies.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-		enemies.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
-		
-		heroes.add(hercules);
-		heroes.add(achilles);
-		heroes.add(chiron);
-		heroes.add(helen);
-		heroes.add(perseus);
-		
-		file = new SoundFile(this, audioPath);
+		audio = new SoundFile(this, "files/audio/smash.wav");
 	}
 	
 	/**
 	 * Draws the screens, and starts game when user is done with start menus
 	 */
 	public void draw() {
-		
 		playSound();
-		noTint();
-		
-		if (screen.getScreenToggle() != Screen.PLAY_GAME) {
-			screen.screenSifter(this, images.get(1), heroes, mouseX, mouseY);
-			
-			if (screen.getScreenToggle() == Screen.PLAY_GAME && hero == null)
-			{
-				hero = screen.choiceOfHero(heroes);
-			}
-			
-			if (screen.getScreenToggle() == Screen.UPGRADE_MENU) {
-				count = 1;
-			}
-			
-			return;
-		}
-		
-		if (wave.getWave() == 4 && count == 0) { // merchant menu
-			screen.setScreenToggle(Screen.UPGRADE_MENU);
-			tint(0, 255, 126);
-			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
-			
-			return;
-		}
-		else if (hero.die()) {
-			screen.setScreenToggle(Screen.DEATH_MENU);
-			wave = new Wave();
-			enemiesInWave = wave.getEnemyList();
-			tint(255, 126, 0);
-			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
-			hero = null;
-			
-			return;
-		}
-		else {
-			image(images.get(0), 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
-		}
-		
-		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
-		if(enemiesInWave.size() == 0) {
-			wave.setWave(wave.getWave() + 1);
-			wave.startWave(this, hero, enemies);
-		}
-		for(int i = 0; i < enemiesInWave.size(); i++) {
-			if(!enemiesInWave.get(i).die()) {
-				if(!hero.die()) {
-					enemiesInWave.get(i).behave(hero, this);
-					enemiesInWave.get(i).moveByVelocities();
-				}
-				enemiesInWave.get(i).spawn(this, heroNumber);
-			}
-			else {
-				if(enemiesInWave.get(i) instanceof Minotaur) {
-					hero.setHP(hero.getHP() + 100);
-				} else if(enemiesInWave.get(i) instanceof Harpy) {
-					hero.setHP(hero.getHP() + 50);
-				}
-				enemiesInWave.remove(i);
-			}
-		}
-		
-		if(!hero.die()) {
-			hero.moveByVelocities();
-			hero.spawn(this, heroNumber);
-			
-			textSize(60);
-//			
-			fill(255);
-			stroke(255);
-			
-			line(0, 700, 1300, 700);
-			
-			text("HP: " + (int)hero.getHP() + "/10000", 370, 770);
-//			
-			textSize(30);
-//			fill(255);
-//			
-			text("Speed: " + (int)hero.getSpeed(), 150, 680);
-			
-			text("AttackSpeed: " + (int)hero.getAtkSpeed(), 544, 680);
-			
-			text("Damage: " + (int)hero.getDamage(), 961,680);
-		}
-		
-		PShape pause = createShape(PConstants.RECT, 1150, 10, 50, 50);
-		screen.hover(new Rectangle(1150, 10, 50, 50), pause, mouseX, mouseY, 255, 150);
-		shape(pause);
-		
-		this.stroke(0);
-		
-		pushStyle();
-		strokeWeight(0);
-		
-		this.line(40, 40, 1260, 40);
-		
-		this.line(40, 40, 40, 600);
-		
-		this.line(40, 600, 1260, 600);
-		
-		this.line(1260, 40, 1260, 600);
-		
-		this.strokeWeight(10);
-		
-		this.line(1165, 20, 1165, 50);
-		this.line(1185, 20, 1185, 50);
-		
-		popStyle();
-	}
-	
-	/**
-	 * Plays the sound in the game
-	 */
-	public void playSound() {
-		if (screen.getIsSoundOn()) {
-			file.amp((float)(screen.getVolume() / 100.0));
-			
-			if (!file.isPlaying())
-				file.play();
-		}
-		else if (file.isPlaying()) {
-			file.pause();
-		}
+		currentScreen.draw();
 	}
 	
 	/**
 	 * Dictates what happens with screen when mouse is clicked
 	 */
 	public void mouseClicked() {
-		screen.mouseClicked(mouseX, mouseY);
-		
-		Rectangle pause = new Rectangle(1150, 10, 50, 50);
-		
-		if (screen.getScreenToggle() == Screen.PLAY_GAME)
-			if (pause.contains(mouseX, mouseY))
-				screen.setScreenToggle(Screen.PAUSE_MENU);
+		currentScreen.mouseClicked();
 	}
 	
 	/**
 	 * Dictates what happens with a screen when mouse is dragged
 	 */
 	public void mouseDragged() {
-		screen.mouseDragged(mouseX, mouseY, pmouseX, pmouseY);
-		if(screen.getScreenToggle() == 0 && !hero.die()) {
-			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
-		}
+		currentScreen.mouseDragged();
 	}
 	
 	/**
 	 * Dictates what happens with a screen when mouse is pressed
 	 */
 	public void mousePressed() {
-		screen.mousePressed(mouseX, mouseY);
-		if(screen.getScreenToggle() == 0 && !hero.die()) {
-			hero.shoot(mouseX, mouseY, this, enemiesInWave, hero.getX(), hero.getY());
-		}
+		currentScreen.mousePressed();
 	}
 	
 	/**
 	 * Dictates what happens with a screen when mouse is released
 	 */
 	public void mouseReleased() {
-		screen.mouseReleased(mouseX, mouseY);
+		currentScreen.mousedReleased();
 	}
 	
 	/**
 	 * Moves player according to what directional keys are pressed 
 	 */
 	public void keyPressed() {
-		PImage[] frames = new PImage[2];
-		if (hero == null || hero.die()) {
-			return;
-		}
-		
-		if (keyCode == screen.getKeys()[0]) // up
-			keys[0] = true;
-		if (keyCode == screen.getKeys()[2]) // left
-			keys[2] = true;
-		if (keyCode == screen.getKeys()[1]) // down
-			keys[1] = true;
-		if (keyCode == screen.getKeys()[3]) // right
-		{
-			keys[3] = true;
-			
-		}
-		
-		
-		if (keys[0]) {
-			if (keys[2]) 
-				hero.walk(7); // up-left
-			else if (keys[3])
-				hero.walk(6); // up-right
-			else
-				hero.walk(4); // up
-		}
-		else if (keys[1]) {
-			if (keys[2]) 
-				hero.walk(8); // down-left
-			else if (keys[3])
-				hero.walk(5); // down-right
-			else 
-				hero.walk(2); // up
-		}
-		else if (keys[2]) {
-			hero.walk(3); // left
-		}
-		else if (keys[3]) {
-			hero.walk(1); // right
-			if (position)
-			{
-				hero.spawn(this, 20);
-				position = false;
-			}
-			else
-			{
-				hero.spawn(this, 21);
-				position = true;
-			}
-		}
-		
+		currentScreen.keyPressed();
 	}
 	
 	/**
 	 * Dictates what happens to screen if keys are released and updates hero accordingly
 	 */
 	public void keyReleased() {
-		
-		screen.keyReleased(keyCode);
-		
-		if (hero == null)
-			return;
-
-		if (keyCode == screen.getKeys()[0])
-			keys[0] = false;
-		if (keyCode == screen.getKeys()[2])
-			keys[2] = false;
-		if (keyCode == screen.getKeys()[1]) 
-			keys[1] = false;
-		if (keyCode == screen.getKeys()[3]) 
-			keys[3] = false;
-		
-		hero.walk(9);
+		currentScreen.keyReleased();
+	}
+	
+	/**
+	 * Plays the sound in the game
+	 */
+	public void playSound() {
+		if (currentScreen.getSound()) {
+			for (Screen s : screens) {
+				s.setSound(true);
+				s.setVolume(currentScreen.getVolume());
+			}
+			audio.amp((float)(currentScreen.getVolume() / 100.0));
+			
+			if (!audio.isPlaying())
+				audio.play();
+		}
+		else if (audio.isPlaying()) {
+			for (Screen s : screens) {
+				s.setSound(false);
+				s.setVolume(currentScreen.getVolume());
+			}
+			audio.pause();
+		}
+	}
+	
+	public void switchScreen(int x) {
+		currentScreen = screens[x];
 	}
 }
