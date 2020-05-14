@@ -21,8 +21,10 @@ public class DrawingSurface extends PApplet {
 	
 	private Screen screen;
 	
-	private ArrayList<PImage> images, hercules, achilles, perseus, helen, chiron, harpy, minotaur, bigBoi, miniBoss, finalBoss, enemies;
-	private ArrayList<ArrayList> heroes;
+	private ArrayList<PImage> images, hercules, achilles, perseus, helen, chiron, harpy, minotaur, bigBoi, miniBoss, finalBoss;
+	private ArrayList<ArrayList> heroes, enemies;
+	
+	
 	
 	private ArrayList<Enemy> enemiesInWave;
 	
@@ -70,6 +72,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void setup() {
 		background(255);
+		frameRate(24);
 		
 		images.add(loadImage("files/images/Background.png"));
 		images.add(loadImage("files/images/Arena.png"));
@@ -111,9 +114,7 @@ public class DrawingSurface extends PApplet {
 		
 		harpy.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
 		minotaur.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
-		
-		enemies.add(loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-		enemies.add(loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
+	
 		
 		heroes.add(hercules);
 		heroes.add(achilles);
@@ -121,6 +122,8 @@ public class DrawingSurface extends PApplet {
 		heroes.add(helen);
 		heroes.add(perseus);
 		
+		enemies.add(harpy);
+		enemies.add(minotaur);
 		file = new SoundFile(this, audioPath);
 	}
 	
@@ -179,7 +182,7 @@ public class DrawingSurface extends PApplet {
 					enemiesInWave.get(i).behave(hero, this);
 					enemiesInWave.get(i).moveByVelocities();
 				}
-				enemiesInWave.get(i).spawn(this, heroNumber);
+				enemiesInWave.get(i).spawn(this, 0);
 			}
 			else {
 				if(enemiesInWave.get(i) instanceof Minotaur) {
@@ -193,7 +196,7 @@ public class DrawingSurface extends PApplet {
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();
-			hero.spawn(this, heroNumber);
+			hero.spawn(this, 1);
 			
 			textSize(60);
 //			
