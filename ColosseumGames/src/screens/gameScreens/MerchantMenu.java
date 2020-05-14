@@ -7,6 +7,11 @@ import processing.core.PConstants;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that allows user to upgrade their stats
+ * @author Rithvik
+ *
+ */
 public class MerchantMenu extends Screen {
 
 	private DrawingSurface surface;
@@ -146,7 +151,7 @@ public class MerchantMenu extends Screen {
 		}
 		
 		if (confirm.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.GAME_SCREEN);
+			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		
 	}

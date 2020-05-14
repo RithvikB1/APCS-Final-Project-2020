@@ -8,6 +8,11 @@ import processing.core.PImage;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that has adjustable settings for sound, volume, and user-dependent keys
+ * @author Rithvik
+ *
+ */
 public class Settings extends Screen {
 
 	private DrawingSurface surface;
@@ -187,6 +192,9 @@ public class Settings extends Screen {
 		
 	}
 
+	/**
+	 * Resets all changed settings back to default values before player changed them
+	 */
 	public void resetSettings() {
 		adjuster = 400;
 		setSpecificHero(HERCULES);
@@ -197,6 +205,7 @@ public class Settings extends Screen {
 		setLeftKey('A');
 		setRightKey('D');
 	}
+	
 	@Override
 	public void mousePressed() {
 		// TODO Auto-generated method stub
@@ -236,7 +245,7 @@ public class Settings extends Screen {
 			adjuster = 400;
 		}
 		else if (backButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.CHOOSE_HERO);
+			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
 		}
 		else if (sliderArea.contains(surface.mouseX, surface.mouseY)) {
 			adjuster = surface.mouseX;

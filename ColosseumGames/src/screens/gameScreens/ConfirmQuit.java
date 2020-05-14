@@ -4,6 +4,11 @@ import other.DrawingSurface;
 import processing.core.PImage;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that confirms if user wants to quit or not, and if so, allows user to terminate program
+ * @author Rithvik
+ *
+ */
 public class ConfirmQuit extends Screen {
 
 	private DrawingSurface surface;

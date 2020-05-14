@@ -9,6 +9,11 @@ import processing.core.PImage;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that allows user to pick their hero
+ * @author Rithvik
+ *
+ */
 public class ChooseHero extends Screen {
 
 	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron, helen1, helen2, perseus;
@@ -190,10 +195,10 @@ public class ChooseHero extends Screen {
 				setSpecificHero(HERCULES);
 		}
 		else if (backButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.START_SCREEN);
+			surface.toggleScreen(DrawingSurface.START_SCREEN);
 		}
 		else if (settings.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.SETTINGS);
+			surface.toggleScreen(DrawingSurface.SETTINGS);
 		}
 		
 		if (hero.contains(surface.mouseX, surface.mouseY)) { 
@@ -207,7 +212,7 @@ public class ChooseHero extends Screen {
 		if (isHeroPicked) {
 			
 			if (next.contains(surface.mouseX, surface.mouseY)) { 
-				surface.switchScreen(DrawingSurface.CHOOSE_DIFFICULTY);
+				surface.toggleScreen(DrawingSurface.CHOOSE_DIFFICULTY);
 			}
 		}
 		

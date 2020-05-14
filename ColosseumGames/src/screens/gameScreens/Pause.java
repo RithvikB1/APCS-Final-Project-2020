@@ -7,6 +7,11 @@ import processing.core.PConstants;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that pauses the game and gives user the option to resume or restart the game
+ * @author Rithvik
+ *
+ */
 public class Pause extends Screen {
 
 	private DrawingSurface surface;
@@ -19,7 +24,6 @@ public class Pause extends Screen {
 		this.surface = surface;
 	}
 
-	@Override
 	public void setup() {
 		// TODO Auto-generated method stub
 		
@@ -79,10 +83,10 @@ public class Pause extends Screen {
 	@Override
 	public void mouseClicked() {
 		if (resumeButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.GAME_SCREEN);
+			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		else if (quitButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.QUIT);
 		}
 		
 	}

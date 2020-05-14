@@ -6,6 +6,11 @@ import other.DrawingSurface;
 import processing.core.*;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that is displayed at the start and allows user to either pick a hero, see the rules, see credits, or quit the program
+ * @author Rithvik
+ *
+ */
 public class StartScreen extends Screen {
 	
 	private PImage background;
@@ -91,16 +96,16 @@ public class StartScreen extends Screen {
 	
 	public void mouseClicked() {
 		if (playButton.contains(surface.mouseX, surface.mouseY)) { // chooseHero screen
-			surface.switchScreen(DrawingSurface.CHOOSE_HERO);
+			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
 		}
 		else if (quitButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.QUIT);
 		}
 		else if (howToPlay.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.RULES);
+			surface.toggleScreen(DrawingSurface.RULES);
 		}
 		else if (credits.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.CREDITS);
+			surface.toggleScreen(DrawingSurface.CREDITS);
 		}
 	}
 

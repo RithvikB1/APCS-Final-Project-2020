@@ -8,6 +8,11 @@ import processing.core.PImage;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that allows user to decide the difficulty of the game they would like to play
+ * @author Rithvik
+ *
+ */
 public class ChooseDifficulty extends Screen {
 	
 	private PImage background;
@@ -148,10 +153,10 @@ public class ChooseDifficulty extends Screen {
 		}
 		
 		if (start.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.GAME_SCREEN);
+			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		else if (backButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.CHOOSE_HERO);
+			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
 		}
 		
 	}

@@ -7,6 +7,11 @@ import processing.core.PConstants;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Displays a screen asking if user would like to restart game or quit the game if they die
+ * @author Rithvik 
+ *
+ */
 public class DeathMenu extends Screen {
 
 	private DrawingSurface surface;
@@ -73,10 +78,10 @@ public class DeathMenu extends Screen {
 	@Override
 	public void mouseClicked() {
 		if (quit.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.QUIT);
 		}
 		else if (restart.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.GAME_SCREEN);
+			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 //			resetSettings();
 		}
 		

@@ -8,6 +8,11 @@ import processing.core.PImage;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that lists the game's awesome creators
+ * @author Rithvik, Aditya, Richard
+ *
+ */
 public class Credits extends Screen {
 
 	private DrawingSurface surface;
@@ -25,7 +30,7 @@ public class Credits extends Screen {
 	}
 
 	public void setup() {
-		background = surface.loadImage("files/images/Arena.png");// TODO Auto-generated method stub
+		background = surface.loadImage("files/images/Arena.png");
 		
 	}
 
@@ -79,7 +84,7 @@ public class Credits extends Screen {
 
 	public void mouseClicked() {
 		if (backButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.START_SCREEN);
+			surface.toggleScreen(DrawingSurface.START_SCREEN);
 		}
 		
 	}

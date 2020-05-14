@@ -118,7 +118,10 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 		}
 	}
 	
-	public void switchScreen(int x) {
+	/**
+	 * Changes screen based on how user interacts with game
+	 */
+	public void toggleScreen(int x) {
 		currentScreen = screens[x];
 	}
 }

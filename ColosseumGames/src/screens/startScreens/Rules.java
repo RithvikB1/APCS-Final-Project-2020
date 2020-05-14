@@ -8,6 +8,11 @@ import processing.core.PImage;
 import processing.core.PShape;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that displays the rules of the game 
+ * @author Rithvik
+ *
+ */
 public class Rules extends Screen {
 
 	private DrawingSurface surface;
@@ -68,7 +73,7 @@ public class Rules extends Screen {
 
 	public void mouseClicked() {
 		if (backButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.switchScreen(DrawingSurface.START_SCREEN);
+			surface.toggleScreen(DrawingSurface.START_SCREEN);
 		}
 		
 	}

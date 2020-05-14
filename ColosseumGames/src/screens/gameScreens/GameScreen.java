@@ -15,6 +15,11 @@ import processing.core.PShape;
 import processing.sound.SoundFile;
 import screens.other.Screen;
 
+/**
+ * Creates a screen that has the components of the playable game
+ * @author Aditya
+ *
+ */
 public class GameScreen extends Screen {
 
 	private DrawingSurface surface;
@@ -94,7 +99,7 @@ public class GameScreen extends Screen {
 		if (wave.getWave() == 4) { // merchant menu
 			surface.tint(0, 255, 126);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-			surface.switchScreen(DrawingSurface.MERCHANT_MENU);
+			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
 		}
 		else if (hero.die()) {
 			wave = new Wave();
@@ -102,7 +107,7 @@ public class GameScreen extends Screen {
 			surface.tint(255, 126, 0);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			hero = null;
-			surface.switchScreen(DrawingSurface.DEATH_MENU);
+			surface.toggleScreen(DrawingSurface.DEATH_MENU);
 			
 			return;
 		}
@@ -223,7 +228,7 @@ public class GameScreen extends Screen {
 
 	public void mouseClicked() {
 		if (pause.contains(surface.mouseX, surface.mouseY))
-			surface.switchScreen(DrawingSurface.PAUSE_MENU);
+			surface.toggleScreen(DrawingSurface.PAUSE_MENU);
 		
 	}
 
