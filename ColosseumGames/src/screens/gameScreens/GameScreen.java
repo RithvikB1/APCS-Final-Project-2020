@@ -21,7 +21,8 @@ public class GameScreen extends Screen {
 	
 	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron1, helen1, helen2, perseus1;
 	
-	private ArrayList<PImage> enemies;
+	private ArrayList<PImage> harpy, minotaur;
+	private ArrayList<ArrayList> enemies;
 	
 	private ArrayList<Enemy> enemiesInWave;
 	private Wave wave;
@@ -40,6 +41,8 @@ public class GameScreen extends Screen {
 		this.surface = surface;
 		
 		enemies = new ArrayList<>();
+		harpy = new ArrayList<>();
+		minotaur = new ArrayList<>();
 		
 		wave = new Wave();
 		enemiesInWave = wave.getEnemyList();
@@ -56,8 +59,8 @@ public class GameScreen extends Screen {
 	public void setup() {
 		background = surface.loadImage("files/images/Background.png");
 		
-		enemies.add(surface.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-		enemies.add(surface.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
+		harpy.add(surface.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
+		minotaur.add(surface.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 		
 		hercules1 = surface.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png");
 		hercules2  = surface.loadImage("sprites/Heroes/Hercules/HerculesSelected.png");
@@ -79,6 +82,9 @@ public class GameScreen extends Screen {
 		
 		perseus1 = surface.loadImage("sprites/Heroes/Perseus/Perseus.png");
 		perseus.add(perseus1);
+		
+		enemies.add(harpy);
+		enemies.add(minotaur);
 	}
 	
 	public void draw() {
@@ -129,7 +135,7 @@ public class GameScreen extends Screen {
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();
-			hero.spawn(surface, 0);
+			hero.spawn(surface, 1);
 			
 			surface.textSize(60);
 //			
