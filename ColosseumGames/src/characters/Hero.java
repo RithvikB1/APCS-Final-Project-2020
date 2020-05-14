@@ -13,12 +13,9 @@ import processing.core.PImage;
  *
  */
 public class Hero extends Character {
-	private PImage spriteImage;
-	private double speed, atkSpeed, HP;
 	private double range;
 	private double damage;
-	private int w, h;
-	private double vx, vy;
+	
 	
 	/**w
 	 * Creates a hero 
@@ -33,25 +30,12 @@ public class Hero extends Character {
 	 * @param w how wide the hero is
 	 * @param h how tall the hero is
 	 */
-	public Hero(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
+	public Hero(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
-		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		this.x = x;
 		this.y = y;
-		this.w = w;
-		this.h = h;
-
-		//velocities
-		vx = 0;
-		vy = 0;
-
-		//sprite
-		this.spriteImage = spriteImage;
-
-		//stats
-		this.speed = speed;
-		this.atkSpeed = atkSpeed;
-		this.HP = HP;
+		
 
 		//weapon stats
 		this.range = range;

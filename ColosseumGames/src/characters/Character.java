@@ -17,13 +17,13 @@ import processing.core.PImage;
  */
 public class Character extends Rectangle2D.Double {
 	
-	private PImage spriteImage;
+	private ArrayList<PImage> images;
 	private double speed, atkSpeed, HP;
 	private double range;
 	private double damage;
 	private int w, h;
 	private double vx, vy;
-
+	
 	/**
 	 * Creates a character either a playable hero or an enemy
 	 * @param spriteImage the image of the character
@@ -37,7 +37,7 @@ public class Character extends Rectangle2D.Double {
 	 * @param w	the width of the character's hit box
 	 * @param h the height of the character's hitbox
 	 */
-	public Character(PImage spriteImage, double speed, 
+	public Character(ArrayList<PImage> images, double speed, 
 			double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -51,7 +51,7 @@ public class Character extends Rectangle2D.Double {
 		vy = 0;
 		
 		//sprite
-		this.spriteImage = spriteImage;
+		this.images = images;
 		
 		//stats
 		this.speed = speed;
@@ -323,8 +323,13 @@ public class Character extends Rectangle2D.Double {
 	 * Draws the character
 	 * @param marker the PApplet to draw the character
 	 */
-	public void spawn(PApplet marker) {
-		marker.image(spriteImage, (float)x, (float)y, w ,h);
-	}	
+	public void spawn(PApplet marker, int imageNumber) {
+		marker.image(images.get(imageNumber), (float)x, (float)y, w ,h);
+	}
+	
+	public ArrayList<PImage> getImages()
+	{
+		return images;
+	}
 	
 }

@@ -3,6 +3,9 @@ package enemies;
 import characters.Enemy;
 import processing.core.PApplet;
 import processing.core.PImage;
+
+import java.util.ArrayList;
+
 import characters.Character;
 
 /**
@@ -29,9 +32,9 @@ public class Minotaur extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public Minotaur(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public Minotaur(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
-		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 	

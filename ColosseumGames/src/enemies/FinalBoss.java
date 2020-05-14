@@ -1,5 +1,7 @@
 package enemies;
 
+import java.util.ArrayList;
+
 import characters.Enemy;
 import processing.core.PImage;
 
@@ -25,9 +27,9 @@ public class FinalBoss extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public FinalBoss(PImage spriteImage, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public FinalBoss(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
-		super(spriteImage, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 

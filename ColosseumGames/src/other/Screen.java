@@ -942,31 +942,32 @@ public class Screen {
 	 * @return the hero that the player chose
 	 * @pre heroes must store exactly 5 arraylists, which in turn each are of type PImage
 	 */
+	
 	public Hero choiceOfHero(ArrayList<ArrayList> heroes)
 	{
 		Hero h = null;
 		
 		if (specificHero == HERCULES)
 		{
-			h = new Hero((PImage) heroes.get(0).get(1), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			h = new Hero(heroes.get(0), 20, 10, 10000, 100, 100, 600, 300, 100, 100);
 			
 		}
 		else if (specificHero == ACHILLES) 
 		{
-			h = new Hero((PImage) heroes.get(1).get(1), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			h = new Hero(heroes.get(1), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		
 		else if (specificHero == CHIRON)
 		{
-			h = new Hero((PImage) heroes.get(2).get(0), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			h = new Hero(heroes.get(2), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (specificHero == HELEN)
 		{
-			h = new Hero((PImage) heroes.get(3).get(1), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			h = new Hero(heroes.get(3), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (specificHero == PERSEUS)
 		{
-			h = new Hero((PImage) heroes.get(4).get(0), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			h = new Hero(heroes.get(4), 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		
 		return h;
