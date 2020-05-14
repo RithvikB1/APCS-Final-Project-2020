@@ -31,7 +31,9 @@ public class DrawingSurface extends PApplet {
 	private SoundFile file;
 	private Hero hero;
 	private Wave wave;
-	private int count;
+	private int count, heroNumber;
+	private boolean position;
+
 	
 	private boolean[] keys;
 	
@@ -60,6 +62,7 @@ public class DrawingSurface extends PApplet {
 		enemiesInWave = wave.getEnemyList();
 		
 		keys = new boolean[4];
+		
 	}
 	
 	/**
@@ -77,6 +80,24 @@ public class DrawingSurface extends PApplet {
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));
 		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesFacingLeft.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackBack1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackBack2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackFront1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackFront2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackLeft1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackLeft2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackRight1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesAttackRight2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkBack1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkBack2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkFront1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkFront2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkLeft1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkLeft2.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkRight1.png"));
+		hercules.add(loadImage("sprites/Heroes/Hercules/HerculesWalkRight2.png"));
+		
+		
 		
 		achilles.add(loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
 		achilles.add(loadImage("sprites/Heroes/Achilles/AchillesSelected.png"));
@@ -158,7 +179,7 @@ public class DrawingSurface extends PApplet {
 					enemiesInWave.get(i).behave(hero, this);
 					enemiesInWave.get(i).moveByVelocities();
 				}
-				enemiesInWave.get(i).spawn(this);
+				enemiesInWave.get(i).spawn(this, heroNumber);
 			}
 			else {
 				if(enemiesInWave.get(i) instanceof Minotaur) {
@@ -172,7 +193,7 @@ public class DrawingSurface extends PApplet {
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();
-			hero.spawn(this);
+			hero.spawn(this, heroNumber);
 			
 			textSize(60);
 //			
@@ -277,6 +298,7 @@ public class DrawingSurface extends PApplet {
 	 * Moves player according to what directional keys are pressed 
 	 */
 	public void keyPressed() {
+		PImage[] frames = new PImage[2];
 		if (hero == null || hero.die()) {
 			return;
 		}
@@ -288,7 +310,11 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == screen.getKeys()[1]) // down
 			keys[1] = true;
 		if (keyCode == screen.getKeys()[3]) // right
+		{
 			keys[3] = true;
+			
+		}
+		
 		
 		if (keys[0]) {
 			if (keys[2]) 
@@ -311,6 +337,16 @@ public class DrawingSurface extends PApplet {
 		}
 		else if (keys[3]) {
 			hero.walk(1); // right
+			if (position)
+			{
+				heroNumber = 20;
+				position = false;
+			}
+			else
+			{
+				heroNumber = 21;
+				position = true;
+			}
 		}
 		
 	}
