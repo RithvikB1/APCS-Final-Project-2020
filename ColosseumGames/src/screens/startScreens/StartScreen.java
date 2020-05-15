@@ -99,7 +99,7 @@ public class StartScreen extends Screen {
 			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
 		}
 		else if (quitButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.CONFIRM_QUIT);
 		}
 		else if (howToPlay.contains(surface.mouseX, surface.mouseY)) {
 			surface.toggleScreen(DrawingSurface.RULES);

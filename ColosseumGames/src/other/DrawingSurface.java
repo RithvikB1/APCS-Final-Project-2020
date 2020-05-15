@@ -27,7 +27,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	public DrawingSurface() {
 		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
 				new Rules(this), new Settings(this), new DeathMenu(this), new MerchantMenu(this), new Pause(this), 
-				new GameScreen(this)};
+				new GameScreen(this), new ConfirmQuit(this)};
 		
 		currentScreen = screens[0];
 	}
@@ -100,20 +100,12 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 */
 	public void playSound() {
 		if (currentScreen.getSound()) {
-			for (Screen s : screens) {
-				s.setSound(true);
-				s.setVolume(currentScreen.getVolume());
-			}
 			audio.amp((float)(currentScreen.getVolume() / 100.0));
 			
 			if (!audio.isPlaying())
 				audio.play();
 		}
 		else if (audio.isPlaying()) {
-			for (Screen s : screens) {
-				s.setSound(false);
-				s.setVolume(currentScreen.getVolume());
-			}
 			audio.pause();
 		}
 	}

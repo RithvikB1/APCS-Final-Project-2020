@@ -93,6 +93,7 @@ public class GameScreen extends Screen {
 	}
 	
 	public void draw() {
+		surface.pushStyle();
 		surface.noTint();
 		pickHero();
 		
@@ -184,6 +185,7 @@ public class GameScreen extends Screen {
 		surface.line(1165, 20, 1165, 50);
 		surface.line(1185, 20, 1185, 50);
 		
+		surface.popStyle();
 		surface.popStyle();
 		
 	}
