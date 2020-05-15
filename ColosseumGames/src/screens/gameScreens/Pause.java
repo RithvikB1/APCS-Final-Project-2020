@@ -86,7 +86,7 @@ public class Pause extends Screen {
 			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		else if (quitButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.CONFIRM_QUIT);
 		}
 		
 	}

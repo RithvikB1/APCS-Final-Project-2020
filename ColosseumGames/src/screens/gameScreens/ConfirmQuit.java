@@ -27,7 +27,7 @@ public class ConfirmQuit extends Screen {
 	}
 
 	public void draw() {
-		
+		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 	}
 

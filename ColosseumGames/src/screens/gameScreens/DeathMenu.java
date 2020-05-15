@@ -78,10 +78,10 @@ public class DeathMenu extends Screen {
 	@Override
 	public void mouseClicked() {
 		if (quit.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.QUIT);
+			surface.toggleScreen(DrawingSurface.CONFIRM_QUIT);
 		}
 		else if (restart.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
+			surface.toggleScreen(DrawingSurface.START_SCREEN);
 //			resetSettings();
 		}
 		
