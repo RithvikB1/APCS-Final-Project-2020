@@ -206,7 +206,7 @@ public class GameScreen extends Screen {
 			hero = new Chiron(chiron, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = new Helen(helen, 10, 50, 100000 ,200, 100, 600, 300, 100, 100);
+			hero = new Helen(helen, 10, 10, 300000, 400, 250, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == PERSEUS) {
 			hero = new Perseus(perseus, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);

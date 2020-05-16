@@ -17,7 +17,7 @@ HP - 3000 (+300)
 AtkSpeed - 10 (+2)
 Speed - 15 (+2)
 Attack - 250 (+10)
-Range - 20
+Range - 200
 
 Perseus:
 HP - 4000 (+250)

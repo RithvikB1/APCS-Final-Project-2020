@@ -7,7 +7,6 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Helen extends Hero {
-	double delay = 10/getAtkSpeed();
 	int firstShot = 0;
 	long previousShotTime = 0;
 	
@@ -26,7 +25,9 @@ public class Helen extends Hero {
 	@Override
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
-		long nextShotTime = System.currentTimeMillis()/1000;
+		double delay = (10/getAtkSpeed())*1000;
+		System.out.println(delay);
+		long nextShotTime = System.currentTimeMillis();
 		if(firstShot == 0) {
 			
 			marker.pushMatrix();
@@ -40,12 +41,12 @@ public class Helen extends Hero {
 			}
 			marker.popMatrix();
 			firstShot++;
-			previousShotTime = System.currentTimeMillis()/1000;
+			previousShotTime = System.currentTimeMillis();
 		}
 		else {
 			if(nextShotTime - previousShotTime > delay) {
-				System.out.println(nextShotTime);
-				System.out.println(previousShotTime);
+				System.out.println("NEXT: " + nextShotTime);
+				System.out.println("PRE: " + previousShotTime);
 				marker.pushMatrix();
 				marker.noFill();
 				marker.stroke(255, 0, 0);
@@ -56,11 +57,11 @@ public class Helen extends Hero {
 					}
 				}
 				marker.popMatrix();
-				previousShotTime = System.currentTimeMillis()/1000;
+				previousShotTime = System.currentTimeMillis();
 			}
 		}
 		
-	}
+     	}
 	
 
 }
