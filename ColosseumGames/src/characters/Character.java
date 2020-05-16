@@ -22,6 +22,8 @@ public class Character extends Rectangle2D.Double {
 	private int w, h;
 	private double vx, vy;
 	
+	
+	
 	/**
 	 * Creates a character either a playable hero or an enemy
 	 * @param spriteImage the image of the character
@@ -35,8 +37,7 @@ public class Character extends Rectangle2D.Double {
 	 * @param w	the width of the character's hit box
 	 * @param h the height of the character's hitbox
 	 */
-	public Character(ArrayList<PImage> images, double speed, 
-			double atkSpeed, double HP, double range, double damage,
+	public Character(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(x, y, w, h);
 		this.x = x;
@@ -49,7 +50,7 @@ public class Character extends Rectangle2D.Double {
 		vy = 0;
 		
 		//sprite
-		this.images = images;
+		
 		
 		//stats
 		this.speed = speed;
@@ -325,9 +326,14 @@ public class Character extends Rectangle2D.Double {
 		marker.image(images.get(imageNumber), (float)x, (float)y, w ,h);
 	}
 	
-	public ArrayList<PImage> getImages()
+	public void setImages(ArrayList<PImage> images)
 	{
-		return images;
+		this.images = images;
+	}
+	
+	public void animate(int frameCount)
+	{
+		
 	}
 	
 }
