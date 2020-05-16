@@ -32,7 +32,7 @@ public abstract class Screen {
 	public Screen(DrawingSurface surface) {
 		this.surface = surface;
 		
-		specificHero = HERCULES;
+		specificHero = HELEN;
 		
 		upKey = 'W';
 		downKey = 'S';

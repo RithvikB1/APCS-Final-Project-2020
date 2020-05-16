@@ -7,7 +7,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Helen extends Hero {
-
+	double delay = 10/getAtkSpeed();
+	int firstShot = 0;
+	long previousShotTime = 0;
+	
 	public Helen(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
@@ -23,8 +26,41 @@ public class Helen extends Hero {
 	@Override
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
-		// TODO Auto-generated method stub
+		long nextShotTime = System.currentTimeMillis()/1000;
+		if(firstShot == 0) {
+			
+			marker.pushMatrix();
+			marker.noFill();
+			marker.stroke(255, 0, 0);
+			marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
+			for(Enemy e: enemies) {
+				if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()) {
+					e.setHP(e.getHP() - getDamage());
+				}
+			}
+			marker.popMatrix();
+			firstShot++;
+			previousShotTime = System.currentTimeMillis()/1000;
+		}
+		else {
+			if(nextShotTime - previousShotTime > delay) {
+				System.out.println(nextShotTime);
+				System.out.println(previousShotTime);
+				marker.pushMatrix();
+				marker.noFill();
+				marker.stroke(255, 0, 0);
+				marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
+				for(Enemy e: enemies) {
+					if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()) {
+						e.setHP(e.getHP() - getDamage());
+					}
+				}
+				marker.popMatrix();
+				previousShotTime = System.currentTimeMillis()/1000;
+			}
+		}
 		
 	}
+	
 
 }
