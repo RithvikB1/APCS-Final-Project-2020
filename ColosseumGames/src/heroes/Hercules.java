@@ -39,8 +39,9 @@ public class Hercules extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesWalkRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesWalkRight2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
-		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
+		
+		this.setImages(images);
 
 		
 	}

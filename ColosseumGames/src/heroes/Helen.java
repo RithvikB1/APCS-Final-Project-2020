@@ -10,6 +10,8 @@ public class Helen extends Hero {
 	int firstShot = 0;
 	long previousShotTime = System.currentTimeMillis();
 	
+	private ArrayList<PImage> images;
+	
 	public Helen(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
@@ -19,6 +21,31 @@ public class Helen extends Hero {
 	@Override
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
+		
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingRight.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingFront.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingBack.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingLeft.png"));			
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkBack1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkBack2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkFront1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkFront2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkLeft1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkLeft2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkRight1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkRight2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenSelected.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png"));
+		
+		this.setImages(images);
 		
 	}
 

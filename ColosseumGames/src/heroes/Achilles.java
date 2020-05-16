@@ -7,6 +7,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Achilles extends Hero {
+	
+	private ArrayList<PImage> images;
 
 	public Achilles(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -17,6 +19,31 @@ public class Achilles extends Hero {
 	@Override
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
+		
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingRight.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingFront.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingBack.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingLeft.png"));			
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackBack1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackBack2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackFront1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackFront2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackLeft2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackRight1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesAttackRight2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkBack1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkBack2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkFront1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkFront2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkLeft1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkLeft2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkRight1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkRight2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesSelected.png"));
+		images.add(marker.loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
+		
+		this.setImages(images);
 		
 	}
 
