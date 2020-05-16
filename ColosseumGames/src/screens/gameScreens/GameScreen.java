@@ -7,6 +7,7 @@ import characters.Enemy;
 import characters.Hero;
 import enemies.Harpy;
 import enemies.Minotaur;
+import heroes.*;
 import other.DrawingSurface;
 import other.Wave;
 import processing.core.PConstants;
@@ -196,19 +197,19 @@ public class GameScreen extends Screen {
 		}
 		
 		if (getSpecificHero() == HERCULES) {
-			hero = new Hero(hercules, 20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			hero = new Hercules(hercules, 20, 10, 10000, 100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == ACHILLES) {
-			hero = new Hero(achilles, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Achilles(achilles, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == CHIRON) {
-			hero = new Hero(chiron, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Chiron(chiron, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = new Hero(helen, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Helen(helen, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == PERSEUS) {
-			hero = new Hero(perseus, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Perseus(perseus, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 	}
 

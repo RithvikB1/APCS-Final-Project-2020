@@ -12,7 +12,7 @@ import processing.core.PImage;
  * @version 2.0
  *
  */
-public class Hero extends Character {
+public abstract class Hero extends Character {
 	private double range;
 	private double damage;
 	
@@ -43,6 +43,8 @@ public class Hero extends Character {
 
 	}
 	
+	public abstract void setup(PApplet marker);
+	
 	/**
 	 * gives the Hero object the ability to attack Enemy objects
 	 * @param mouseX the current x position of the user mouse
@@ -52,27 +54,27 @@ public class Hero extends Character {
 	 * @param shotX the current x position of the shot
 	 * @param shotY the current y position of the shot
 	 */
-	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY) {
+	public abstract void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY);
 
-		double angle = Math.atan((mouseY - y)/(mouseX - x));
-		if(mouseX - x< 0) {
-			angle += Math.PI;
-		}
-		double maxXPoint = range * Math.cos(angle) + shotX;
-		double maxYPoint = range * Math.sin(angle) + shotY;
-		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
-
-		marker.pushStyle();
-
-		marker.stroke(20);
-		marker.strokeWeight(10);
-		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
-		for(Enemy e: enemies) {
-			if(shot.intersects(e)) {
-				e.setHP(e.getHP() - damage);
-			}
-		}
-
-		marker.popStyle();
-	}
+//		double angle = Math.atan((mouseY - y)/(mouseX - x));
+//		if(mouseX - x< 0) {
+//			angle += Math.PI;
+//		}
+//		double maxXPoint = range * Math.cos(angle) + shotX;
+//		double maxYPoint = range * Math.sin(angle) + shotY;
+//		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
+//
+//		marker.pushStyle();
+//
+//		marker.stroke(20);
+//		marker.strokeWeight(10);
+//		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
+//		for(Enemy e: enemies) {
+//			if(shot.intersects(e)) {
+//				e.setHP(e.getHP() - damage);
+//			}
+//		}
+//
+//		marker.popStyle();
+	
 }

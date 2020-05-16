@@ -87,4 +87,10 @@ public class Minotaur extends Enemy {
 		
 	}
 
+	@Override
+	public void setup(PApplet marker) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

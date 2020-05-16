@@ -33,4 +33,10 @@ public class MiniBoss extends Enemy {
 		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public void setup(PApplet marker) {
+		// TODO Auto-generated method stub
+		
+	}
 }

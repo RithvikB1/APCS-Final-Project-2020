@@ -3,6 +3,7 @@ package enemies;
 import java.util.ArrayList;
 
 import characters.Enemy;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -31,6 +32,12 @@ public class FinalBoss extends Enemy {
 			int y, int w, int h) {
 		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void setup(PApplet marker) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

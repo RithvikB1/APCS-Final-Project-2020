@@ -45,6 +45,8 @@ public abstract class Enemy extends Character {
 		this.damage = damage;
 	}
 	
+	public abstract void setup(PApplet marker);
+	
 	/**
 	 * Dictates how an enemy will behave
 	 * @param c character the enemy wants to kill
