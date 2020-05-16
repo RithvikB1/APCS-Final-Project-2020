@@ -51,7 +51,7 @@ public class ChooseHero extends Screen {
 		helen1 = surface.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png");
 		helen2 = surface.loadImage("sprites/Heroes/Helen/HelenSelected.png");
 		
-		perseus = surface.loadImage("sprites/Heroes/Perseus/Perseus.png");
+		perseus = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
 	}
 
 	public void draw() {

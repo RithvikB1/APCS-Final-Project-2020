@@ -86,7 +86,7 @@ public class GameScreen extends Screen {
 		helen.add(helen1);
 		helen.add(helen2);
 		
-		perseus1 = surface.loadImage("sprites/Heroes/Perseus/Perseus.png");
+		perseus1 = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
 		perseus.add(perseus1);
 		
 		enemies.add(harpy);
