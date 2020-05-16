@@ -8,7 +8,7 @@ import processing.core.PImage;
 
 public class Helen extends Hero {
 	int firstShot = 0;
-	long previousShotTime = 0;
+	long previousShotTime = System.currentTimeMillis();
 	
 	public Helen(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -27,8 +27,9 @@ public class Helen extends Hero {
 			double shotY) {
 		double delay = (10/getAtkSpeed())*1000;
 		long nextShotTime = System.currentTimeMillis();
-		if(firstShot == 0) {
-			
+		
+		if(nextShotTime - previousShotTime > delay) {
+
 			marker.pushMatrix();
 			marker.noFill();
 			marker.stroke(255, 255, 0);
@@ -39,27 +40,11 @@ public class Helen extends Hero {
 				}
 			}
 			marker.popMatrix();
-			firstShot++;
 			previousShotTime = System.currentTimeMillis();
 		}
-		else {
-			if(nextShotTime - previousShotTime > delay) {
-				
-				marker.pushMatrix();
-				marker.noFill();
-				marker.stroke(255, 255, 0);
-				marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
-				for(Enemy e: enemies) {
-					if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()) {
-						e.setHP(e.getHP() - getDamage());
-					}
-				}
-				marker.popMatrix();
-				previousShotTime = System.currentTimeMillis();
-			}
-		}
+	}
 		
-     	}
+     	
 	
 
 }
