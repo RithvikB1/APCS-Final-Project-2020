@@ -26,7 +26,6 @@ public class Helen extends Hero {
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
 		double delay = (10/getAtkSpeed())*1000;
-		System.out.println(delay);
 		long nextShotTime = System.currentTimeMillis();
 		if(firstShot == 0) {
 			
@@ -45,8 +44,7 @@ public class Helen extends Hero {
 		}
 		else {
 			if(nextShotTime - previousShotTime > delay) {
-				System.out.println("NEXT: " + nextShotTime);
-				System.out.println("PRE: " + previousShotTime);
+				
 				marker.pushMatrix();
 				marker.noFill();
 				marker.stroke(255, 0, 0);

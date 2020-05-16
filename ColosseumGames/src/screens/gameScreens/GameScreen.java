@@ -139,6 +139,8 @@ public class GameScreen extends Screen {
 				enemiesInWave.remove(i);
 			}
 		}
+		if (!hero.die() && surface.mousePressed)
+			hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();
@@ -214,7 +216,6 @@ public class GameScreen extends Screen {
 	}
 
 	public void mousePressed() {
-		// TODO Auto-generated method stub
 		
 	}
 
