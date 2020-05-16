@@ -32,9 +32,9 @@ public abstract class Enemy extends Character {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public Enemy(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
+	public Enemy(double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
-		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y = y;

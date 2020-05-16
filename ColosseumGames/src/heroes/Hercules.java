@@ -10,9 +10,9 @@ public class Hercules extends Hero {
 	
 	private ArrayList<PImage> images;
 
-	public Hercules(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage,
+	public Hercules( double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
-		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 

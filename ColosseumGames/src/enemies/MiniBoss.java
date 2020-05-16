@@ -28,9 +28,9 @@ public class MiniBoss extends Enemy {
 	 * @param w how wide the enemy is
 	 * @param h how tall the enemy is
 	 */
-	public MiniBoss(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x,
+	public MiniBoss(double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
-		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 

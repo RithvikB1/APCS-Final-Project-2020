@@ -30,9 +30,9 @@ public abstract class Hero extends Character {
 	 * @param w how wide the hero is
 	 * @param h how tall the hero is
 	 */
-	public Hero(ArrayList<PImage> images, double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
+	public Hero( double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
 			int w, int h) {
-		super(images, speed, atkSpeed, HP, range, damage, x, y, w, h);
+		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		this.x = x;
 		this.y = y;
 		

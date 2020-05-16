@@ -31,25 +31,25 @@ public class Wave {
 	 * @param enemies the sprites used for the enemies used in waves
 	 * @param c the hero used as detection in the wave
 	 */
-	public void startWave(PApplet marker, Character c, ArrayList<ArrayList> enemies) {
+	public void startWave(PApplet marker, Character c) {
 		
 		
 		if(wave == 1) {
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 20, 50, 50));
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 400, 400, 50, 50));
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 20, 300, 50, 50));
-			enemyList.add(new Harpy(enemies.get(0), 5, 20, 20, 141, 20, 750, 300, 50, 50));
+			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 20, 50, 50));
+			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 400, 50, 50));
+			enemyList.add(new Harpy(5, 20, 20, 141, 20, 20, 300, 50, 50));
+			enemyList.add(new Harpy(5, 20, 20, 141, 20, 750, 300, 50, 50));
 		
 
 			//and so on
 		}
 		else if(wave == 2) {
-			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 50, 100, 20, 300, 100, 100));
-			enemyList.add(new Minotaur(enemies.get(1), 40, 20, 3000, 50, 100, 20, 450, 100, 100));
+			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 300, 100, 100));
+			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 450, 100, 100));
 			
 		}
 		else if(wave == 3) {
-			enemyList.add(new Minotaur(enemies.get(1), 20, 20, 10000, 50, 1000, 20, 450, 200, 200));
+			enemyList.add(new Minotaur(0, 20, 10000, 50, 1000, 20, 450, 200, 200));
 
 		}
 		else if(wave == 4) {

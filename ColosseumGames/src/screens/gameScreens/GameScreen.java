@@ -120,7 +120,7 @@ public class GameScreen extends Screen {
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
-			wave.startWave(surface, hero, enemies);
+			wave.startWave(surface, hero);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
@@ -199,19 +199,19 @@ public class GameScreen extends Screen {
 		}
 		
 		if (getSpecificHero() == HERCULES) {
-			hero = new Hercules(hercules, 20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			hero = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == ACHILLES) {
-			hero = new Achilles(achilles, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == CHIRON) {
-			hero = new Chiron(chiron, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Chiron(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = new Helen(helen, 10, 10, 300000, 400, 250, 600, 300, 100, 100);
+			hero = new Helen(10, 10, 300000, 400, 250, 600, 300, 100, 100);
 		}
 		else if (getSpecificHero() == PERSEUS) {
-			hero = new Perseus(perseus, 10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		}
 	}
 
