@@ -11,19 +11,19 @@ import processing.core.PShape;
  *
  */
 public abstract class Screen {
-	
+	                                                                                                      
 	public static final int SCREEN_WIDTH = 1300, SCREEN_HEIGHT = 800;
 	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
 	
-	private int volume;
+	private static int volume;
 	
 	private DrawingSurface surface;
 	
-	private boolean isSoundOn;
+	private static boolean isSoundOn;
 	
-	private char upKey, downKey, leftKey, rightKey;
+	private static char upKey, downKey, leftKey, rightKey;
 	
-	private int specificHero;
+	private static int specificHero;
 	
 	/**
 	 * Creates a new Screen
@@ -98,33 +98,33 @@ public abstract class Screen {
 	
 	/**
 	 * Changes volume accordingly
-	 * @param volume the new volume 
+	 * @param vol the new volume 
 	 */
-	public void setVolume(int volume) {
-		this.volume = volume;
+	public static void setVolume(int vol) {
+		volume = vol;
 	}
 	
 	/**
 	 * Gets the volume of the screen
 	 * @return the volume 
 	 */
-	public int getVolume() {
+	public static int getVolume() {
 		return volume;
 	}
 	
 	/**
 	 * Changes the state of sound
-	 * @param true if sound is on, false if not
+	 * @param sound true if sound is on, false if not
 	 */
-	public void setSound(boolean isSoundOn) {
-		this.isSoundOn = isSoundOn;
+	public static void setSound(boolean sound) {
+		isSoundOn = sound;
 	}
 	
 	/**
 	 * Tells whether sound is on or not
 	 * @return true if sound is on, false if not
 	 */
-	public boolean getSound() {
+	public static boolean getSound() {
 		return isSoundOn;
 	}
 	
@@ -132,7 +132,7 @@ public abstract class Screen {
 	 * Changes the key used for up movement
 	 * @param key the new key for up
 	 */
-	public void setUpKey(char key) {
+	public static void setUpKey(char key) {
 		upKey = key;
 	}
 	
@@ -140,7 +140,7 @@ public abstract class Screen {
 	 * Changes the key used for down movement
 	 * @param key the new key for down
 	 */
-	public void setDownKey(char key) {
+	public static void setDownKey(char key) {
 		downKey = key;
 	}
 	
@@ -148,7 +148,7 @@ public abstract class Screen {
 	 * Changes the key used for left movement
 	 * @param key the new key for left
 	 */
-	public void setLeftKey(char key) {
+	public static void setLeftKey(char key) {
 		leftKey = key;
 	}
 	
@@ -156,7 +156,7 @@ public abstract class Screen {
 	 * Changes the key used for right movement
 	 * @param key the new key for right
 	 */
-	public void setRightKey(char key) {
+	public static void setRightKey(char key) {
 		rightKey = key;
 	}
 	
@@ -164,7 +164,7 @@ public abstract class Screen {
 	 * Gets the key used for upwards movement
 	 * @return the key used to go up
 	 */
-	public char getUpKey() {
+	public static char getUpKey() {
 		return upKey;
 	}
 	
@@ -172,7 +172,7 @@ public abstract class Screen {
 	 * Gets the key used for downwards movement
 	 * @return the key used to go down
 	 */
-	public char getDownKey() {
+	public static char getDownKey() {
 		return downKey;
 	}
 	
@@ -180,7 +180,7 @@ public abstract class Screen {
 	 * Gets the key used for leftwards movement
 	 * @return the key used to go left
 	 */
-	public char getLeftKey() {
+	public static char getLeftKey() {
 		return leftKey;
 	}
 	
@@ -188,7 +188,7 @@ public abstract class Screen {
 	 * Gets the key used for rightwards movement
 	 * @return the key used to go right
 	 */
-	public char getRightKey() {
+	public static char getRightKey() {
 		return rightKey;
 	}
 	
@@ -196,7 +196,7 @@ public abstract class Screen {
 	 * Changes the hero in view
 	 * @param x the new hero in view
 	 */
-	public void setSpecificHero(int x) {
+	public static void setSpecificHero(int x) {
 		specificHero = x;
 	}
 	
@@ -204,7 +204,7 @@ public abstract class Screen {
 	 * Gets the hero in view
 	 * @return the hero as an int
 	 */
-	public int getSpecificHero() {
+	public static int getSpecificHero() {
 		return specificHero;
 	}
 }

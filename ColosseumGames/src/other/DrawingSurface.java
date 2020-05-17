@@ -99,8 +99,8 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 * Plays the sound in the game
 	 */
 	public void playSound() {
-		if (currentScreen.getSound()) {
-			audio.amp((float)(currentScreen.getVolume() / 100.0));
+		if (Screen.getSound()) {
+			audio.amp((float)(Screen.getVolume() / 100.0));
 			
 			if (!audio.isPlaying())
 				audio.play();
@@ -112,6 +112,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	
 	/**
 	 * Changes screen based on how user interacts with game
+	 * @pre x must be more than or equal to 0 and less than or equal to 10
 	 */
 	public void toggleScreen(int x) {
 		currentScreen = screens[x];
