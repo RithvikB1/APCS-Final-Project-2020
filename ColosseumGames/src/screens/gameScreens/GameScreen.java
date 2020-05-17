@@ -83,38 +83,33 @@ public class GameScreen extends Screen {
 	public void setup() {
 		background = surface.loadImage("files/images/Background.png");
 		
-		harpy.add(surface.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-		minotaur.add(surface.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
-		
-		hercules1 = surface.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png");
-		hercules2  = surface.loadImage("sprites/Heroes/Hercules/HerculesSelected.png");
-		hercules.add(hercules1);
-		hercules.add(hercules2);
-		
-		achilles1 = surface.loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png");
-		achilles2 = surface.loadImage("sprites/Heroes/Achilles/AchillesSelected.png");
-		achilles.add(achilles1);
-		achilles.add(achilles2);
-		
-		chiron1 = surface.loadImage("sprites/Heroes/Chiron/Chiron.jpg");
-		chiron.add(chiron1);
-		
-		helen1 = surface.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png");
-		helen2 = surface.loadImage("sprites/Heroes/Helen/HelenSelected.png");
-		helen.add(helen1);
-		helen.add(helen2);
-		
-		perseus1 = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
-		perseus.add(perseus1);
-		
-		enemies.add(harpy);
-		enemies.add(minotaur);
+//		harpy.add(surface.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
+//		minotaur.add(surface.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
 //		
-//		herculesH.setup(surface);
-//		achillesH.setup(surface);
-//		chironH.setup(surface);
-//		helenH.setup(surface);
-//		perseusH.setup(surface);
+//		hercules1 = surface.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png");
+//		hercules2  = surface.loadImage("sprites/Heroes/Hercules/HerculesSelected.png");
+//		hercules.add(hercules1);
+//		hercules.add(hercules2);
+//		
+//		achilles1 = surface.loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png");
+//		achilles2 = surface.loadImage("sprites/Heroes/Achilles/AchillesSelected.png");
+//		achilles.add(achilles1);
+//		achilles.add(achilles2);
+//		
+//		chiron1 = surface.loadImage("sprites/Heroes/Chiron/Chiron.jpg");
+//		chiron.add(chiron1);
+//		
+//		helen1 = surface.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png");
+//		helen2 = surface.loadImage("sprites/Heroes/Helen/HelenSelected.png");
+//		helen.add(helen1);
+//		helen.add(helen2);
+//		
+//		perseus1 = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
+//		perseus.add(perseus1);
+//		
+//		enemies.add(harpy);
+//		enemies.add(minotaur);
+//		
 	}
 	
 	public void draw() {
