@@ -12,9 +12,12 @@ import processing.core.PImage;
 public class Hercules extends Hero {
 	
 	private ArrayList<PImage> images;
-	private double range, damage;
+	
 	private boolean position;
 	private int imageNumber;
+	
+	private int currentDir;
+	private long previousShotTime;
 
 	public Hercules( double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -22,9 +25,9 @@ public class Hercules extends Hero {
 		
 		images = new ArrayList<PImage>();
 		
-		this.range = range;
-		this.damage = damage;
 		position = false;
+		
+		previousShotTime = System.currentTimeMillis();
 	}
 
 	@Override
@@ -116,6 +119,8 @@ public class Hercules extends Hero {
 				position = false;
 			}
 		}
+		
+		currentDir = dir;
 	}
 	
 	public int getImageNumber()
@@ -150,44 +155,35 @@ public class Hercules extends Hero {
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
 		
-		Line2D.Double line = new Line2D.Double(mouseX, mouseY, getX(), getY());
-		int x = 0;
-		int y = 0;
-		
-		if (mouseX < getCenterX() + getWidth() / 2) {
-			x = -1;
-		}
-		else {
-			x = 1;
-		}
-		
-		if (mouseY < getCenterY() - getHeight() / 2) {
-			y = -1;
-		}
-		else {
-			y = 1;
-		}
-		
 		Rectangle attackBox;
+		double delay = (10/getAtkSpeed())*1000;
+		long nextShotTime = System.currentTimeMillis();
 		
-		if (x == 1 && y == 1)
-			attackBox = new Rectangle((int)(getCenterX() + getWidth() / 2), (int)(getCenterY() - getHeight() / 2), (int)range, (int)range);
-		else if (x == 1 && y == -1) 
+		double range = getRange();
+		double damage = getDamage();
+		
+		if (currentDir == 1) // right
+			attackBox = new Rectangle((int)(getX() + getWidth()), (int)getY(), (int)range, (int)range);
+		else if (currentDir == 2) // down
 			attackBox = new Rectangle((int)getX(), (int)(getY() + getHeight()), (int)range, (int)range);
-		else if (x == -1 && y == 1)
-			attackBox = new Rectangle((int)(getCenterX() - getWidth() * 2 + (getWidth() / 2)), (int)(getCenterY() - getHeight() / 2), (int)range, (int)range);
-		else 
-			attackBox = new Rectangle((int)(getCenterX() - getWidth() / 2), (int)(getCenterY() - (getHeight() / 2 + getHeight())), (int)range, (int)range);
-			
-		for (Enemy e : enemies) {
-			Rectangle2D intersection = attackBox.createIntersection(e);
-			
-			if (e.contains(intersection)) {
-				e.setHP(e.getHP() - damage);
-			}
-		}
+		else if (currentDir == 3) // left
+			attackBox = new Rectangle((int)(getCenterX() - getWidth() * 2 + (getWidth() / 2)), (int)getY(), (int)range, (int)range);
+		else // up
+			attackBox = new Rectangle((int)getX(), (int)(getCenterY() - (getHeight() / 2 + getHeight())), (int)range, (int)range);
 		
-		marker.rect((float)attackBox.getX(), (float)attackBox.getY(), (float)range, (float)range);
+		if(nextShotTime - previousShotTime > delay) {
+			for (Enemy e : enemies) {
+				Rectangle2D intersection = attackBox.createIntersection(e);
+				
+				if (e.contains(intersection)) {
+					e.setHP(e.getHP() - damage);
+				}
+			}
+			
+			marker.rect((float)attackBox.getX(), (float)attackBox.getY(), (float)range, (float)range);
+			
+			previousShotTime = System.currentTimeMillis();
+		}
 		
 	}
 

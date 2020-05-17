@@ -22,6 +22,9 @@ public class DeathMenu extends Screen {
 		super(surface);
 		
 		this.surface = surface;
+		
+		quit = new Rectangle();
+		restart = new Rectangle();
 	}
 
 	public void setup() {

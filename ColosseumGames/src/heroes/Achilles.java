@@ -1,4 +1,6 @@
 package heroes;
+import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import characters.Enemy;
@@ -11,6 +13,9 @@ public class Achilles extends Hero {
 	private ArrayList<PImage> images;
 	private int imageNumber;
 	private boolean position;
+	
+	private int currentDir;
+	private long previousShotTime;
 
 	public Achilles(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -18,6 +23,7 @@ public class Achilles extends Hero {
 		
 		images = new ArrayList<PImage>();
 		position = false;
+		previousShotTime = System.currentTimeMillis();
 	}
 
 	@Override
@@ -50,10 +56,38 @@ public class Achilles extends Hero {
 		
 	}
 
-	@Override
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
-		// TODO Auto-generated method stub
+		
+		Rectangle attackBox;
+		double delay = (10/getAtkSpeed())*1000;
+		long nextShotTime = System.currentTimeMillis();
+		
+		double range = getRange();
+		double damage = getDamage();
+		
+		if (currentDir == 1) // right
+			attackBox = new Rectangle((int)(getX() + getWidth()), (int)getY(), (int)range, (int)range);
+		else if (currentDir == 2) // down
+			attackBox = new Rectangle((int)getX(), (int)(getY() + getHeight()), (int)range, (int)range);
+		else if (currentDir == 3) // left
+			attackBox = new Rectangle((int)(getCenterX() - getWidth() * 2 + (getWidth() / 2)), (int)getY(), (int)range, (int)range);
+		else // up
+			attackBox = new Rectangle((int)getX(), (int)(getCenterY() - (getHeight() / 2 + getHeight())), (int)range, (int)range);
+		
+		if(nextShotTime - previousShotTime > delay) {
+			for (Enemy e : enemies) {
+				Rectangle2D intersection = attackBox.createIntersection(e);
+				
+				if (e.contains(intersection)) {
+					e.setHP(e.getHP() - damage);
+				}
+			}
+			
+			marker.rect((float)attackBox.getX(), (float)attackBox.getY(), (float)range, (float)range);
+			
+			previousShotTime = System.currentTimeMillis();
+		}
 		
 	}
 
@@ -116,6 +150,8 @@ public class Achilles extends Hero {
 				position = false;
 			}
 		}
+		
+		currentDir = dir;
 		
 	}
 
