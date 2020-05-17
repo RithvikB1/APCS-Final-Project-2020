@@ -1,4 +1,7 @@
 package heroes;
+import java.awt.Rectangle;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import characters.Enemy;
@@ -9,12 +12,16 @@ import processing.core.PImage;
 public class Hercules extends Hero {
 	
 	private ArrayList<PImage> images;
+	private double range, damage;
 
 	public Hercules( double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
 		
 		images = new ArrayList<PImage>();
+		
+		this.range = range;
+		this.damage = damage;
 	}
 
 	@Override
@@ -47,10 +54,47 @@ public class Hercules extends Hero {
 		
 	}
 
-	@Override
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
-		// TODO Auto-generated method stub
+		
+		Line2D.Double line = new Line2D.Double(mouseX, mouseY, getX(), getY());
+		int x = 0;
+		int y = 0;
+		
+		if (mouseX < getCenterX() + getWidth() / 2) {
+			x = -1;
+		}
+		else {
+			x = 1;
+		}
+		
+		if (mouseY < getCenterY() - getHeight() / 2) {
+			y = -1;
+		}
+		else {
+			y = 1;
+		}
+		
+		Rectangle attackBox;
+		
+		if (x == 1 && y == 1)
+			attackBox = new Rectangle((int)(getCenterX() + getWidth() / 2), (int)(getCenterY() - getHeight() / 2), (int)range, (int)range);
+		else if (x == 1 && y == -1) 
+			attackBox = new Rectangle((int)getX(), (int)(getY() + getHeight()), (int)range, (int)range);
+		else if (x == -1 && y == 1)
+			attackBox = new Rectangle((int)(getCenterX() - getWidth() * 2 + (getWidth() / 2)), (int)(getCenterY() - getHeight() / 2), (int)range, (int)range);
+		else 
+			attackBox = new Rectangle((int)(getCenterX() - getWidth() / 2), (int)(getCenterY() - (getHeight() / 2 + getHeight())), (int)range, (int)range);
+			
+		for (Enemy e : enemies) {
+			Rectangle2D intersection = attackBox.createIntersection(e);
+			
+			if (e.contains(intersection)) {
+				e.setHP(e.getHP() - damage);
+			}
+		}
+		
+		marker.rect((float)attackBox.getX(), (float)attackBox.getY(), (float)range, (float)range);
 		
 	}
 
