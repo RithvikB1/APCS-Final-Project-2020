@@ -109,12 +109,12 @@ public class GameScreen extends Screen {
 		
 		enemies.add(harpy);
 		enemies.add(minotaur);
-		
-		herculesH.setup(surface);
-		achillesH.setup(surface);
-		chironH.setup(surface);
-		helenH.setup(surface);
-		perseusH.setup(surface);
+//		
+//		herculesH.setup(surface);
+//		achillesH.setup(surface);
+//		chironH.setup(surface);
+//		helenH.setup(surface);
+//		perseusH.setup(surface);
 	}
 	
 	public void draw() {
@@ -152,7 +152,7 @@ public class GameScreen extends Screen {
 					enemiesInWave.get(i).behave(hero, surface);
 					enemiesInWave.get(i).moveByVelocities();
 				}
-				enemiesInWave.get(i).spawn(surface, 0);
+				enemiesInWave.get(i).spawn(surface, enemiesInWave.get(i).getImageNumber());
 				if(enemiesInWave.get(i) instanceof Hydra) {
 					bullets = enemiesInWave.get(i).getBullets();
 					for(int b = 0; b < bullets.size(); b++) {
@@ -178,9 +178,9 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 50);
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
-//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
-//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
-//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
 				}
 				enemiesInWave.remove(i);
 			}
