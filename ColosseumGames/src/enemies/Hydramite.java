@@ -20,7 +20,7 @@ public class Hydramite extends Enemy{
 	@Override
 	public void setup(PApplet marker) {
 		images = new ArrayList<>();
-		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyFacingRight.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydramite/HydramiteWalkRight1.png"));
 		this.setImages(images);
 
 	}
