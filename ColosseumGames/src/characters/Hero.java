@@ -45,7 +45,11 @@ public abstract class Hero extends Character {
 	
 	public abstract void setup(PApplet marker);
 	
+	public abstract void animate(int dir);
 	
+	public abstract int getImageNumber();
+	
+	public abstract void setImageNumber(int dir);
 	
 	/**
 	 * gives the Hero object the ability to attack Enemy objects

@@ -11,6 +11,8 @@ public class Helen extends Hero {
 	long previousShotTime = System.currentTimeMillis();
 	
 	private ArrayList<PImage> images;
+	private boolean position;
+	private int imageNumber;
 	
 	public Helen(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -27,8 +29,8 @@ public class Helen extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingBack.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingLeft.png"));			
-//		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft1.png"));
-//		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft2.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkBack1.png"));
@@ -39,8 +41,6 @@ public class Helen extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkLeft2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkRight2.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenSelected.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png"));
 		
 		this.setImages(images);
 		
@@ -67,6 +67,96 @@ public class Helen extends Hero {
 			previousShotTime = System.currentTimeMillis();
 		}
 	}
+
+	@Override
+	public void animate(int dir) {
+		// TODO Auto-generated method stub
+		if (dir == 1)//right
+		{
+			if (position == false)
+			{
+				imageNumber = 14;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 15;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 10;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 11;
+				position = false;
+			}
+		}
+		if (dir == 3)//left
+		{
+			if (position == false)
+			{
+				imageNumber = 12;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 13;
+				position = false;
+			}
+		}
+		if (dir == 4)//up
+		{
+			if (position == false)
+			{
+				imageNumber = 8;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 9;
+				position = false;
+			}
+		}
+		
+	}
+
+	@Override
+	public int getImageNumber() {
+		// TODO Auto-generated method stub
+		return imageNumber;
+	}
+
+	@Override
+	public void setImageNumber(int dir) {
+		// TODO Auto-generated method stub
+		if (dir == 1)
+		{
+			imageNumber = 0;
+		}
+		if (dir == 2)
+		{
+			imageNumber =1;
+		}
+		if (dir == 3)
+		{
+			imageNumber = 3;
+		}
+		if (dir == 4)
+		{
+			imageNumber = 2;
+		}
+		
+	}
+
+	
 		
      	
 	

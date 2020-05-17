@@ -13,6 +13,8 @@ public class Hercules extends Hero {
 	
 	private ArrayList<PImage> images;
 	private double range, damage;
+	private boolean position;
+	private int imageNumber;
 
 	public Hercules( double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -22,11 +24,15 @@ public class Hercules extends Hero {
 		
 		this.range = range;
 		this.damage = damage;
+		position = false;
 	}
 
 	@Override
 	public void setup(PApplet marker) {
 		images = new ArrayList<>();
+		
+		marker.frameRate(60);
+		
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));
@@ -47,11 +53,97 @@ public class Hercules extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesWalkLeft2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesWalkRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesWalkRight2.png"));
-		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesSelected.png"));
-		images.add(marker.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png"));
+		
 		
 		this.setImages(images);
 
+		
+	}
+	
+	public void animate(int dir)
+	{
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 18;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 19;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 14;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 15;
+				position = false;
+			}
+		}
+		if (dir == 3)
+		{
+			if (position == false)
+			{
+				imageNumber = 16;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 17;
+				position = false;
+			}
+		}
+		if (dir == 4)
+		{
+			if (position == false)
+			{
+				imageNumber = 12;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 13;
+				position = false;
+			}
+		}
+	}
+	
+	public int getImageNumber()
+	{
+		return imageNumber;
+	}
+	
+	public void setImageNumber(int dir)
+	{
+		if (dir == 1)
+		{
+			imageNumber = 0;
+		}
+		if (dir == 2)
+		{
+			imageNumber =1;
+		}
+		if (dir == 3)
+		{
+			imageNumber = 3;
+		}
+		if (dir == 4)
+		{
+			imageNumber = 2;
+		}
+		
+		
+		
 		
 	}
 
@@ -99,4 +191,5 @@ public class Hercules extends Hero {
 		
 	}
 
+	
 }

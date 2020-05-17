@@ -41,8 +41,7 @@ public class Chiron extends Hero {
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironWalkLeft2.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironWalkRight1.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironWalkRight2.png"));
-//		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironSelected.png"));
-//		images.add(marker.loadImage("sprites/Heroes/Chiron/PRESelectedChiron.png"));
+
 //		
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
 //		
@@ -56,5 +55,25 @@ public class Chiron extends Hero {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void animate(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getImageNumber() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setImageNumber(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

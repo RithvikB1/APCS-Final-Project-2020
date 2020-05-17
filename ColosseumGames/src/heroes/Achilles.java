@@ -9,12 +9,15 @@ import processing.core.PImage;
 public class Achilles extends Hero {
 	
 	private ArrayList<PImage> images;
+	private int imageNumber;
+	private boolean position;
 
 	public Achilles(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		
 		images = new ArrayList<PImage>();
+		position = false;
 	}
 
 	@Override
@@ -42,8 +45,6 @@ public class Achilles extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkLeft2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesWalkRight2.png"));
-		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesSelected.png"));
-		images.add(marker.loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png"));
 		
 		this.setImages(images);
 		
@@ -53,6 +54,95 @@ public class Achilles extends Hero {
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	@Override
+	public void animate(int dir) {
+		// TODO Auto-generated method stub
+		if (dir == 1)//right
+		{
+			if (position == false)
+			{
+				imageNumber = 18;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 19;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 14;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 15;
+				position = false;
+			}
+		}
+		if (dir == 3)//left
+		{
+			if (position == false)
+			{
+				imageNumber = 16;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 17;
+				position = false;
+			}
+		}
+		if (dir == 4)//up
+		{
+			if (position == false)
+			{
+				imageNumber = 12;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 13;
+				position = false;
+			}
+		}
+		
+	}
+
+	@Override
+	public int getImageNumber() {
+		// TODO Auto-generated method stub
+		return imageNumber;
+	}
+
+	@Override
+	public void setImageNumber(int dir) {
+		if (dir == 1)
+		{
+			imageNumber = 0;
+		}
+		if (dir == 2)
+		{
+			imageNumber =1;
+		}
+		if (dir == 3)
+		{
+			imageNumber = 3;
+		}
+		if (dir == 4)
+		{
+			imageNumber = 2;
+		}
 		
 	}
 

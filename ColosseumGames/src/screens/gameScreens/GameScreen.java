@@ -163,7 +163,7 @@ public class GameScreen extends Screen {
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();
-			hero.spawn(surface, 1);
+			hero.spawn(surface, hero.getImageNumber());
 			
 			surface.textSize(60);
 //			
@@ -233,6 +233,7 @@ public class GameScreen extends Screen {
 			hero = perseusH;
 		}
 		
+		System.out.println(getSpecificHero());
 		hero.setup(surface);
 	}
 
@@ -278,6 +279,7 @@ public class GameScreen extends Screen {
 				hero.walk(6); // up-right
 			else
 				hero.walk(4); // up
+				hero.animate(4);
 		}
 		else if (keys[1]) {
 			if (keys[2]) 
@@ -286,12 +288,15 @@ public class GameScreen extends Screen {
 				hero.walk(5); // down-right
 			else 
 				hero.walk(2); // up
+				hero.animate(2);
 		}
 		else if (keys[2]) {
 			hero.walk(3); // left
+			hero.animate(3);
 		}
 		else if (keys[3]) {
 			hero.walk(1); // right
+			hero.animate(1);
 		}
 		
 	}
@@ -299,12 +304,16 @@ public class GameScreen extends Screen {
 	public void keyReleased() {
 		if (surface.keyCode == getUpKey()) // up
 			keys[0] = false;
+			hero.setImageNumber(4);
 		if (surface.keyCode == getLeftKey()) // left
 			keys[2] = false;
+			hero.setImageNumber(3);
 		if (surface.keyCode == getDownKey()) // down
 			keys[1] = false;
+			hero.setImageNumber(2);
 		if (surface.keyCode == getRightKey()) // right
 			keys[3] = false;
+			hero.setImageNumber(1);
 		
 		hero.walk(9);
 	}
