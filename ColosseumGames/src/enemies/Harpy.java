@@ -15,6 +15,8 @@ import processing.core.PImage;
  *
  */
 public class Harpy extends Enemy {
+	
+	private ArrayList<PImage> images;
 
 	/**
 	 * Creates an Enemy
@@ -57,6 +59,20 @@ public class Harpy extends Enemy {
 	@Override
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
+		images = new ArrayList<>();
+		
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyFacingRight.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyWalkRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyFacingLeft.png"));			
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyWalkLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyWalkLeft2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyAttackRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyAttackRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyAttackLeft2.png"));
+		
+		this.setImages(images);
 		
 	}
 }

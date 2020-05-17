@@ -20,6 +20,7 @@ public class Chiron extends Hero {
 	@Override
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
+//		images = new ArrayList<>();
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingRight.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingFront.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingBack.png"));
@@ -42,10 +43,10 @@ public class Chiron extends Hero {
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironWalkRight2.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironSelected.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/PRESelectedChiron.png"));
-		
-		images.add(marker.loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
-		
-		this.setImages(images);
+//		
+//		images.add(marker.loadImage("sprites/Heroes/Chiron/Chiron.jpg"));
+//		
+//		this.setImages(images);
 		
 	}
 

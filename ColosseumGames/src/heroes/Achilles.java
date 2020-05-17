@@ -21,6 +21,7 @@ public class Achilles extends Hero {
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
 		
+		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingBack.png"));

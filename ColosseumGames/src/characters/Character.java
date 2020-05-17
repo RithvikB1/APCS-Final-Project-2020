@@ -16,7 +16,7 @@ import screens.other.Screen;
 public class Character extends Rectangle2D.Double {
 	
 	private ArrayList<PImage> images;
-	private double speed, atkSpeed, HP;
+	private double speed, atkSpeed, HP, maxHP;
 	private double range;
 	private double damage;
 	private int w, h;
@@ -56,6 +56,8 @@ public class Character extends Rectangle2D.Double {
 		this.speed = speed;
 		this.atkSpeed = atkSpeed;
 		this.HP = HP;
+		
+		this.maxHP = HP;
 		
 		//weapon stats
 		this.range = range;
@@ -283,6 +285,11 @@ public class Character extends Rectangle2D.Double {
 			vx = 0;
 		}
 
+	}
+	
+	public int getMaxHP()
+	{
+		return (int)maxHP;
 	}
 	
 	/**

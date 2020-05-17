@@ -19,6 +19,8 @@ public class Minotaur extends Enemy {
 	int reset = 0;
 	long chargePlayer = System.currentTimeMillis();
 	long seePlayer = 0;
+	
+	private ArrayList<PImage> images;
 	/**
 	 * Creates an Enemy
 	 *@param spriteImage the image of the character
@@ -91,6 +93,20 @@ public class Minotaur extends Enemy {
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
 		
+		images = new ArrayList<>();
+		
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurWalkRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurWalkRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurFacingLeft.png"));			
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurWalkLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurWalkLeft2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurAttackRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurAttackRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Minotaur/MinotaurAttackLeft2.png"));
+		
+		setImages(images);
 	}
 
 }

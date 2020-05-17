@@ -26,6 +26,7 @@ public class Hercules extends Hero {
 
 	@Override
 	public void setup(PApplet marker) {
+		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));

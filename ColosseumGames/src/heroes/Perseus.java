@@ -20,6 +20,7 @@ public class Perseus extends Hero {
 	@Override
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
+		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Heroes/Perseus/PerseusFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Perseus/PerseusFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Perseus/PerseusFacingBack.png"));
