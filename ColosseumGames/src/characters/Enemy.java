@@ -113,6 +113,10 @@ public abstract class Enemy extends Character {
 		return directionToPlayer;
 	}
 	
+	public abstract int getImageNumber();
+	public abstract void animate(int dir);
+	public abstract void setImageNumber(int dir);
+	
 	/**
 	 * allows the Enemy object to attack another Character object
 	 * @param mouseX the current x position of the user mouse

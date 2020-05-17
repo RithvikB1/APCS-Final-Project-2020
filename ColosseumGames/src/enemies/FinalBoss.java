@@ -47,4 +47,22 @@ public class FinalBoss extends Enemy {
 		
 	}
 
+	@Override
+	public int getImageNumber() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void animate(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImageNumber(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

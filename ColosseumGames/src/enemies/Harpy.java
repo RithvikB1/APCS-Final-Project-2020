@@ -17,6 +17,8 @@ import processing.core.PImage;
 public class Harpy extends Enemy {
 	
 	private ArrayList<PImage> images;
+	private boolean position;
+	private int imageNumber;
 
 	/**
 	 * Creates an Enemy
@@ -99,4 +101,51 @@ public class Harpy extends Enemy {
 		this.setImages(images);
 		
 	}
+
+	@Override
+	public void animate(int dir) {
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 18;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 19;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 14;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 15;
+				position = false;
+			}
+		}
+		
+	}
+
+	@Override
+	public int getImageNumber() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setImageNumber(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }

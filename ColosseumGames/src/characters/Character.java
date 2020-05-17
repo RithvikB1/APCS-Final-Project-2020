@@ -338,9 +338,6 @@ public class Character extends Rectangle2D.Double {
 		this.images = images;
 	}
 	
-	public void animate(int frameCount)
-	{
-		
-	}
+	
 	
 }
