@@ -2,6 +2,7 @@ package enemies;
 
 import java.util.ArrayList;
 
+import characters.Character;
 import characters.Enemy;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -36,6 +37,12 @@ public class MiniBoss extends Enemy {
 
 	@Override
 	public void setup(PApplet marker) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void behave(Character c, PApplet marker) {
 		// TODO Auto-generated method stub
 		
 	}

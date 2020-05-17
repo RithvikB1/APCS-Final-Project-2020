@@ -43,17 +43,41 @@ public class Harpy extends Enemy {
 	 * @param marker PApplet object needed to draw
 	 */
 	public void behave(Character c, PApplet marker) {
-		super.behave(c, marker);
-		if(getDirectionAwayFromPlayer(c, 100) == 5) {
+		
+		if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) < 150) {
+			this.walk(getDirectionAwayFromPlayer(c));
 			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
 		}
-		if(Math.abs(c.getX()-this.getX()) < 150 && Math.abs(c.getY()-this.getY()) < 150) {
-			this.walk(getDirectionAwayFromPlayer(c, 100));
-		}
-		else {
+		else if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) > 162) {
 			this.walk(getDirectionToPlayer(c));
 		}
+		else {
+			walk(9);
+			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
+		}
 		
+	}
+	public int getDirectionToPlayer(Character c) {
+		int direction = super.getDirectionToPlayer(c);
+		if(this.x > c.getX()) {
+			if(this.y < c.getY()) {
+				direction = 8;
+			}
+			else if(this.y > c.getY() && Math.abs(this.y - c.getY()) > 21) {
+				direction = 7;
+			}
+			
+		}
+		else if(this.x < c.getX()) {
+			if(this.y < c.getY()) {
+				direction = 5;
+			}
+			else if(this.y > c.getY()&& Math.abs(this.y - c.getY()) > 10) {
+				direction = 6;
+			}
+			
+		}
+		return direction;
 	}
 
 	@Override

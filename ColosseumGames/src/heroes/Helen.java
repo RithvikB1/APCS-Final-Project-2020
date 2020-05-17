@@ -59,7 +59,7 @@ public class Helen extends Hero {
 			marker.stroke(255, 255, 0);
 			marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
 			for(Enemy e: enemies) {
-				if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()) {
+				if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()/2) {
 					e.setHP(e.getHP() - getDamage());
 				}
 			}

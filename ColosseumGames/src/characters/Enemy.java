@@ -52,40 +52,38 @@ public abstract class Enemy extends Character {
 	 * @param c character the enemy wants to kill
 	 * @param marker draws the enemy
 	 */
-	public void behave(Character c, PApplet marker) {
-		int vx = 0;
-		int vy = 0;
-		
+	public abstract void behave(Character c, PApplet marker);
 
-	}
 	/**
 	 * 
 	 * @param c the Character object that the Enemy object is receiving the opposite direction
 	 * @param distance the distance required to stay away from the Character object
 	 * @return the direction that the Enemy object will walk
 	 */
-	public int getDirectionAwayFromPlayer(Character c, double distance)
+	public int getDirectionAwayFromPlayer(Character c)
 	{
-		int directionAway = 0;
-		if(Math.abs(this.x - c.getX()) < distance) {
-			if(this.x - c.getX() < 0) {
+		int directionAway = 9;
+		if(this.x > c.getX()) {
+			if(this.y + 10 < c.getY()) {
+				directionAway = 6;
+			}
+			else if(this.y > c.getY()) {
+				directionAway = 5;
+			}
+			else {
 				directionAway = 1;
+			}
+		}
+		else if(this.x < c.getX()) {
+			if(this.y < c.getY()) {
+				directionAway = 7;
+			}
+			else if(this.y > c.getY()) {
+				directionAway = 8;
 			}
 			else {
 				directionAway = 3;
 			}
-		}
-		if(Math.abs(this.y - c.getY()) < distance) {
-			if(this.y - c.getY() < 0) {
-				directionAway = 4;
-			}
-			else {
-				directionAway = 2;
-			}
-		}
-		if(Math.abs(this.y - c.getY()) < distance + 10 || Math.abs(this.x - c.getX()) < distance + 10) {
-			
-			directionAway = 5;
 		}
 		return directionAway;
 		

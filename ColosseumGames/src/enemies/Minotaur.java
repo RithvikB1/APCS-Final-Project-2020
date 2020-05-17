@@ -46,7 +46,6 @@ public class Minotaur extends Enemy {
 	 * @param marker PApplet object needed to draw
 	 */
 	public void behave(Character c, PApplet marker) {
-		super.behave(c, marker);
 		
 		if(Math.abs(this.getX() - c.getX()) < 15) {
 			this.setVx(0);
