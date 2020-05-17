@@ -20,7 +20,6 @@ import processing.core.PImage;
 public class Hydra extends Enemy {
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
-	private int once;
 	/**
 	 * Creates an Enemy
 	 * @param spriteImage the image of the character
@@ -39,7 +38,6 @@ public class Hydra extends Enemy {
 		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 		bullets = new ArrayList<Bullet>();
-		once = 0;
 	}
 
 	@Override
@@ -52,9 +50,11 @@ public class Hydra extends Enemy {
 
 	@Override
 	public void behave(Character c, PApplet marker) {
-		if(once == 0) {
-			bullets.add(new Bullet(this.x, this.y, Math.PI/6 - 0.1));
-			once++;
+		double angle = Math.atan((c.getY()-this.getY())/(c.getX() - this.getX()));
+		if(bullets.size() == 0) {
+			bullets.add(new Bullet(this.x, this.y, angle));
+			bullets.add(new Bullet(this.x, this.y, angle + 0.1));
+			bullets.add(new Bullet(this.x, this.y, angle - 0.1));
 		}
 	}
 	public ArrayList<Bullet> getBullets(){

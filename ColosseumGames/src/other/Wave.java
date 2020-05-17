@@ -38,7 +38,7 @@ public class Wave {
 			Hydra hydra = new Hydra(20, 20, 20, 20, 20, 70, 250, 170, 170);
 			enemyList.add(hydra);
 			if(hydra.die()) {
-				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
+				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
 				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
 				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
 			}

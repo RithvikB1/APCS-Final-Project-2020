@@ -7,6 +7,7 @@ import characters.Enemy;
 import characters.Hero;
 import enemies.Harpy;
 import enemies.Hydra;
+import enemies.Hydramite;
 import enemies.Minotaur;
 import heroes.*;
 import other.Bullet;
@@ -175,6 +176,11 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 100);
 				} else if(enemiesInWave.get(i) instanceof Harpy) {
 					hero.setHP(hero.getHP() + 50);
+				}
+				else if(enemiesInWave.get(i) instanceof Hydra) {
+//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+//					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
 				}
 				enemiesInWave.remove(i);
 			}

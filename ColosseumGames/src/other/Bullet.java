@@ -72,8 +72,11 @@ public class Bullet extends Rectangle2D.Double {
 		return collisionCounter;
 	}
 	public void draw(PApplet marker) {
+		marker.pushMatrix();
 		marker.fill(255);
+		marker.stroke(255, 0, 0);
 		marker.rect((float)super.x, (float)super.y, 20, 20);
+		marker.popMatrix();
 	}
 	
 }
