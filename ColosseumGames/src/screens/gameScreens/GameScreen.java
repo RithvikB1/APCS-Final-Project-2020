@@ -172,7 +172,7 @@ public class GameScreen extends Screen {
 			
 			surface.line(0, 700, 1300, 700);
 			
-			surface.text("HP: " + (int)hero.getHP() + "/10000", 370, 770);
+			surface.text("HP: " + (int)hero.getHP() + "/"+ hero.getMaxHP(), 370, 770);
 //			
 			surface.textSize(30);
 //			surface.fill(255);

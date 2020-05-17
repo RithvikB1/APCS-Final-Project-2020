@@ -45,6 +45,8 @@ public abstract class Hero extends Character {
 	
 	public abstract void setup(PApplet marker);
 	
+	
+	
 	/**
 	 * gives the Hero object the ability to attack Enemy objects
 	 * @param mouseX the current x position of the user mouse
