@@ -41,6 +41,12 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<PImage> hercules, achilles, chiron, helen, perseus;
 	
+	private Hercules herculesH;
+	private Achilles achillesH;
+	private Chiron chironH;
+	private Helen helenH;
+	private Perseus perseusH;
+	
 	public GameScreen(DrawingSurface surface) {
 		super(surface);
 		
@@ -60,6 +66,13 @@ public class GameScreen extends Screen {
 		perseus = new ArrayList<PImage>();
 		
 		keys = new boolean[4];
+		
+		herculesH = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
+		achillesH = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+		chironH = new Chiron(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+		helenH = new Helen(10, 10, 300000, 400, 250, 600, 300, 100, 100);
+		perseusH = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+		
 	}
 
 	public void setup() {
@@ -91,6 +104,12 @@ public class GameScreen extends Screen {
 		
 		enemies.add(harpy);
 		enemies.add(minotaur);
+		
+		herculesH.setup(surface);
+		achillesH.setup(surface);
+		chironH.setup(surface);
+		helenH.setup(surface);
+		perseusH.setup(surface);
 	}
 	
 	public void draw() {
@@ -199,19 +218,19 @@ public class GameScreen extends Screen {
 		}
 		
 		if (getSpecificHero() == HERCULES) {
-			hero = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
+			hero = herculesH;
 		}
 		else if (getSpecificHero() == ACHILLES) {
-			hero = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = achillesH;
 		}
 		else if (getSpecificHero() == CHIRON) {
-			hero = new Chiron(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = chironH;
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = new Helen(10, 10, 300000, 400, 250, 600, 300, 100, 100);
+			hero = helenH;
 		}
 		else if (getSpecificHero() == PERSEUS) {
-			hero = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+			hero = perseusH;
 		}
 	}
 

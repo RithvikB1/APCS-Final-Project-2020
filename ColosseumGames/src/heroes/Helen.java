@@ -15,7 +15,8 @@ public class Helen extends Hero {
 	public Helen(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
-		// TODO Auto-generated constructor stub
+		
+		images = new ArrayList<PImage>();
 	}
 
 	@Override
@@ -26,12 +27,12 @@ public class Helen extends Hero {
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingBack.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingLeft.png"));			
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack1.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack2.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront1.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront2.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft1.png"));
-		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft2.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack1.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackBack2.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront1.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackFront2.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft1.png"));
+		//images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackLeft2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight1.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenAttackRight2.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenWalkBack1.png"));

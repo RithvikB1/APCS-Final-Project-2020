@@ -13,7 +13,8 @@ public class Perseus extends Hero {
 	public Perseus(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
-		// TODO Auto-generated constructor stub
+		
+		images = new ArrayList<PImage>();
 	}
 
 	@Override

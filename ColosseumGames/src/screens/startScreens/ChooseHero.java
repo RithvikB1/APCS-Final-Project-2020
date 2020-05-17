@@ -16,7 +16,7 @@ import screens.other.Screen;
  */
 public class ChooseHero extends Screen {
 
-	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron, helen1, helen2, perseus;
+	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron, helen1, helen2, perseus1, perseus2;
 	
 	private DrawingSurface surface;
 	
@@ -51,7 +51,8 @@ public class ChooseHero extends Screen {
 		helen1 = surface.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png");
 		helen2 = surface.loadImage("sprites/Heroes/Helen/HelenSelected.png");
 		
-		perseus = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
+		perseus1 = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
+		perseus2 = surface.loadImage("sprites/Heroes/Perseus/PerseusSelected.png");
 	}
 
 	public void draw() {
@@ -128,7 +129,11 @@ public class ChooseHero extends Screen {
 			surface.text("Helen", 570, 590);
 		}
 		else if (getSpecificHero() == PERSEUS) {
-			surface.image(perseus, 450, 100, 420, 420);
+			if (isHeroPicked) 
+				surface.image(perseus2, 450, 100, 420, 420);
+			else 
+				surface.image(perseus1, 450, 100, 420, 420);
+			
 			surface.shape(shape6);
 			surface.text("Perseus", 550, 590);
 		}
