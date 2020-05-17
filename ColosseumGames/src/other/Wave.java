@@ -35,7 +35,13 @@ public class Wave {
 		
 		
 		if(wave == 1) {
-			enemyList.add(new Hydramite(40, 20, 20, 20, 2000, 20, 20, 100, 100));
+			Hydra hydra = new Hydra(20, 20, 20, 20, 20, 70, 250, 170, 170);
+			enemyList.add(hydra);
+			if(hydra.die()) {
+				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
+				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
+				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
+			}
 //			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 20, 50, 50));
 //			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 400, 50, 50));
 //			enemyList.add(new Harpy(5, 20, 20, 141, 20, 20, 300, 50, 50));

@@ -19,6 +19,8 @@ import processing.core.PImage;
  */
 public class Hydra extends Enemy {
 	private ArrayList<Bullet> bullets; 
+	private ArrayList<PImage> images;
+	private int once;
 	/**
 	 * Creates an Enemy
 	 * @param spriteImage the image of the character
@@ -36,42 +38,27 @@ public class Hydra extends Enemy {
 			int y, int w, int h) {
 		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
+		bullets = new ArrayList<Bullet>();
+		once = 0;
 	}
 
 	@Override
 	public void setup(PApplet marker) {
-		// TODO Auto-generated method stub
+		images = new ArrayList<>();
+		images.add(marker.loadImage("sprites/Enemies/Hydra/HydraAttackRight2.png"));
+		this.setImages(images);
 		
 	}
 
 	@Override
 	public void behave(Character c, PApplet marker) {
-		// TODO Auto-generated method stub
-		
+		if(once == 0) {
+			bullets.add(new Bullet(this.x, this.y, Math.PI/6 - 0.1));
+			once++;
+		}
 	}
 	public ArrayList<Bullet> getBullets(){
 		return bullets;
-	}
-	public void shoot(double mouseX, double mouseY, PApplet marker, Character hero, double shotX, double shotY) {
-		double angle = Math.atan((mouseY - y)/(mouseX - x));
-		if(mouseX - x< 0) {
-			angle += Math.PI;
-		}
-		double maxXPoint = getRange() * Math.cos(angle) + shotX;
-		double maxYPoint = getRange() * Math.sin(angle) + shotY;
-		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
-		
-		if(shot.intersects(new Rectangle2D.Double(hero.getX() - 10, hero.getY() - 10, hero.getWidth() + 20, hero.getHeight() + 20))) {
-			hero.setHP(hero.getHP() - getDamage());
-		}
-		marker.pushStyle();
-		
-		marker.strokeWeight(10);
-		marker.stroke(255, 0, 0);
-		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);
-		
-		marker.popStyle();
-			
 	}
 
 }

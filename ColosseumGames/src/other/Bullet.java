@@ -1,43 +1,42 @@
 package other;
 
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 import screens.other.Screen;
 
 public class Bullet extends Rectangle2D.Double {
 	PApplet marker;
-	private double x, y, angle, speed, vx, vy;
-	private int maxCollisions;
-	private boolean withAngle;
-	Character c;
-	public Bullet(PApplet marker, double x, double y, double angle, double speed, boolean withAngle, int maxCollisions, Character c) {
+	private double vx, vy, angle;
+	private int side;
+	private int collisionCounter;
+	public Bullet(double x, double y, double angle) {
 		super(x, y, 20, 20);
-		this.x = x;
-		this.y = y;
 		this.angle = angle;
-		this.speed = speed;
-		this.withAngle = withAngle;
-		this.marker = marker;
-		this.maxCollisions = maxCollisions;
-		this.c = c;
 	}
 	public boolean isCollision() {
 
-		if(x < 40) {
+		if(super.x < 40) {
+			side = 2;
+			super.x = 90;
 			return true;
 		} 
-		if(y < 40) {
-			y = 40;
+		if(super.y < 40) {
+			side = 1;
+			super.y = 90;
+			
 			return true;
 			//have 4 of these
 		}
-		if(x > Screen.SCREEN_WIDTH - 40) {
-			x = Screen.SCREEN_WIDTH - 40 + 20;
+		if(super.x > Screen.SCREEN_WIDTH - 40) {
+			side = 2;
+			super.x = Screen.SCREEN_WIDTH - 90;
 			return true;
 		}
-		if(y > Screen.SCREEN_HEIGHT - 200) {
-			y = Screen.SCREEN_HEIGHT - 200 + 20;
+		if(super.y > Screen.SCREEN_HEIGHT - 250) {
+			side = 1;
+			super.y = Screen.SCREEN_HEIGHT - 300;
 			return true;
 		}
 		else {
@@ -45,14 +44,36 @@ public class Bullet extends Rectangle2D.Double {
 		}
 	}
 	
-	public void launch(double x, double y, double angle, double speed, boolean withAngle) {
-		vx = speed * Math.cos(angle);
-		vy = speed * Math.sin(angle);
-		super.x += vx;
-		super.y += vy;
+	public void launch(double speed) {
+		if(!isCollision()) {
+			vx = speed * Math.cos(angle);
+			vy = speed * Math.sin(angle);
+		} else {
+			collisionCounter++;
+			if(side == 1) {
+				angle = 2*Math.PI - angle;
+			}
+			if(side == 2) {
+				angle = Math.PI - angle;
+			}
+		}
+		
+		
+	}
+	public void moveByVelocities(){
+		if(!isCollision()) {
+			super.x += vx;
+			super.y += vy;
+		}
+	
+
+	}
+	public int getCollisionCounter() {
+		return collisionCounter;
 	}
 	public void draw(PApplet marker) {
-		
+		marker.fill(255);
+		marker.rect((float)super.x, (float)super.y, 20, 20);
 	}
 	
 }

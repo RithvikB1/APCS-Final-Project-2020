@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import characters.Enemy;
 import characters.Hero;
 import enemies.Harpy;
+import enemies.Hydra;
 import enemies.Minotaur;
 import heroes.*;
+import other.Bullet;
 import other.DrawingSurface;
 import other.Wave;
 import processing.core.PConstants;
@@ -40,7 +42,7 @@ public class GameScreen extends Screen {
 	private Rectangle pause;
 	
 	private ArrayList<PImage> hercules, achilles, chiron, helen, perseus;
-	
+	private ArrayList<Bullet> bullets;
 	private Hercules herculesH;
 	private Achilles achillesH;
 	private Chiron chironH;
@@ -64,6 +66,8 @@ public class GameScreen extends Screen {
 		chiron = new ArrayList<PImage>();
 		helen = new ArrayList<PImage>();
 		perseus = new ArrayList<PImage>();
+		
+		bullets = new ArrayList<Bullet>();
 		
 		keys = new boolean[4];
 		
@@ -148,6 +152,23 @@ public class GameScreen extends Screen {
 					enemiesInWave.get(i).moveByVelocities();
 				}
 				enemiesInWave.get(i).spawn(surface, 0);
+				if(enemiesInWave.get(i) instanceof Hydra) {
+					bullets = enemiesInWave.get(i).getBullets();
+					for(int b = 0; b < bullets.size(); b++) {
+						if(!(bullets.get(b).getCollisionCounter() == 3)) {
+							bullets.get(b).launch(50);
+							bullets.get(b).moveByVelocities();
+							bullets.get(b).draw(surface);
+							if(bullets.get(b).intersects(hero)) {
+								hero.setHP(hero.getHP() - enemiesInWave.get(i).getDamage());
+							}
+						}
+						else {
+							bullets.remove(b);
+						}
+					}
+
+				}
 			}
 			else {
 				if(enemiesInWave.get(i) instanceof Minotaur) {

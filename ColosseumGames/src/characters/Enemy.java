@@ -5,6 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import characters.Character;
+import other.Bullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
@@ -142,6 +143,10 @@ public abstract class Enemy extends Character {
 		marker.popStyle();
 			
 	}
+	public ArrayList<Bullet> getBullets(){
+		return null;
+	}
+
 		
 	
 }
