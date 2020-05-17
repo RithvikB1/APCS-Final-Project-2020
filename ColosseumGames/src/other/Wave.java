@@ -39,6 +39,8 @@ public class Wave {
 			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 400, 50, 50));
 			enemyList.add(new Harpy(5, 20, 20, 141, 20, 20, 300, 50, 50));
 			enemyList.add(new Harpy(5, 20, 20, 141, 20, 750, 300, 50, 50));
+			
+			setup(marker);
 		
 
 			//and so on
@@ -47,10 +49,11 @@ public class Wave {
 			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 300, 100, 100));
 			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 450, 100, 100));
 			
+			setup(marker);
 		}
 		else if(wave == 3) {
 			enemyList.add(new Minotaur(0, 20, 10000, 50, 1000, 20, 450, 200, 200));
-
+			setup(marker);
 		}
 		else if(wave == 4) {
 
@@ -88,5 +91,13 @@ public class Wave {
 	 */
 	public ArrayList<Enemy> getEnemyList(){
 		return enemyList;
+	}
+	
+	public void setup(PApplet marker)
+	{
+		for (Enemy a : enemyList)
+		{
+			a.setup(marker);
+		}
 	}
 }

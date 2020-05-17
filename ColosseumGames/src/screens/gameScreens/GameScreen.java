@@ -232,6 +232,8 @@ public class GameScreen extends Screen {
 		else if (getSpecificHero() == PERSEUS) {
 			hero = perseusH;
 		}
+		
+		hero.setup(surface);
 	}
 
 	public void mousePressed() {
