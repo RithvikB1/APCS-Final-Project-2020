@@ -1,10 +1,9 @@
 package characters;
 
-import java.awt.geom.Line2D;
+
 import java.util.ArrayList;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 
 /**
  * Creates a playable hero that can perform several functions in-game
@@ -13,8 +12,7 @@ import processing.core.PImage;
  *
  */
 public abstract class Hero extends Character {
-	private double range;
-	private double damage;
+	
 	
 	
 	/**w
@@ -37,9 +35,8 @@ public abstract class Hero extends Character {
 		this.y = y;
 		
 
-		//weapon stats
-		this.range = range;
-		this.damage = damage;
+		
+		
 
 	}
 	
