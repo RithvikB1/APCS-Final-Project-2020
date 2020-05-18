@@ -20,6 +20,8 @@ import processing.core.PImage;
 public class Hydra extends Enemy {
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
+	private int imageNumber;
+	private boolean position;
 	/**
 	 * Creates an Enemy
 	 * @param spriteImage the image of the character
@@ -43,7 +45,10 @@ public class Hydra extends Enemy {
 	@Override
 	public void setup(PApplet marker) {
 		images = new ArrayList<>();
+		images.add(marker.loadImage("sprites/Enemies/Hydra/HydraAttackRight1.png"));
 		images.add(marker.loadImage("sprites/Enemies/Hydra/HydraAttackRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydra/HydraAttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydra/HydraAttackLeft2.png"));
 		this.setImages(images);
 		
 	}
@@ -68,9 +73,43 @@ public class Hydra extends Enemy {
 	}
 
 	@Override
-	public void animate(int dir) {
+	public void animateWalk(int dir) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void animateAttack(int dir) {
+		// TODO Auto-generated method stub
+		
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 0;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 1;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 2;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 3;
+				position = false;
+			}
+		}
 	}
 
 	

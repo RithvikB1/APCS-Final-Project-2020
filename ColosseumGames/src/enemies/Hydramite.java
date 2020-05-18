@@ -33,7 +33,7 @@ public class Hydramite extends Enemy{
 	@Override
 	public void behave(Character c, PApplet marker) {
 		this.walk(getDirectionToPlayer(c));
-		animate(getDirectionToPlayer(c));
+		animateWalk(getDirectionToPlayer(c));
 		if(Math.abs(c.getX() - this.getX()) <= getSpeed() && Math.abs(c.getY() - this.getY()) <= getSpeed()) {
 			c.setHP(c.getHP() - getDamage());
 			this.setHP(0);
@@ -69,7 +69,7 @@ public class Hydramite extends Enemy{
 	}
 
 	@Override
-	public void animate(int dir) {
+	public void animateWalk(int dir) {
 		// TODO Auto-generated method stub
 		if (dir == 1|| dir == 3 || dir ==4)
 		{
@@ -99,6 +99,12 @@ public class Hydramite extends Enemy{
 				position = false;
 			}
 		}
+	}
+
+	@Override
+	public void animateAttack(int dir) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

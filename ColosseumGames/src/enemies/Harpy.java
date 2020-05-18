@@ -48,12 +48,12 @@ public class Harpy extends Enemy {
 		
 		if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) < 150) {
 			this.walk(getDirectionAwayFromPlayer(c));
-			animate(getDirectionAwayFromPlayer(c));
+			animateWalk(getDirectionAwayFromPlayer(c));
 			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
 		}
 		else if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) > 162) {
 			this.walk(getDirectionToPlayer(c));
-			animate(getDirectionToPlayer(c));
+			animateWalk(getDirectionToPlayer(c));
 		}
 		else {
 			walk(9);
@@ -105,7 +105,7 @@ public class Harpy extends Enemy {
 	}
 
 	@Override
-	public void animate(int dir) {
+	public void animateWalk(int dir) {
 		if (dir == 1|| dir == 3 || dir ==4)
 		{
 			if (position == false)
@@ -135,6 +135,38 @@ public class Harpy extends Enemy {
 			}
 		}
 		
+	}
+	
+	public void animateAttack(int dir)
+	{
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 6;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 7;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 8;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 9;
+				position = false;
+			}
+		}
 	}
 
 	@Override

@@ -114,7 +114,8 @@ public abstract class Enemy extends Character {
 	}
 	
 	public abstract int getImageNumber();
-	public abstract void animate(int dir);
+	public abstract void animateWalk(int dir);
+	public abstract void animateAttack(int dir);
 	
 	
 	/**
@@ -135,6 +136,14 @@ public abstract class Enemy extends Character {
 		double maxYPoint = range * Math.sin(angle) + shotY;
 		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
 		
+		if (maxXPoint > shotX)
+		{
+			animateAttack(1);
+		}
+		else
+		{
+			animateAttack(2);
+		}
 		if(shot.intersects(new Rectangle2D.Double(hero.getX() - 10, hero.getY() - 10, hero.getWidth() + 20, hero.getHeight() + 20))) {
 			hero.setHP(hero.getHP() - damage);
 		}

@@ -54,7 +54,13 @@ public class FinalBoss extends Enemy {
 	}
 
 	@Override
-	public void animate(int dir) {
+	public void animateWalk(int dir) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void animateAttack(int dir) {
 		// TODO Auto-generated method stub
 		
 	}

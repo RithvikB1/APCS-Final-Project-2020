@@ -62,11 +62,11 @@ public class Minotaur extends Enemy {
 			this.setVy(0);
 			if(this.getX() - c.getX() > 0) {
 				this.walk(3);
-				animate(2);
+				animateWalk(2);
 			}
 			else {
 				this.walk(1);
-				animate(1);
+				animateWalk(1);
 			}
 		}
 		if(reset == 0) {
@@ -80,12 +80,12 @@ public class Minotaur extends Enemy {
 		else {
 			reset = 0;
 			this.walk(getDirectionToPlayer(c));
-			animate(getDirectionToPlayer(c));
+			animateWalk(getDirectionToPlayer(c));
 		}
 		this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
 		if(c.getVx() == 0 && c.getVy() == 0) {
 			this.walk(getDirectionToPlayer(c));
-			animate(getDirectionToPlayer(c));
+			animateWalk(getDirectionToPlayer(c));
 			this.setSpeed(2);
 		}
 		else {
@@ -122,7 +122,7 @@ public class Minotaur extends Enemy {
 	}
 
 	@Override
-	public void animate(int dir) {
+	public void animateWalk(int dir) {
 		// TODO Auto-generated method stub
 		if (dir == 1 || dir == 3 || dir ==4)
 		{
@@ -154,6 +154,40 @@ public class Minotaur extends Enemy {
 		}
 		
 		
+		
+	}
+
+	@Override
+	public void animateAttack(int dir) {
+		// TODO Auto-generated method stub
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 6;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 7;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 8;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 9;
+				position = false;
+			}
+		}
 		
 	}
 

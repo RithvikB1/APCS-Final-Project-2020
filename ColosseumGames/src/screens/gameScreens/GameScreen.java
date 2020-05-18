@@ -118,6 +118,7 @@ public class GameScreen extends Screen {
 					bullets = enemiesInWave.get(i).getBullets();
 					for(int b = 0; b < bullets.size(); b++) {
 						if(!(bullets.get(b).getCollisionCounter() == 3)) {
+							enemiesInWave.get(i).animateAttack(1);
 							bullets.get(b).launch(50);
 							bullets.get(b).moveByVelocities();
 							bullets.get(b).draw(surface);
