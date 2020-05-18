@@ -139,9 +139,9 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 50);
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 350, 50, 50));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 400, 50, 50));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 300, 50, 50));
 					
 					for (Enemy a : enemiesInWave)
 					{
