@@ -40,6 +40,10 @@ public abstract class Hero extends Character {
 
 	}
 	
+	/**
+	 * Loads all the images
+	 * @param marker
+	 */
 	public abstract void setup(PApplet marker);
 	
 	public abstract void animate(int dir);

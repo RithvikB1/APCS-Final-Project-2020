@@ -111,7 +111,7 @@ public class Hercules extends Hero {
 			if (position == false)
 			{
 				imageNumber = 12;
-				position = true;
+				position = true; 
 			}
 			else
 			{
