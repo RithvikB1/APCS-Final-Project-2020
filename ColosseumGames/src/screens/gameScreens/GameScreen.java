@@ -42,7 +42,7 @@ public class GameScreen extends Screen {
 	
 	private Rectangle pause;
 	
-	private ArrayList<PImage> hercules, achilles, chiron, helen, perseus;
+	
 	private ArrayList<Bullet> bullets;
 	private Hercules herculesH;
 	private Achilles achillesH;
@@ -55,18 +55,11 @@ public class GameScreen extends Screen {
 		
 		this.surface = surface;
 		
-		enemies = new ArrayList<>();
-		harpy = new ArrayList<>();
-		minotaur = new ArrayList<>();
+//		
 		
 		wave = new Wave();
 		enemiesInWave = wave.getEnemyList();
-		
-		hercules = new ArrayList<PImage>();
-		achilles = new ArrayList<PImage>();
-		chiron = new ArrayList<PImage>();
-		helen = new ArrayList<PImage>();
-		perseus = new ArrayList<PImage>();
+//		
 		
 		bullets = new ArrayList<Bullet>();
 		
@@ -82,34 +75,7 @@ public class GameScreen extends Screen {
 
 	public void setup() {
 		background = surface.loadImage("files/images/Background.png");
-		
-//		harpy.add(surface.loadImage("sprites/Enemies/Harpy/HarpyWalkRight2.png"));
-//		minotaur.add(surface.loadImage("sprites/Enemies/Minotaur/MinotaurFacingRight.png"));
-//		
-//		hercules1 = surface.loadImage("sprites/Heroes/Hercules/PRESelectedHercules.png");
-//		hercules2  = surface.loadImage("sprites/Heroes/Hercules/HerculesSelected.png");
-//		hercules.add(hercules1);
-//		hercules.add(hercules2);
-//		
-//		achilles1 = surface.loadImage("sprites/Heroes/Achilles/PRESelectedAchilles.png");
-//		achilles2 = surface.loadImage("sprites/Heroes/Achilles/AchillesSelected.png");
-//		achilles.add(achilles1);
-//		achilles.add(achilles2);
-//		
-//		chiron1 = surface.loadImage("sprites/Heroes/Chiron/Chiron.jpg");
-//		chiron.add(chiron1);
-//		
-//		helen1 = surface.loadImage("sprites/Heroes/Helen/PRESelectedHelen.png");
-//		helen2 = surface.loadImage("sprites/Heroes/Helen/HelenSelected.png");
-//		helen.add(helen1);
-//		helen.add(helen2);
-//		
-//		perseus1 = surface.loadImage("sprites/Heroes/Perseus/PRESelectedPerseus.png");
-//		perseus.add(perseus1);
-//		
-//		enemies.add(harpy);
-//		enemies.add(minotaur);
-//		
+				
 	}
 	
 	public void draw() {
@@ -176,6 +142,11 @@ public class GameScreen extends Screen {
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
+					
+					for (Enemy a : enemiesInWave)
+					{
+						a.setup(surface);
+					}
 				}
 				enemiesInWave.remove(i);
 			}
