@@ -147,8 +147,64 @@ public class Hercules extends Hero {
 			imageNumber = 2;
 		}
 		
+	}
+	
+	public void animateAttack(int dir)
+	{
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 10;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 11;
+				position = false;
+			}
+			
+		}
 		
-		
+		if (dir == 2)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 6;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 7;
+				position = false;
+			}
+		}
+		if (dir == 3)
+		{
+			if (position == false)
+			{
+				imageNumber = 8;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 9;
+				position = false;
+			}
+		}
+		if (dir == 4)
+		{
+			if (position == false)
+			{
+				imageNumber = 4;
+				position = true; 
+			}
+			else
+			{
+				imageNumber = 5;
+				position = false;
+			}
+		}
 		
 	}
 
@@ -163,14 +219,25 @@ public class Hercules extends Hero {
 		double damage = getDamage();
 		
 		if (currentDir == 1) // right
+		{
 			attackBox = new Rectangle((int)(getX() + getWidth()), (int)getY(), (int)range, (int)range);
+			animateAttack(currentDir);
+		}	
 		else if (currentDir == 2) // down
+		{
 			attackBox = new Rectangle((int)getX(), (int)(getY() + getHeight()), (int)range, (int)range);
+			animateAttack(currentDir);
+		}
 		else if (currentDir == 3) // left
+		{
 			attackBox = new Rectangle((int)(getCenterX() - getWidth() * 2 + (getWidth() / 2)), (int)getY(), (int)range, (int)range);
+			animateAttack(currentDir);
+		}
 		else // up
+		{
 			attackBox = new Rectangle((int)getX(), (int)(getCenterY() - (getHeight() / 2 + getHeight())), (int)range, (int)range);
-		
+			animateAttack(4);
+		}
 		if(nextShotTime - previousShotTime > delay) {
 			for (Enemy e : enemies) {
 				Rectangle2D intersection = attackBox.createIntersection(e);
