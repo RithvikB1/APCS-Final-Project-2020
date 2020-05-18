@@ -5,6 +5,7 @@ import characters.Enemy;
 import characters.Character;
 import enemies.*;
 import processing.core.*;
+import screens.other.Screen;
 
 /**
  * Used to show the multiple and varied waves presented in the game
@@ -35,17 +36,10 @@ public class Wave {
 		
 		
 		if(wave == 1) {
-			Hydra hydra = new Hydra(20, 20, 20, 20, 20, 70, 250, 170, 170);
-			enemyList.add(hydra);
-			if(hydra.die()) {
-				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 500, 20));
-				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
-				enemyList.add(new Hydramite(20, 20, 20, 20, 20, 20, 20, 20, 20));
-			}
-//			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 20, 50, 50));
-//			enemyList.add(new Harpy(5, 20, 20, 141, 20, 400, 400, 50, 50));
-//			enemyList.add(new Harpy(5, 20, 20, 141, 20, 20, 300, 50, 50));
-//			enemyList.add(new Harpy(5, 20, 20, 141, 20, 750, 300, 50, 50));
+			
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+
 			
 			setup(marker);
 		
@@ -53,27 +47,112 @@ public class Wave {
 			//and so on
 		}
 		else if(wave == 2) {
-			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 300, 100, 100));
-			enemyList.add(new Minotaur(40, 20, 3000, 50, 100, 20, 450, 100, 100));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			
 			setup(marker);
 		}
 		else if(wave == 3) {
-			enemyList.add(new Minotaur(0, 20, 10000, 50, 1000, 20, 450, 200, 200));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 		}
 		else if(wave == 4) {
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			setup(marker);
 
 		}
-		else if(wave == 5) {
+		else if(wave == 5) {			
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 300, 50, 50));
+	
+			enemyList.add(new Harpy(7, 30, 500, 141, 200, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
+			setup(marker);
+
 
 		}
 		else if(wave == 6) {
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			setup(marker);
 
 		}
 		else if(wave == 7) {
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			setup(marker);
 
 		}
+		else if(wave == 8) {
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
+
+			setup(marker);
+
+		}
+		else if(wave == 9) {
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			setup(marker);
+
+		}
+		else if(wave == 10) {
+			enemyList.add(new Minotaur(40, 20, 10000, 50, 5000, 20, 450, 150, 150));
+			setup(marker);
+
+		}
+		else if(wave == 11) {
+			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			setup(marker);
+
+		}
+		else if(wave == 12) {
+			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			setup(marker);
+
+		}
+		else if(wave == 13) {
+			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			
+			setup(marker);
+
+		}
+		else if(wave == 14) {
+			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Harpy(7, 30, 500, 141, 200, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
+
+			setup(marker);
+
+		}
+		else if(wave == 15) {
+			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Minotaur(40, 20, 10000, 50, 5000, 20, Screen.SCREEN_HEIGHT/2 - 50, 150, 150));
+
+			setup(marker);
+
+		}
+		else if(wave == 16) {
+			wave = 1;
+
+		}
+		
 
 	}
 	

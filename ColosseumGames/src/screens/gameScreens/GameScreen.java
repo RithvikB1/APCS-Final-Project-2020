@@ -68,7 +68,7 @@ public class GameScreen extends Screen {
 		herculesH = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
 		achillesH = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		chironH = new Chiron(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
-		helenH = new Helen(10, 10, 300000, 400, 250, 600, 300, 100, 100);
+		helenH = new Helen(10, 10, 300000, 400, 10000, 600, 300, 100, 100);
 		perseusH = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		
 	}
@@ -83,12 +83,12 @@ public class GameScreen extends Screen {
 		surface.noTint();
 		pickHero();
 		
-		if (wave.getWave() == 4) { // merchant menu
-			surface.tint(0, 255, 126);
-			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
-		}
-		else if (hero.die()) {
+//		if (wave.getWave() == 4) { // merchant menu
+//			surface.tint(0, 255, 126);
+//			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+//			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
+//		}
+		if (hero.die()) {
 			wave = new Wave();
 			enemiesInWave = wave.getEnemyList();
 			surface.tint(255, 126, 0);
@@ -140,9 +140,9 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 50);
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 350, 50, 50));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 400, 50, 50));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 20, 20, 300, 50, 50));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX(),  (int)enemiesInWave.get(i).getY(), 50, 50));
+					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
 					
 					for (Enemy a : enemiesInWave)
 					{
