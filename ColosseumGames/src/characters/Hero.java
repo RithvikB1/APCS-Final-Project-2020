@@ -41,7 +41,7 @@ public abstract class Hero extends Character {
 	}
 	
 	/**
-	 * Loads all the images
+	 * Loads all the images for the Hero object
 	 * @param marker
 	 */
 	public abstract void setup(PApplet marker);

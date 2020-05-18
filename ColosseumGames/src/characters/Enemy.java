@@ -113,8 +113,22 @@ public abstract class Enemy extends Character {
 		return directionToPlayer;
 	}
 	
+	/**
+	 * gives the image number from the ArrayList images
+	 * @return the index of images
+	 */
 	public abstract int getImageNumber();
+	
+	/**
+	 * gives Enemy objects the appearance to walk
+	 * @param dir
+	 */
 	public abstract void animateWalk(int dir);
+	
+	/**
+	 * gives Enemy objects the appearance of attacking
+	 * @param dir
+	 */
 	public abstract void animateAttack(int dir);
 	
 	

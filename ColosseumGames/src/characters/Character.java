@@ -287,6 +287,10 @@ public class Character extends Rectangle2D.Double {
 
 	}
 	
+	/**
+	 * gives the maximum health points for the Character object
+	 * @return the maximum Health points;
+	 */
 	public int getMaxHP()
 	{
 		return (int)maxHP;
@@ -333,6 +337,10 @@ public class Character extends Rectangle2D.Double {
 		marker.image(images.get(imageNumber), (float)x, (float)y, w ,h);
 	}
 	
+	/**
+	 * Sets the ArrayList of images to the Character clsss ArrayList
+	 * @param images ArrayList of type PImage that is to be set to the Character object
+	 */
 	public void setImages(ArrayList<PImage> images)
 	{
 		this.images = images;
