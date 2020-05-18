@@ -94,7 +94,7 @@ public class GameScreen extends Screen {
 			surface.tint(255, 126, 0);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			hero = null;
-			surface.toggleScreen(DrawingSurface.DEATH_MENU);
+			surface.toggleScreen(DrawingSurface.DEATH_MENU); 
 			
 			return;
 		}

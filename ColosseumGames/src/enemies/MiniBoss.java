@@ -59,9 +59,5 @@ public class MiniBoss extends Enemy {
 		
 	}
 
-	@Override
-	public void setImageNumber(int dir) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

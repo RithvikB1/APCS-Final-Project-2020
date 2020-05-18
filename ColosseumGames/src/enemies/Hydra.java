@@ -73,10 +73,6 @@ public class Hydra extends Enemy {
 		
 	}
 
-	@Override
-	public void setImageNumber(int dir) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

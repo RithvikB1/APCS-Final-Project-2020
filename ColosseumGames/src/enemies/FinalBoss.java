@@ -59,10 +59,6 @@ public class FinalBoss extends Enemy {
 		
 	}
 
-	@Override
-	public void setImageNumber(int dir) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

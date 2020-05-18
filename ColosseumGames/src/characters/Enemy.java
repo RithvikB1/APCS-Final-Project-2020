@@ -115,7 +115,7 @@ public abstract class Enemy extends Character {
 	
 	public abstract int getImageNumber();
 	public abstract void animate(int dir);
-	public abstract void setImageNumber(int dir);
+	
 	
 	/**
 	 * allows the Enemy object to attack another Character object

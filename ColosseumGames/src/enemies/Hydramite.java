@@ -9,6 +9,8 @@ import processing.core.PImage;
 
 public class Hydramite extends Enemy{
 	private ArrayList<PImage> images;
+	private int imageNumber;
+	private boolean position;
 
 
 	public Hydramite(double speed, double atkSpeed, double HP, double range, double damage, int x, int y, int w,
@@ -21,6 +23,9 @@ public class Hydramite extends Enemy{
 	public void setup(PApplet marker) {
 		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Enemies/Hydramite/HydramiteWalkRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydramite/HydramiteWalkRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydramite/HydramiteWalkLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/Hydramite/HydramiteWalkLeft2.png"));
 		this.setImages(images);
 
 	}
@@ -28,6 +33,7 @@ public class Hydramite extends Enemy{
 	@Override
 	public void behave(Character c, PApplet marker) {
 		this.walk(getDirectionToPlayer(c));
+		animate(getDirectionToPlayer(c));
 		if(Math.abs(c.getX() - this.getX()) <= getSpeed() && Math.abs(c.getY() - this.getY()) <= getSpeed()) {
 			c.setHP(c.getHP() - getDamage());
 			this.setHP(0);
@@ -59,18 +65,41 @@ public class Hydramite extends Enemy{
 	@Override
 	public int getImageNumber() {
 		// TODO Auto-generated method stub
-		return 0;
+		return imageNumber;
 	}
 
 	@Override
 	public void animate(int dir) {
 		// TODO Auto-generated method stub
+		if (dir == 1|| dir == 3 || dir ==4)
+		{
+			if (position == false)
+			{
+				imageNumber = 0;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 1;
+				position = false;
+			}
+			
+		}
 		
+		if (dir == 2|| dir == 3 || dir ==4)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 2;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 3;
+				position = false;
+			}
+		}
 	}
 
-	@Override
-	public void setImageNumber(int dir) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
