@@ -18,12 +18,13 @@ public class Hercules extends Hero {
 	
 	private int currentDir;
 	private long previousShotTime;
+	
+	public static final int SPEED = 20, ATK_SPEED = 10, HP = 10000, RANGE = 100, DAMAGE = 100;
 
-	public Hercules( double speed, double atkSpeed, double HP, double range, double damage,
-			int x, int y, int w, int h) {
-		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
+	public Hercules(double speed, double atkSpeed, double HP, double range, double damage) {
+		super(speed, atkSpeed, HP, range, damage);
 		
-		images = new ArrayList<PImage>();
+		images = new ArrayList<>();
 		
 		position = false;
 		
@@ -32,10 +33,6 @@ public class Hercules extends Hero {
 
 	@Override
 	public void setup(PApplet marker) {
-		images = new ArrayList<>();
-		
-		marker.frameRate(60);
-		
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Hercules/HerculesFacingBack.png"));

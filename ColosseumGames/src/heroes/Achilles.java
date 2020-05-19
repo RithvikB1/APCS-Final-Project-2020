@@ -16,21 +16,19 @@ public class Achilles extends Hero {
 	
 	private int currentDir;
 	private long previousShotTime;
-
-	public Achilles(double speed, double atkSpeed, double HP, double range, double damage,
-			int x, int y, int w, int h) {
-		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
+	
+	public static final int SPEED = 10, ATK_SPEED = 10, HP = 10000, RANGE = 100, DAMAGE = 100;
+	
+	public Achilles(double speed, double atkSpeed, double HP, double range, double damage) {
+		super(speed, atkSpeed, HP, range, damage);
 		
-		images = new ArrayList<PImage>();
+		images = new ArrayList<>();
 		position = false;
 		previousShotTime = System.currentTimeMillis();
 	}
 
 	@Override
 	public void setup(PApplet marker) {
-		// TODO Auto-generated method stub
-		
-		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Achilles/AchillesFacingBack.png"));

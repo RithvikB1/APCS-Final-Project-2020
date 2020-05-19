@@ -15,9 +15,10 @@ public class Chiron extends Hero {
 	private ArrayList<Bullet> arrows;
 	long previousShotTime = System.currentTimeMillis();
 
-	public Chiron(double speed, double atkSpeed, double HP, double range, double damage,
-			int x, int y, int w, int h) {
-		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
+	public static final int SPEED = 20, ATK_SPEED = 10, HP = 10000, RANGE = 400, DAMAGE = 100;
+	
+	public Chiron(double speed, double atkSpeed, double HP, double range, double damage) {
+		super(speed, atkSpeed, HP, range, damage);
 		
 		images = new ArrayList<PImage>();
 		arrows = new ArrayList<Bullet>();
@@ -26,8 +27,7 @@ public class Chiron extends Hero {
 
 	@Override
 	public void setup(PApplet marker) {
-		// TODO Auto-generated method stub
-		images = new ArrayList<>();
+		
 		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingRight.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingFront.png"));
 //		images.add(marker.loadImage("sprites/Heroes/Chiron/ChironFacingBack.png"));

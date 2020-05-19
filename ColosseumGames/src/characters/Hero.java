@@ -14,7 +14,7 @@ import processing.core.PApplet;
  */
 public abstract class Hero extends Character {
 	
-	
+	public static final int X = 600, Y = 300, WIDTH = 100, HEIGHT = 100;
 	
 	/**w
 	 * Creates a hero 
@@ -28,12 +28,8 @@ public abstract class Hero extends Character {
 	 * @param w how wide the hero is
 	 * @param h how tall the hero is
 	 */
-	public Hero( double speed, double atkSpeed, double HP, double range, double damage, int x, int y,
-			int w, int h) {
-		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
-		this.x = x;
-		this.y = y;
-
+	public Hero(double speed, double atkSpeed, double HP, double range, double damage) {
+		super(speed, atkSpeed, HP, range, damage, X, Y, WIDTH, HEIGHT);
 	}
 	
 	/**

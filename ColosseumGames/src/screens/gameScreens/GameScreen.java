@@ -66,11 +66,11 @@ public class GameScreen extends Screen {
 		
 		keys = new boolean[4];
 		
-		herculesH = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
-		achillesH = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
-		chironH = new Chiron(10, 10, 100000, 400, 100, 600, 300, 100, 100);
-		helenH = new Helen(10, 10, 300000, 400, 10000, 600, 300, 100, 100);
-		perseusH = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+		herculesH = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
+		achillesH = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
+		chironH = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);
+		helenH = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);
+		perseusH = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);
 		
 	}
 

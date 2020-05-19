@@ -14,17 +14,17 @@ public class Helen extends Hero {
 	private boolean position;
 	private int imageNumber;
 	
-	public Helen(double speed, double atkSpeed, double HP, double range, double damage,
-			int x, int y, int w, int h) {
-		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
-		// TODO Auto-generated constructor stub
+	public static final int SPEED = 20, ATK_SPEED = 10, HP = 10000, RANGE = 400, DAMAGE = 10000;
+	
+	public Helen(double speed, double atkSpeed, double HP, double range, double damage) {
+		super(speed, atkSpeed, HP, range, damage);
+		
+		images = new ArrayList<>();
 	}
 
 	@Override
 	public void setup(PApplet marker) {
-		// TODO Auto-generated method stub
-		
-		images = new ArrayList<>();
+	
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingRight.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingFront.png"));
 		images.add(marker.loadImage("sprites/Heroes/Helen/HelenFacingBack.png"));
