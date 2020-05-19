@@ -13,6 +13,7 @@ public class Chiron extends Hero {
 	private boolean position;
 	private int imageNumber;
 	private ArrayList<Bullet> arrows;
+	long previousShotTime = System.currentTimeMillis();
 
 	public Chiron(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
@@ -59,15 +60,18 @@ public class Chiron extends Hero {
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
 		double angle = 0;
-		if(this.x - mouseX >= 0) {
-			angle = Math.PI + Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
+		double delay = (10/getAtkSpeed())*1000;
+		long nextShotTime = System.currentTimeMillis();
+		if(nextShotTime - previousShotTime > delay) {
+			if(this.x - mouseX >= 0) {
+				angle = Math.PI + Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
+			}
+			else {
+				angle = Math.atan((mouseY-this.getY())/(mouseX - this.getX()));	
+			}
+			arrows.add(new Bullet(this.x, this.y, angle));
+			previousShotTime = System.currentTimeMillis();
 		}
-		else {
-			angle = Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
-
-
-		}
-		arrows.add(new Bullet(this.x, this.y, angle));
 	}
 	public ArrayList<Bullet> getArrows(){
 		return arrows;

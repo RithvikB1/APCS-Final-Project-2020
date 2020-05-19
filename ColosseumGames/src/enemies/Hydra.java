@@ -21,6 +21,7 @@ public class Hydra extends Enemy {
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
 	private int imageNumber;
+	long previousShotTime = System.currentTimeMillis();
 	private boolean position;
 	/**
 	 * Creates an Enemy

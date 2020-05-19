@@ -68,7 +68,7 @@ public class GameScreen extends Screen {
 		
 		herculesH = new Hercules(20, 10, 10000, 100, 100, 600, 300, 100, 100);
 		achillesH = new Achilles(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
-		chironH = new Chiron(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
+		chironH = new Chiron(10, 10, 100000, 400, 100, 600, 300, 100, 100);
 		helenH = new Helen(10, 10, 300000, 400, 10000, 600, 300, 100, 100);
 		perseusH = new Perseus(10, 10, 100000 ,100, 100, 600, 300, 100, 100);
 		
@@ -171,6 +171,9 @@ public class GameScreen extends Screen {
 					if(arrows.get(a).intersects(e)) {
 						e.setHP(e.getHP() - hero.getDamage());
 					}
+				}
+				if(Math.sqrt(Math.pow(arrows.get(a).getX() - hero.getX(), 2) + Math.pow(arrows.get(a).getY() - hero.getY(), 2)) > hero.getRange()){
+					arrows.remove(a);
 				}
 			}
 			else {
