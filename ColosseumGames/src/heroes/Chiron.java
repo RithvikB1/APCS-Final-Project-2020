@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import characters.Enemy;
 import characters.Hero;
+import other.Bullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -11,12 +12,15 @@ public class Chiron extends Hero {
 	private ArrayList<PImage> images;
 	private boolean position;
 	private int imageNumber;
+	private ArrayList<Bullet> arrows;
 
 	public Chiron(double speed, double atkSpeed, double HP, double range, double damage,
 			int x, int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		
 		images = new ArrayList<PImage>();
+		arrows = new ArrayList<Bullet>();
+
 	}
 
 	@Override
@@ -54,8 +58,22 @@ public class Chiron extends Hero {
 	@Override
 	public void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX,
 			double shotY) {
-		// TODO Auto-generated method stub
-		
+		double angle = 0;
+		if(this.x - mouseX >= 0) {
+			angle = Math.PI + Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
+		}
+		else {
+			angle = Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
+
+
+		}
+		arrows.add(new Bullet(this.x, this.y, angle));
+	}
+	public ArrayList<Bullet> getArrows(){
+		return arrows;
+	}
+	public boolean isChiron() {
+		return true;
 	}
 
 	@Override

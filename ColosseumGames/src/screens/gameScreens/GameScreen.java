@@ -43,7 +43,7 @@ public class GameScreen extends Screen {
 	private Rectangle pause;
 	
 	
-	private ArrayList<Bullet> bullets;
+	private ArrayList<Bullet> bullets, arrows;
 	private Hercules herculesH;
 	private Achilles achillesH;
 	private Chiron chironH;
@@ -62,6 +62,7 @@ public class GameScreen extends Screen {
 //		
 		
 		bullets = new ArrayList<Bullet>();
+		arrows = new ArrayList<Bullet>();
 		
 		keys = new boolean[4];
 		
@@ -143,7 +144,7 @@ public class GameScreen extends Screen {
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX(),  (int)enemiesInWave.get(i).getY(), 50, 50));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
-					
+					hero.setHP(hero.getHP() + 500);
 					for (Enemy a : enemiesInWave)
 					{
 						a.setup(surface);
@@ -152,8 +153,30 @@ public class GameScreen extends Screen {
 				enemiesInWave.remove(i);
 			}
 		}
-		if (!hero.die() && surface.mousePressed)
-			hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
+		if (!hero.die() && surface.mousePressed) {
+			if(hero.isChiron()) {
+				hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
+				arrows = hero.getArrows();
+			}
+			else {
+				hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
+			}
+		}
+		for(int a = 0; a < arrows.size(); a++) {
+			if(!(arrows.get(a).getCollisionCounter() == 1)) {
+				arrows.get(a).launch(30);
+				arrows.get(a).moveByVelocities();
+				arrows.get(a).draw(surface);
+				for(Enemy e : enemiesInWave) {
+					if(arrows.get(a).intersects(e)) {
+						e.setHP(e.getHP() - hero.getDamage());
+					}
+				}
+			}
+			else {
+				arrows.remove(a);
+			}
+		}
 		
 		if(!hero.die()) {
 			hero.moveByVelocities();

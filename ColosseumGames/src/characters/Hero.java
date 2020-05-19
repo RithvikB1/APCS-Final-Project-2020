@@ -3,6 +3,7 @@ package characters;
 
 import java.util.ArrayList;
 
+import other.Bullet;
 import processing.core.PApplet;
 
 /**
@@ -62,26 +63,10 @@ public abstract class Hero extends Character {
 	 * @param shotY the current y position of the shot
 	 */
 	public abstract void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY);
-
-//		double angle = Math.atan((mouseY - y)/(mouseX - x));
-//		if(mouseX - x< 0) {
-//			angle += Math.PI;
-//		}
-//		double maxXPoint = range * Math.cos(angle) + shotX;
-//		double maxYPoint = range * Math.sin(angle) + shotY;
-//		Line2D shot = new Line2D.Double(shotX, shotY, maxXPoint, maxYPoint);
-//
-//		marker.pushStyle();
-//
-//		marker.stroke(20);
-//		marker.strokeWeight(10);
-//		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);	
-//		for(Enemy e: enemies) {
-//			if(shot.intersects(e)) {
-//				e.setHP(e.getHP() - damage);
-//			}
-//		}
-//
-//		marker.popStyle();
-	
+	public boolean isChiron() {
+		return false;
+	}
+	public ArrayList<Bullet> getArrows(){
+		return null;
+	}
 }
