@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import characters.Enemy;
 import characters.Hero;
+import enemies.FinalBoss;
 import enemies.Harpy;
 import enemies.Hydra;
 import enemies.Hydramite;
@@ -115,7 +116,7 @@ public class GameScreen extends Screen {
 					enemiesInWave.get(i).moveByVelocities();
 				}
 				enemiesInWave.get(i).spawn(surface, enemiesInWave.get(i).getImageNumber());
-				if(enemiesInWave.get(i) instanceof Hydra) {
+				if(enemiesInWave.get(i) instanceof Hydra || enemiesInWave.get(i) instanceof FinalBoss) {
 					bullets = enemiesInWave.get(i).getBullets();
 					for(int b = 0; b < bullets.size(); b++) {
 						if(!(bullets.get(b).getCollisionCounter() == 3)) {

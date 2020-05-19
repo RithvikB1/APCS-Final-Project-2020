@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import characters.Character;
 import characters.Enemy;
+import other.Bullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -18,6 +19,7 @@ import processing.core.PImage;
  */
 public class FinalBoss extends Enemy {
 	double angle;
+	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
 	private ArrayList<Line2D.Double> lines;
 	/**
@@ -38,6 +40,8 @@ public class FinalBoss extends Enemy {
 		// TODO Auto-generated constructor stub
 		angle = 0;
 		lines = new ArrayList<Line2D.Double>();
+		bullets = new ArrayList<Bullet>();
+
 	}
 
 	@Override
@@ -86,13 +90,26 @@ public class FinalBoss extends Enemy {
 			}
 			lines.remove(i);
 		}
-		
+		double playerAngle;
+		if(c.getX() - this.getX() > 0) {
+			playerAngle = Math.atan((c.getY()-this.getY())/(c.getX() - this.getX()));
+		}
+		else {
+			playerAngle = Math.PI + Math.atan((c.getY()-this.getY())/(c.getX() - this.getX()));
+		}
+		if(bullets.size() == 0) {
+			bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
+			bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
+		}
 		
 		
 		
 		
 		
 		angle+= 0.05;
+	}
+	public ArrayList<Bullet> getBullets(){
+		return bullets;
 	}
 	
 	
