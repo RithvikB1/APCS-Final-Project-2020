@@ -26,7 +26,6 @@ public class Character extends Rectangle2D.Double {
 	
 	/**
 	 * Creates a character either a playable hero or an enemy
-	 * @param spriteImage the image of the character
 	 * @param speed the character's speed
 	 * @param atkSpeed the character's attack speed
 	 * @param HP the character's HP
@@ -332,6 +331,7 @@ public class Character extends Rectangle2D.Double {
 	/**
 	 * Draws the character
 	 * @param marker the PApplet to draw the character
+	 * @param imageNumber the image that will be used to draw
 	 */
 	public void spawn(PApplet marker, int imageNumber) {
 		marker.image(images.get(imageNumber), (float)x, (float)y, w ,h);

@@ -22,7 +22,6 @@ public abstract class Enemy extends Character {
 	
 	/**
 	 * Creates an Enemy
-	 * @param spriteImage the image of the character
 	 * @param speed how fast the enemy moves
 	 * @param atkSpeed how fast the enemy attacks
 	 * @param HP how much damage a enemy can take before dying
@@ -58,7 +57,6 @@ public abstract class Enemy extends Character {
 	/**
 	 * 
 	 * @param c the Character object that the Enemy object is receiving the opposite direction
-	 * @param distance the distance required to stay away from the Character object
 	 * @return the direction that the Enemy object will walk
 	 */
 	public int getDirectionAwayFromPlayer(Character c)
@@ -121,13 +119,13 @@ public abstract class Enemy extends Character {
 	
 	/**
 	 * gives Enemy objects the appearance to walk
-	 * @param dir
+	 * @param dir the direction the hero is facing
 	 */
 	public abstract void animateWalk(int dir);
 	
 	/**
 	 * gives Enemy objects the appearance of attacking
-	 * @param dir
+	 * @param dir the direction of the enemy attack
 	 */
 	public abstract void animateAttack(int dir);
 	

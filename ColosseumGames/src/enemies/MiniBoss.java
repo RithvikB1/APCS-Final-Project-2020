@@ -18,7 +18,6 @@ public class MiniBoss extends Enemy {
 
 	/**
 	 * Creates an Enemy
-	 * @param spriteImage the image of the character
 	 * @param speed how fast the enemy moves
 	 * @param atkSpeed how fast the enemy attacks
 	 * @param HP how much damage a enemy can take before dying
