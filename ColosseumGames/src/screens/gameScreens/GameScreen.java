@@ -156,12 +156,10 @@ public class GameScreen extends Screen {
 		}
 		if (!hero.die() && surface.mousePressed) {
 			if(hero instanceof Chiron) {
-				hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
 				arrows = hero.getArrows();
 			}
-			else {
-				hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
-			}
+			hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
+			
 		}
 		for(int a = 0; a < arrows.size(); a++) {
 			if(!(arrows.get(a).getCollisionCounter() == 1)) {
