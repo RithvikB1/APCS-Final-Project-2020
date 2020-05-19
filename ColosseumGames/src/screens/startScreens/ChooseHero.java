@@ -120,6 +120,7 @@ public class ChooseHero extends Screen {
 				surface.image(chiron2, 450, 100, 420, 420);
 			else 
 				surface.image(chiron, 450, 100, 420, 420);
+			surface.shape(shape6);
 			surface.text("Chiron", 560, 590);
 		}
 		else if (getSpecificHero() == HELEN) {
