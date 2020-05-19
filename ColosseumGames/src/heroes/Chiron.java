@@ -78,10 +78,7 @@ public class Chiron extends Hero {
 	public ArrayList<Bullet> getArrows(){
 		return arrows;
 	}
-	public boolean isChiron() {
-		return true;
-	}
-
+	
 	@Override
 	public void animate(int dir) {
 		// TODO Auto-generated method stub

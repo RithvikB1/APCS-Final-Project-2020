@@ -66,9 +66,7 @@ public abstract class Hero extends Character {
 	 * @param shotY the current y position of the shot
 	 */
 	public abstract void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY);
-	public boolean isChiron() {
-		return false;
-	}
+	
 	public ArrayList<Bullet> getArrows(){
 		return null;
 	}

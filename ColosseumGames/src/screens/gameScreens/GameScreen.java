@@ -155,7 +155,7 @@ public class GameScreen extends Screen {
 			}
 		}
 		if (!hero.die() && surface.mousePressed) {
-			if(hero.isChiron()) {
+			if(hero instanceof Chiron) {
 				hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
 				arrows = hero.getArrows();
 			}
