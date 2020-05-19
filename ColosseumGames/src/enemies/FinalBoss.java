@@ -58,6 +58,7 @@ public class FinalBoss extends Enemy {
 		// TODO Auto-generated method stub
 		
 		marker.noFill();
+		marker.strokeWeight(10);
 		marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y));
 		marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y));
 		marker.line((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y), (float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y));
