@@ -65,9 +65,11 @@ public class Chiron extends Hero {
 		if(nextShotTime - previousShotTime > delay) {
 			if(this.x - mouseX >= 0) {
 				angle = Math.PI + Math.atan((mouseY-this.getY())/(mouseX - this.getX()));
+				animateAttack(3);
 			}
 			else {
 				angle = Math.atan((mouseY-this.getY())/(mouseX - this.getX()));	
+				animateAttack(1);
 			}
 			arrows.add(new Bullet(this.x, this.y, angle));
 			previousShotTime = System.currentTimeMillis();
@@ -112,6 +114,38 @@ public class Chiron extends Hero {
 			}
 		}
 		
+	}
+	
+	public void animateAttack(int dir)
+	{
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 4;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 5;
+				position = false;
+			}
+			
+		}
+		
+		if (dir == 3)//down
+		{
+			if (position == false)
+			{
+				imageNumber = 2;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 3;
+				position = false;
+			}
+		}
 	}
 
 	@Override
