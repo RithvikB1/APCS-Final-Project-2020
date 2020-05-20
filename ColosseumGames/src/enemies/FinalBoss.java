@@ -231,6 +231,99 @@ public class FinalBoss extends Enemy {
 
 		}
 		else {
+			marker.pushMatrix();
+			marker.fill(255, 0, 0);
+			marker.stroke(255, 0, 0);
+			marker.rect(80, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
+			marker.rect(3*Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
+			
+			marker.rect(20 + Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/2 - 20, 150);
+			marker.rect(20 + Screen.SCREEN_WIDTH/4, Screen.SCREEN_HEIGHT- 340, Screen.SCREEN_WIDTH/2 - 20, 150);
+			marker.popMatrix();
+			
+			lava.add(new Rectangle2D.Double(80, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250));
+			lava.add(new Rectangle2D.Double(3*Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250));
+			lava.add(new Rectangle2D.Double(20 + Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/2 - 20, 150));
+			lava.add(new Rectangle2D.Double(20 + Screen.SCREEN_WIDTH/4, Screen.SCREEN_HEIGHT- 340, Screen.SCREEN_WIDTH/2 - 20, 150));
+			
+			for(int i = 0; i < lava.size(); i++) {
+				if(lava.get(i).intersects(c)) {
+					c.setHP(c.getHP() - 45);
+				}
+				lava.remove(i);
+			}
+			marker.pushMatrix();
+			marker.noFill();
+			marker.stroke(0);
+			marker.strokeWeight(10);
+			marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y));
+			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y));
+			marker.line((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y), (float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y));
+			marker.line((float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y), (float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y));
+			marker.line((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 5*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + y));
+			
+			marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)x, (float)y);
+			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)x, (float)y);
+			marker.line((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y), (float)x, (float)y);
+			marker.line((float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y), (float)x, (float)y);
+			marker.line((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y), (float)x, (float)y);
+			marker.line((float)(getRange()*Math.cos(angle + 5*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + y), (float)x, (float)y);
+			
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y)));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y)));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y), (float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y)));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y), (float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y)));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 5*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + y)));
+			
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)x, (float)y));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)x, (float)y));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y), (float)x, (float)y));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI) + x), (float)(getRange()*Math.sin(angle + Math.PI) + y), (float)x, (float)y));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y), (float)x, (float)y));
+			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 5*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + y), (float)x, (float)y));
+			marker.popMatrix();
+			angle+= 0.2;
+			
+			for(int i = 0; i < lines.size(); i++) {
+				if(lines.get(i).intersects(c)) {
+					c.setHP(c.getHP() - this.getDamage());
+				}
+				lines.remove(i);
+			}
+			this.walk(getDirectionToPlayer(c));
+			double delay = (3/getAtkSpeed())*1000;
+			long nextShotTime = System.currentTimeMillis();
+
+			if(nextShotTime - previousShotTime > delay) {
+				
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.2));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.9));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.8));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.7));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.6));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.5));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
+				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.5));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.6));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.7));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.8));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.9));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.1));
+				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.2));
+				previousShotTime = System.currentTimeMillis();
+
+			}
 			
 		}
 	}
