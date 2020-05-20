@@ -21,16 +21,10 @@ public class ChooseDifficulty extends Screen {
 	
 	private Rectangle start, easy, medium, hard, backButton;
 	
-	private int difficultyLevel;
-	
-	private final int EASY = 1, MEDIUM = 2, HARD = 3;
-	
 	public ChooseDifficulty(DrawingSurface surface) {
 		super(surface);
 		
 		this.surface = surface;
-		
-		difficultyLevel = MEDIUM;
 		
 		start = new Rectangle();
 		easy = new Rectangle();
@@ -71,13 +65,13 @@ public class ChooseDifficulty extends Screen {
 		hover(hard, shape4, 200, 100);
 		hover(backButton, shape5, 200, 100);
 		
-		if (difficultyLevel == EASY) {
+		if (getDifficulty() == EASY) {
 			shape2.setFill(surface.color(255, 0, 0));
 		}
-		else if (difficultyLevel == MEDIUM) {
+		else if (getDifficulty() == MEDIUM) {
 			shape3.setFill(surface.color(255, 0, 0));
 		}
-		else if (difficultyLevel == HARD) {
+		else if (getDifficulty() == HARD) {
 			shape4.setFill(surface.color(255, 0, 0));
 		}
 		
@@ -143,13 +137,13 @@ public class ChooseDifficulty extends Screen {
 	@Override
 	public void mouseClicked() {
 		if (easy.contains(surface.mouseX, surface.mouseY)) {
-			difficultyLevel = EASY;
+			setDifficulty(EASY);
 		}
 		if (medium.contains(surface.mouseX, surface.mouseY)) {
-			difficultyLevel = MEDIUM;
+			setDifficulty(MEDIUM);
 		}
 		if (hard.contains(surface.mouseX, surface.mouseY)) {
-			difficultyLevel = HARD;
+			setDifficulty(HARD);
 		}
 		
 		if (start.contains(surface.mouseX, surface.mouseY)) {

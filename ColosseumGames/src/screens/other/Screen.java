@@ -14,6 +14,7 @@ public abstract class Screen {
 	                                                                                                      
 	public static final int SCREEN_WIDTH = 1300, SCREEN_HEIGHT = 800;
 	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
+	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
 	
 	private static int volume;
 	
@@ -24,6 +25,8 @@ public abstract class Screen {
 	private static char upKey, downKey, leftKey, rightKey;
 	
 	private static int specificHero;
+	
+	private static int difficulty;
 	
 	/**
 	 * Creates a new Screen
@@ -38,6 +41,8 @@ public abstract class Screen {
 		downKey = 'S';
 		leftKey = 'A';
 		rightKey = 'D';
+		
+		difficulty = MEDIUM;
 	}
 	
 	/**
@@ -206,5 +211,21 @@ public abstract class Screen {
 	 */
 	public static int getSpecificHero() {
 		return specificHero;
+	}
+	
+	/**
+	 * Sets the difficulty of the game
+	 * @param diff the difficulty of the game
+	 */
+	public static void setDifficulty(int diff) {
+		difficulty = diff;
+	}
+	
+	/**
+	 * Gets the difficulty
+	 * @return difficulty level as an int
+	 */
+	public static int getDifficulty() {
+		return difficulty;
 	}
 }
