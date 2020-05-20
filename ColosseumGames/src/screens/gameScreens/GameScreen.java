@@ -124,8 +124,12 @@ public class GameScreen extends Screen {
 							bullets.get(b).launch(50);
 							bullets.get(b).moveByVelocities();
 							bullets.get(b).draw(surface);
-							if(bullets.get(b).intersects(hero)) {
+							if(bullets.get(b).intersects(hero) && enemiesInWave.get(i) instanceof FinalBoss) {
 								hero.setHP(hero.getHP() - enemiesInWave.get(i).getDamage());
+							}
+							else if(bullets.get(b).intersects(hero) && enemiesInWave.get(i) instanceof Hydra) {
+								hero.setHP(hero.getHP()/2 + 1);
+								
 							}
 						}
 						else {

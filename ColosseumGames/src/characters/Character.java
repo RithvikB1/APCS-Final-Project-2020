@@ -185,6 +185,10 @@ public class Character extends Rectangle2D.Double {
 	public void setDamage(double damage) {
 		this.damage = damage;
 	}
+	public void setCoordinates(double newX, double newY) {
+		x = newX;
+		y = newY;
+	}
 	/**
 	 * @return the vx
 	 */
