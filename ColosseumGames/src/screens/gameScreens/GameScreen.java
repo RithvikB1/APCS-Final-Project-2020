@@ -68,7 +68,7 @@ public class GameScreen extends Screen {
 		
 		keys = new boolean[4];
 		
-		waveFirstTime = System.currentTimeMillis() + 3000;
+		waveFirstTime = System.currentTimeMillis();
 		
 		herculesH = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
 		achillesH = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
