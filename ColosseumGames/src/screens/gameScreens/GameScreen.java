@@ -30,7 +30,8 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 	
 	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron1, helen1, helen2, perseus1;
-	
+	long waveFirstTime;
+	public static final int DELAY_BETWEEN_WAVES = 3000;
 	private ArrayList<PImage> harpy, minotaur;
 	private ArrayList<ArrayList> enemies;
 	
@@ -66,6 +67,8 @@ public class GameScreen extends Screen {
 		arrows = new ArrayList<Bullet>();
 		
 		keys = new boolean[4];
+		
+		waveFirstTime = System.currentTimeMillis() + 3000;
 		
 		herculesH = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
 		achillesH = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
@@ -106,8 +109,21 @@ public class GameScreen extends Screen {
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
-			wave.setWave(wave.getWave() + 1);
-			wave.startWave(surface, hero);
+			long waveEndTime = System.currentTimeMillis();
+			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
+			surface.text("Next Wave in: " + countdown, Screen.SCREEN_WIDTH/2 - 150, 80);
+			if(waveEndTime - waveFirstTime > DELAY_BETWEEN_WAVES) {
+				wave.setWave(wave.getWave() + 1);
+				wave.startWave(surface, hero);
+				
+			}
+		}
+		else {
+			waveFirstTime = System.currentTimeMillis();
+		}
+		
+		if(wave.getWave() == 1) {
+			
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
