@@ -35,9 +35,9 @@ public class Wave {
 		
 		
 		if(wave == 1) {
-			//enemyList.add(new FinalBoss(10, 9, 10000, 350, 20, 500, 300, 100, 100));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new FinalBoss(10, 9, 10000, 350, 20, 500, 300, 160, 160));
+//			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+//			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 
 			
 			setup(marker);

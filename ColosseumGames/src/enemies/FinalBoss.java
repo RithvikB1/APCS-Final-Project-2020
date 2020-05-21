@@ -56,7 +56,7 @@ public class FinalBoss extends Enemy {
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
 		images = new ArrayList<>();
-		images.add(marker.loadImage("sprites/Enemies/Harpy/HarpyAttackRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase4AttackRight2.png"));
 		this.setImages(images);
 
 	}
