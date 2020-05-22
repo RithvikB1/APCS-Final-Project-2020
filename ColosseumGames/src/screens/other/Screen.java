@@ -15,6 +15,7 @@ public abstract class Screen {
 	public static final int SCREEN_WIDTH = 1300, SCREEN_HEIGHT = 800;
 	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
 	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
+	public static final int NONE = 0, ATK_SPEED = 1, SPEED = 2, HP = 3, RANGE = 4;
 	
 	private static int volume;
 	
@@ -27,6 +28,10 @@ public abstract class Screen {
 	private static int specificHero;
 	
 	private static int difficulty;
+	
+	private static int selectedStat = NONE;
+	
+	private static boolean displayShop = false;
 	
 	/**
 	 * Creates a new Screen
@@ -227,5 +232,36 @@ public abstract class Screen {
 	 */
 	public static int getDifficulty() {
 		return difficulty;
+	}
+	
+	/**
+	 * 
+	 * @param stat
+	 */
+	public static void setStat(int stat) {
+		selectedStat = stat;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static int getStat() {
+		return selectedStat;
+	}
+	
+	/**
+	 * 
+	 * @param isShop
+	 */
+	public static void setDisplayShop(boolean isShop) {
+		displayShop = isShop;
+	}
+	
+	/**
+	 * 
+	 */
+	public static boolean getDisplayShop() {
+		return displayShop;
 	}
 }

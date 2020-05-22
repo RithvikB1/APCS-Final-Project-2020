@@ -18,6 +18,7 @@ public class Achilles extends Hero {
 	private long previousShotTime;
 	
 	public static final int SPEED = 10, ATK_SPEED = 10, HP = 10000, RANGE = 100, DAMAGE = 100;
+	public static final int UP_SPEED = 2, UP_ATK_SPEED = 2, UP_HP = 500, UP_RANGE = 2, UP_DAMAGE = 15;
 	
 	public Achilles(double speed, double atkSpeed, double HP, double range, double damage) {
 		super(speed, atkSpeed, HP, range, damage);

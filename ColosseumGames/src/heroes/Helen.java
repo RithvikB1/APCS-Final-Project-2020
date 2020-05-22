@@ -15,6 +15,7 @@ public class Helen extends Hero {
 	private int imageNumber;
 	
 	public static final int SPEED = 20, ATK_SPEED = 10, HP = 100000, RANGE = 400, DAMAGE = 500;
+	public static final int UP_SPEED = 2, UP_ATK_SPEED = 2, UP_HP = 500, UP_RANGE = 2, UP_DAMAGE = 15;
 	
 	public Helen(double speed, double atkSpeed, double HP, double range, double damage) {
 		super(speed, atkSpeed, HP, range, damage);

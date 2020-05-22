@@ -2,6 +2,7 @@ package screens.gameScreens;
 
 import java.awt.Rectangle;
 
+import heroes.*;
 import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PShape;
@@ -10,20 +11,30 @@ import screens.other.Screen;
 /**
  * Creates a screen that allows user to upgrade their stats
  * @author Rithvik
- *
  */
 public class MerchantMenu extends Screen {
 
 	private DrawingSurface surface;
 	
-	private int statPicked;
-	private Rectangle atkSpeed, health, speed, confirm;
+	private Rectangle atkSpeed, health, speed, range, confirm;
+	
+	private boolean isClicked1, isClicked2, isClicked3, isClicked4;
 	
 	public MerchantMenu(DrawingSurface surface) {
 		super(surface);
 		
-		statPicked = 0;
 		this.surface = surface;
+		
+		isClicked1 = false;
+		isClicked2 = false;
+		isClicked3 = false;
+		isClicked4 = false;
+		
+		atkSpeed = new Rectangle();
+		health = new Rectangle();
+		speed = new Rectangle();
+		range = new Rectangle();
+		confirm = new Rectangle();
 	}
 
 	@Override
@@ -34,6 +45,7 @@ public class MerchantMenu extends Screen {
 
 	@Override
 	public void draw() {
+		setDisplayShop(true);
 		surface.fill(200, 150, 250);
 		surface.stroke(0);
 		
@@ -50,8 +62,6 @@ public class MerchantMenu extends Screen {
 		PShape shape3 = surface.createShape(PConstants.RECT, 870, 250, 220, 100);
 		PShape shape4 = surface.createShape(PConstants.RECT, 485, 420, 330, 100);
 		
-		boolean isClicked = statPicked == 1 || statPicked == 2 || statPicked == 3;
-		
 		int c1 = surface.color(204, 153, 0); // +230 -200
 		int c2 = surface.color(140, 153, 0);
 		int c3 = surface.color(140, 220, 0);
@@ -60,20 +70,17 @@ public class MerchantMenu extends Screen {
 		hover(health, shape2, c1, c2);
 		hover(speed, shape3, c1, c2);
 		
-		if (statPicked == 1) {
+		if (isClicked1) {
 			shape.setFill(surface.color(255, 0, 0));
-			//statPicked = 1;
 		}
-		else if (statPicked == 2) {
+		else if (isClicked2) {
 			shape2.setFill(surface.color(255, 0, 0));
-			//statPicked = 2;
 		}
-		else if (statPicked == 3) {
+		else if (isClicked3) {
 			shape3.setFill(surface.color(255, 0, 0));
-			//statPicked = 3;
 		}
 		
-		if (isClicked) {
+		if (isClicked1 || isClicked2 || isClicked3 || isClicked4) {
 			hover(confirm, shape4, c1, c2);
 			
 			surface.shape(shape4);
@@ -90,17 +97,17 @@ public class MerchantMenu extends Screen {
 		if (atkSpeed.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(210, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text("+5", 295, 380);
+			surface.text(displayUpgrades()[1], 295, 380);
 		}
 		else if (health.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(540, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text("+10", 615, 380);
+			surface.text(displayUpgrades()[2], 615, 380);
 		}
 		else if (speed.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(870, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text("+5", 960, 380);
+			surface.text(displayUpgrades()[0], 960, 380);
 		}
 		
 		surface.textSize(60);
@@ -112,7 +119,7 @@ public class MerchantMenu extends Screen {
 		surface.text("Health", 590, 315);
 		surface.text("Speed", 925, 315);
 		
-		if (isClicked) 
+		if (isClicked1 || isClicked2 || isClicked3 || isClicked4) 
 			surface.text("Confirm", 570, 485);
 		
 	}
@@ -137,23 +144,79 @@ public class MerchantMenu extends Screen {
 
 	@Override
 	public void mouseClicked() {
+		int specificStat = NONE;
+		
 		if (atkSpeed.contains(surface.mouseX, surface.mouseY)) {
-			statPicked = 1;
+			specificStat = ATK_SPEED;
+			isClicked1 = true;
+			isClicked2 = false;
+			isClicked3 = false;
+			isClicked4 = false;
 		}
 		else if (health.contains(surface.mouseX, surface.mouseY)) {
-			statPicked = 2;
+			specificStat = HP;
+			isClicked1 = false;
+			isClicked2 = true;
+			isClicked3 = false;
+			isClicked4 = false;
 		}
 		else if (speed.contains(surface.mouseX, surface.mouseY)) {
-			statPicked = 3;
+			specificStat = SPEED;
+			isClicked1 = false;
+			isClicked2 = false;
+			isClicked3 = true;
+			isClicked4 = false;
 		}
 		else {
-			statPicked = 0;
+			isClicked1 = false;
+			isClicked2 = false;
+			isClicked3 = false;
+			isClicked4 = false;
 		}
 		
 		if (confirm.contains(surface.mouseX, surface.mouseY)) {
+			setStat(specificStat);
+			setDisplayShop(false);
 			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		
+	}
+	
+	public int[] displayUpgrades() {
+		int[] upgrades = new int[4];
+		
+		if (getSpecificHero() == HERCULES) {
+			upgrades[0] = Hercules.UP_SPEED;
+			upgrades[1] = Hercules.UP_ATK_SPEED;
+			upgrades[2] = Hercules.UP_RANGE;
+			upgrades[3] = Hercules.UP_DAMAGE;
+		}
+		else if (getSpecificHero() == ACHILLES) {
+			upgrades[0] = Achilles.UP_SPEED;
+			upgrades[1] = Achilles.UP_ATK_SPEED;
+			upgrades[2] = Achilles.UP_RANGE;
+			upgrades[3] = Achilles.UP_DAMAGE;
+		}
+		else if (getSpecificHero() == CHIRON) {
+			upgrades[0] = Chiron.UP_SPEED;
+			upgrades[1] = Chiron.UP_ATK_SPEED;
+			upgrades[2] = Chiron.UP_RANGE;
+			upgrades[3] = Chiron.UP_DAMAGE;
+		}
+		else if (getSpecificHero() == HELEN) {
+			upgrades[0] = Helen.UP_SPEED;
+			upgrades[1] = Helen.UP_ATK_SPEED;
+			upgrades[2] = Helen.UP_RANGE;
+			upgrades[3] = Helen.UP_DAMAGE;
+		}
+		else if (getSpecificHero() == PERSEUS) {
+			upgrades[0] = Perseus.UP_SPEED;
+			upgrades[1] = Perseus.UP_ATK_SPEED;
+			upgrades[2] = Perseus.UP_RANGE;
+			upgrades[3] = Perseus.UP_DAMAGE;
+		}
+		
+		return upgrades;
 	}
 
 	@Override

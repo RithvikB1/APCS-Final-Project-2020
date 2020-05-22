@@ -30,8 +30,7 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 	
 	private PImage background, hercules1, hercules2, achilles1, achilles2, chiron1, helen1, helen2, perseus1;
-	long waveFirstTime;
-	public static final int DELAY_BETWEEN_WAVES = 3000;
+	
 	private ArrayList<PImage> harpy, minotaur;
 	private ArrayList<ArrayList> enemies;
 	
@@ -43,7 +42,6 @@ public class GameScreen extends Screen {
 	private boolean[] keys;
 	
 	private Rectangle pause;
-	
 	
 	private ArrayList<Bullet> bullets, arrows;
 	private Hercules herculesH;
@@ -68,8 +66,6 @@ public class GameScreen extends Screen {
 		
 		keys = new boolean[4];
 		
-		waveFirstTime = System.currentTimeMillis();
-		
 		herculesH = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
 		achillesH = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
 		chironH = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);
@@ -87,12 +83,13 @@ public class GameScreen extends Screen {
 		surface.pushStyle();
 		surface.noTint();
 		pickHero();
+		upgradeHero();
 		
-//		if (wave.getWave() == 4) { // merchant menu
-//			surface.tint(0, 255, 126);
-//			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
-//		}
+		if ((wave.getWave() == 2 || wave.getWave() == 3) && getDisplayShop()) { // merchant menu
+			surface.tint(0, 255, 126);
+			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
+		}
 		if (hero.die()) {
 			wave = new Wave();
 			enemiesInWave = wave.getEnemyList();
@@ -109,21 +106,8 @@ public class GameScreen extends Screen {
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
-			long waveEndTime = System.currentTimeMillis();
-			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
-			surface.text("Next Wave in: " + countdown, Screen.SCREEN_WIDTH/2 - 150, 80);
-			if(waveEndTime - waveFirstTime > DELAY_BETWEEN_WAVES) {
-				wave.setWave(wave.getWave() + 1);
-				wave.startWave(surface, hero);
-				
-			}
-		}
-		else {
-			waveFirstTime = System.currentTimeMillis();
-		}
-		
-		if(wave.getWave() == 1) {
-			
+			wave.setWave(wave.getWave() + 1);
+			wave.startWave(surface, hero);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
@@ -140,12 +124,8 @@ public class GameScreen extends Screen {
 							bullets.get(b).launch(50);
 							bullets.get(b).moveByVelocities();
 							bullets.get(b).draw(surface);
-							if(bullets.get(b).intersects(hero) && enemiesInWave.get(i) instanceof FinalBoss) {
+							if(bullets.get(b).intersects(hero)) {
 								hero.setHP(hero.getHP() - enemiesInWave.get(i).getDamage());
-							}
-							else if(bullets.get(b).intersects(hero) && enemiesInWave.get(i) instanceof Hydra) {
-								hero.setHP(hero.getHP()/2 + 1);
-								
 							}
 						}
 						else {
@@ -272,8 +252,67 @@ public class GameScreen extends Screen {
 			hero = perseusH;
 		}
 		
-	
+		System.out.println(getSpecificHero());
 		hero.setup(surface);
+	}
+	
+	public void upgradeHero() {
+		if (getStat() == NONE) 
+			return;
+		
+		if (hero instanceof Hercules) {
+			if (getStat() == ATK_SPEED) 
+				hero.setAtkSpeed(hero.getAtkSpeed() + Hercules.UP_ATK_SPEED);
+			else if (getStat() == HP) 
+				hero.setAtkSpeed(hero.getHP() + Hercules.UP_HP);
+			else if (getStat() == SPEED) 
+				hero.setSpeed(hero.getSpeed() + Hercules.UP_SPEED);
+			else if (getStat() == RANGE)
+				hero.setRange(hero.getRange() + Hercules.UP_RANGE);
+		}
+		else if (hero instanceof Achilles) {
+			if (getStat() == ATK_SPEED) 
+				hero.setAtkSpeed(hero.getAtkSpeed() + Achilles.UP_ATK_SPEED);
+			else if (getStat() == HP) 
+				hero.setAtkSpeed(hero.getHP() + Achilles.UP_HP);
+			else if (getStat() == SPEED) 
+				hero.setSpeed(hero.getSpeed() + Achilles.UP_SPEED);
+			else if (getStat() == RANGE)
+				hero.setRange(hero.getRange() + Achilles.UP_RANGE);
+		}
+		else if (hero instanceof Chiron) {
+			if (getStat() == ATK_SPEED) 
+				hero.setAtkSpeed(hero.getAtkSpeed() + Chiron.UP_ATK_SPEED);
+			else if (getStat() == HP) 
+				hero.setAtkSpeed(hero.getHP() + Chiron.UP_HP);
+			else if (getStat() == SPEED) 
+				hero.setSpeed(hero.getSpeed() + Chiron.UP_SPEED);
+			else if (getStat() == RANGE)
+				hero.setRange(hero.getRange() + Chiron.UP_RANGE);
+		}
+		else if (hero instanceof Helen) {
+			if (getStat() == ATK_SPEED) 
+				hero.setAtkSpeed(hero.getAtkSpeed() + Helen.UP_ATK_SPEED);
+			else if (getStat() == HP) 
+				hero.setAtkSpeed(hero.getHP() + Helen.UP_HP);
+			else if (getStat() == SPEED) 
+				hero.setSpeed(hero.getSpeed() + Helen.UP_SPEED);
+			else if (getStat() == RANGE)
+				hero.setRange(hero.getRange() + Helen.UP_RANGE);
+		}
+		else if (hero instanceof Perseus) {
+			if (getStat() == ATK_SPEED) 
+				hero.setAtkSpeed(hero.getAtkSpeed() + Perseus.UP_ATK_SPEED);
+			else if (getStat() == HP) 
+				hero.setAtkSpeed(hero.getHP() + Perseus.UP_HP);
+			else if (getStat() == SPEED) 
+				hero.setSpeed(hero.getSpeed() + Perseus.UP_SPEED);
+			else if (getStat() == RANGE)
+				hero.setRange(hero.getRange() + Perseus.UP_RANGE);
+		}
+		
+		setStat(NONE);
+	
 	}
 
 	public void mousePressed() {
@@ -288,13 +327,11 @@ public class GameScreen extends Screen {
 	public void mouseDragged() {
 		if (!hero.die())
 			hero.shoot(surface.mouseX, surface.mouseY, surface, enemiesInWave, hero.getX(), hero.getY());
-		
 	}
 
 	public void mouseClicked() {
 		if (pause.contains(surface.mouseX, surface.mouseY))
-			surface.toggleScreen(DrawingSurface.PAUSE_MENU);
-		
+			surface.toggleScreen(DrawingSurface.PAUSE_MENU);	
 	}
 
 	public void keyPressed() {
