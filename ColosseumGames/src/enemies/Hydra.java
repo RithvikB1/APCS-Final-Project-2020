@@ -61,6 +61,16 @@ public class Hydra extends Enemy {
 	public void behave(Character c, PApplet marker) {
 		double angle = Math.atan((c.getCenterY()- (this.getCenterY() - 50))/(c.getCenterX() - (this.getCenterX() - 10)));
 		long nextShotTime = System.currentTimeMillis();
+		
+		if (angle > Math.PI/2 && angle < (3 * Math.PI/2))
+		{
+			animateAttack(2);
+		}
+		else
+		{
+			animateAttack(1);
+		}
+
 
 		if(nextShotTime - previousShotTime > delay) {
 			
