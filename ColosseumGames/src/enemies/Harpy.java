@@ -57,6 +57,7 @@ public class Harpy extends Enemy {
 		else {
 			walk(9);
 			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
+			animateAttack(getDirectionToPlayer(c));
 		}
 		
 	}
