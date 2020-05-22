@@ -105,7 +105,7 @@ public class Harpy extends Enemy {
 
 	@Override
 	public void animateWalk(int dir) {
-		if (dir == 1|| dir == 3 || dir ==4)
+		if (dir == 1|| dir == 3 || dir ==4 || dir == 5 || dir == 6)
 		{
 			if (position == false)
 			{
@@ -120,7 +120,7 @@ public class Harpy extends Enemy {
 			
 		}
 		
-		if (dir == 2|| dir == 3 || dir ==4)//down
+		if (dir == 2|| dir == 3 || dir ==4 || dir ==8 || dir == 7)//down
 		{
 			if (position == false)
 			{
