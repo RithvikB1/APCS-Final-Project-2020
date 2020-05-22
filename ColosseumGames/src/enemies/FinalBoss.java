@@ -30,6 +30,7 @@ public class FinalBoss extends Enemy {
 	long previousShotTime = System.currentTimeMillis();
 	private int imageNumber;
 	private boolean position;
+	private int phase;
 
 	/**
 	 * Creates an Enemy
@@ -87,6 +88,7 @@ public class FinalBoss extends Enemy {
 		}
 		if(this.getHP() > 7500) {
 			marker.noFill();
+			phase = 1;
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y));
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + y));
@@ -127,6 +129,7 @@ public class FinalBoss extends Enemy {
 			angle+= 0.05;
 		}
 		else if(this.getHP() > 5000 || (this.getHP() <= 7500 && Screen.getDifficulty() == 1)) {
+			phase = 2;
 			marker.noFill();
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y));
@@ -172,10 +175,13 @@ public class FinalBoss extends Enemy {
 			}
 			
 			angle+= 0.05;
+			animateAttack(getDirectionToPlayer(c));
 			this.walk(getDirectionToPlayer(c));
 		}
 		else if(this.getHP() > 2500) {
+			phase = 3;
 			this.walk(9);
+			animateAttack(getDirectionToPlayer(c));
 			if(firstTP == 0) {
 				this.setCoordinates(Screen.SCREEN_WIDTH/4, 100);
 				firstTP++;
@@ -240,6 +246,7 @@ public class FinalBoss extends Enemy {
 
 		}
 		else {
+			phase =0;
 			marker.pushMatrix();
 			marker.fill(255, 0, 0);
 			marker.stroke(255, 0, 0);
@@ -300,6 +307,7 @@ public class FinalBoss extends Enemy {
 				lines.remove(i);
 			}
 			this.walk(getDirectionToPlayer(c));
+			animateAttack(getDirectionToPlayer(c));
 			long nextShotTime = System.currentTimeMillis();
 			if(Screen.getDifficulty() == 3) {
 				delay = (6/getAtkSpeed())*1000;
@@ -389,7 +397,7 @@ public class FinalBoss extends Enemy {
 	@Override
 	public void animateAttack(int dir) {
 		// TODO Auto-generated method stub
-		if (dir % 4 == 1)
+		if (phase == 1)
 		{
 			if (dir == 1)
 			{
@@ -406,9 +414,9 @@ public class FinalBoss extends Enemy {
 			}
 				
 		}
-		if (dir % 4 == 2)
+		if (phase == 2)
 		{
-			if (dir == 2)
+			if (dir == 8 || dir == 7)
 			{
 				if (position == false)
 				{
@@ -421,7 +429,7 @@ public class FinalBoss extends Enemy {
 					position = false;
 				}
 			}
-			if (dir == 6)
+			if (dir == 6 || dir == 5)
 			{
 				if (position == false)
 				{
@@ -436,9 +444,9 @@ public class FinalBoss extends Enemy {
 			}
 				
 		}
-		if (dir % 4 == 3)
+		if (phase== 3)
 		{
-			if (dir == 3)
+			if (dir == 7 || dir == 6)
 			{
 				if (position == false)
 				{
@@ -451,7 +459,7 @@ public class FinalBoss extends Enemy {
 					position = false;
 				}
 			}
-			if (dir == 7)
+			if (dir == 8 || dir == 5)
 			{
 				if (position == false)
 				{
@@ -466,9 +474,9 @@ public class FinalBoss extends Enemy {
 			}
 				
 		}
-		if (dir % 4 == 0)
+		if (phase == 0)
 		{
-			if (dir == 4)
+			if (dir == 8 || dir == 7)
 			{
 				if (position == false)
 				{
@@ -481,7 +489,7 @@ public class FinalBoss extends Enemy {
 					position = false;
 				}
 			}
-			if (dir == 8)
+			if (dir == 5 || dir == 6)
 			{
 				if (position == false)
 				{
