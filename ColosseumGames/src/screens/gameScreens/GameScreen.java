@@ -40,7 +40,6 @@ public class GameScreen extends Screen {
 	private Hero hero;
 	
 	private boolean[] keys;
-	
 	private Rectangle pause;
 	
 	private ArrayList<Bullet> bullets, arrows;
@@ -71,6 +70,8 @@ public class GameScreen extends Screen {
 		chironH = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);
 		helenH = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);
 		perseusH = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);
+		
+		
 		
 	}
 
@@ -142,7 +143,7 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 50);
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
+					enemiesInWave.add(new Hydramite(Screen.getMultiplier()[10] * 20, 20, Screen.getMultiplier()[8] * 20, 20, Screen.getMultiplier()[9] * 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX(),  (int)enemiesInWave.get(i).getY(), 50, 50));
 					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
 					hero.setHP(hero.getHP() + 500);
