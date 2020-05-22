@@ -20,7 +20,7 @@ import screens.other.Screen;
  *
  */
 public class FinalBoss extends Enemy {
-	double angle;
+	double angle, delay;
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
 	private ArrayList<Line2D.Double> lines;
@@ -126,7 +126,7 @@ public class FinalBoss extends Enemy {
 			
 			angle+= 0.05;
 		}
-		else if(this.getHP() > 5000) {
+		else if(this.getHP() > 5000 || (this.getHP() <= 7500 && Screen.getDifficulty() == 1)) {
 			marker.noFill();
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + x), (float)(getRange()*Math.sin(angle) + y), (float)(getRange()*Math.cos(angle + Math.PI/3) + x), (float)(getRange()*Math.sin(angle + Math.PI/3) + y));
@@ -300,37 +300,48 @@ public class FinalBoss extends Enemy {
 				lines.remove(i);
 			}
 			this.walk(getDirectionToPlayer(c));
-			double delay = (3/getAtkSpeed())*1000;
 			long nextShotTime = System.currentTimeMillis();
+			if(Screen.getDifficulty() == 3) {
+				delay = (6/getAtkSpeed())*1000;
+			} else {
+				delay = (15/getAtkSpeed())*1000;
+			}
 
 			if(nextShotTime - previousShotTime > delay) {
-				
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.2));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.1));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 1));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.9));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.8));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.7));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.6));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.5));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.1));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.5));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.6));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.7));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.8));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.9));
-//				bullets.add(new Bullet(this.x, this.y, playerAngle - 1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.2));
+				if(Screen.getDifficulty() == 3) {
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 1.2));
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 1.1));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 1));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.9));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.8));
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 0.7));
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 0.6));
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 0.5));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 0.1));
+					bullets.add(new Bullet(this.x, this.y, playerAngle));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 0.1));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 0.5));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 0.6));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 0.7));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.8));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.9));
+					//bullets.add(new Bullet(this.x, this.y, playerAngle - 1));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 1.1));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 1.2));
+				}
+				else {
+					bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
+					bullets.add(new Bullet(this.x, this.y, playerAngle));
+					bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
+				}
 				previousShotTime = System.currentTimeMillis();
+			
 
 			}
 			
