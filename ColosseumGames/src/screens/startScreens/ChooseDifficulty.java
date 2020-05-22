@@ -122,17 +122,17 @@ public class ChooseDifficulty extends Screen {
 		if (easy.contains(surface.mouseX, surface.mouseY)) {
 			shape6.setFill(255);
 			surface.shape(shape6);
-			surface.text("Details", 180, 435);
+			surface.text("Noob", 180, 435);
 		}
 		else if (medium.contains(surface.mouseX, surface.mouseY)) {
 			shape7.setFill(255);
 			surface.shape(shape7);
-			surface.text("Details", 580, 435);
+			surface.text("For the average jo", 580, 435);
 		}
 		else if (hard.contains(surface.mouseX, surface.mouseY)) {
 			shape8.setFill(255);
 			surface.shape(shape8);
-			surface.text("Details", 980, 435);
+			surface.text("Death", 980, 435);
 		}
 		
 		surface.textSize(90);

@@ -26,7 +26,8 @@ public class Wave {
 	public Wave() {
 		wave = 0;
 		enemyList = new ArrayList<Enemy>();
-		multiplier = ChooseDifficulty.getMultiplier();
+		multiplier = new double[15];
+		//multiplier = ChooseDifficulty.getMultiplier();
 	}
 	
 	/**
