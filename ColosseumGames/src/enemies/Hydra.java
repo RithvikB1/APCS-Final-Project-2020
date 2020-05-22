@@ -62,18 +62,10 @@ public class Hydra extends Enemy {
 		double angle = Math.atan((c.getCenterY()- (this.getCenterY() - 50))/(c.getCenterX() - (this.getCenterX() - 10)));
 		long nextShotTime = System.currentTimeMillis();
 		
-		if (angle > -Math.PI/2 && angle < Math.PI/2)
-		{
-			animateAttack(1);
-		}
-		else
-		{
-			animateAttack(2);
-		}
 
 
 		if(nextShotTime - previousShotTime > delay) {
-			
+			animateAttack(2);
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 90, angle - 0.1));
 
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 50, angle));
@@ -81,8 +73,11 @@ public class Hydra extends Enemy {
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() + 10, angle + 0.1));
 
 			previousShotTime = System.currentTimeMillis();
+			animateAttack(2);
 
 		}
+		animateAttack(1);
+		
 
 	}
 	public ArrayList<Bullet> getBullets(){
@@ -92,7 +87,7 @@ public class Hydra extends Enemy {
 	@Override
 	public int getImageNumber() {
 		// TODO Auto-generated method stub
-		return 0;
+		return imageNumber;
 	}
 
 	@Override
@@ -107,31 +102,13 @@ public class Hydra extends Enemy {
 		
 		if (dir == 1)
 		{
-			if (position == false)
-			{
-				imageNumber = 0;
-				position = true;
-			}
-			else
-			{
-				imageNumber = 1;
-				position = false;
-			}
-			
+			imageNumber = 0;
+				
 		}
 		
 		if (dir == 2)//down
 		{
-			if (position == false)
-			{
-				imageNumber = 2;
-				position = true;
-			}
-			else
-			{
-				imageNumber = 3;
-				position = false;
-			}
+			imageNumber =1;
 		}
 	}
 
