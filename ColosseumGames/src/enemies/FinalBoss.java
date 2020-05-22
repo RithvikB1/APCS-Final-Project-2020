@@ -28,6 +28,8 @@ public class FinalBoss extends Enemy {
 	int firstTP = 0;
 	double previousHP;
 	long previousShotTime = System.currentTimeMillis();
+	private int imageNumber;
+	private boolean position;
 
 	/**
 	 * Creates an Enemy
@@ -56,6 +58,18 @@ public class FinalBoss extends Enemy {
 	public void setup(PApplet marker) {
 		// TODO Auto-generated method stub
 		images = new ArrayList<>();
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase2AttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase2AttackLeft2.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase2AttackRight1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase2AttackRight2.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase3AttackBack1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase3AttackBack2.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase3AttackFront1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase3AttackFront2.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase4AttackLeft1.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase4AttackLeft2.png"));
+		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase4AttackRight1.png"));
 		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase4AttackRight2.png"));
 		this.setImages(images);
 
@@ -357,7 +371,7 @@ public class FinalBoss extends Enemy {
 	@Override
 	public int getImageNumber() {
 		// TODO Auto-generated method stub
-		return 0;
+		return imageNumber;
 	}
 
 	@Override
@@ -369,6 +383,114 @@ public class FinalBoss extends Enemy {
 	@Override
 	public void animateAttack(int dir) {
 		// TODO Auto-generated method stub
+		if (dir % 4 == 1)
+		{
+			if (dir == 1)
+			{
+				if (position == false)
+				{
+					imageNumber = 0;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 0;
+					position = false;
+				}
+			}
+				
+		}
+		if (dir % 4 == 2)
+		{
+			if (dir == 2)
+			{
+				if (position == false)
+				{
+					imageNumber = 1;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 2;
+					position = false;
+				}
+			}
+			if (dir == 6)
+			{
+				if (position == false)
+				{
+					imageNumber = 3;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 4;
+					position = false;
+				}
+			}
+				
+		}
+		if (dir % 4 == 3)
+		{
+			if (dir == 3)
+			{
+				if (position == false)
+				{
+					imageNumber = 5;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 6;
+					position = false;
+				}
+			}
+			if (dir == 7)
+			{
+				if (position == false)
+				{
+					imageNumber = 7;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 8;
+					position = false;
+				}
+			}
+				
+		}
+		if (dir % 4 == 0)
+		{
+			if (dir == 4)
+			{
+				if (position == false)
+				{
+					imageNumber = 9;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 10;
+					position = false;
+				}
+			}
+			if (dir == 8)
+			{
+				if (position == false)
+				{
+					imageNumber = 11;
+					position = true;
+				}
+				else
+				{
+					imageNumber = 12;
+					position = false;
+				}
+			}
+				
+		}
+		
 		
 	}
 

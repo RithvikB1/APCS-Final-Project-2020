@@ -272,7 +272,7 @@ public class GameScreen extends Screen {
 			hero = perseusH;
 		}
 		
-		System.out.println(getSpecificHero());
+	
 		hero.setup(surface);
 	}
 
