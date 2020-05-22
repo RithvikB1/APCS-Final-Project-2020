@@ -62,13 +62,13 @@ public class Hydra extends Enemy {
 		double angle = Math.atan((c.getCenterY()- (this.getCenterY() - 50))/(c.getCenterX() - (this.getCenterX() - 10)));
 		long nextShotTime = System.currentTimeMillis();
 		
-		if (angle > Math.PI/2 && angle < (3 * Math.PI/2))
+		if (angle > -Math.PI/2 && angle < Math.PI/2)
 		{
-			animateAttack(2);
+			animateAttack(1);
 		}
 		else
 		{
-			animateAttack(1);
+			animateAttack(2);
 		}
 
 
