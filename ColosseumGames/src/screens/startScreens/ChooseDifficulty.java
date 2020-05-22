@@ -34,7 +34,7 @@ public class ChooseDifficulty extends Screen {
 		hard = new Rectangle();
 		backButton = new Rectangle();
 		
-		multiplier = new double[15];
+		multiplier = new double[14];
 	}
 
 	@Override
@@ -77,37 +77,38 @@ public class ChooseDifficulty extends Screen {
 		}
 		else if (getDifficulty() == MEDIUM) {
 			shape3.setFill(surface.color(255, 0, 0));
+			multiplier[0] = 3/2;
 			multiplier[1] = 3/2;
-			multiplier[2] = 3/2;
-			multiplier[3] = 1;
-			multiplier[4] = 3/2;
-			multiplier[5] = 2;
+			multiplier[2] = 1;
+			multiplier[3] = 3/2;
+			multiplier[4] = 2;
+			multiplier[5] = 3/2;
 			multiplier[6] = 3/2;
-			multiplier[7] = 3/2;
-			multiplier[8] = 3;
-			multiplier[9] = 1;
+			multiplier[7] = 3;
+			multiplier[8] = 1;
+			multiplier[9] = 3/2;
 			multiplier[10] = 3/2;
-			multiplier[11] = 3/2;
+			multiplier[11] = 2;
 			multiplier[12] = 2;
-			multiplier[13] = 2;
-			multiplier[14] = 3/2;
+			multiplier[13] = 3/2;
+			System.out.println("hi");
 		}
 		else if (getDifficulty() == HARD) {
 			shape4.setFill(surface.color(255, 0, 0));
-			multiplier[1] = 3;
-			multiplier[2] = 5/2;
-			multiplier[3] = 3/2;
-			multiplier[4] = 2;
-			multiplier[5] = 3;
+			multiplier[0] = 3;
+			multiplier[1] = 5/2;
+			multiplier[2] = 3/2;
+			multiplier[3] = 2;
+			multiplier[4] = 3;
+			multiplier[5] = 2;
 			multiplier[6] = 2;
-			multiplier[7] = 2;
-			multiplier[8] = 5;
-			multiplier[9] = 3/2;
+			multiplier[7] = 5;
+			multiplier[8] = 3/2;
+			multiplier[9] = 2;
 			multiplier[10] = 2;
-			multiplier[11] = 2;
-			multiplier[12] = 3;
-			multiplier[13] = 4;
-			multiplier[14] = 2;
+			multiplier[11] = 3;
+			multiplier[12] = 4;
+			multiplier[13] = 2;
 		}
 		
 		surface.shape(shape);

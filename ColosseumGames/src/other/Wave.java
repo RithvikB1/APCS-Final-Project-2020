@@ -26,8 +26,8 @@ public class Wave {
 	public Wave() {
 		wave = 0;
 		enemyList = new ArrayList<Enemy>();
-		multiplier = new double[15];
-		//multiplier = ChooseDifficulty.getMultiplier();
+		multiplier = new double[14];
+		multiplier = Screen.getMultiplier();
 	}
 	
 	/**
@@ -38,7 +38,6 @@ public class Wave {
 	public void startWave(PApplet marker, Character c) {
 		
 		if(wave == 1) {
-			enemyList.add(new FinalBoss(10, 9, 10000, 350, 20, 500, 300, 160, 160));
 			
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
@@ -81,78 +80,78 @@ public class Wave {
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, 50, 50, 50));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT - 300, 50, 50));
 	
-			enemyList.add(new Harpy(7, 30, 500, 141, 200, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 500, 141, multiplier[1] * 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
 			setup(marker);
 
 
 		}
 		else if(wave == 6) {
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
 			setup(marker);
 
 		}
 		else if(wave == 7) {
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 
 		}
 		else if(wave == 8) {
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
 
 			setup(marker);
 
 		}
 		else if(wave == 9) {
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 
 		}
 		else if(wave == 10) {
-			enemyList.add(new Minotaur(40, 20, 10000, 50, 5000, 20, 450, 150, 150));
+			enemyList.add(new Minotaur(40, 20, multiplier[3] * 2500, 50, multiplier[4] * 5000, 20, 450, 150, 150));
 			setup(marker);
 
 		}
 		else if(wave == 11) {
-			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Hydra(0, 0, multiplier[6] * 2000, 0, multiplier[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
 			setup(marker);
 
 		}
 		else if(wave == 12) {
-			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Hydra(0, 0, multiplier[6] * 2000, 0, multiplier[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, 20, 50, 50));
 			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
 			setup(marker);
 
 		}
 		else if(wave == 13) {
-			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
-			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
+			enemyList.add(new Hydra(0, 0, multiplier[6] * 2000, 0, multiplier[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Minotaur(40, 20, multiplier[3]*500, 50, multiplier[4] * 500, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
 			
 			setup(marker);
 
 		}
 		else if(wave == 14) {
-			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Hydra(0, 0, multiplier[6] * 2000, 0, multiplier[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
 			enemyList.add(new Harpy(7, 30, 500, 141, 200, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
 
 			setup(marker);
 
 		}
 		else if(wave == 15) {
-			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new Hydra(0, 0, multiplier[6] * 2000, 0, multiplier[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
 			enemyList.add(new Minotaur(40, 20, 10000, 50, 5000, 20, Screen.SCREEN_HEIGHT/2 - 50, 150, 150));
 
 			setup(marker);
 
 		}
 		else if(wave == 16) {
-			wave = 1;
+			enemyList.add(new FinalBoss(multiplier[13] * 10, multiplier[12] * 9, 10000, 350, multiplier[11] * 20, 500, 300, 160, 160));
 
 		}
 		

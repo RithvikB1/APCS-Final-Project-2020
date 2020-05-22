@@ -50,6 +50,7 @@ public abstract class Screen {
 		rightKey = 'D';
 		
 		difficulty = MEDIUM;
+		multiplier = new double[14];
 	}
 	
 	/**
