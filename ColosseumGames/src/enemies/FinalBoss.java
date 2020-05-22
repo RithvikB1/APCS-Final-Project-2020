@@ -120,11 +120,6 @@ public class FinalBoss extends Enemy {
 				}
 				lines.remove(i);
 			}
-			if(bullets.size() == 0) {
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
-			}
-			
 			
 			
 			
@@ -168,11 +163,11 @@ public class FinalBoss extends Enemy {
 			}
 			if(bullets.size() == 0) {
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
+				//bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
 				
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
+				//bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
 			}
 			
@@ -296,7 +291,7 @@ public class FinalBoss extends Enemy {
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + y), (float)x, (float)y));
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 5*Math.PI/3) + x), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + y), (float)x, (float)y));
 			marker.popMatrix();
-			angle+= 0.2;
+			angle+= 0.07;
 			
 			for(int i = 0; i < lines.size(); i++) {
 				if(lines.get(i).intersects(c)) {
@@ -312,27 +307,27 @@ public class FinalBoss extends Enemy {
 				
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.2));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 1.1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.9));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.8));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 1));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.9));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.8));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.7));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.6));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.5));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
-				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.4));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.3));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.2));
 				bullets.add(new Bullet(this.x, this.y, playerAngle + 0.1));
 				bullets.add(new Bullet(this.x, this.y, playerAngle));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.1));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.2));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.3));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.4));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.5));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.6));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.7));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.8));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.9));
-				bullets.add(new Bullet(this.x, this.y, playerAngle - 1));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.8));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 0.9));
+//				bullets.add(new Bullet(this.x, this.y, playerAngle - 1));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.1));
 				bullets.add(new Bullet(this.x, this.y, playerAngle - 1.2));
 				previousShotTime = System.currentTimeMillis();
