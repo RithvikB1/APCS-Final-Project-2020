@@ -45,18 +45,18 @@ public class Harpy extends Enemy {
 	 */
 	public void behave(Character c, PApplet marker) {
 		
-		if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) < 150) {
+		if(Math.sqrt(Math.pow((c.getCenterX()-this.getCenterX()), 2) + Math.pow(c.getCenterY() - this.getCenterY(), 2)) < this.getRange()) {
 			this.walk(getDirectionAwayFromPlayer(c));
 			animateWalk(getDirectionAwayFromPlayer(c));
-			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
+			this.shoot(c.getCenterX(), c.getCenterY(), marker, c, this.getCenterX(), this.getCenterY());
 		}
-		else if(Math.sqrt(Math.pow((c.getX()-x), 2) + Math.pow(c.getY() - y, 2)) > 162) {
+		else if(Math.sqrt(Math.pow((c.getCenterX()-this.getCenterX()), 2) + Math.pow(c.getCenterY() - this.getCenterY(), 2)) > this.getRange() + 20) {
 			this.walk(getDirectionToPlayer(c));
 			animateWalk(getDirectionToPlayer(c));
 		}
 		else {
 			walk(9);
-			this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
+			this.shoot(c.getCenterX(), c.getCenterY(), marker, c, this.getCenterX(), this.getCenterY());
 			animateAttack(getDirectionToPlayer(c));
 		}
 		

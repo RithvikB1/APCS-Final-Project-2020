@@ -19,7 +19,7 @@ public class Minotaur extends Enemy {
 	int reset = 0;
 	long chargePlayer = System.currentTimeMillis();
 	long seePlayer = 0;
-	
+	double originalSpeed;
 	private ArrayList<PImage> images;
 	private int imageNumber;
 	private boolean position;
@@ -39,6 +39,7 @@ public class Minotaur extends Enemy {
 			int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
+		originalSpeed = this.getSpeed();
 	}
 	
 	/**
@@ -48,18 +49,18 @@ public class Minotaur extends Enemy {
 	 */
 	public void behave(Character c, PApplet marker) {
 		
-		if(Math.abs(this.getX() - c.getX()) < 15) {
+		if(Math.abs(this.getCenterX() - c.getCenterX()) < this.getRange()) {
 			this.setVx(0);
-			if(this.getY() - c.getY() > 0) {
+			if(this.getCenterY() - c.getCenterY() > 0) {
 				this.walk(4);
 			}
 			else {
 				this.walk(2);
 			}
 		}
-		if(Math.abs(this.getY() - c.getY()) < 15) {
+		if(Math.abs(this.getCenterY() - c.getCenterY()) < this.getRange()) {
 			this.setVy(0);
-			if(this.getX() - c.getX() > 0) {
+			if(this.getCenterX() - c.getCenterX() > 0) {
 				this.walk(3);
 				animateWalk(2);
 			}
@@ -81,14 +82,14 @@ public class Minotaur extends Enemy {
 			this.walk(getDirectionToPlayer(c));
 			animateWalk(getDirectionToPlayer(c));
 		}
-		this.shoot(c.getX(), c.getY(), marker, c, this.getX(), this.getY());
+		this.shoot(c.getCenterX(), c.getCenterY(), marker, c, this.getCenterX(), this.getCenterY());
 		if(c.getVx() == 0 && c.getVy() == 0) {
 			this.walk(getDirectionToPlayer(c));
 			animateWalk(getDirectionToPlayer(c));
 			this.setSpeed(2);
 		}
 		else {
-			this.setSpeed(40);
+			this.setSpeed(originalSpeed);
 		}
 		
 	}

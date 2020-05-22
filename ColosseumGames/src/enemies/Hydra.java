@@ -21,7 +21,9 @@ public class Hydra extends Enemy {
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
 	private int imageNumber;
-	long previousShotTime = System.currentTimeMillis();
+	long previousShotTime;
+	double delay;
+
 	private boolean position;
 	/**
 	 * Creates an Enemy
@@ -40,6 +42,8 @@ public class Hydra extends Enemy {
 		super( speed, atkSpeed, HP, range, damage, x, y, w, h);
 		// TODO Auto-generated constructor stub
 		bullets = new ArrayList<Bullet>();
+		previousShotTime = System.currentTimeMillis();
+		delay = (10/getAtkSpeed())*1000;
 	}
 
 	@Override
@@ -55,12 +59,21 @@ public class Hydra extends Enemy {
 
 	@Override
 	public void behave(Character c, PApplet marker) {
-		double angle = Math.atan((c.getY()-this.getY())/(c.getX() - this.getX()));
-		if(bullets.size() == 0) {
-			bullets.add(new Bullet(this.x, this.y, angle));
-			bullets.add(new Bullet(this.x, this.y, angle + 0.1));
-			bullets.add(new Bullet(this.x, this.y, angle - 0.1));
+		double angle = Math.atan((c.getCenterY()- (this.getCenterY() - 50))/(c.getCenterX() - (this.getCenterX() - 10)));
+		long nextShotTime = System.currentTimeMillis();
+
+		if(nextShotTime - previousShotTime > delay) {
+			
+			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 90, angle - 0.1));
+
+			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 50, angle));
+			
+			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() + 10, angle + 0.1));
+
+			previousShotTime = System.currentTimeMillis();
+
 		}
+
 	}
 	public ArrayList<Bullet> getBullets(){
 		return bullets;
