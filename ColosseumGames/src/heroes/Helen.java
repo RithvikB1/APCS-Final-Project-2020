@@ -53,7 +53,16 @@ public class Helen extends Hero {
 		double delay = (10/getAtkSpeed())*1000;
 		long nextShotTime = System.currentTimeMillis();
 		
+		
 		if(nextShotTime - previousShotTime > delay) {
+			if (mouseX < this.x)
+			{
+				animateAttack(3);
+			}
+			else
+			{
+				animateAttack(1);
+			}
 
 			marker.pushMatrix();
 			marker.noFill();
@@ -65,7 +74,7 @@ public class Helen extends Hero {
 				}
 			}
 			marker.popMatrix();
-			previousShotTime = System.currentTimeMillis();
+			previousShotTime = System.currentTimeMillis(); 
 		}
 	}
 
@@ -154,6 +163,39 @@ public class Helen extends Hero {
 		{
 			imageNumber = 2;
 		}
+		
+	}
+
+	@Override
+	public void animateAttack(int dir) {
+		// TODO Auto-generated method stub
+		if (dir == 3)
+		{
+			if (position == false)
+			{
+				imageNumber = 4;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 5;
+				position = false;
+			}
+		}
+		if (dir == 1)
+		{
+			if (position == false)
+			{
+				imageNumber = 6;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 7;
+				position = false;
+			}
+		}
+		
 		
 	}
 

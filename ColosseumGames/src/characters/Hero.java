@@ -70,4 +70,6 @@ public abstract class Hero extends Character {
 	public ArrayList<Bullet> getArrows(){
 		return null;
 	}
+	
+	public abstract void animateAttack(int dir);
 }
