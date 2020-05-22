@@ -6,6 +6,7 @@ import characters.Character;
 import enemies.*;
 import processing.core.*;
 import screens.other.Screen;
+import screens.startScreens.ChooseDifficulty;
 
 /**
  * Used to show the multiple and varied waves presented in the game
@@ -17,6 +18,7 @@ public class Wave {
 	
 	private int wave;
 	private ArrayList<Enemy> enemyList;
+	private double[] multiplier;
 	
 	/**
 	 * Creates a wave object
@@ -24,6 +26,7 @@ public class Wave {
 	public Wave() {
 		wave = 0;
 		enemyList = new ArrayList<Enemy>();
+		multiplier = ChooseDifficulty.getMultiplier();
 	}
 	
 	/**
@@ -33,11 +36,11 @@ public class Wave {
 	 */
 	public void startWave(PApplet marker, Character c) {
 		
-		
 		if(wave == 1) {
 			enemyList.add(new FinalBoss(10, 9, 10000, 350, 20, 500, 300, 160, 160));
-//			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-//			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 
 			
 			setup(marker);
@@ -46,36 +49,36 @@ public class Wave {
 			//and so on
 		}
 		else if(wave == 2) {
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			
 			setup(marker);
 		}
 		else if(wave == 3) {
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 		}
 		else if(wave == 4) {
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, 20, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 
 		}
 		else if(wave == 5) {			
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT - 300, 50, 50));
 	
 			enemyList.add(new Harpy(7, 30, 500, 141, 200, 20, Screen.SCREEN_HEIGHT/2 - 50, 100, 100));
 			setup(marker);
@@ -89,8 +92,8 @@ public class Wave {
 		}
 		else if(wave == 7) {
 			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 
 		}
@@ -104,8 +107,8 @@ public class Wave {
 		else if(wave == 9) {
 			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, 50, 100, 100));
 			enemyList.add(new Minotaur(40, 20, 1000, 50, 1000, Screen.SCREEN_WIDTH/2 - 100, Screen.SCREEN_HEIGHT - 350, 100, 100));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 			setup(marker);
 
 		}
@@ -121,8 +124,8 @@ public class Wave {
 		}
 		else if(wave == 12) {
 			enemyList.add(new Hydra(0, 0, 4000, 0, 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, 20, 50, 50));
-			enemyList.add(new Harpy(7, 30, 350, 141, 100, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, 20, 50, 50));
+			enemyList.add(new Harpy(multiplier[2] * 7, 30, multiplier[0] * 150, 141, multiplier[1] * 50, Screen.SCREEN_WIDTH/2, Screen.SCREEN_HEIGHT - 300, 50, 50));
 			setup(marker);
 
 		}

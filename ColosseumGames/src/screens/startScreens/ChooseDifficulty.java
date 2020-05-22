@@ -21,6 +21,8 @@ public class ChooseDifficulty extends Screen {
 	
 	private Rectangle start, easy, medium, hard, backButton;
 	
+	private double[] multiplier;
+	
 	public ChooseDifficulty(DrawingSurface surface) {
 		super(surface);
 		
@@ -31,6 +33,8 @@ public class ChooseDifficulty extends Screen {
 		medium = new Rectangle();
 		hard = new Rectangle();
 		backButton = new Rectangle();
+		
+		multiplier = new double[15];
 	}
 
 	@Override
@@ -67,12 +71,43 @@ public class ChooseDifficulty extends Screen {
 		
 		if (getDifficulty() == EASY) {
 			shape2.setFill(surface.color(255, 0, 0));
+			for(int i = 0; i < multiplier.length; i++) {
+				multiplier[i] = 1;
+			}
 		}
 		else if (getDifficulty() == MEDIUM) {
 			shape3.setFill(surface.color(255, 0, 0));
+			multiplier[1] = 3/2;
+			multiplier[2] = 3/2;
+			multiplier[3] = 1;
+			multiplier[4] = 3/2;
+			multiplier[5] = 2;
+			multiplier[6] = 3/2;
+			multiplier[7] = 3/2;
+			multiplier[8] = 3;
+			multiplier[9] = 1;
+			multiplier[10] = 3/2;
+			multiplier[11] = 3/2;
+			multiplier[12] = 2;
+			multiplier[13] = 2;
+			multiplier[14] = 3/2;
 		}
 		else if (getDifficulty() == HARD) {
 			shape4.setFill(surface.color(255, 0, 0));
+			multiplier[1] = 3;
+			multiplier[2] = 5/2;
+			multiplier[3] = 3/2;
+			multiplier[4] = 2;
+			multiplier[5] = 3;
+			multiplier[6] = 2;
+			multiplier[7] = 2;
+			multiplier[8] = 5;
+			multiplier[9] = 3/2;
+			multiplier[10] = 2;
+			multiplier[11] = 2;
+			multiplier[12] = 3;
+			multiplier[13] = 4;
+			multiplier[14] = 2;
 		}
 		
 		surface.shape(shape);
@@ -154,7 +189,7 @@ public class ChooseDifficulty extends Screen {
 		}
 		
 	}
-
+	
 	@Override
 	public void keyPressed() {
 		// TODO Auto-generated method stub
@@ -165,6 +200,9 @@ public class ChooseDifficulty extends Screen {
 	public void keyReleased() {
 		// TODO Auto-generated method stub
 		
+	}
+	public double[] getMultiplier() {
+		return multiplier;
 	}
 
 }
