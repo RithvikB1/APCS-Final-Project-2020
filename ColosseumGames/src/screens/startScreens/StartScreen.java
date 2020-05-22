@@ -108,6 +108,10 @@ public class StartScreen extends Screen {
 			surface.toggleScreen(DrawingSurface.CREDITS);
 		}
 	}
+	
+	public void mouseScrolled() {
+		
+	}	
 
 	public void keyPressed() {
 		// TODO Auto-generated method stub

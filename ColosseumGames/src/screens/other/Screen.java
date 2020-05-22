@@ -33,6 +33,8 @@ public abstract class Screen {
 	
 	private static boolean displayShop = false;
 	
+	private static double[] multiplier;
+	
 	/**
 	 * Creates a new Screen
 	 * @param surface the drawing surface used to draw the screen
@@ -79,6 +81,11 @@ public abstract class Screen {
 	 * Dictates what happens in screen when mouse is clicked
 	 */
 	public abstract void mouseClicked();
+	
+	/**
+	 * Dictates what happens in screen when mouse is used to scroll
+	 */
+	public abstract void mouseScrolled();
 	
 	/**
 	 * Dictates what happens in screen when key is pressed
@@ -260,8 +267,25 @@ public abstract class Screen {
 	
 	/**
 	 * 
+	 * @return
 	 */
 	public static boolean getDisplayShop() {
 		return displayShop;
+	}
+	
+	/**
+	 * 
+	 * @param m
+	 */
+	public static void setMultiplier(double[] m) {
+		multiplier = m;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static double[] getMultiplier() {
+		return multiplier;
 	}
 }

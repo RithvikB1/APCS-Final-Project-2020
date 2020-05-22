@@ -149,6 +149,8 @@ public class ChooseDifficulty extends Screen {
 		surface.textSize(50);
 		surface.text("Back", 70, 670);
 		
+		setMultiplier(multiplier);
+		
 	}
 
 	@Override
@@ -190,6 +192,10 @@ public class ChooseDifficulty extends Screen {
 		
 	}
 	
+	public void mouseScrolled() {
+		
+	}
+	
 	@Override
 	public void keyPressed() {
 		// TODO Auto-generated method stub
@@ -200,9 +206,6 @@ public class ChooseDifficulty extends Screen {
 	public void keyReleased() {
 		// TODO Auto-generated method stub
 		
-	}
-	public double[] getMultiplier() {
-		return multiplier;
 	}
 
 }

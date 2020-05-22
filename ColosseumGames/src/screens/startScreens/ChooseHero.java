@@ -226,6 +226,10 @@ public class ChooseHero extends Screen {
 		}
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {

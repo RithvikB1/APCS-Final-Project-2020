@@ -88,6 +88,10 @@ public class Credits extends Screen {
 		}
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	public void keyPressed() {
 		// TODO Auto-generated method stub

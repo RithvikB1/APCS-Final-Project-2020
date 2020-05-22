@@ -90,6 +90,10 @@ public class Pause extends Screen {
 		}
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {

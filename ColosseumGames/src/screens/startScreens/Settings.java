@@ -273,6 +273,10 @@ public class Settings extends Screen {
 		}
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {

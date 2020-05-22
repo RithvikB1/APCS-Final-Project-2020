@@ -89,6 +89,10 @@ public class DeathMenu extends Screen {
 		}
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {

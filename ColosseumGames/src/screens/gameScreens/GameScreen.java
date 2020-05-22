@@ -333,6 +333,10 @@ public class GameScreen extends Screen {
 		if (pause.contains(surface.mouseX, surface.mouseY))
 			surface.toggleScreen(DrawingSurface.PAUSE_MENU);	
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	public void keyPressed() {
 		if (hero == null || hero.die()) {

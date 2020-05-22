@@ -218,6 +218,10 @@ public class MerchantMenu extends Screen {
 		
 		return upgrades;
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {

@@ -54,6 +54,10 @@ public class ConfirmQuit extends Screen {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void mouseScrolled() {
+		
+	}
 
 	@Override
 	public void keyPressed() {
