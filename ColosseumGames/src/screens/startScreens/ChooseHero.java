@@ -163,6 +163,8 @@ public class ChooseHero extends Screen {
 		if (isHeroPicked)
 			surface.text("Next", 590, 700);
 		
+		surface.update();
+		
 	}
 	
 	@Override

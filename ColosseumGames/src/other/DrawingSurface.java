@@ -99,8 +99,8 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 * Plays the sound in the game
 	 */
 	public void playSound() {
-		if (Screen.getSound()) {
-			audio.amp((float)(Screen.getVolume() / 100.0));
+		if (currentScreen.getSound()) {
+			audio.amp((float)(currentScreen.getVolume() / 100.0));
 			
 			if (!audio.isPlaying())
 				audio.play();
@@ -116,5 +116,36 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 */
 	public void toggleScreen(int x) {
 		currentScreen = screens[x];
+	}
+
+	public void update() {
+		int volume = currentScreen.getVolume();
+		int specificHero = currentScreen.getSpecificHero();
+		int difficulty = currentScreen.getDifficulty();
+		int stat = currentScreen.getStat();
+		
+		boolean isSoundOn = currentScreen.getSound();
+		boolean isShop = currentScreen.getDisplayShop();
+		
+		char upKey = currentScreen.getUpKey();
+		char downKey = currentScreen.getDownKey();
+		char leftKey = currentScreen.getLeftKey();
+		char rightKey =  currentScreen.getRightKey();
+		
+		double[] multiplier = currentScreen.getMultiplier();
+		
+		for (Screen s : screens) {
+			s.setVolume(volume);
+			s.setSpecificHero(specificHero);
+			s.setDifficulty(difficulty);
+			s.setStat(stat);
+			s.setSound(isSoundOn);
+			s.setDisplayShop(isShop);
+			s.setUpKey(upKey);
+			s.setDownKey(downKey);
+			s.setLeftKey(leftKey);
+			s.setRightKey(rightKey);
+			s.setMultiplier(multiplier);
+		}
 	}
 }

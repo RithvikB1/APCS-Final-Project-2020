@@ -190,6 +190,8 @@ public class Settings extends Screen {
 		
 		surface.text("Settings", 530, 110);
 		
+		surface.update();
+		
 	}
 
 	/**
@@ -238,7 +240,6 @@ public class Settings extends Screen {
 				adjuster = 450;
 			
 			setSound(true);
-			System.out.println("yes");
 		}
 		else if (soundOff.contains(surface.mouseX, surface.mouseY)) {
 			setSound(false);

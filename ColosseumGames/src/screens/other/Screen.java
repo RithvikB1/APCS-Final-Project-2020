@@ -17,23 +17,23 @@ public abstract class Screen {
 	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
 	public static final int NONE = 0, ATK_SPEED = 1, SPEED = 2, HP = 3, RANGE = 4;
 	
-	private static int volume;
+	private int volume;
 	
 	private DrawingSurface surface;
 	
-	private static boolean isSoundOn;
+	private boolean isSoundOn;
 	
-	private static char upKey, downKey, leftKey, rightKey;
+	private char upKey, downKey, leftKey, rightKey;
 	
-	private static int specificHero;
+	private int specificHero;
 	
-	private static int difficulty;
+	private int difficulty;
 	
-	private static int selectedStat = NONE;
+	private int selectedStat = NONE;
 	
-	private static boolean displayShop = false;
+	private boolean displayShop = false;
 	
-	private static double[] multiplier;
+	private double[] multiplier;
 	
 	/**
 	 * Creates a new Screen
@@ -118,7 +118,7 @@ public abstract class Screen {
 	 * Changes volume accordingly
 	 * @param vol the new volume 
 	 */
-	public static void setVolume(int vol) {
+	public void setVolume(int vol) {
 		volume = vol;
 	}
 	
@@ -126,7 +126,7 @@ public abstract class Screen {
 	 * Gets the volume of the screen
 	 * @return the volume 
 	 */
-	public static int getVolume() {
+	public int getVolume() {
 		return volume;
 	}
 	
@@ -134,7 +134,7 @@ public abstract class Screen {
 	 * Changes the state of sound
 	 * @param sound true if sound is on, false if not
 	 */
-	public static void setSound(boolean sound) {
+	public void setSound(boolean sound) {
 		isSoundOn = sound;
 	}
 	
@@ -142,7 +142,7 @@ public abstract class Screen {
 	 * Tells whether sound is on or not
 	 * @return true if sound is on, false if not
 	 */
-	public static boolean getSound() {
+	public boolean getSound() {
 		return isSoundOn;
 	}
 	
@@ -150,7 +150,7 @@ public abstract class Screen {
 	 * Changes the key used for up movement
 	 * @param key the new key for up
 	 */
-	public static void setUpKey(char key) {
+	public void setUpKey(char key) {
 		upKey = key;
 	}
 	
@@ -158,7 +158,7 @@ public abstract class Screen {
 	 * Changes the key used for down movement
 	 * @param key the new key for down
 	 */
-	public static void setDownKey(char key) {
+	public void setDownKey(char key) {
 		downKey = key;
 	}
 	
@@ -166,7 +166,7 @@ public abstract class Screen {
 	 * Changes the key used for left movement
 	 * @param key the new key for left
 	 */
-	public static void setLeftKey(char key) {
+	public void setLeftKey(char key) {
 		leftKey = key;
 	}
 	
@@ -174,7 +174,7 @@ public abstract class Screen {
 	 * Changes the key used for right movement
 	 * @param key the new key for right
 	 */
-	public static void setRightKey(char key) {
+	public void setRightKey(char key) {
 		rightKey = key;
 	}
 	
@@ -182,7 +182,7 @@ public abstract class Screen {
 	 * Gets the key used for upwards movement
 	 * @return the key used to go up
 	 */
-	public static char getUpKey() {
+	public char getUpKey() {
 		return upKey;
 	}
 	
@@ -190,7 +190,7 @@ public abstract class Screen {
 	 * Gets the key used for downwards movement
 	 * @return the key used to go down
 	 */
-	public static char getDownKey() {
+	public char getDownKey() {
 		return downKey;
 	}
 	
@@ -198,7 +198,7 @@ public abstract class Screen {
 	 * Gets the key used for leftwards movement
 	 * @return the key used to go left
 	 */
-	public static char getLeftKey() {
+	public char getLeftKey() {
 		return leftKey;
 	}
 	
@@ -206,7 +206,7 @@ public abstract class Screen {
 	 * Gets the key used for rightwards movement
 	 * @return the key used to go right
 	 */
-	public static char getRightKey() {
+	public char getRightKey() {
 		return rightKey;
 	}
 	
@@ -214,7 +214,7 @@ public abstract class Screen {
 	 * Changes the hero in view
 	 * @param x the new hero in view
 	 */
-	public static void setSpecificHero(int x) {
+	public void setSpecificHero(int x) {
 		specificHero = x;
 	}
 	
@@ -222,7 +222,7 @@ public abstract class Screen {
 	 * Gets the hero in view
 	 * @return the hero as an int
 	 */
-	public static int getSpecificHero() {
+	public int getSpecificHero() {
 		return specificHero;
 	}
 	
@@ -230,7 +230,7 @@ public abstract class Screen {
 	 * Sets the difficulty of the game
 	 * @param diff the difficulty of the game
 	 */
-	public static void setDifficulty(int diff) {
+	public void setDifficulty(int diff) {
 		difficulty = diff;
 	}
 	
@@ -238,7 +238,7 @@ public abstract class Screen {
 	 * Gets the difficulty
 	 * @return difficulty level as an int
 	 */
-	public static int getDifficulty() {
+	public int getDifficulty() {
 		return difficulty;
 	}
 	
@@ -246,7 +246,7 @@ public abstract class Screen {
 	 * 
 	 * @param stat
 	 */
-	public static void setStat(int stat) {
+	public void setStat(int stat) {
 		selectedStat = stat;
 	}
 	
@@ -254,7 +254,7 @@ public abstract class Screen {
 	 * 
 	 * @return
 	 */
-	public static int getStat() {
+	public int getStat() {
 		return selectedStat;
 	}
 	
@@ -262,7 +262,7 @@ public abstract class Screen {
 	 * 
 	 * @param isShop
 	 */
-	public static void setDisplayShop(boolean isShop) {
+	public void setDisplayShop(boolean isShop) {
 		displayShop = isShop;
 	}
 	
@@ -270,7 +270,7 @@ public abstract class Screen {
 	 * 
 	 * @return
 	 */
-	public static boolean getDisplayShop() {
+	public boolean getDisplayShop() {
 		return displayShop;
 	}
 	
@@ -278,7 +278,7 @@ public abstract class Screen {
 	 * 
 	 * @param m
 	 */
-	public static void setMultiplier(double[] m) {
+	public void setMultiplier(double[] m) {
 		multiplier = m;
 	}
 	
@@ -286,7 +286,7 @@ public abstract class Screen {
 	 * 
 	 * @return
 	 */
-	public static double[] getMultiplier() {
+	public double[] getMultiplier() {
 		return multiplier;
 	}
 }

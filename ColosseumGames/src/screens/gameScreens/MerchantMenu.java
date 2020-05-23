@@ -122,6 +122,8 @@ public class MerchantMenu extends Screen {
 		if (isClicked1 || isClicked2 || isClicked3 || isClicked4) 
 			surface.text("Confirm", 570, 485);
 		
+		surface.update();
+		
 	}
 
 	@Override

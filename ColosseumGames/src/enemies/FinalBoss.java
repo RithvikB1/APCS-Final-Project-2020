@@ -76,8 +76,7 @@ public class FinalBoss extends Enemy {
 
 	}
 
-	@Override
-	public void behave(Character c, PApplet marker) {
+	public void behave(Character c, PApplet marker, Screen s) {
 		// TODO Auto-generated method stub
 		double playerAngle;
 		if(c.getX() - this.getX() > 0) {
@@ -128,7 +127,7 @@ public class FinalBoss extends Enemy {
 			
 			angle+= 0.05;
 		}
-		else if(this.getHP() > 5000 || (this.getHP() <= 7500 && Screen.getDifficulty() == 1)) {
+		else if(this.getHP() > 5000 || (this.getHP() <= 7500 && s.getDifficulty() == 1)) {
 			phase = 2;
 			marker.noFill();
 			marker.strokeWeight(10);
@@ -309,14 +308,14 @@ public class FinalBoss extends Enemy {
 			this.walk(getDirectionToPlayer(c));
 			animateAttack(getDirectionToPlayer(c));
 			long nextShotTime = System.currentTimeMillis();
-			if(Screen.getDifficulty() == 3) {
+			if(s.getDifficulty() == 3) {
 				delay = (6/getAtkSpeed())*1000;
 			} else {
 				delay = (15/getAtkSpeed())*1000;
 			}
 
 			if(nextShotTime - previousShotTime > delay) {
-				if(Screen.getDifficulty() == 3) {
+				if(s.getDifficulty() == 3) {
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.2));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.1));
 					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1));
@@ -505,6 +504,12 @@ public class FinalBoss extends Enemy {
 				
 		}
 		
+		
+	}
+
+	@Override
+	public void behave(Character c, PApplet marker) {
+		// TODO Auto-generated method stub
 		
 	}
 

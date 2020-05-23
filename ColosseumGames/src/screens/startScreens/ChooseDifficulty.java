@@ -152,6 +152,8 @@ public class ChooseDifficulty extends Screen {
 		
 		setMultiplier(multiplier);
 		
+		surface.update();
+		
 	}
 
 	@Override
