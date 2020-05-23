@@ -1,4 +1,5 @@
 package heroes;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
 import characters.Enemy;
@@ -14,7 +15,7 @@ public class Helen extends Hero {
 	private boolean position;
 	private int imageNumber;
 	
-	public static final int SPEED = 20, ATK_SPEED = 10, HP = 100000, RANGE = 400, DAMAGE = 500;
+	public static final int SPEED = 20, ATK_SPEED = 10, HP = 100000, RANGE = 400, DAMAGE = 5000;
 	public static final int UP_SPEED = 2, UP_ATK_SPEED = 2, UP_HP = 500, UP_RANGE = 2, UP_DAMAGE = 15;
 	
 	public Helen(double speed, double atkSpeed, double HP, double range, double damage) {
@@ -68,14 +69,20 @@ public class Helen extends Hero {
 			marker.noFill();
 			marker.stroke(255, 255, 0);
 			marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
+			Ellipse2D.Double hit = new Ellipse2D.Double(x + 50 - this.getRange()/2, y + 50 - this.getRange()/2, (float)getRange(), (float)getRange());
+			System.out.println(x+50);
+			System.out.println(hit.getCenterX());
 			for(Enemy e: enemies) {
-				if(Math.sqrt(Math.pow(x + 50 - e.getX(), 2) + Math.pow(y + 50 - e.getY(), 2)) < getRange()/2) {
+				if(hit.intersects(e)) {
+					System.out.println("hi");
 					e.setHP(e.getHP() - getDamage());
 				}
 			}
 			marker.popMatrix();
 			previousShotTime = System.currentTimeMillis(); 
 		}
+		marker.line((float)x+50, (float)y+50, (float)x+50 - (float)getRange()/2, (float)y+50 - (float)getRange()/2);
+
 	}
 
 	@Override
