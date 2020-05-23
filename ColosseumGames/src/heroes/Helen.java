@@ -70,11 +70,8 @@ public class Helen extends Hero {
 			marker.stroke(255, 255, 0);
 			marker.arc((float)x + 50, (float)y +  50, (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
 			Ellipse2D.Double hit = new Ellipse2D.Double(x + 50 - this.getRange()/2, y + 50 - this.getRange()/2, (float)getRange(), (float)getRange());
-			System.out.println(x+50);
-			System.out.println(hit.getCenterX());
 			for(Enemy e: enemies) {
 				if(hit.intersects(e)) {
-					System.out.println("hi");
 					e.setHP(e.getHP() - getDamage());
 				}
 			}
