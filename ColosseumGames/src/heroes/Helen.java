@@ -78,7 +78,6 @@ public class Helen extends Hero {
 			marker.popMatrix();
 			previousShotTime = System.currentTimeMillis(); 
 		}
-		marker.line((float)x+50, (float)y+50, (float)x+50 - (float)getRange()/2, (float)y+50 - (float)getRange()/2);
 
 	}
 
