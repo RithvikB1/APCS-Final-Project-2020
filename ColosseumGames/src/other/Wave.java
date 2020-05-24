@@ -37,7 +37,8 @@ public class Wave {
 			
 //			enemyList.add(new Harpy(s.getMultiplier()[2] * 7, 30, s.getMultiplier()[0] * 150, 75, s.getMultiplier()[1] * 50, Screen.SCREEN_WIDTH - 50, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
 //			enemyList.add(new Harpy(s.getMultiplier()[2] * 7, 30, s.getMultiplier()[0] * 150, 75, s.getMultiplier()[1] * 50, 20, Screen.SCREEN_HEIGHT/2 - 50, 50, 50));
-			enemyList.add(new Hydra(0, s.getMultiplier()[10] * 10, s.getMultiplier()[6] * 2000, 0, s.getMultiplier()[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			//enemyList.add(new Hydra(0, s.getMultiplier()[10] * 10, s.getMultiplier()[6] * 2000, 0, s.getMultiplier()[7] * 200, 50, Screen.SCREEN_HEIGHT/2 - 150, 200, 200));
+			enemyList.add(new FinalBoss(s.getMultiplier()[13] * 10, s.getMultiplier()[12] * 9, 10000, 350, s.getMultiplier()[11] * 20, 500, 300, 160, 160));
 
 			
 			setup(marker);

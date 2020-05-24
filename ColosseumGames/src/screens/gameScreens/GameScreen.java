@@ -113,7 +113,12 @@ public class GameScreen extends Screen {
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
 				if(!hero.die()) {
-					enemiesInWave.get(i).behave(hero, surface);
+					if(enemiesInWave.get(i) instanceof FinalBoss) {
+						enemiesInWave.get(i).behave(hero, surface, this);
+					}
+					else {
+						enemiesInWave.get(i).behave(hero, surface);
+					}
 					enemiesInWave.get(i).moveByVelocities();
 				}
 				enemiesInWave.get(i).spawn(surface, enemiesInWave.get(i).getImageNumber());

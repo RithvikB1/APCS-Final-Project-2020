@@ -79,15 +79,16 @@ public class FinalBoss extends Enemy {
 	public void behave(Character c, PApplet marker, Screen s) {
 		// TODO Auto-generated method stub
 		double playerAngle;
-		if(c.getX() - this.getX() > 0) {
-			playerAngle = Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
-		}
-		else {
-			playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
-		}
 		if(this.getHP() > 7500) {
+			if(c.getX() - this.getX() > 0) {
+				playerAngle = Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
+			else {
+				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
 			marker.noFill();
 			phase = 1;
+			System.out.println("no");
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()));
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()));
@@ -128,6 +129,12 @@ public class FinalBoss extends Enemy {
 			angle+= 0.05;
 		}
 		else if(this.getHP() > 5000 || (this.getHP() <= 7500 && s.getDifficulty() == 1)) {
+			if(c.getX() - this.getX() > 0) {
+				playerAngle = Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
+			else {
+				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
 			phase = 2;
 			marker.noFill();
 			marker.strokeWeight(10);
@@ -178,6 +185,12 @@ public class FinalBoss extends Enemy {
 			this.walk(getDirectionToPlayer(c));
 		}
 		else if(this.getHP() > 2500) {
+			if(c.getX() - this.getX() > 0) {
+				playerAngle = Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
+			else {
+				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
 			phase = 3;
 			this.walk(9);
 			animateAttack(getDirectionToPlayer(c));
@@ -245,6 +258,12 @@ public class FinalBoss extends Enemy {
 
 		}
 		else {
+			if(c.getX() - this.getX() > 0) {
+				playerAngle = Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
+			else {
+				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
+			}
 			phase = 0;
 			marker.pushMatrix();
 			marker.fill(255, 0, 0);
