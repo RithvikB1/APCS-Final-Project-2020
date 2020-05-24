@@ -65,7 +65,7 @@ public class Hydra extends Enemy {
 
 
 		if(nextShotTime - previousShotTime > delay) {
-			animateAttack(2);
+			animateAttack(1);
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 90, angle - 0.1));
 
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() - 50, angle));
@@ -73,11 +73,8 @@ public class Hydra extends Enemy {
 			bullets.add(new Bullet(this.getCenterX() - 10, this.getCenterY() + 10, angle + 0.1));
 
 			previousShotTime = System.currentTimeMillis();
-			animateAttack(2);
 
 		}
-		animateAttack(1);
-		
 
 	}
 	public ArrayList<Bullet> getBullets(){
@@ -102,14 +99,20 @@ public class Hydra extends Enemy {
 		
 		if (dir == 1)
 		{
-			imageNumber = 0;
-				
+			if (position == false)
+			{
+				imageNumber = 0;
+				position = true;
+			}
+			else
+			{
+				imageNumber = 1;
+				position = false;
+			}
+			
 		}
 		
-		if (dir == 2)//down
-		{
-			imageNumber =1;
-		}
+		
 	}
 
 	
