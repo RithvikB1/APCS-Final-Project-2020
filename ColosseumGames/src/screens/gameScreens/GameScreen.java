@@ -75,13 +75,8 @@ public class GameScreen extends Screen {
 		surface.pushStyle();
 		surface.noTint();
 		pickHero();
-
-//		if (wave.getWave() == 18) {
-//			surface.toggleScreen(DrawingSurface.VICTORY);
-//			return;
-//		}
 		
-		if (((wave.getWave() == 2 || wave.getWave() == 11 || wave.getWave() == 14|| wave.getWave() == 15 || wave.getWave() == 16)) && getDisplayShop()) { // merchant menu
+		if (((wave.getWave() == 6 || wave.getWave() == 11 || wave.getWave() == 14|| wave.getWave() == 15 || wave.getWave() == 16)) && getDisplayShop()) { // merchant menu
 			surface.tint(0, 255, 126);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			surface.toggleScreen(DrawingSurface.SHOP);
@@ -163,8 +158,18 @@ public class GameScreen extends Screen {
 			else {
 				if(enemiesInWave.get(i) instanceof Minotaur) {
 					hero.setHP(hero.getHP() + 500);
+					surface.pushStyle();
+					surface.fill(surface.color(0, 255, 0));
+					surface.text("+500", 900, 765);
+					surface.popStyle();
+					
 				} else if(enemiesInWave.get(i) instanceof Harpy) {
 					hero.setHP(hero.getHP() + 100);
+					surface.pushStyle();
+					surface.fill(surface.color(0, 255, 0));
+					surface.text("+100", 900, 765);
+					surface.popStyle();
+					
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
 					enemiesInWave.add(new Hydramite(getMultiplier()[10] * 20, 20, getMultiplier()[8] * 20, 20, getMultiplier()[9] * 10000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
@@ -175,6 +180,11 @@ public class GameScreen extends Screen {
 					{
 						a.setup(surface);
 					}
+					
+					surface.pushStyle();
+					surface.fill(surface.color(0, 255, 0));
+					surface.text("+1000", 900, 765);
+					surface.popStyle();
 				}
 				enemiesInWave.remove(i);
 			}

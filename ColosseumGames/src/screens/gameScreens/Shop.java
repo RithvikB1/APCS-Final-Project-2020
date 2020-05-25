@@ -141,7 +141,7 @@ public class Shop extends Screen {
 		else if (damage.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(1000, 300, 200, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[4], 1000, 380);
+			surface.text(displayUpgrades()[4], 1020, 380);
 		}
 		
 		surface.textSize(60);
