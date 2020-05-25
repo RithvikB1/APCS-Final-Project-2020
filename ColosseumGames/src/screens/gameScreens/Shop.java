@@ -13,7 +13,7 @@ import screens.other.Screen;
  * Creates a screen that allows user to upgrade their stats
  * @author Rithvik
  */
-public class MerchantMenu extends Screen {
+public class Shop extends Screen {
 
 	private DrawingSurface surface;
 	
@@ -23,7 +23,7 @@ public class MerchantMenu extends Screen {
 	
 	private int specificStat;
 	
-	public MerchantMenu(DrawingSurface surface) {
+	public Shop(DrawingSurface surface) {
 		super(surface);
 		
 		this.surface = surface;

@@ -95,12 +95,14 @@ public class GameScreen extends Screen {
 		}
 		
 		if (hero.die()) {
+			surface.pushStyle();
 			wave = new Wave();
 			enemiesInWave = wave.getEnemyList();
 			surface.tint(255, 126, 0);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-			hero = null;
 			surface.toggleScreen(DrawingSurface.DEATH_MENU); 
+			hero = null;
+			surface.popStyle();
 			
 			return;
 		}
