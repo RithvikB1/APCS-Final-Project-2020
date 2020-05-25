@@ -88,7 +88,7 @@ public class GameScreen extends Screen {
 		surface.noTint();
 		pickHero();
 		
-		if (((wave.getWave() == 2 || wave.getWave() == 3)) && getDisplayShop()) { // merchant menu
+		if (((wave.getWave() == 6 || wave.getWave() == 11 || wave.getWave() == 14|| wave.getWave() == 15 || wave.getWave() == 16)) && getDisplayShop()) { // merchant menu
 			surface.tint(0, 255, 126);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);

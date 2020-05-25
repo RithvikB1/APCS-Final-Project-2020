@@ -40,7 +40,7 @@ public abstract class Screen {
 		specificHero = HERCULES;
 		selectedStat = NONE;
 		
-		isSoundOn = true;
+		isSoundOn = false;
 		displayShop = false;
 		
 		upKey = 'W';
