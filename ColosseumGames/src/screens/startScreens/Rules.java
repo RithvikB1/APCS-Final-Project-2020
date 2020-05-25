@@ -55,6 +55,7 @@ public class Rules extends Screen {
 		
 		backButton = new Rectangle(20, 600, 200, 130);
 		slider = new Rectangle(1100, sliderY, 50, 70);
+		
 		PShape shape = surface.createShape(PConstants.RECT, 20, 600, 200, 130, 20);
 		PShape shape2 = surface.createShape(PConstants.RECT, 1100, 0, 50, SCREEN_HEIGHT);
 		PShape shape3 = surface.createShape(PConstants.RECT, 1100, sliderY, 50, 70);
