@@ -18,7 +18,7 @@ public class Rules extends Screen {
 
 	private DrawingSurface surface;
 	
-	private PImage background, rules1;
+	private PImage background, rules;
 	
 	private Rectangle backButton, slider;
 	
@@ -44,14 +44,14 @@ public class Rules extends Screen {
 	@Override
 	public void setup() {
 		background = surface.loadImage("files/images/Arena.png");
-		rules1 = surface.loadImage("files/images/Background.png");
+		rules = surface.loadImage("files/images/howtoplay.png");
 		
 	}
 
 	public void draw() {
 		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-		surface.image(rules1, rulesX, rulesY, 800, 1000);
+		surface.image(rules, rulesX, rulesY, 800, 1200);
 		
 		backButton = new Rectangle(20, 600, 200, 130);
 		slider = new Rectangle(1100, sliderY, 50, 70);

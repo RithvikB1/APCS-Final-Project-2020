@@ -118,11 +118,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 			audio.pause();
 		}
 	}
-	
-	/**
-	 * Changes screen based on how user interacts with game
-	 * @pre x must be more than or equal to 0 and less than or equal to 10
-	 */
+
 	public void toggleScreen(int x) {
 		currentScreen = screens[x];
 	}
@@ -169,7 +165,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 		
 		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
 				new Rules(this), new Settings(this), new DeathMenu(this), new Shop(this), new Pause(this), 
-				new GameScreen(this), new ConfirmQuit(this)};
+				new GameScreen(this), new ConfirmQuit(this), new VictoryScreen(this)};
 		
 		for (Screen s : screens) {
 			s.setup();

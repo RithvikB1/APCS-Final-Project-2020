@@ -17,7 +17,7 @@ public class Pause extends Screen {
 
 	private DrawingSurface surface;
 	
-	private Rectangle resumeButton, quitButton;
+	private Rectangle resumeButton, restartButton;
 	
 	public Pause(DrawingSurface surface) {
 		super(surface);
@@ -37,13 +37,13 @@ public class Pause extends Screen {
 		surface.rect(250, 100, 800, 500);
 	
 		resumeButton = new Rectangle(270, 450, 200, 100);
-		quitButton = new Rectangle(830, 450, 200, 100);
+		restartButton = new Rectangle(830, 450, 200, 100);
 		
 		PShape shape = surface.createShape(PConstants.RECT, 270, 450, 200, 100);
 		PShape shape2 = surface.createShape(PConstants.RECT, 830, 450, 200, 100);
 		
 		hover(resumeButton, shape, 255, 180);
-		hover(quitButton, shape2, 255, 180);
+		hover(restartButton, shape2, 255, 180);
 		
 		surface.shape(shape);
 		surface.shape(shape2);
@@ -57,7 +57,7 @@ public class Pause extends Screen {
 		surface.textSize(40);
 		
 		surface.text("Resume", 300, 510);
-		surface.text("Quit", 885, 510);
+		surface.text("Restart", 885, 510);
 		
 		surface.popStyle();
 		
@@ -86,7 +86,7 @@ public class Pause extends Screen {
 		if (resumeButton.contains(surface.mouseX, surface.mouseY)) {
 			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
-		else if (quitButton.contains(surface.mouseX, surface.mouseY)) {
+		else if (restartButton.contains(surface.mouseX, surface.mouseY)) {
 			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
 		}
 		
