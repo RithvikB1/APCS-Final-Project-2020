@@ -43,6 +43,9 @@ public class GameScreen extends Screen {
 	private boolean[] keys;
 	private Rectangle pause;
 	
+	long waveFirstTime;
+	public static final int DELAY_BETWEEN_WAVES = 3000;
+	
 	private ArrayList<Bullet> bullets, arrows;
 	
 	
@@ -64,6 +67,7 @@ public class GameScreen extends Screen {
 		
 		keys = new boolean[4];
 		
+		waveFirstTime = System.currentTimeMillis() + 3000;
 				
 		
 		
@@ -78,7 +82,7 @@ public class GameScreen extends Screen {
 		surface.pushStyle();
 		surface.noTint();
 		pickHero();
-		
+
 		if (((wave.getWave() == 6 || wave.getWave() == 11 || wave.getWave() == 14|| wave.getWave() == 15 || wave.getWave() == 16)) && getDisplayShop()) { // merchant menu
 			surface.tint(0, 255, 126);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -106,10 +110,25 @@ public class GameScreen extends Screen {
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
-			wave.setWave(wave.getWave() + 1);
-			setDisplayShop(true);
-			wave.startWave(surface, hero, this);
+			long waveEndTime = System.currentTimeMillis();
+			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
+			int nextWave = wave.getWave() + 1;
+			surface.pushMatrix();
+			surface.fill(138, 43, 266);
+			surface.text("Wave " + nextWave + " in " + countdown, Screen.SCREEN_WIDTH/2 - 150, 80);
+			surface.popMatrix();
+			if(waveEndTime - waveFirstTime > DELAY_BETWEEN_WAVES) {
+				wave.setWave(nextWave);
+				setDisplayShop(true);
+				wave.startWave(surface, hero, this);
+				
+			}
 		}
+		else {
+			waveFirstTime = System.currentTimeMillis();
+		}
+		
+		
 		for(int i = 0; i < enemiesInWave.size(); i++) {
 			if(!enemiesInWave.get(i).die()) {
 				if(!hero.die()) {
