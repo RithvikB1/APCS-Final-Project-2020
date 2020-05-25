@@ -50,6 +50,7 @@ public class MerchantMenu extends Screen {
 
 	@Override
 	public void draw() {
+		surface.pushStyle();
 		surface.fill(200, 150, 250);
 		surface.stroke(0);
 		
@@ -127,6 +128,8 @@ public class MerchantMenu extends Screen {
 			surface.text("Confirm", 570, 485);
 		
 		surface.update();
+		
+		surface.popStyle();
 		
 	}
 

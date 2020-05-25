@@ -31,7 +31,7 @@ public class DeathMenu extends Screen {
 	}
 
 	public void setup() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
