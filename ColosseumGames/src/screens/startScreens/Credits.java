@@ -36,6 +36,7 @@ public class Credits extends Screen {
 	}
 
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 		surface.fill(255);
@@ -65,7 +66,7 @@ public class Credits extends Screen {
 		
 		surface.textSize(60);
 		surface.text("Back", 90, 705);
-		
+		surface.popStyle();
 	}
 
 	public void mousePressed() {

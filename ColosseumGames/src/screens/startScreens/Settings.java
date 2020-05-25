@@ -40,6 +40,7 @@ public class Settings extends Screen {
 	}
 
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 		surface.fill(200, 150, 250);
@@ -192,6 +193,7 @@ public class Settings extends Screen {
 		surface.text("Settings", 530, 110);
 		
 		surface.update();
+		surface.popStyle();
 		
 	}
 

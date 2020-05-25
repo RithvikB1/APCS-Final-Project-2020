@@ -49,6 +49,7 @@ public class Rules extends Screen {
 	}
 
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		surface.image(rules1, rulesX, rulesY, 800, 1000);
 		
@@ -76,6 +77,7 @@ public class Rules extends Screen {
 		surface.shape(shape3);
 		surface.fill(0);
 		surface.text("Back", 60, 685);
+		surface.popStyle();
 		
 	}
 

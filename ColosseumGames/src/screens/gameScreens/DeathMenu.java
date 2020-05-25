@@ -36,6 +36,7 @@ public class DeathMenu extends Screen {
 	}
 
 	public void draw() {
+		surface.pushStyle();
 		surface.fill(200, 150, 250);
 		surface.stroke(0);
 		
@@ -66,6 +67,8 @@ public class DeathMenu extends Screen {
 			
 			return;
 		}
+		
+		surface.popStyle();
 		
 	}
 

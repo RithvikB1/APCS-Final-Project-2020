@@ -46,6 +46,7 @@ public class ChooseDifficulty extends Screen {
 
 	@Override
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		start = new Rectangle(300, 600, 700, 100);
@@ -72,7 +73,7 @@ public class ChooseDifficulty extends Screen {
 		
 		if (getDifficulty() == EASY) {
 			shape2.setFill(surface.color(255, 0, 0));
-			for(int i = 0; i < multiplier.length; i++) {
+			for (int i = 0; i < multiplier.length; i++) {
 				multiplier[i] = 1;
 			}
 		}
@@ -154,6 +155,7 @@ public class ChooseDifficulty extends Screen {
 		setMultiplier(multiplier);
 		
 		surface.update();
+		surface.popStyle();
 		
 	}
 

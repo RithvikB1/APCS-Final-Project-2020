@@ -28,7 +28,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	public DrawingSurface() {
 		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
 				new Rules(this), new Settings(this), new DeathMenu(this), new MerchantMenu(this), new Pause(this), 
-				new GameScreen(this), new ConfirmQuit(this)};
+				new GameScreen(this), new ConfirmQuit(this), new VictoryScreen(this)};
 		
 		currentScreen = screens[0];
 	}

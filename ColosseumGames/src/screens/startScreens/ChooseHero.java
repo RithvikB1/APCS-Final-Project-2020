@@ -58,6 +58,7 @@ public class ChooseHero extends Screen {
 	}
 
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, Screen.SCREEN_WIDTH, Screen.SCREEN_HEIGHT);
 		
 		previousArrow = new Rectangle(80, 215, 100, 200);
@@ -165,6 +166,7 @@ public class ChooseHero extends Screen {
 			surface.text("Next", 590, 700);
 		
 		surface.update();
+		surface.popStyle();
 		
 	}
 	
