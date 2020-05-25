@@ -19,8 +19,8 @@ public class Hercules extends Hero {
 	private int currentDir;
 	private long previousShotTime;
 	
-	public static final int SPEED = 20, ATK_SPEED = 10, HP = 10000, RANGE = 100, DAMAGE = 100;
-	public static final int UP_SPEED = 2, UP_ATK_SPEED = 2, UP_HP = 500, UP_RANGE = 2, UP_DAMAGE = 15;
+	public static final int SPEED = 20, ATK_SPEED = 15, HP = 250000, RANGE = 100, DAMAGE = 300;
+	public static final int UP_SPEED = 5, UP_ATK_SPEED = 5, UP_HP = 25000, UP_RANGE = 25, UP_DAMAGE = 150;
 
 	public Hercules(double speed, double atkSpeed, double HP, double range, double damage) {
 		super(speed, atkSpeed, HP, range, damage);
