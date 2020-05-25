@@ -329,7 +329,6 @@ public class Character extends Rectangle2D.Double {
 		}
 		double maxXPoint = range * Math.cos(angle) + x;
 		double maxYPoint = range * Math.sin(angle) + y;
-		marker.line((float)shotX, (float)shotY, (float)maxXPoint, (float)maxYPoint);		
 			
 	}
 	/**
