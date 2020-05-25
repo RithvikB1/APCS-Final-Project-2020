@@ -44,11 +44,7 @@ public class GameScreen extends Screen {
 	private Rectangle pause;
 	
 	private ArrayList<Bullet> bullets, arrows;
-	private Hercules herculesH;
-	private Achilles achillesH;
-	private Chiron chironH;
-	private Helen helenH;
-	private Perseus perseusH;
+	
 	
 	private boolean displayShop;
 	
@@ -68,12 +64,7 @@ public class GameScreen extends Screen {
 		
 		keys = new boolean[4];
 		
-		herculesH = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
-		achillesH = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
-		chironH = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);
-		helenH = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);
-		perseusH = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);
-		
+				
 		
 		
 	}
@@ -252,19 +243,19 @@ public class GameScreen extends Screen {
 		}
 		
 		if (getSpecificHero() == HERCULES) {
-			hero = herculesH;
+			hero = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);;
 		}
 		else if (getSpecificHero() == ACHILLES) {
-			hero = achillesH;
+			hero = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);;
 		}
 		else if (getSpecificHero() == CHIRON) {
-			hero = chironH;
+			hero = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);;
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = helenH;
+			hero = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);;
 		}
 		else if (getSpecificHero() == PERSEUS) {
-			hero = perseusH;
+			hero = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);
 		}
 		
 		System.out.println(getSpecificHero());
