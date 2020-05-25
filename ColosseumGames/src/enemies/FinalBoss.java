@@ -86,10 +86,12 @@ public class FinalBoss extends Enemy {
 			else {
 				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
 			}
+			marker.pushMatrix();
 			marker.noFill();
 			phase = 1;
-			System.out.println("no");
 			marker.strokeWeight(10);
+			marker.stroke(0);
+			
 			marker.line((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()));
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()));
 			marker.line((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI) + this.getCenterY()));
@@ -102,7 +104,7 @@ public class FinalBoss extends Enemy {
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
 			marker.line((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
 			marker.line((float)(getRange()*Math.cos(angle + 5*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
-			
+			marker.popMatrix();
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY())));
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY())));
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI) + this.getCenterY())));
@@ -136,6 +138,8 @@ public class FinalBoss extends Enemy {
 				playerAngle = Math.PI + Math.atan((c.getCenterY()-this.getCenterY())/(c.getCenterX() - this.getCenterX()));
 			}
 			phase = 2;
+			marker.pushMatrix();
+			marker.stroke(138,43,226);
 			marker.noFill();
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()));
@@ -150,7 +154,7 @@ public class FinalBoss extends Enemy {
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
 			marker.line((float)(getRange()*Math.cos(angle + 4*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 4*Math.PI/3) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
 			marker.line((float)(getRange()*Math.cos(angle + 5*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 5*Math.PI/3) + this.getCenterY()), (float)this.getCenterX(), (float)this.getCenterY());
-			
+			marker.popMatrix();
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY())));
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY())));
 			lines.add(new Line2D.Double((float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI) + this.getCenterY())));
@@ -171,6 +175,9 @@ public class FinalBoss extends Enemy {
 				lines.remove(i);
 			}
 			if(bullets.size() == 0) {
+				marker.pushMatrix();
+				marker.strokeWeight(1);
+				marker.fill(138, 43, 266);
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.4));
 				//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.2));
@@ -178,6 +185,7 @@ public class FinalBoss extends Enemy {
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.2));
 				//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.4));
+				marker.popMatrix();
 			}
 			
 			angle+= 0.05;
@@ -203,6 +211,9 @@ public class FinalBoss extends Enemy {
 			long nextShotTime = System.currentTimeMillis();
 
 			if(nextShotTime - previousShotTime > delay) {
+				marker.pushMatrix();
+				marker.strokeWeight(1);
+				marker.fill(138, 43, 266);
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.4));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.2));
@@ -212,12 +223,14 @@ public class FinalBoss extends Enemy {
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.2));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.4));
+				marker.popMatrix();
 				previousShotTime = System.currentTimeMillis();
 
 			}
 			marker.pushMatrix();
 			marker.fill(255, 0, 0);
 			marker.stroke(255, 0, 0);
+			marker.strokeWeight(1);
 			marker.rect(80, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
 			marker.rect(3*Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
 			
@@ -267,6 +280,7 @@ public class FinalBoss extends Enemy {
 			phase = 0;
 			marker.pushMatrix();
 			marker.fill(255, 0, 0);
+			marker.strokeWeight(1);
 			marker.stroke(255, 0, 0);
 			marker.rect(80, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
 			marker.rect(3*Screen.SCREEN_WIDTH/4, 60, Screen.SCREEN_WIDTH/4 - 60, Screen.SCREEN_HEIGHT-250);
@@ -288,7 +302,7 @@ public class FinalBoss extends Enemy {
 			}
 			marker.pushMatrix();
 			marker.noFill();
-			marker.stroke(0);
+			marker.stroke(0, 206, 209);
 			marker.strokeWeight(10);
 			marker.line((float)(getRange()*Math.cos(angle) + this.getCenterX()), (float)(getRange()*Math.sin(angle) + this.getCenterY()), (float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()));
 			marker.line((float)(getRange()*Math.cos(angle + Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + Math.PI/3) + this.getCenterY()), (float)(getRange()*Math.cos(angle + 2*Math.PI/3) + this.getCenterX()), (float)(getRange()*Math.sin(angle + 2*Math.PI/3) + this.getCenterY()));
@@ -334,6 +348,10 @@ public class FinalBoss extends Enemy {
 			}
 
 			if(nextShotTime - previousShotTime > delay) {
+				marker.pushMatrix();
+				marker.fill(138, 43, 266);
+				marker.stroke(0);
+				marker.strokeWeight(1);
 				if(s.getDifficulty() == 3) {
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.2));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.1));
@@ -368,7 +386,7 @@ public class FinalBoss extends Enemy {
 				}
 				previousShotTime = System.currentTimeMillis();
 			
-
+				marker.popMatrix();
 			}
 			
 		}

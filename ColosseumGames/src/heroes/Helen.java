@@ -67,6 +67,7 @@ public class Helen extends Hero {
 
 			marker.pushMatrix();
 			marker.noFill();
+			marker.strokeWeight(10);
 			marker.stroke(255, 255, 0);
 			marker.arc((float)getCenterX(), (float)getCenterY(), (float)getRange(), (float)getRange(), (float)0, 2*(float)Math.PI);
 			Ellipse2D.Double hit = new Ellipse2D.Double(x + 50 - this.getRange()/2, y + 50 - this.getRange()/2, (float)getRange(), (float)getRange());

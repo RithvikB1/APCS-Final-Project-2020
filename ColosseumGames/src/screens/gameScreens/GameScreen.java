@@ -138,7 +138,7 @@ public class GameScreen extends Screen {
 							enemiesInWave.get(i).animateAttack(1);
 							bullets.get(b).launch(50);
 							bullets.get(b).moveByVelocities();
-							bullets.get(b).draw(surface);
+							bullets.get(b).draw(surface, 138, 43, 266);
 							if(bullets.get(b).intersects(hero)) {
 								hero.setHP(hero.getHP() - enemiesInWave.get(i).getDamage());
 							}
@@ -180,7 +180,7 @@ public class GameScreen extends Screen {
 			if(!(arrows.get(a).getCollisionCounter() == 1)) {
 				arrows.get(a).launch(30);
 				arrows.get(a).moveByVelocities();
-				arrows.get(a).draw(surface);
+				arrows.get(a).draw(surface, 218,165,32);
 				for(Enemy e : enemiesInWave) {
 					if(arrows.get(a).intersects(e)) {
 						e.setHP(e.getHP() - hero.getDamage());
