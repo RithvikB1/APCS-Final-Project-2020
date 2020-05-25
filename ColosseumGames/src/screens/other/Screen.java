@@ -16,7 +16,7 @@ public abstract class Screen {
 	public static final int SCREEN_WIDTH = 1300, SCREEN_HEIGHT = 800;
 	public static final int HERCULES = 1, ACHILLES = 2, CHIRON = 3, HELEN = 4, PERSEUS = 5;
 	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
-	public static final int NONE = 0, ATK_SPEED = 1, SPEED = 2, HP = 3, RANGE = 4;
+	public static final int NONE = 0, ATK_SPEED = 1, SPEED = 2, HP = 3, RANGE = 4, DAMAGE = 5;
 	
 	private DrawingSurface surface;
 	

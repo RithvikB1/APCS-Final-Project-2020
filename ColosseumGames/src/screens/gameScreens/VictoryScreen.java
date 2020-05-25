@@ -33,6 +33,7 @@ public class VictoryScreen extends Screen {
 
 	@Override
 	public void draw() {
+		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 		PImage displayedHero;
@@ -73,6 +74,7 @@ public class VictoryScreen extends Screen {
 		
 		surface.image(displayedHero, 420, 300, 420, 420);
 		
+		surface.popStyle();
 		
 	}
 

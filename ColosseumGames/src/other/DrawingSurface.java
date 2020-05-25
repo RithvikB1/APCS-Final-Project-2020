@@ -23,13 +23,6 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	private SoundFile audio;
 	
 	/**
-	 * Creates a DrawingSurface that can have all game components
-	 */
-	public DrawingSurface() {
-		
-	}
-	
-	/**
 	 * Loads all images, sounds, and sets temporary background color
 	 */
 	public void setup() {

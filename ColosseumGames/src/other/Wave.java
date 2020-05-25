@@ -6,7 +6,6 @@ import characters.Character;
 import enemies.*;
 import processing.core.*;
 import screens.other.Screen;
-import screens.startScreens.ChooseDifficulty;
 
 /**
  * Used to show the multiple and varied waves presented in the game
@@ -154,7 +153,7 @@ public class Wave {
 
 		}
 		
-
+		
 	}
 	
 	/**
