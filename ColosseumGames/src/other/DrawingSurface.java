@@ -1,6 +1,7 @@
 package other;
 
 import processing.core.*;
+import processing.event.MouseEvent;
 import processing.sound.SoundFile;
 import screens.gameScreens.*;
 import screens.other.Screen;
@@ -50,6 +51,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 */
 	public void draw() {
 		playSound();
+		
 		currentScreen.draw();
 	}
 	
@@ -79,6 +81,13 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 */
 	public void mouseReleased() {
 		currentScreen.mousedReleased();
+	}
+	
+	/**
+	 * 
+	 */
+	public void mouseWheel(MouseEvent e) {
+		currentScreen.mouseWheel(e);
 	}
 	
 	/**
@@ -118,6 +127,9 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 		currentScreen = screens[x];
 	}
 
+	/**
+	 * Updates all screens with the settings the current one has
+	 */
 	public void update() {
 		int volume = currentScreen.getVolume();
 		int specificHero = currentScreen.getSpecificHero();
@@ -147,5 +159,24 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 			s.setRightKey(rightKey);
 			s.setMultiplier(multiplier);
 		}
+	}
+	
+	/**
+	 * Restarts the program, basically
+	 */
+	public void reset() {
+		background(255);
+		
+		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
+				new Rules(this), new Settings(this), new DeathMenu(this), new MerchantMenu(this), new Pause(this), 
+				new GameScreen(this), new ConfirmQuit(this)};
+		
+		for (Screen s : screens) {
+			s.setup();
+		}
+		
+		currentScreen = screens[0];
+		
+		audio = new SoundFile(this, "files/audio/smash.wav");
 	}
 }

@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -91,7 +92,7 @@ public class Pause extends Screen {
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

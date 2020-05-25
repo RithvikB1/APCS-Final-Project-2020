@@ -7,6 +7,7 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -229,7 +230,7 @@ public class ChooseHero extends Screen {
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

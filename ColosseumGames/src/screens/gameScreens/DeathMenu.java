@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -17,6 +18,8 @@ public class DeathMenu extends Screen {
 	private DrawingSurface surface;
 	
 	private Rectangle quit, restart;
+	
+	private boolean isReset;
 	
 	public DeathMenu(DrawingSurface surface) {
 		super(surface);
@@ -58,6 +61,12 @@ public class DeathMenu extends Screen {
 		surface.text("Quit", 410, 375);
 		surface.text("Restart", 710, 375);
 		
+		if (isReset) {
+			surface.reset();
+			
+			return;
+		}
+		
 	}
 
 	@Override
@@ -84,13 +93,12 @@ public class DeathMenu extends Screen {
 			surface.toggleScreen(DrawingSurface.CONFIRM_QUIT);
 		}
 		else if (restart.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.START_SCREEN);
-//			resetSettings();
+			isReset = true;
 		}
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

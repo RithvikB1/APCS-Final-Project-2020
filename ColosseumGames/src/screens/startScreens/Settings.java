@@ -6,6 +6,7 @@ import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -28,7 +29,7 @@ public class Settings extends Screen {
 	public Settings(DrawingSurface surface) {
 		super(surface);
 		
-		adjuster = 400;
+		adjuster = 538;
 		
 		this.surface = surface;
 	}
@@ -237,7 +238,7 @@ public class Settings extends Screen {
 	public void mouseClicked() {
 		if (soundOn.contains(surface.mouseX, surface.mouseY)) {
 			if (!getSound() && getVolume() == 0) 
-				adjuster = 450;
+				adjuster = 538;
 			
 			setSound(true);
 		}
@@ -275,7 +276,7 @@ public class Settings extends Screen {
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

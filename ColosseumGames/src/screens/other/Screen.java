@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import other.DrawingSurface;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 
 /**
  * Used to create screens that are essential to game
@@ -17,21 +18,13 @@ public abstract class Screen {
 	public static final int EASY = 1, MEDIUM = 2, HARD = 3;
 	public static final int NONE = 0, ATK_SPEED = 1, SPEED = 2, HP = 3, RANGE = 4;
 	
-	private int volume;
-	
 	private DrawingSurface surface;
 	
-	private boolean isSoundOn;
+	private int volume, difficulty, specificHero, selectedStat;
+	
+	private boolean isSoundOn, displayShop;
 	
 	private char upKey, downKey, leftKey, rightKey;
-	
-	private int specificHero;
-	
-	private int difficulty;
-	
-	private int selectedStat = NONE;
-	
-	private boolean displayShop = false;
 	
 	private double[] multiplier;
 	
@@ -42,14 +35,19 @@ public abstract class Screen {
 	public Screen(DrawingSurface surface) {
 		this.surface = surface;
 		
-		specificHero = HELEN;
+		volume = 30;
+		difficulty = MEDIUM;
+		specificHero = HERCULES;
+		selectedStat = NONE;
+		
+		isSoundOn = true;
+		displayShop = false;
 		
 		upKey = 'W';
 		downKey = 'S';
 		leftKey = 'A';
 		rightKey = 'D';
 		
-		difficulty = MEDIUM;
 		multiplier = new double[14];
 	}
 	
@@ -86,7 +84,7 @@ public abstract class Screen {
 	/**
 	 * Dictates what happens in screen when mouse is used to scroll
 	 */
-	public abstract void mouseScrolled();
+	public abstract void mouseWheel(MouseEvent e);
 	
 	/**
 	 * Dictates what happens in screen when key is pressed
@@ -112,6 +110,25 @@ public abstract class Screen {
 		else {
 			shape.setFill(color1);
 		}
+	}
+	
+	public void resetSettings() {
+		surface.noTint();
+		
+		volume = 30;
+		difficulty = MEDIUM;
+		specificHero = HERCULES;
+		selectedStat = NONE;
+		
+		isSoundOn = true;
+		displayShop = false;
+		
+		upKey = 'W';
+		downKey = 'S';
+		leftKey = 'A';
+		rightKey = 'D';
+		
+		multiplier = new double[14];
 	}
 	
 	/**

@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import other.DrawingSurface;
 import processing.core.*;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -109,9 +110,9 @@ public class StartScreen extends Screen {
 		}
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
-	}	
+	}
 
 	public void keyPressed() {
 		// TODO Auto-generated method stub

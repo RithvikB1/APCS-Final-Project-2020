@@ -17,6 +17,7 @@ import other.Wave;
 import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import processing.sound.SoundFile;
 import screens.other.Screen;
 
@@ -48,6 +49,8 @@ public class GameScreen extends Screen {
 	private Chiron chironH;
 	private Helen helenH;
 	private Perseus perseusH;
+	
+	private boolean displayShop;
 	
 	public GameScreen(DrawingSurface surface) {
 		super(surface);
@@ -84,13 +87,18 @@ public class GameScreen extends Screen {
 		surface.pushStyle();
 		surface.noTint();
 		pickHero();
-		upgradeHero();
 		
-		if ((wave.getWave() == 2 || wave.getWave() == 3) && getDisplayShop()) { // merchant menu
+		if (((wave.getWave() == 2 || wave.getWave() == 3)) && getDisplayShop()) { // merchant menu
 			surface.tint(0, 255, 126);
 			surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			surface.toggleScreen(DrawingSurface.MERCHANT_MENU);
 		}
+		
+		if (getStat() != NONE) {
+			upgradeHero();
+			setStat(NONE);
+		}
+		
 		if (hero.die()) {
 			wave = new Wave();
 			enemiesInWave = wave.getEnemyList();
@@ -108,6 +116,7 @@ public class GameScreen extends Screen {
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			wave.setWave(wave.getWave() + 1);
+			setDisplayShop(true);
 			wave.startWave(surface, hero, this);
 		}
 		for(int i = 0; i < enemiesInWave.size(); i++) {
@@ -270,7 +279,7 @@ public class GameScreen extends Screen {
 			if (getStat() == ATK_SPEED) 
 				hero.setAtkSpeed(hero.getAtkSpeed() + Hercules.UP_ATK_SPEED);
 			else if (getStat() == HP) 
-				hero.setAtkSpeed(hero.getHP() + Hercules.UP_HP);
+				hero.setHP(hero.getHP() + Hercules.UP_HP);
 			else if (getStat() == SPEED) 
 				hero.setSpeed(hero.getSpeed() + Hercules.UP_SPEED);
 			else if (getStat() == RANGE)
@@ -280,7 +289,7 @@ public class GameScreen extends Screen {
 			if (getStat() == ATK_SPEED) 
 				hero.setAtkSpeed(hero.getAtkSpeed() + Achilles.UP_ATK_SPEED);
 			else if (getStat() == HP) 
-				hero.setAtkSpeed(hero.getHP() + Achilles.UP_HP);
+				hero.setHP(hero.getHP() + Achilles.UP_HP);
 			else if (getStat() == SPEED) 
 				hero.setSpeed(hero.getSpeed() + Achilles.UP_SPEED);
 			else if (getStat() == RANGE)
@@ -290,7 +299,7 @@ public class GameScreen extends Screen {
 			if (getStat() == ATK_SPEED) 
 				hero.setAtkSpeed(hero.getAtkSpeed() + Chiron.UP_ATK_SPEED);
 			else if (getStat() == HP) 
-				hero.setAtkSpeed(hero.getHP() + Chiron.UP_HP);
+				hero.setHP(hero.getHP() + Chiron.UP_HP);
 			else if (getStat() == SPEED) 
 				hero.setSpeed(hero.getSpeed() + Chiron.UP_SPEED);
 			else if (getStat() == RANGE)
@@ -300,7 +309,7 @@ public class GameScreen extends Screen {
 			if (getStat() == ATK_SPEED) 
 				hero.setAtkSpeed(hero.getAtkSpeed() + Helen.UP_ATK_SPEED);
 			else if (getStat() == HP) 
-				hero.setAtkSpeed(hero.getHP() + Helen.UP_HP);
+				hero.setHP(hero.getHP() + Helen.UP_HP);
 			else if (getStat() == SPEED) 
 				hero.setSpeed(hero.getSpeed() + Helen.UP_SPEED);
 			else if (getStat() == RANGE)
@@ -310,14 +319,12 @@ public class GameScreen extends Screen {
 			if (getStat() == ATK_SPEED) 
 				hero.setAtkSpeed(hero.getAtkSpeed() + Perseus.UP_ATK_SPEED);
 			else if (getStat() == HP) 
-				hero.setAtkSpeed(hero.getHP() + Perseus.UP_HP);
+				hero.setHP(hero.getHP() + Perseus.UP_HP);
 			else if (getStat() == SPEED) 
 				hero.setSpeed(hero.getSpeed() + Perseus.UP_SPEED);
 			else if (getStat() == RANGE)
 				hero.setRange(hero.getRange() + Perseus.UP_RANGE);
 		}
-		
-		setStat(NONE);
 	
 	}
 
@@ -340,10 +347,10 @@ public class GameScreen extends Screen {
 			surface.toggleScreen(DrawingSurface.PAUSE_MENU);	
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
-
+	
 	public void keyPressed() {
 		if (hero == null || hero.die()) {
 			return;

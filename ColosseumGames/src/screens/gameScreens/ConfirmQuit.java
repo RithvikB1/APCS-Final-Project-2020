@@ -2,6 +2,7 @@ package screens.gameScreens;
 
 import other.DrawingSurface;
 import processing.core.PImage;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -29,6 +30,8 @@ public class ConfirmQuit extends Screen {
 	public void draw() {
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
+		surface.fill(255);
+		//surface.rect(200, 200, c, d);
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class ConfirmQuit extends Screen {
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

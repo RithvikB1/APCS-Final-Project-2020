@@ -6,6 +6,7 @@ import heroes.*;
 import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -19,6 +20,8 @@ public class MerchantMenu extends Screen {
 	private Rectangle atkSpeed, health, speed, range, confirm;
 	
 	private boolean isClicked1, isClicked2, isClicked3, isClicked4;
+	
+	private int specificStat;
 	
 	public MerchantMenu(DrawingSurface surface) {
 		super(surface);
@@ -35,6 +38,8 @@ public class MerchantMenu extends Screen {
 		speed = new Rectangle();
 		range = new Rectangle();
 		confirm = new Rectangle();
+		
+		specificStat = NONE;
 	}
 
 	@Override
@@ -45,7 +50,6 @@ public class MerchantMenu extends Screen {
 
 	@Override
 	public void draw() {
-		setDisplayShop(true);
 		surface.fill(200, 150, 250);
 		surface.stroke(0);
 		
@@ -102,7 +106,7 @@ public class MerchantMenu extends Screen {
 		else if (health.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(540, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[2], 615, 380);
+			surface.text(displayUpgrades()[3], 615, 380);
 		}
 		else if (speed.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(870, 300, 220, 100, 0, PConstants.PI, PConstants.OPEN);
@@ -146,7 +150,6 @@ public class MerchantMenu extends Screen {
 
 	@Override
 	public void mouseClicked() {
-		int specificStat = NONE;
 		
 		if (atkSpeed.contains(surface.mouseX, surface.mouseY)) {
 			specificStat = ATK_SPEED;
@@ -169,16 +172,11 @@ public class MerchantMenu extends Screen {
 			isClicked3 = true;
 			isClicked4 = false;
 		}
-		else {
-			isClicked1 = false;
-			isClicked2 = false;
-			isClicked3 = false;
-			isClicked4 = false;
-		}
 		
-		if (confirm.contains(surface.mouseX, surface.mouseY)) {
+		if ((isClicked1 || isClicked2 || isClicked3 || isClicked4) && confirm.contains(surface.mouseX, surface.mouseY)) {
 			setStat(specificStat);
 			setDisplayShop(false);
+			surface.update();
 			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		
@@ -191,37 +189,37 @@ public class MerchantMenu extends Screen {
 			upgrades[0] = Hercules.UP_SPEED;
 			upgrades[1] = Hercules.UP_ATK_SPEED;
 			upgrades[2] = Hercules.UP_RANGE;
-			upgrades[3] = Hercules.UP_DAMAGE;
+			upgrades[3] = Hercules.UP_HP;
 		}
 		else if (getSpecificHero() == ACHILLES) {
 			upgrades[0] = Achilles.UP_SPEED;
 			upgrades[1] = Achilles.UP_ATK_SPEED;
 			upgrades[2] = Achilles.UP_RANGE;
-			upgrades[3] = Achilles.UP_DAMAGE;
+			upgrades[3] = Achilles.UP_HP;
 		}
 		else if (getSpecificHero() == CHIRON) {
 			upgrades[0] = Chiron.UP_SPEED;
 			upgrades[1] = Chiron.UP_ATK_SPEED;
 			upgrades[2] = Chiron.UP_RANGE;
-			upgrades[3] = Chiron.UP_DAMAGE;
+			upgrades[3] = Chiron.UP_HP;
 		}
 		else if (getSpecificHero() == HELEN) {
 			upgrades[0] = Helen.UP_SPEED;
 			upgrades[1] = Helen.UP_ATK_SPEED;
 			upgrades[2] = Helen.UP_RANGE;
-			upgrades[3] = Helen.UP_DAMAGE;
+			upgrades[3] = Helen.UP_HP;
 		}
 		else if (getSpecificHero() == PERSEUS) {
 			upgrades[0] = Perseus.UP_SPEED;
 			upgrades[1] = Perseus.UP_ATK_SPEED;
 			upgrades[2] = Perseus.UP_RANGE;
-			upgrades[3] = Perseus.UP_DAMAGE;
+			upgrades[3] = Perseus.UP_HP;
 		}
 		
 		return upgrades;
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 

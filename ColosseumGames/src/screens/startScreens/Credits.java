@@ -6,6 +6,7 @@ import other.DrawingSurface;
 import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PShape;
+import processing.event.MouseEvent;
 import screens.other.Screen;
 
 /**
@@ -89,7 +90,7 @@ public class Credits extends Screen {
 		
 	}
 	
-	public void mouseScrolled() {
+	public void mouseWheel(MouseEvent e) {
 		
 	}
 
