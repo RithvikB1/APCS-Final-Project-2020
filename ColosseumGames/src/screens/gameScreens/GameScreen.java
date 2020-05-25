@@ -167,9 +167,9 @@ public class GameScreen extends Screen {
 					hero.setHP(hero.getHP() + 100);
 				}
 				else if(enemiesInWave.get(i) instanceof Hydra) {
-					enemiesInWave.add(new Hydramite(getMultiplier()[10] * 20, 20, getMultiplier()[8] * 20, 20, getMultiplier()[9] * 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX(),  (int)enemiesInWave.get(i).getY(), 50, 50));
-					enemiesInWave.add(new Hydramite(20, 20, 20, 20, 2000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
+					enemiesInWave.add(new Hydramite(getMultiplier()[10] * 20, 20, getMultiplier()[8] * 20, 20, getMultiplier()[9] * 10000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
+					enemiesInWave.add(new Hydramite(getMultiplier()[10] * 20, 20, getMultiplier()[8] * 20, 20, getMultiplier()[9] * 10000, (int)enemiesInWave.get(i).getX(),  (int)enemiesInWave.get(i).getY(), 50, 50));
+					enemiesInWave.add(new Hydramite(getMultiplier()[10] * 20, 20, getMultiplier()[8] * 20, 20, getMultiplier()[9] * 10000, (int)enemiesInWave.get(i).getX() + 10,  (int)enemiesInWave.get(i).getY() + 50, 50, 50));
 					hero.setHP(hero.getHP() + 1000);
 					for (Enemy a : enemiesInWave)
 					{
