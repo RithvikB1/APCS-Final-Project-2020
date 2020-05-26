@@ -47,13 +47,10 @@ public class GameScreen extends Screen {
 	public GameScreen(DrawingSurface surface) {
 		super(surface);
 		
-		this.surface = surface;
-		
-//		
+		this.surface = surface;	
 		
 		wave = new Wave();
-		enemiesInWave = wave.getEnemyList();
-//		
+		enemiesInWave = wave.getEnemyList();	
 		
 		bullets = new ArrayList<Bullet>();
 		arrows = new ArrayList<Bullet>();
@@ -104,16 +101,17 @@ public class GameScreen extends Screen {
 		if(enemiesInWave.size() == 0) {
 			if(wave.getWave() == 16) {
 				surface.toggleScreen(DrawingSurface.VICTORY);
+				
 				return;
 			}
 			
 			long waveEndTime = System.currentTimeMillis();
 			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
 			int nextWave = wave.getWave() + 1;
-			surface.pushMatrix();
+			surface.pushStyle();
 			surface.fill(138, 43, 266);
 			surface.text("Wave " + nextWave + " in " + countdown, Screen.SCREEN_WIDTH/2 - 150, 80);
-			surface.popMatrix();
+			surface.popStyle();
 			if(waveEndTime - waveFirstTime > DELAY_BETWEEN_WAVES) {
 				wave.setWave(nextWave);
 				setDisplayShop(true);
@@ -221,18 +219,15 @@ public class GameScreen extends Screen {
 			hero.moveByVelocities();
 			hero.spawn(surface, hero.getImageNumber());
 			
-			surface.textSize(60);
-//			
+			surface.textSize(60);			
 			surface.fill(255);
 			surface.stroke(255);
 			
 			surface.line(0, 700, 1300, 700);
 			
-			surface.text("HP: " + (int)hero.getHP() + "/"+ hero.getMaxHP(), 370, 770);
-//			
+			surface.text("HP: " + (int)hero.getHP() + "/"+ hero.getMaxHP(), 370, 770);			
 			surface.textSize(30);
-//			surface.fill(255);
-//			
+			
 			surface.text("Speed: " + (int)hero.getSpeed(), 150, 680);
 			
 			surface.text("AttackSpeed: " + (int)hero.getAtkSpeed(), 544, 680);
@@ -387,13 +382,13 @@ public class GameScreen extends Screen {
 			return;
 		}
 		
-		if (surface.keyCode == getUpKey()) // up
+		if (surface.keyCode == getUpKey()) 
 			keys[0] = true;
-		if (surface.keyCode == getLeftKey()) // left
+		if (surface.keyCode == getLeftKey()) 
 			keys[2] = true;
-		if (surface.keyCode == getDownKey()) // down
+		if (surface.keyCode == getDownKey()) 
 			keys[1] = true;
-		if (surface.keyCode == getRightKey()) // right
+		if (surface.keyCode == getRightKey()) 
 			keys[3] = true;
 		
 		if (keys[0]) {
@@ -426,16 +421,16 @@ public class GameScreen extends Screen {
 	}
 
 	public void keyReleased() {
-		if (surface.keyCode == getUpKey()) // up
+		if (surface.keyCode == getUpKey())
 			keys[0] = false;
 			hero.setImageNumber(4);
-		if (surface.keyCode == getLeftKey()) // left
+		if (surface.keyCode == getLeftKey())
 			keys[2] = false;
 			hero.setImageNumber(3);
-		if (surface.keyCode == getDownKey()) // down
+		if (surface.keyCode == getDownKey())
 			keys[1] = false;
 			hero.setImageNumber(2);
-		if (surface.keyCode == getRightKey()) // right
+		if (surface.keyCode == getRightKey())
 			keys[3] = false;
 			hero.setImageNumber(1);
 		

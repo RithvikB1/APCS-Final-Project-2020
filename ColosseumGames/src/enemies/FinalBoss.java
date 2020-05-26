@@ -20,14 +20,15 @@ import screens.other.Screen;
  *
  */
 public class FinalBoss extends Enemy {
-	double angle, delay;
+	
+	private double angle, delay;
 	private ArrayList<Bullet> bullets; 
 	private ArrayList<PImage> images;
 	private ArrayList<Line2D.Double> lines;
 	private ArrayList<Rectangle2D.Double> lava;
-	int firstTP = 0;
-	double previousHP;
-	long previousShotTime = System.currentTimeMillis();
+	private int firstTP = 0;
+	private double previousHP;
+	private long previousShotTime = System.currentTimeMillis();
 	private int imageNumber;
 	private boolean position;
 	private int phase;
@@ -47,7 +48,6 @@ public class FinalBoss extends Enemy {
 	public FinalBoss(double speed, double atkSpeed, double HP, double range, double damage, int x,
 			int y, int w, int h) {
 		super(speed, atkSpeed, HP, range, damage, x, y, w, h);
-		// TODO Auto-generated constructor stub
 		angle = 0;
 		lines = new ArrayList<Line2D.Double>();
 		lava = new ArrayList<Rectangle2D.Double>();
@@ -57,7 +57,6 @@ public class FinalBoss extends Enemy {
 
 	@Override
 	public void setup(PApplet marker) {
-		// TODO Auto-generated method stub
 		images = new ArrayList<>();
 		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase1.png"));
 		images.add(marker.loadImage("sprites/Enemies/FinalBoss/Phase2AttackLeft1.png"));
@@ -77,7 +76,8 @@ public class FinalBoss extends Enemy {
 	}
 
 	public void behave(Character c, PApplet marker, Screen s) {
-		// TODO Auto-generated method stub
+		marker.pushStyle();
+		
 		double playerAngle;
 		if(this.getHP() > 7500) {
 			if(c.getX() - this.getX() > 0) {
@@ -179,11 +179,9 @@ public class FinalBoss extends Enemy {
 				marker.strokeWeight(1);
 				marker.fill(138, 43, 266);
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.4));
-				//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.2));
 				
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.2));
-				//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.3));
 				bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.4));
 				marker.popMatrix();
 			}
@@ -355,27 +353,15 @@ public class FinalBoss extends Enemy {
 				if(s.getDifficulty() == 3) {
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.2));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1.1));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 1));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.9));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.8));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.7));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.6));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.5));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.4));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.3));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.2));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle + 0.1));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.1));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.2));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.3));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.4));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.5));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.6));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.7));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.8));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 0.9));
-					//bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 1));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 1.1));
 					bullets.add(new Bullet(this.getCenterX(), this.getCenterY(), playerAngle - 1.2));
 				}
@@ -390,6 +376,8 @@ public class FinalBoss extends Enemy {
 			}
 			
 		}
+		
+		marker.popStyle();
 	}
 	public int getDirectionToPlayer(Character c) {
 		int direction = super.getDirectionToPlayer(c);
@@ -413,6 +401,7 @@ public class FinalBoss extends Enemy {
 		}
 		return direction;
 	}
+	
 	public ArrayList<Bullet> getBullets(){
 		return bullets;
 	}
@@ -420,7 +409,6 @@ public class FinalBoss extends Enemy {
 	
 	@Override
 	public int getImageNumber() {
-		// TODO Auto-generated method stub
 		return imageNumber;
 	}
 
@@ -432,7 +420,6 @@ public class FinalBoss extends Enemy {
 
 	@Override
 	public void animateAttack(int dir) {
-		// TODO Auto-generated method stub
 		if (phase == 1)
 		{
 			if (dir == 1)
