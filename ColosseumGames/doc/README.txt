@@ -5,16 +5,13 @@ Authors: Aditya Senthilvel, Rithvik Bhakhri, Richard Huang
 Revision: 5/10/20
 
 Introduction: 
-Our program is a game that revolves around waves of enemies spawning for each wave and the player needs to kill all the enemies before moving onto the next wave. The purpose of our program is for people who are feeling bored. If they are feeling bored and have nothing else to do, they should come play our game! The story of the game is as follows: 5 demigods have been chosen by the Three Fates to vanquish the enemies that plague Greece. However, due to mysterious circumstances, this time the gods are not on your side! You have to vanquish them to relinquish the curse that is upon them. But as you slay enemies one by one, you approach the real mastermind behind it all.
-The goal of this game is to beat the incoming enemies wave by wave. There are 20 waves that you have to defeat including a final boss wave. The rules of this game are that you have to select one avatar from a list of avatars that is provided to you. The avatar you select will be the avatar you play with for all 20 rounds. Each avatar has different skills that give them an advantage in the game. This is a game where you are in an arena(square) where enemies are coming from all sides. There are three statistics that every avatar has: Attack Speed, Health, and Speed. After three rounds a merchant will come and offer you to upgrade one of your statistics. When you upgrade your stats, they are there only for 20 seconds, except for Health as that is a permanent upgrade. You can only upgrade one statistic per merchant visit.
-People who would want to use our program are anyone who has even a slight passion in gaming! It is meant for all types of gamers! The main features of our program are as follows: the user can pick 1 of 5 heroes to progress through the game, and the user can also choose their desired difficulty level. In terms of the gameplay, there will be: characters, an arena in which the player moves, and where the hero (the player) is tasked to kill enemies as the levels progress through the game. Every few waves, there will be options to upgrade weapons and additionally, there will also be mini bosses every few waves, which the player has to work through until the final boss, who after defeating allows the player to finish the game. 
+Our program is a game that revolves around waves of enemies spawning for each wave and the player needs to kill all the enemies before moving onto the next wave. The purpose of our program is for people who are feeling bored. If they are feeling bored and have nothing else to do, they should come play our game! 
+The goal of this game is to beat the incoming enemies wave by wave. There are 16 waves that you have to defeat including a final boss wave. The rules of this game are that you have to select one hero from a list of heroes that is provided to you. The hero you select will be the hero you play with for all 16 rounds. Each hero has different skills that give them an advantage in the game. This is a game where you are in an arena(square) where enemies are coming from all sides. There are five statistics that every hero has: Damage, Range, Attack Speed, Health, and Speed. Every so often an upgrade menu will come and allow you to upgrade one of your statistics. You can only upgrade one statistic per merchant visit.
+/*****People who would want to use our program are anyone who has even a slight passion in gaming! It is meant for all types of gamers! The main features of our program are as follows: the user can pick 1 of 5 heroes to progress through the game, and the user can also choose their desired difficulty level. In terms of the gameplay, there will be: characters, an arena in which the player moves, and where the hero (the player) is tasked to kill enemies as the levels progress through the game. Every few waves, there will be options to upgrade weapons and additionally, there will also be mini bosses every few waves, which the player has to work through until the final boss, who after defeating allows the player to finish the game. *******/
 
 Instructions:
-Explain how to use the program. This needs to be specific: 
-Which keyboard keys will do what? 
-WASD to move the character around. Alternatively, the keys can be changed per the user’s desire in Settings
-Where will you need to click? 
-You will click to fire and aim, you will need to click through the start menus and screens and if you choose to go to the upgrade menu, you will have to click around in order to upgrade your stats. 
+Use WASD to move the character around. Alternatively, the keys can be changed per the user’s desire in Settings. You can aim where the three melee heroes, Perseus, Hercules, and Achilles, attack by maneuvering them into the direction you attack. Chiron's, the bow-wielding hero's, shots can be aimed by pointing the mouse and clicking. For Helen, the AOE mistress, you don't even need to aim at all! Just hold down the Left Mouse Button! 
+You will click to fire, and aim in Chiron's case, you will need to click through the start menus and screens and the upgrade menu to choose which stat you want to upgrade. 
 Will you have menus that need to be navigated? What will they look like? 
 Start menu, choosing a hero, and choosing difficulty before finally coming to the game screen. Additionally, other optional menus and screens are accessible such as credits and settings, as well as pause mid-game. Death menu and merchant menus’ appearances depend on how user progresses through the game.
 Do actions need to be taken in a certain order?
@@ -51,31 +48,59 @@ Have an OST with different music per 5 waves and different music for the merchan
 
 
 Class List:
-[This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
-*Character Class - super class of hero class and enemy class, will contain similar features of heroes and enemies
 
-**Enemy Class extends Character - represents an enemy in the game, will be abstract
+*Character Class extends Rectangle2D.Double - super class of hero class and enemy class, will contain similar features of heroes and enemies
 
-***Harpy Class extends Enemy - will be a low-level enemy
-***Minotaur Class extends Enemy - will be a medium-level enemy
-***BigBoi Class extends Enemy - will be a high-level enemy
-***MiniBoss Class extends Enemy - will be a boss like enemy every few waves
-***FinalBoss Class extends Enemy - will be the strongest enemy the player has to face
+**Enemy Class extends Character - represents an enemy in the game
+
+***Harpy Class extends Enemy - will be a low-level enemy that follows the player around
+***Minotaur Class extends Enemy - will be a medium-level enemy that charges the player
+***Hydra Class extends Enemy - will be a high-level enemy that shoots projectiles
+***Hydramite Class extends Enemy - will be an enemy that spawns from a dead Hydra
+***FinalBoss Class extends Enemy - will be the strongest enemy the player has to face with 4 unique phases
 
 **Hero Class extends Character  - represents the heroes available in the game
+**Achilles extends Hero - represents Achilles
+**Chiron extends Hero - represents Chiron
+**Helen extends Hero - represents Helen
+**Hercules extends Hero - represents Hercules
+**Perseus extends Hero - represents Perseus
 
-*Screen Class: class to store all the menus and screens in the game such as the menu when you open the game, when you die, or if you pause the game. (will store difficulty level-player chosen)
-*DrawingSurface: will decide when waves are implemented and will incorporate when the different menus will be implemented
-*Wave Class: decides what Enemy objects go into the wave and how they behave, and enemy level/behavior will increase as waves increase
+*Bullet Class extends Rectangle2D.Double - represents every projectile in the game
+*DrawingSurface extends PApplet - the PApplet used to draw the game
+*Main - where the main method is
+*Wave - Represents each wave of enemies
+
+Screen - the framework for all screens
+ScreenToggler - An interface used to toggle between screens
+
+*ConfirmQuit extends Screen - Creates a screen that confirms if user wants to quit or not, and if so, allows user to terminate program
+*DeathMenu extends Screen - Draws the death menu
+*GameScreen extends Screen - Draws the actual game
+*Pause extends Screen - Draws the pause screen
+*Shop extends Screen - Draws the upgrade menu
+*VictoryScreen extends Screen - Draws the victory menu
+
+**ChooseDifficulty - Draws the choose difficulty screen
+**ChooseHero - Draws the choose hero screen
+**Credits - Draws the credits screen
+**Rules - Draws the rules screen
+**Settings - Draws the setting screen
+**StartScreen - Draws the start screen
+
 
 Credits:
 
-Aditya - DrawingSurface, ½ Wave, ½ Hero
-Richard - Character, ½ Wave, ½ Enemy
-Rithvik - Screen, ½ Enemy, ½ Hero
-All enemy classes will be subject to edits by everyone
+Aditya -  Animations for all Characters
+Richard - All Enemies (other than animations), Chiron and Helen (other than animations), Bullet, Designed all sprites
+Rithvik - All Screens, Melees (other than animations)
+
+All together - DrawingSurface, GameScreen, Character, Enemy, Hero, Wave
 
 Outside libraries:
+Realm of the Mad God Current Sprite Sheets XML (only used as reference not actually implemented in the game)
+https://static.drips.pw/rotmg/production/current/sheets/
+
 Processing core and sound
 Smash 4 theme music
 
