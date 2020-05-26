@@ -19,6 +19,7 @@ public class VictoryScreen extends Screen {
 		super(surface);
 		
 		this.surface = surface;
+		restart = new Rectangle();
 	}
 
 	public void setup() {
