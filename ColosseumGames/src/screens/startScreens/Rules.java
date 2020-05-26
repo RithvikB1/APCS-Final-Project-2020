@@ -1,6 +1,7 @@
 package screens.startScreens;
 
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 
 import other.DrawingSurface;
 import processing.core.PConstants;
@@ -20,9 +21,10 @@ public class Rules extends Screen {
 	
 	private PImage background, rules;
 	
-	private Rectangle backButton, slider;
+	private Rectangle backButton;
+	private Rectangle2D.Double slider;
 	
-	private int rulesX, rulesY, sliderY;
+	private float rulesX, rulesY, sliderY;
 	
 	private boolean isLocked;
 	
@@ -32,7 +34,7 @@ public class Rules extends Screen {
 		
 		this.surface = surface;
 		backButton = new Rectangle();
-		slider = new Rectangle();
+		slider = new Rectangle2D.Double();
 		
 		rulesX = 250;
 		rulesY = 0;
@@ -51,14 +53,14 @@ public class Rules extends Screen {
 	public void draw() {
 		surface.pushStyle();
 		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-		surface.image(rules, rulesX, rulesY, 800, 1200);
+		surface.image(rules, rulesX, rulesY, 950, 1200);
 		
 		backButton = new Rectangle(20, 600, 200, 130);
-		slider = new Rectangle(1100, sliderY, 50, 70);
+		slider = new Rectangle2D.Double(1200, sliderY, 50, 70);
 		
 		PShape shape = surface.createShape(PConstants.RECT, 20, 600, 200, 130, 20);
-		PShape shape2 = surface.createShape(PConstants.RECT, 1100, 0, 50, SCREEN_HEIGHT);
-		PShape shape3 = surface.createShape(PConstants.RECT, 1100, sliderY, 50, 70);
+		PShape shape2 = surface.createShape(PConstants.RECT, 1200, 0, 50, SCREEN_HEIGHT);
+		PShape shape3 = surface.createShape(PConstants.RECT, 1200, sliderY, 50, 70);
 		
 		int c1 = surface.color(204, 153, 0);
 		int c2 = surface.color(140, 153, 0);
@@ -66,10 +68,12 @@ public class Rules extends Screen {
 		shape2.setFill(surface.color(100));
 		
 		hover(backButton, shape, c1, c2);
-		hover(slider, shape3, c1, c2);
 		
-		if (isLocked)
+		shape3.setFill(c1);
+		
+		if (slider.contains(surface.mouseX, surface.mouseY) || isLocked) {
 			shape3.setFill(c2);
+		}
 		
 		surface.textSize(60);
 		
@@ -98,13 +102,13 @@ public class Rules extends Screen {
 	@Override
 	public void mouseDragged() {
 		if (isLocked) {
-			if (surface.mouseY > surface.pmouseY) {
-				sliderY += 3;
-				rulesY += 1;
-			}
-			else if (surface.mouseY < surface.pmouseY) {
-				sliderY -= 3;
+			if (surface.mouseY > surface.pmouseY && !(sliderY + 95 > SCREEN_HEIGHT)) {
+				sliderY += 1.5;
 				rulesY -= 1;
+			}
+			else if (surface.mouseY < surface.pmouseY && !(sliderY < 0)) {
+				sliderY -= 1.5;
+				rulesY += 1;
 			}
 		}
 	}
@@ -117,13 +121,13 @@ public class Rules extends Screen {
 	}
 	
 	public void mouseWheel(MouseEvent e) {
-		if (e.getCount() > 0) {
-			rulesY += 1;
-			sliderY += 3;
-		}
-		else if (e.getCount() < 0) {
+		if (e.getCount() > 0 && !(sliderY + 95 > SCREEN_HEIGHT)) {
 			rulesY -= 1;
-			sliderY -= 3;
+			sliderY += 1.5;
+		}
+		else if (e.getCount() < 0 && !(sliderY < 0)) {
+			rulesY += 1;
+			sliderY -= 1.5;
 		}
 	}
 
