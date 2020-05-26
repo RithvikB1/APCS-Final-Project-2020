@@ -41,8 +41,7 @@ public class GameScreen extends Screen {
 	
 	private long waveFirstTime;
 	public static final int DELAY_BETWEEN_WAVES = 3000;
-	
-	private VictoryScreen victory;
+
 	private ArrayList<Bullet> bullets, arrows;
 	
 	public GameScreen(DrawingSurface surface) {
@@ -62,9 +61,6 @@ public class GameScreen extends Screen {
 		keys = new boolean[4];
 		
 		waveFirstTime = System.currentTimeMillis() + 3000;
-				
-		victory = new VictoryScreen(surface);
-		
 	}
 
 	public void setup() {
@@ -106,10 +102,11 @@ public class GameScreen extends Screen {
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
-			if(wave.getWave() == 1) {
-				victory.draw();
+			if(wave.getWave() == 16) {
+				surface.toggleScreen(DrawingSurface.VICTORY);
 				return;
 			}
+			
 			long waveEndTime = System.currentTimeMillis();
 			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
 			int nextWave = wave.getWave() + 1;
@@ -292,7 +289,6 @@ public class GameScreen extends Screen {
 			hero = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);
 		}
 		
-		System.out.println(getSpecificHero());
 		hero.setup(surface);
 	}
 	
