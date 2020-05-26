@@ -42,6 +42,7 @@ public class GameScreen extends Screen {
 	private long waveFirstTime;
 	public static final int DELAY_BETWEEN_WAVES = 3000;
 	
+	private VictoryScreen victory;
 	private ArrayList<Bullet> bullets, arrows;
 	
 	public GameScreen(DrawingSurface surface) {
@@ -62,7 +63,7 @@ public class GameScreen extends Screen {
 		
 		waveFirstTime = System.currentTimeMillis() + 3000;
 				
-		
+		victory = new VictoryScreen(surface);
 		
 	}
 
@@ -105,6 +106,10 @@ public class GameScreen extends Screen {
 		
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
+			if(wave.getWave() == 1) {
+				victory.draw();
+				return;
+			}
 			long waveEndTime = System.currentTimeMillis();
 			int countdown = 3 - (int)(waveEndTime - waveFirstTime)/1000;
 			int nextWave = wave.getWave() + 1;

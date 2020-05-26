@@ -34,7 +34,7 @@ public class VictoryScreen extends Screen {
 	@Override
 	public void draw() {
 		surface.pushStyle();
-		surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//	surface.image(background, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 		PImage displayedHero;
 		
@@ -72,7 +72,7 @@ public class VictoryScreen extends Screen {
 		surface.textSize(60);
 		surface.text("Restart", 1000, 680);
 		
-		surface.image(displayedHero, 420, 300, 420, 420);
+		//surface.image(displayedHero, 420, 300, 420, 420);
 		
 		surface.popStyle();
 		
