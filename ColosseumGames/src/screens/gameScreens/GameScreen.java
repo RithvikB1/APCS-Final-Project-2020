@@ -100,6 +100,7 @@ public class GameScreen extends Screen {
 		//when enemies HP = 0 remove from arraylist and arraylist => 0 start nextwave
 		if(enemiesInWave.size() == 0) {
 			if(wave.getWave() == 16) {
+				hero = null;
 				surface.toggleScreen(DrawingSurface.VICTORY);
 				
 				return;
@@ -238,27 +239,19 @@ public class GameScreen extends Screen {
 		pause = new Rectangle(1150, 10, 50, 50);
 		PShape pause = surface.createShape(PConstants.RECT, 1150, 10, 50, 50);
 		hover(this.pause, pause, 255, 150);
+		
 		surface.shape(pause);
 		
-		surface.stroke(0);
-		
 		surface.pushStyle();
-		surface.strokeWeight(0);
 		
-		surface.line(40, 40, 1260, 40);
-		
-		surface.line(40, 40, 40, 600);
-		
-		surface.line(40, 600, 1260, 600);
-		
-		surface.line(1260, 40, 1260, 600);
-		
+		surface.stroke(0);
 		surface.strokeWeight(10);
 		
 		surface.line(1165, 20, 1165, 50);
 		surface.line(1185, 20, 1185, 50);
 		
 		surface.popStyle();
+		
 		surface.popStyle();
 		
 	}
@@ -269,16 +262,16 @@ public class GameScreen extends Screen {
 		}
 		
 		if (getSpecificHero() == HERCULES) {
-			hero = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);;
+			hero = new Hercules(Hercules.SPEED, Hercules.ATK_SPEED, Hercules.HP, Hercules.RANGE, Hercules.DAMAGE);
 		}
 		else if (getSpecificHero() == ACHILLES) {
-			hero = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);;
+			hero = new Achilles(Achilles.SPEED, Achilles.ATK_SPEED, Achilles.HP, Achilles.RANGE, Achilles.DAMAGE);
 		}
 		else if (getSpecificHero() == CHIRON) {
-			hero = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);;
+			hero = new Chiron(Chiron.SPEED, Chiron.ATK_SPEED, Chiron.HP, Chiron.RANGE, Chiron.DAMAGE);
 		}
 		else if (getSpecificHero() == HELEN) {
-			hero = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);;
+			hero = new Helen(Helen.SPEED, Helen.ATK_SPEED, Helen.HP, Helen.RANGE, Helen.DAMAGE);
 		}
 		else if (getSpecificHero() == PERSEUS) {
 			hero = new Perseus(Perseus.SPEED, Perseus.ATK_SPEED, Perseus.HP, Perseus.RANGE, Perseus.DAMAGE);

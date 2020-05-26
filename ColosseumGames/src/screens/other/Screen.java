@@ -40,7 +40,7 @@ public abstract class Screen {
 		specificHero = HERCULES;
 		selectedStat = NONE;
 		
-		isSoundOn = false;
+		isSoundOn = true;
 		displayShop = false;
 		
 		upKey = 'W';
@@ -83,6 +83,7 @@ public abstract class Screen {
 	
 	/**
 	 * Dictates what happens in screen when mouse is used to scroll
+	 * @param e the mouse event used to capture mouse movement
 	 */
 	public abstract void mouseWheel(MouseEvent e);
 	
@@ -260,48 +261,48 @@ public abstract class Screen {
 	}
 	
 	/**
-	 * 
-	 * @param stat
+	 * Sets the stat to current selected
+	 * @param stat the selected stat
 	 */
 	public void setStat(int stat) {
 		selectedStat = stat;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the stat
+	 * @return the stat as an int
 	 */
 	public int getStat() {
 		return selectedStat;
 	}
 	
 	/**
-	 * 
-	 * @param isShop
+	 * Decides if shop should be displayed or not
+	 * @param isShop the visibility of the shop
 	 */
 	public void setDisplayShop(boolean isShop) {
 		displayShop = isShop;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the visibility of the shop
+	 * @return the shop visibility, as a boolean
 	 */
 	public boolean getDisplayShop() {
 		return displayShop;
 	}
 	
 	/**
-	 * 
-	 * @param m
+	 * Sets the difficulty multiplier
+	 * @param m the multiplier, as a double array
 	 */
 	public void setMultiplier(double[] m) {
 		multiplier = m;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the multiplier
+	 * @return the multiplier, as a double array
 	 */
 	public double[] getMultiplier() {
 		return multiplier;

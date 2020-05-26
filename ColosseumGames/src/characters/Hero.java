@@ -23,10 +23,6 @@ public abstract class Hero extends Character {
 	 * @param HP how much damage a hero can take before dying
 	 * @param range the distance a hero can cover with their weapon
 	 * @param damage the amount of damage the hero can do with their weapon
-	 * @param x the x position of the hero
-	 * @param y the y position of the hero
-	 * @param w how wide the hero is
-	 * @param h how tall the hero is
 	 */
 	public Hero(double speed, double atkSpeed, double HP, double range, double damage) {
 		super(speed, atkSpeed, HP, range, damage, X, Y, WIDTH, HEIGHT);
@@ -67,9 +63,17 @@ public abstract class Hero extends Character {
 	 */
 	public abstract void shoot(double mouseX, double mouseY, PApplet marker, ArrayList<Enemy> enemies, double shotX, double shotY);
 	
+	/**
+	 * Gets the bullets
+	 * @return the bullets
+	 */
 	public ArrayList<Bullet> getArrows(){
 		return null;
 	}
 	
+	/**
+	 * Animates hero attack
+	 * @param dir the direction of the hero
+	 */
 	public abstract void animateAttack(int dir);
 }

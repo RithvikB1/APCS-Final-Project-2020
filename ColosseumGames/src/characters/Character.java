@@ -22,8 +22,6 @@ public class Character extends Rectangle2D.Double {
 	private int w, h;
 	private double vx, vy;
 	
-	
-	
 	/**
 	 * Creates a character either a playable hero or an enemy
 	 * @param speed the character's speed
@@ -95,7 +93,6 @@ public class Character extends Rectangle2D.Double {
 		if(y < 40) {
 			vy = 0;
 			y = 40; 
-			//have 4 of these
 		}
 		if(x + w > Screen.SCREEN_WIDTH - 40) {
 			vx = 0;
@@ -236,25 +233,18 @@ public class Character extends Rectangle2D.Double {
 		if(dir == 1) {
 			vx = speed;
 			vy = 0;
-
-
-
 		}
 		//down
 		if(dir == 2) {
 
 			vy = speed;
 			vx = 0;
-
-
 		}
 		//left
 		if(dir == 3) {
 
 			vx = -speed;
 			vy = 0;
-
-
 		}
 		//up
 		if(dir == 4) {
@@ -320,15 +310,10 @@ public class Character extends Rectangle2D.Double {
 	 * @param marker the PApplet to draw the shot
 	 */
 	public void shoot(int mouseX, int mouseY, double shotLength, PApplet marker) {
-		double shotX = x;
-		double shotY = y;
-		
 		double angle = Math.atan((mouseY - y)/(mouseX - x));
 		if(mouseX - x< 0) {
 			angle += Math.PI;
 		}
-		double maxXPoint = range * Math.cos(angle) + x;
-		double maxYPoint = range * Math.sin(angle) + y;
 			
 	}
 	/**

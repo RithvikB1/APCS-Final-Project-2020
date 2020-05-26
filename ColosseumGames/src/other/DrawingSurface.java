@@ -26,7 +26,19 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	 * Loads all images, sounds, and sets temporary background color
 	 */
 	public void setup() {
-		reset();
+		background(255);
+		
+		screens = new Screen[] {new StartScreen(this), new ChooseHero(this), new Credits(this), new ChooseDifficulty(this), 
+				new Rules(this), new Settings(this), new DeathMenu(this), new Shop(this), new Pause(this), 
+				new GameScreen(this), new ConfirmQuit(this), new VictoryScreen(this)};
+		
+		for (Screen s : screens) {
+			s.setup();
+		}
+		
+		currentScreen = screens[0];
+		
+		audio = new SoundFile(this, "files/audio/smash.wav");
 	}
 	
 	/**
@@ -67,7 +79,8 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	}
 	
 	/**
-	 * 
+	 * Dictates what happens with a screen when a mouse is used to scroll
+	 * @param e the mouse event used to capture mouse scrolling
 	 */
 	public void mouseWheel(MouseEvent e) {
 		currentScreen.mouseWheel(e);
@@ -141,7 +154,7 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 	}
 	
 	/**
-	 * Restarts the program, basically
+	 * Restarts the program
 	 */
 	public void reset() {
 		background(255);
@@ -155,7 +168,5 @@ public class DrawingSurface extends PApplet implements ScreenToggler {
 		}
 		
 		currentScreen = screens[0];
-		
-		audio = new SoundFile(this, "files/audio/smash.wav");
 	}
 }

@@ -57,7 +57,7 @@ public class Pause extends Screen {
 		surface.textSize(40);
 		
 		surface.text("Resume", 300, 510);
-		surface.text("Restart", 885, 510);
+		surface.text("Restart", 868, 510);
 		
 		surface.popStyle();
 		
@@ -87,7 +87,7 @@ public class Pause extends Screen {
 			surface.toggleScreen(DrawingSurface.GAME_SCREEN);
 		}
 		else if (restartButton.contains(surface.mouseX, surface.mouseY)) {
-			surface.toggleScreen(DrawingSurface.CHOOSE_HERO);
+			surface.reset();
 		}
 		
 	}

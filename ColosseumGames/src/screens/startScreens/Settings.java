@@ -24,7 +24,7 @@ public class Settings extends Screen {
 	
 	private boolean isUp, isDown, isLeft, isRight;
 	
-	private Rectangle soundOn, soundOff, backButton, sliderArea, upKey, downKey, leftKey, rightKey, resetSettings, slider;
+	private Rectangle soundOn, soundOff, backButton, sliderArea, upKey, downKey, leftKey, rightKey, slider;
 	
 	public Settings(DrawingSurface surface) {
 		super(surface);
@@ -32,6 +32,16 @@ public class Settings extends Screen {
 		adjuster = 538;
 		
 		this.surface = surface;
+		
+		soundOn = new Rectangle();
+		soundOff = new Rectangle();
+		backButton = new Rectangle();
+		sliderArea = new Rectangle();
+		upKey = new Rectangle();
+		downKey = new Rectangle();
+		leftKey = new Rectangle();
+		rightKey = new Rectangle();
+		slider = new Rectangle();
 	}
 
 	public void setup() {
@@ -74,17 +84,15 @@ public class Settings extends Screen {
 		downKey = new Rectangle(610, 605, 80, 80);
 		leftKey = new Rectangle(520, 605, 80, 80);
 		rightKey = new Rectangle(700, 605, 80, 80);
-		resetSettings = new Rectangle(1000, 650, 150, 100);
 		
 		PShape shape = surface.createShape(PConstants.RECT, 740, 152, 80, 80); // on
 		PShape shape2 = surface.createShape(PConstants.RECT, 820, 152, 80, 80); // off
 		PShape shape3 = surface.createShape(PConstants.RECT, 25, 620, 260, 130, 20); // back button
-		PShape shape4 = surface.createShape(PConstants.RECT, adjuster, 345, 40, 50); // slider (30, 35)
+		PShape shape4 = surface.createShape(PConstants.RECT, adjuster, 345, 40, 50); // slider 
 		PShape shape5 = surface.createShape(PConstants.RECT, 610, 515, 80, 80); // up key
 		PShape shape6 = surface.createShape(PConstants.RECT, 610, 605, 80, 80); // down key
 		PShape shape7 = surface.createShape(PConstants.RECT, 520, 605, 80, 80); // left key
 		PShape shape8 = surface.createShape(PConstants.RECT, 700, 605, 80, 80); // right key
-		PShape shape9 = surface.createShape(PConstants.RECT, 1000, 650, 150, 100, 20); // reset 
 	
 		int c1 = surface.color(204, 153, 0);
 		int c2 = surface.color(140, 153, 0);
@@ -96,7 +104,6 @@ public class Settings extends Screen {
 		shape6.setFill(255);
 		shape7.setFill(255);
 		shape8.setFill(255);
-		shape9.setFill(c1);
 		
 		if (getSound()) {
 			shape.setFill(230);
@@ -121,7 +128,6 @@ public class Settings extends Screen {
 		hover(downKey, shape6, 255, 130);
 		hover(leftKey, shape7, 255, 130);
 		hover(rightKey, shape8, 255, 130);
-		hover(resetSettings, shape9, c1, c2);
 		
 		if (isUp) {
 			shape5.setFill(c3);
@@ -144,7 +150,6 @@ public class Settings extends Screen {
 		surface.shape(shape6);
 		surface.shape(shape7);
 		surface.shape(shape8);
-		surface.shape(shape9);
 		
 		surface.fill(0);
 		surface.textSize(50);
@@ -181,9 +186,6 @@ public class Settings extends Screen {
 		surface.text(keys[2], 540, 665);
 		surface.text(keys[3], 720, 665);
 		
-		surface.textSize(40);
-		surface.text("Reset", 1020, 710);
-		
 		surface.textSize(60);
 		
 		surface.text("Back", 90, 705);
@@ -195,20 +197,6 @@ public class Settings extends Screen {
 		surface.update();
 		surface.popStyle();
 		
-	}
-
-	/**
-	 * Resets all changed settings back to default values before player changed them
-	 */
-	public void resetSettings() {
-		adjuster = 400;
-		setSpecificHero(HERCULES);
-		setSound(false);
-		
-		setUpKey('W');
-		setDownKey('S');
-		setLeftKey('A');
-		setRightKey('D');
 	}
 	
 	@Override
@@ -256,18 +244,27 @@ public class Settings extends Screen {
 		}
 		else if (upKey.contains(surface.mouseX, surface.mouseY)) {
 			isUp = true;
+			isDown = false;
+			isLeft = false;
+			isRight = false;
 		}
 		else if (downKey.contains(surface.mouseX, surface.mouseY)) {
 			isDown = true;
+			isUp = false;
+			isRight = false;
+			isLeft = false;
 		}
 		else if (leftKey.contains(surface.mouseX, surface.mouseY)) {
 			isLeft = true;
+			isUp = false;
+			isDown = false;
+			isRight = false;
 		}
 		else if (rightKey.contains(surface.mouseX, surface.mouseY)) {
 			isRight = true;
-		}
-		else if (resetSettings.contains(surface.mouseX, surface.mouseY)) {
-//			resetSettings();
+			isUp = false;
+			isDown = false;
+			isLeft = false;
 		}
 		else {
 			isUp = false;

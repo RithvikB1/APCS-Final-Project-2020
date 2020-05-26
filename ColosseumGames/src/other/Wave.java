@@ -29,6 +29,7 @@ public class Wave {
 	 * Used to draw the waves as dependent on the current wave the user is on
 	 * @param marker allows PApplet access
 	 * @param c the hero used as detection in the wave
+	 * @param s the screen used to get multiplier
 	 */
 	public void startWave(PApplet marker, Character c, Screen s) {
 		
@@ -179,6 +180,10 @@ public class Wave {
 		return enemyList;
 	}
 	
+	/**
+	 * Sets up enemy images
+	 * @param marker allows PApplet access
+	 */
 	public void setup(PApplet marker)
 	{
 		for (Enemy a : enemyList)

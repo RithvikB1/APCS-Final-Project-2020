@@ -6,17 +6,15 @@ import java.util.ArrayList;
 
 import characters.Character;
 import other.Bullet;
-import other.DrawingSurface;
 import processing.core.PApplet;
-import processing.core.PImage;
+import screens.other.Screen;
+
 /**
  * 
  * @author Richard, Rithvik, Aditya
  * @version 2.0
  *
  */
-import screens.gameScreens.GameScreen;
-import screens.other.Screen;
 public abstract class Enemy extends Character {
 	
 	private double range;
@@ -48,6 +46,10 @@ public abstract class Enemy extends Character {
 		this.damage = damage;
 	}
 	
+	/**
+	 * Sets up images for enemy
+	 * @param marker allows PApplet access
+	 */
 	public abstract void setup(PApplet marker);
 	
 	/**
@@ -58,7 +60,7 @@ public abstract class Enemy extends Character {
 	public abstract void behave(Character c, PApplet marker);
 
 	/**
-	 * 
+	 * Gets the direction away from the player
 	 * @param c the Character object that the Enemy object is receiving the opposite direction
 	 * @return the direction that the Enemy object will walk
 	 */
@@ -165,10 +167,20 @@ public abstract class Enemy extends Character {
 		
 			
 	}
+	/**
+	 * Gets the bullets
+	 * @return the bullets
+	 */
 	public ArrayList<Bullet> getBullets(){
 		return null;
 	}
 
+	/**
+	 * Sets enemy behavior
+	 * @param c the character used to manipulate behavior
+	 * @param marker allows PApplet access
+	 * @param s gives screen access
+	 */
 	public void behave(Character c, PApplet marker, Screen s) {
 		
 	}

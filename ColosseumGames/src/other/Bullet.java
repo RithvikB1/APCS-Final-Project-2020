@@ -6,15 +6,26 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import screens.other.Screen;
 
+/**
+ * Creates a bullet projectile
+ * @author Richard
+ *
+ */
 public class Bullet extends Rectangle2D.Double {
-	PApplet marker;
+	
 	private double vx, vy, angle;
 	private int side;
 	private int collisionCounter;
+	
 	public Bullet(double x, double y, double angle) {
 		super(x, y, 20, 20);
 		this.angle = angle;
 	}
+	
+	/**
+	 * Checks if bullets is hitting
+	 * @return true if collision, false if not
+	 */
 	public boolean isCollision() {
 
 		if(super.x < 40) {
@@ -44,6 +55,10 @@ public class Bullet extends Rectangle2D.Double {
 		}
 	}
 	
+	/**
+	 * Makes bullet move accordingly
+	 * @param speed the speed at which the bullet moves
+	 */
 	public void launch(double speed) {
 		if(!isCollision()) {
 			vx = speed * Math.cos(angle);
@@ -60,7 +75,11 @@ public class Bullet extends Rectangle2D.Double {
 		
 		
 	}
-	public void moveByVelocities(){
+	
+	/**
+	 * Moves the bullet
+	 */
+	public void moveByVelocities() {
 		if(!isCollision()) {
 			super.x += vx;
 			super.y += vy;
@@ -68,9 +87,22 @@ public class Bullet extends Rectangle2D.Double {
 	
 
 	}
+	
+	/**
+	 * Gets the number of collisions
+	 * @return number of collisions as an int
+	 */
 	public int getCollisionCounter() {
 		return collisionCounter;
 	}
+	
+	/**
+	 * Draws the bullets
+	 * @param marker allows PApplet access
+	 * @param r the red value of bullet
+	 * @param g the green value of bullet
+	 * @param b the blue value of bullet
+	 */
 	public void draw(PApplet marker, int r, int g, int b) {
 		marker.pushMatrix();
 		marker.strokeWeight(2);

@@ -3,6 +3,7 @@ package screens.other;
 /**
  * Used to toggle between screens
  * @author Rithvik
+ * Credit to Mr. Shelby for idea
  *
  */
 public interface ScreenToggler {

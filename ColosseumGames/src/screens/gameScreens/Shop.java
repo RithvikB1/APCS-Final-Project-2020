@@ -126,22 +126,22 @@ public class Shop extends Screen {
 		else if (health.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(310, 300, 200, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[3], 330, 380);
+			surface.text(displayUpgrades()[3], 350, 380);
 		}
 		else if (speed.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(540, 300, 200, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[0], 600, 380);
+			surface.text(displayUpgrades()[0], 620, 380);
 		}
 		else if (range.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(770, 300, 200, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[2], 800, 380);
+			surface.text(displayUpgrades()[2], 860, 380);
 		}
 		else if (damage.contains(surface.mouseX, surface.mouseY)) {
 			surface.arc(1000, 300, 200, 100, 0, PConstants.PI, PConstants.OPEN);
 			surface.fill(0);
-			surface.text(displayUpgrades()[4], 1020, 380);
+			surface.text(displayUpgrades()[4], 1080, 380);
 		}
 		
 		surface.textSize(60);
@@ -149,11 +149,11 @@ public class Shop extends Screen {
 		surface.text("Upgrade Stats", 450, 175);
 		
 		surface.textSize(40);
-		surface.text("AtkSpeed", 100, 315);
-		surface.text("Health", 360, 315);
-		surface.text("Speed", 595, 315);
+		surface.text("AtkSpeed", 90, 315);
+		surface.text("Health", 350, 315);
+		surface.text("Speed", 580, 315);
 		surface.text("Range", 805, 315);
-		surface.text("Damage", 1005, 315);
+		surface.text("Damage", 1015, 315);
 		
 		if (isClicked1 || isClicked2 || isClicked3 || isClicked4 || isClicked5) 
 			surface.text("Confirm", 570, 485);
