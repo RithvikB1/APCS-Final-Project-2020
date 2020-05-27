@@ -3,7 +3,7 @@
 
 **Authors**: Aditya Senthilvel, Rithvik Bhakri, Richard Huang
 
-**Revision**: 4/16/20
+**Revision**: 4/16/20 (OUT OF DATE, CHECK DOC FOLDER LOCATED IN PROJECT FOR UPDATED README)
 
 **Introduction**: 
 
