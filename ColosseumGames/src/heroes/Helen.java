@@ -53,7 +53,7 @@ public class Helen extends Hero {
 			double shotY) {
 		double delay = (10/getAtkSpeed())*1000;
 		long nextShotTime = System.currentTimeMillis();
-		
+		marker.pushStyle();
 		
 		if(nextShotTime - previousShotTime > delay) {
 			if (mouseX < this.x)
@@ -79,6 +79,8 @@ public class Helen extends Hero {
 			marker.popMatrix();
 			previousShotTime = System.currentTimeMillis(); 
 		}
+		
+		marker.popStyle();
 
 	}
 
